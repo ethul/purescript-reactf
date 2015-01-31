@@ -1,0 +1,26 @@
+{
+  "name": "purescript-reactf",
+  "homepage": "https://github.com/ethul/purescript-reactf",
+  "description": "React free monad for PureScript",
+  "keywords": [
+    "purescript",
+    "free monad"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "examples",
+    "dist"
+  ],
+  "devDependencies": {
+    "react": "~0.12.2"
+  },
+  "dependencies": {
+    "purescript-dom": "~0.1.1",
+    "purescript-free": "~0.2.0",
+    "purescript-options": "*",
+    "purescript-monoid": "~0.1.5"
+  }
+}
