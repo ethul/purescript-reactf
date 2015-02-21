@@ -9,6 +9,7 @@ import Data.Options
 import Data.Monoid (mempty)
 
 import React.Attributes (Attributes(..))
+import React.Combinators ((|-), (|*))
 import React.ComponentF
 import React.Dom (button, div', h1', textnode)
 import React.Events (Events(..), SyntheticMouseEventFn(..), onClick)
@@ -35,21 +36,20 @@ events ref state i = Events $ onClick := SyntheticMouseEventFn (const $ pure $ u
 
 render :: RenderFn CounterProps CounterState
 render ref (Props props) (State state) = do
-  titleText <- textnode props.title
-  titleEl <- h1' [titleText]
-
-  let prps = Props { count: state.count }
-  let evts = Events mempty
   countClass <- createClass C.spec
-  countEl <- createElementFromClass countClass prps evts mempty
 
-  incrText <- textnode "Increment"
-  incrEl <- button (Attributes mempty) (events ref state 1) [incrText]
+  let countProps = Props { count: state.count }
 
-  decrText <- textnode "Decrement"
-  decrEl <- button (Attributes mempty) (events ref state $ negate 1) [decrText]
+  html <- div'
+          |* [ h1'
+               |- textnode props.title
+             , createElementFromClass countClass countProps mempty mempty
+             , button mempty (events ref state 1)
+               |- textnode "Increment"
+             , button mempty (events ref state $ negate 1)
+               |- textnode "Decrement"
+             ]
 
-  html <- div' [titleEl, countEl, incrEl, decrEl]
   return html
 
 spec :: forall eff. Specification eff CounterProps CounterState

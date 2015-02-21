@@ -644,6 +644,27 @@
     y2 :: Option Attribute Number
 
 
+## Module React.Combinators
+
+### Values
+
+#### `(|*)`
+
+    (|*) :: (Elements -> React Element) -> [React Element] -> React Element
+
+#### `(|-)`
+
+    (|-) :: (Elements -> React Element) -> React Element -> React Element
+
+#### `child`
+
+    child :: (Elements -> React Element) -> React Element -> React Element
+
+#### `children`
+
+    children :: (Elements -> React Element) -> [React Element] -> React Element
+
+
 ## Module React.ComponentF
 
 ### Types
