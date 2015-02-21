@@ -19,7 +19,7 @@ import React.ReactF (Class(), DisplayName(), Element(), Elements(), ReactF(..), 
 import React.TagName (TagName(Null, Textnode))
 import React.Types (DOMElement(), ReactE())
 
-foreign import data ReactJs :: *
+data ReactJs
 
 reactN :: forall eff. ReactJs -> Natural ReactF (Eff (react :: ReactE | eff))
 reactN rjs fa =

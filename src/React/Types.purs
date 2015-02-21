@@ -8,16 +8,16 @@ module React.Types
   , ReactE()
   ) where
 
-foreign import data DOMAbstractView :: *
+data DOMAbstractView
 
-foreign import data DOMElement :: *
+data DOMElement
 
-foreign import data DOMEvent :: *
+data DOMEvent
 
-foreign import data DOMEventTarget :: *
+data DOMEventTarget
 
-foreign import data DOMDataTransfer :: *
+data DOMDataTransfer
 
-foreign import data DOMTouchList :: *
+data DOMTouchList
 
 foreign import data ReactE :: !

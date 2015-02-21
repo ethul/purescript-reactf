@@ -95,6 +95,7 @@ import Control.Monad.Eff (Eff())
 
 import Data.Options
 import Data.Function
+import Data.Monoid (Monoid, mempty)
 
 import DOM (DOM())
 
@@ -102,6 +103,12 @@ import React.ComponentF (Component())
 import React.Types
 
 newtype Events eff props state = Events (Options (EventName eff props state))
+
+instance semigroupEvents :: Semigroup (Events eff props state) where
+  (<>) (Events a) (Events b) = Events $ a <> b
+
+instance monoidEvents :: Monoid (Events eff props state) where
+  mempty = Events mempty
 
 foreign import data EventName :: # ! -> * -> * -> *
 

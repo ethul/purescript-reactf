@@ -29,9 +29,9 @@ import React.Types (DOMElement())
 
 type DisplayName = String
 
-foreign import data Class :: * -> * -> *
+data Class props state
 
-foreign import data Element :: *
+data Element
 
 type Elements = [Element]
 

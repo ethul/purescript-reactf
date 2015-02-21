@@ -6,12 +6,23 @@
 
 #### `Attribute`
 
-    data Attribute :: *
+    data Attribute
 
 #### `Attributes`
 
     newtype Attributes
       = Attributes (Options Attribute)
+
+
+### Type Class Instances
+
+#### `monoidAttributes`
+
+    instance monoidAttributes :: Monoid Attributes
+
+#### `semigroupAttributes`
+
+    instance semigroupAttributes :: Semigroup Attributes
 
 
 ### Values
@@ -633,6 +644,27 @@
     y2 :: Option Attribute Number
 
 
+## Module React.Combinators
+
+### Values
+
+#### `(|*)`
+
+    (|*) :: (Elements -> React Element) -> [React Element] -> React Element
+
+#### `(|-)`
+
+    (|-) :: (Elements -> React Element) -> React Element -> React Element
+
+#### `child`
+
+    child :: (Elements -> React Element) -> React Element -> React Element
+
+#### `children`
+
+    children :: (Elements -> React Element) -> [React Element] -> React Element
+
+
 ## Module React.ComponentF
 
 ### Types
@@ -656,7 +688,7 @@
 
 #### `Reference`
 
-    data Reference :: * -> * -> *
+    data Reference props state
 
 #### `State`
 
@@ -1887,6 +1919,14 @@
 
     instance isOptionSyntheticWheelEventFn :: IsOption (SyntheticWheelEventFn eff props state)
 
+#### `monoidEvents`
+
+    instance monoidEvents :: Monoid (Events eff props state)
+
+#### `semigroupEvents`
+
+    instance semigroupEvents :: Semigroup (Events eff props state)
+
 
 ### Values
 
@@ -2169,7 +2209,7 @@
 
 #### `Class`
 
-    data Class :: * -> * -> *
+    data Class props state
 
 #### `DisplayName`
 
@@ -2177,7 +2217,7 @@
 
 #### `Element`
 
-    data Element :: *
+    data Element
 
 #### `Elements`
 
@@ -2251,7 +2291,7 @@
 
 #### `ReactJs`
 
-    data ReactJs :: *
+    data ReactJs
 
 
 ### Values
@@ -2423,27 +2463,27 @@
 
 #### `DOMAbstractView`
 
-    data DOMAbstractView :: *
+    data DOMAbstractView
 
 #### `DOMDataTransfer`
 
-    data DOMDataTransfer :: *
+    data DOMDataTransfer
 
 #### `DOMElement`
 
-    data DOMElement :: *
+    data DOMElement
 
 #### `DOMEvent`
 
-    data DOMEvent :: *
+    data DOMEvent
 
 #### `DOMEventTarget`
 
-    data DOMEventTarget :: *
+    data DOMEventTarget
 
 #### `DOMTouchList`
 
-    data DOMTouchList :: *
+    data DOMTouchList
 
 #### `ReactE`
 

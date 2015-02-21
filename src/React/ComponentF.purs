@@ -13,7 +13,7 @@ import Control.Monad.Free (FreeC(), liftFC)
 
 type Component props state = FreeC (ComponentF props state)
 
-foreign import data Reference :: * -> * -> *
+data Reference props state
 
 newtype Props props = Props props
 

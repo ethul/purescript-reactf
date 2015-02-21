@@ -160,10 +160,17 @@ module React.Attributes
 import Prelude hiding (id)
 
 import Data.Options
+import Data.Monoid (Monoid, mempty)
 
 newtype Attributes = Attributes (Options Attribute)
 
-foreign import data Attribute :: *
+instance semigroupAttributes :: Semigroup Attributes where
+  (<>) (Attributes a) (Attributes b) = Attributes $ a <> b
+
+instance monoidAttributes :: Monoid Attributes where
+  mempty = Attributes mempty
+
+data Attribute
 
 foreign import accept "var accept = 'accept';" :: Option Attribute String
 
