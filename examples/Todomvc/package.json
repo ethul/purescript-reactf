@@ -1,0 +1,20 @@
+{
+  "name": "todomvc",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "NODE_PATH=\"output\" ./node_modules/.bin/webpack",
+    "run": "NODE_PATH=\"output\" ./node_modules/.bin/webpack-dev-server"
+  },
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "css-loader": "^0.9.1",
+    "purs-loader": "0.0.3",
+    "react": "^0.12.2",
+    "style-loader": "^0.8.3",
+    "todomvc-app-css": "^1.0.1",
+    "todomvc-common": "^1.0.1",
+    "webpack": "^1.5.3",
+    "webpack-dev-server": "^1.7.0"
+  }
+}

@@ -14,9 +14,6 @@
     "examples",
     "dist"
   ],
-  "devDependencies": {
-    "react": "~0.12.2"
-  },
   "dependencies": {
     "purescript-dom": "~0.1.1",
     "purescript-free": "~0.2.0",
