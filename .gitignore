@@ -3,6 +3,7 @@
 node_modules
 bower_components
 dist
+**/*/npm-debug.log
 examples/Counter/*.js
 examples/Todomvc/node_modules
 examples/Todomvc/bower_components
