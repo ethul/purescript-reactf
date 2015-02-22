@@ -112,7 +112,7 @@ instance monoidEvents :: Monoid (Events eff props state) where
 
 foreign import data EventName :: # ! -> * -> * -> *
 
-newtype SyntheticClipboardEvent eff
+newtype SyntheticClipboardEvent
   = SyntheticClipboardEvent { bubbles :: Boolean
                             , cancelable :: Boolean
                             , currentTarget :: DOMEventTarget
@@ -120,15 +120,15 @@ newtype SyntheticClipboardEvent eff
                             , eventPhase :: Number
                             , isTrusted :: Boolean
                             , nativeEvent :: DOMEvent
-                            , preventDefault :: Eff (dom :: DOM | eff) Unit
-                            , stopPropagation :: Eff (dom :: DOM | eff) Unit
+                            , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
+                            , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
                             , target :: DOMEventTarget
                             , timeStamp :: Number
                             , "type" :: String
                             , clipboardData :: DOMDataTransfer
                             }
 
-newtype SyntheticKeyboardEvent eff
+newtype SyntheticKeyboardEvent
   = SyntheticKeyboardEvent { bubbles :: Boolean
                            , cancelable :: Boolean
                            , currentTarget :: DOMEventTarget
@@ -136,8 +136,8 @@ newtype SyntheticKeyboardEvent eff
                            , eventPhase :: Number
                            , isTrusted :: Boolean
                            , nativeEvent :: DOMEvent
-                           , preventDefault :: Eff (dom :: DOM | eff) Unit
-                           , stopPropagation :: Eff (dom :: DOM | eff) Unit
+                           , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
+                           , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
                            , target :: DOMEventTarget
                            , timeStamp :: Number
                            , "type" :: String
@@ -155,7 +155,7 @@ newtype SyntheticKeyboardEvent eff
                            , which :: Number
                            }
 
-newtype SyntheticFocusEvent eff
+newtype SyntheticFocusEvent
   = SyntheticFocusEvent { bubbles :: Boolean
                         , cancelable :: Boolean
                         , currentTarget :: DOMEventTarget
@@ -163,15 +163,15 @@ newtype SyntheticFocusEvent eff
                         , eventPhase :: Number
                         , isTrusted :: Boolean
                         , nativeEvent :: DOMEvent
-                        , preventDefault :: Eff (dom :: DOM | eff) Unit
-                        , stopPropagation :: Eff (dom :: DOM | eff) Unit
+                        , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
+                        , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
                         , target :: DOMEventTarget
                         , timeStamp :: Number
                         , "type" :: String
                         , relatedTarget :: DOMEventTarget
                         }
 
-newtype SyntheticInputEvent eff
+newtype SyntheticInputEvent
   = SyntheticInputEvent { bubbles :: Boolean
                         , cancelable :: Boolean
                         , currentTarget :: DOMEventTarget
@@ -179,14 +179,14 @@ newtype SyntheticInputEvent eff
                         , eventPhase :: Number
                         , isTrusted :: Boolean
                         , nativeEvent :: DOMEvent
-                        , preventDefault :: Eff (dom :: DOM | eff) Unit
-                        , stopPropagation :: Eff (dom :: DOM | eff) Unit
+                        , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
+                        , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
                         , target :: DOMEventTarget
                         , timeStamp :: Number
                         , "type" :: String
                         }
 
-newtype SyntheticMouseEvent eff
+newtype SyntheticMouseEvent
   = SyntheticMouseEvent { bubbles :: Boolean
                         , cancelable :: Boolean
                         , currentTarget :: DOMEventTarget
@@ -194,8 +194,8 @@ newtype SyntheticMouseEvent eff
                         , eventPhase :: Number
                         , isTrusted :: Boolean
                         , nativeEvent :: DOMEvent
-                        , preventDefault :: Eff (dom :: DOM | eff) Unit
-                        , stopPropagation :: Eff (dom :: DOM | eff) Unit
+                        , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
+                        , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
                         , target :: DOMEventTarget
                         , timeStamp :: Number
                         , "type" :: String
@@ -215,7 +215,7 @@ newtype SyntheticMouseEvent eff
                         , shiftKey :: Boolean
                         }
 
-newtype SyntheticTouchEvent eff
+newtype SyntheticTouchEvent
   = SyntheticTouchEvent { bubbles :: Boolean
                         , cancelable :: Boolean
                         , currentTarget :: DOMEventTarget
@@ -223,8 +223,8 @@ newtype SyntheticTouchEvent eff
                         , eventPhase :: Number
                         , isTrusted :: Boolean
                         , nativeEvent :: DOMEvent
-                        , preventDefault :: Eff (dom :: DOM | eff) Unit
-                        , stopPropagation :: Eff (dom :: DOM | eff) Unit
+                        , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
+                        , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
                         , target :: DOMEventTarget
                         , timeStamp :: Number
                         , "type" :: String
@@ -238,7 +238,7 @@ newtype SyntheticTouchEvent eff
                         , touches :: DOMTouchList
                         }
 
-newtype SyntheticUIEvent eff
+newtype SyntheticUIEvent
   = SyntheticUIEvent { bubbles :: Boolean
                      , cancelable :: Boolean
                      , currentTarget :: DOMEventTarget
@@ -246,8 +246,8 @@ newtype SyntheticUIEvent eff
                      , eventPhase :: Number
                      , isTrusted :: Boolean
                      , nativeEvent :: DOMEvent
-                     , preventDefault :: Eff (dom :: DOM | eff) Unit
-                     , stopPropagation :: Eff (dom :: DOM | eff) Unit
+                     , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
+                     , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
                      , target :: DOMEventTarget
                      , timeStamp :: Number
                      , "type" :: String
@@ -255,7 +255,7 @@ newtype SyntheticUIEvent eff
                      , view :: DOMAbstractView
                      }
 
-newtype SyntheticWheelEvent eff
+newtype SyntheticWheelEvent
   = SyntheticWheelEvent { bubbles :: Boolean
                         , cancelable :: Boolean
                         , currentTarget :: DOMEventTarget
@@ -263,8 +263,8 @@ newtype SyntheticWheelEvent eff
                         , eventPhase :: Number
                         , isTrusted :: Boolean
                         , nativeEvent :: DOMEvent
-                        , preventDefault :: Eff (dom :: DOM | eff) Unit
-                        , stopPropagation :: Eff (dom :: DOM | eff) Unit
+                        , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
+                        , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
                         , target :: DOMEventTarget
                         , timeStamp :: Number
                         , "type" :: String
@@ -279,25 +279,25 @@ data SyntheticCompositionEvent
 
 data SyntheticDragEvent
 
-newtype SyntheticClipboardEventFn eff props state = SyntheticClipboardEventFn (SyntheticClipboardEvent eff -> Eff eff (Component props state Unit))
+newtype SyntheticClipboardEventFn eff props state = SyntheticClipboardEventFn (SyntheticClipboardEvent -> Eff eff (Component props state Unit))
 
 newtype SyntheticCompositionEventFn eff props state = SyntheticCompositionEventFn (SyntheticCompositionEvent -> Eff eff (Component props state Unit))
 
 newtype SyntheticDragEventFn eff props state = SyntheticDragEventFn (SyntheticDragEvent -> Eff eff (Component props state Unit))
 
-newtype SyntheticKeyboardEventFn eff props state = SyntheticKeyboardEventFn (SyntheticKeyboardEvent eff -> Eff eff (Component props state Unit))
+newtype SyntheticKeyboardEventFn eff props state = SyntheticKeyboardEventFn (SyntheticKeyboardEvent -> Eff eff (Component props state Unit))
 
-newtype SyntheticFocusEventFn eff props state = SyntheticFocusEventFn (SyntheticFocusEvent eff -> Eff eff (Component props state Unit))
+newtype SyntheticFocusEventFn eff props state = SyntheticFocusEventFn (SyntheticFocusEvent -> Eff eff (Component props state Unit))
 
-newtype SyntheticInputEventFn eff props state = SyntheticInputEventFn (SyntheticInputEvent eff -> Eff eff (Component props state Unit))
+newtype SyntheticInputEventFn eff props state = SyntheticInputEventFn (SyntheticInputEvent -> Eff eff (Component props state Unit))
 
-newtype SyntheticMouseEventFn eff props state = SyntheticMouseEventFn (SyntheticMouseEvent eff -> Eff eff (Component props state Unit))
+newtype SyntheticMouseEventFn eff props state = SyntheticMouseEventFn (SyntheticMouseEvent -> Eff eff (Component props state Unit))
 
-newtype SyntheticTouchEventFn eff props state = SyntheticTouchEventFn (SyntheticTouchEvent eff -> Eff eff (Component props state Unit))
+newtype SyntheticTouchEventFn eff props state = SyntheticTouchEventFn (SyntheticTouchEvent -> Eff eff (Component props state Unit))
 
-newtype SyntheticUIEventFn eff props state = SyntheticUIEventFn (SyntheticUIEvent eff -> Eff eff (Component props state Unit))
+newtype SyntheticUIEventFn eff props state = SyntheticUIEventFn (SyntheticUIEvent -> Eff eff (Component props state Unit))
 
-newtype SyntheticWheelEventFn eff props state = SyntheticWheelEventFn (SyntheticWheelEvent eff -> Eff eff (Component props state Unit))
+newtype SyntheticWheelEventFn eff props state = SyntheticWheelEventFn (SyntheticWheelEvent -> Eff eff (Component props state Unit))
 
 instance isOptionSyntheticClipboardEventFn :: IsOption (SyntheticClipboardEventFn eff props state) where
   (:=) k (SyntheticClipboardEventFn v) = runFn2 eventFnOption k v
