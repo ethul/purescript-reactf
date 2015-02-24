@@ -1,5 +1,5 @@
 module React.Attributes
-  ( Attributes(..)
+  ( Attributes()
   , Attribute()
   , accept
   , acceptCharset
@@ -162,13 +162,7 @@ import Prelude hiding (id)
 import Data.Options
 import Data.Monoid (Monoid, mempty)
 
-newtype Attributes = Attributes (Options Attribute)
-
-instance semigroupAttributes :: Semigroup Attributes where
-  (<>) (Attributes a) (Attributes b) = Attributes $ a <> b
-
-instance monoidAttributes :: Monoid Attributes where
-  mempty = Attributes mempty
+type Attributes = Options Attribute
 
 data Attribute
 

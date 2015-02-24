@@ -37,15 +37,15 @@ state = State { title: "" }
 
 render :: RenderFn HeaderProps HeaderState
 render ref (Props props) (State state) =
-  Dom.header (Attr.Attributes $ Attr.id := "header") mempty
+  Dom.header (Attr.id := "header") mempty
   |* [ Dom.h1'
        |- Dom.textnode "todos"
-     , Dom.form (Attr.Attributes $ Attr.id := "todo-form")
-                (Evt.Events $ Evt.onSubmit := Evt.SyntheticInputEventFn onSubmit)
-       |- Dom.input (Attr.Attributes $ Attr.id := "new-todo" <>
-                                       Attr.placeholder := "What needs to be done?" <>
-                                       Attr.value := state.title)
-                    (Evt.Events $ Evt.onChange := Evt.SyntheticInputEventFn onChange) mempty
+     , Dom.form (Attr.id := "todo-form")
+                (Evt.onSubmit := Evt.SyntheticInputEventFn onSubmit)
+       |- Dom.input (Attr.id := "new-todo" <>
+                     Attr.placeholder := "What needs to be done?" <>
+                     Attr.value := state.title)
+                    (Evt.onChange := Evt.SyntheticInputEventFn onChange) mempty
      ]
   where
     onChange (Evt.SyntheticInputEvent e) =

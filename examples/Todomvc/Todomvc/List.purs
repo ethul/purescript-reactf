@@ -39,17 +39,17 @@ state :: State ListState
 state = State unit
 
 renderTodo ref props todo@(Todo a) =
-  Dom.li (Attr.Attributes $ Attr.className := if a.completed then "completed" else "") mempty
-  |- Dom.div (Attr.Attributes $ Attr.className := "view") mempty
-     |* [ Dom.input (Attr.Attributes $ Attr.className := "toggle" <>
-                                       Attr._type := "checkbox" <>
-                                       Attr.checked := a.completed)
-                    (Evt.Events $ Evt.onChange := Evt.SyntheticInputEventFn (onChange todo))
+  Dom.li (Attr.className := if a.completed then "completed" else "") mempty
+  |- Dom.div (Attr.className := "view") mempty
+     |* [ Dom.input (Attr.className := "toggle" <>
+                     Attr._type := "checkbox" <>
+                     Attr.checked := a.completed)
+                    (Evt.onChange := Evt.SyntheticInputEventFn (onChange todo))
                     mempty
         , Dom.label'
           |- Dom.textnode a.title
-        , Dom.button (Attr.Attributes $ Attr.className := "destroy")
-                     (Evt.Events $ Evt.onClick := Evt.SyntheticMouseEventFn (onRemove todo))
+        , Dom.button (Attr.className := "destroy")
+                     (Evt.onClick := Evt.SyntheticMouseEventFn (onRemove todo))
                      mempty
         ]
   where
@@ -58,11 +58,11 @@ renderTodo ref props todo@(Todo a) =
 
 render :: RenderFn ListProps ListState
 render ref (Props props) (State state) =
-  Dom.section (Attr.Attributes $ Attr.id := "main") mempty
-  |* [ Dom.input (Attr.Attributes $ Attr.id := "toggle-all" <> Attr._type := "checkbox") mempty mempty
-     , Dom.label (Attr.Attributes $ Attr.htmlFor := "toggle-all") mempty
+  Dom.section (Attr.id := "main") mempty
+  |* [ Dom.input (Attr.id := "toggle-all" <> Attr._type := "checkbox") mempty mempty
+     , Dom.label (Attr.htmlFor := "toggle-all") mempty
        |- Dom.textnode "Mark all as completed"
-     , Dom.ul (Attr.Attributes $ Attr.id := "todo-list") mempty
+     , Dom.ul (Attr.id := "todo-list") mempty
        |* renderTodo ref props <$> props.todos
      ]
 

@@ -1,5 +1,5 @@
 module React.Events
-  ( Events(..)
+  ( Events()
   , EventName()
   , SyntheticClipboardEvent(..)
   , SyntheticCompositionEvent(..)
@@ -102,13 +102,7 @@ import DOM (DOM())
 import React.ComponentF (Component())
 import React.Types
 
-newtype Events eff props state = Events (Options (EventName eff props state))
-
-instance semigroupEvents :: Semigroup (Events eff props state) where
-  (<>) (Events a) (Events b) = Events $ a <> b
-
-instance monoidEvents :: Monoid (Events eff props state) where
-  mempty = Events mempty
+type Events eff props state = Options (EventName eff props state)
 
 foreign import data EventName :: # ! -> * -> * -> *
 

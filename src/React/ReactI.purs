@@ -11,10 +11,10 @@ import Data.Foreign (Foreign())
 import Data.Function
 import Data.Options (options)
 
-import React.Attributes (Attributes(..))
+import React.Attributes (Attributes())
 import React.ComponentF (Component(), Props(), Reference())
 import qualified React.ComponentI as CI
-import React.Events (Events(..))
+import React.Events (Events())
 import React.ReactF (Class(), DisplayName(), Element(), Elements(), ReactF(..), React(), Specification())
 import React.TagName (TagName(Null, Textnode))
 import React.Types (DOMElement(), ReactE())
@@ -39,8 +39,8 @@ reactN rjs fa =
        (RenderAsync el dom k) ->
        k <$> runFn3 renderFn rjs el dom
 
-  where attributes (Attributes a) = options a
-        events (Events a) = options a
+  where attributes a = options a
+        events a = options a
 
 run :: forall a. ReactJs -> React a -> Eff (react :: ReactE) a
 run js fa = goEffC (reactN js) fa
