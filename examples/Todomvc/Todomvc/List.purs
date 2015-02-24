@@ -8,6 +8,8 @@ module Todomvc.List
 import Data.Monoid (mempty)
 import Data.Options ((:=))
 
+import Optic.Core ((.~))
+
 import React.Combinators ((|-), (|*))
 import React.ComponentF
 import React.ReactF
@@ -65,7 +67,8 @@ render ref (Props props) (State state) =
      ]
 
 spec :: forall eff. Specification eff ListProps ListState
-spec = case R.spec props state render of Specification a -> Specification a { displayName = "List" }
+spec = R.spec props state render #
+       R.setDisplayName .~ "List"
 
 list :: React (Class ListProps ListState)
 list = createClass spec

@@ -10,7 +10,7 @@
     "tests"
   ],
   "devDependencies": {
-    "purescript-reactf": "../../../purescript-reactf#a215b4952920208258cb1b94ba07569aa6f19754",
+    "purescript-reactf": "../../",
     "purescript-argonaut": "~0.4.0",
     "purescript-either": "~0.1.4",
     "purescript-maybe": "~0.2.1",

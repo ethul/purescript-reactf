@@ -3833,10 +3833,59 @@ type LifecycleFn2 eff props state a = Reference props state -> Props props -> St
 ```
 
 
+#### `ComponentWillMount`
+
+``` purescript
+type ComponentWillMount eff props state = LifecycleFn0 eff props state Unit
+```
+
+
+#### `ComponentDidMount`
+
+``` purescript
+type ComponentDidMount eff props state = LifecycleFn0 eff props state Unit
+```
+
+
+#### `ComponentWillReceiveProps`
+
+``` purescript
+type ComponentWillReceiveProps eff props state = LifecycleFn1 eff props state Unit
+```
+
+
+#### `ShouldComponentUpdate`
+
+``` purescript
+type ShouldComponentUpdate eff props state = LifecycleFn2 eff props state Boolean
+```
+
+
+#### `ComponentWillUpdate`
+
+``` purescript
+type ComponentWillUpdate eff props state = LifecycleFn2 eff props state Unit
+```
+
+
+#### `ComponentDidUpdate`
+
+``` purescript
+type ComponentDidUpdate eff props state = LifecycleFn2 eff props state Unit
+```
+
+
+#### `ComponentWillUnmount`
+
+``` purescript
+type ComponentWillUnmount eff props state = LifecycleFn0 eff props state Unit
+```
+
+
 #### `Spec`
 
 ``` purescript
-type Spec eff props state = { componentWillUnmount :: LifecycleFn0 eff props state Unit, componentDidUpdate :: LifecycleFn2 eff props state Unit, componentWillUpdate :: LifecycleFn2 eff props state Unit, shouldComponentUpdate :: LifecycleFn2 eff props state Boolean, componentWillReceiveProps :: LifecycleFn1 eff props state Unit, componentDidMount :: LifecycleFn0 eff props state Unit, componentWillMount :: LifecycleFn0 eff props state Unit, displayName :: DisplayName, getDefaultProps :: Props props, getInitialState :: State state, render :: RenderFn props state }
+type Spec eff props state = { componentWillUnmount :: ComponentWillUnmount eff props state, componentDidUpdate :: ComponentDidUpdate eff props state, componentWillUpdate :: ComponentWillUpdate eff props state, shouldComponentUpdate :: ShouldComponentUpdate eff props state, componentWillReceiveProps :: ComponentWillReceiveProps eff props state, componentDidMount :: ComponentDidMount eff props state, componentWillMount :: ComponentWillMount eff props state, displayName :: DisplayName, getDefaultProps :: Props props, getInitialState :: State state, render :: RenderFn props state }
 ```
 
 
@@ -3926,6 +3975,62 @@ run :: forall a. ReactJs -> React a -> Eff (react :: ReactE) a
 
 ``` purescript
 spec :: forall eff props state. Props props -> State state -> RenderFn props state -> Specification eff props state
+```
+
+
+#### `setDisplayName`
+
+``` purescript
+setDisplayName :: forall eff props state. SetterP (Specification eff props state) String
+```
+
+
+#### `setComponentWillMount`
+
+``` purescript
+setComponentWillMount :: forall eff props state. SetterP (Specification eff props state) (ComponentWillMount eff props state)
+```
+
+
+#### `setComponentDidMount`
+
+``` purescript
+setComponentDidMount :: forall eff props state. SetterP (Specification eff props state) (ComponentDidMount eff props state)
+```
+
+
+#### `setComponentWillReceiveProps`
+
+``` purescript
+setComponentWillReceiveProps :: forall eff props state. SetterP (Specification eff props state) (ComponentWillReceiveProps eff props state)
+```
+
+
+#### `setShouldComponentUpdate`
+
+``` purescript
+setShouldComponentUpdate :: forall eff props state. SetterP (Specification eff props state) (ShouldComponentUpdate eff props state)
+```
+
+
+#### `setComponentWillUpdate`
+
+``` purescript
+setComponentWillUpdate :: forall eff props state. SetterP (Specification eff props state) (ComponentWillUpdate eff props state)
+```
+
+
+#### `setComponentDidUpdate`
+
+``` purescript
+setComponentDidUpdate :: forall eff props state. SetterP (Specification eff props state) (ComponentDidUpdate eff props state)
+```
+
+
+#### `setComponentWillUnmount`
+
+``` purescript
+setComponentWillUnmount :: forall eff props state. SetterP (Specification eff props state) (ComponentWillUnmount eff props state)
 ```
 
 
