@@ -5,22 +5,7 @@
 #### `Attributes`
 
 ``` purescript
-newtype Attributes
-  = Attributes (Options Attribute)
-```
-
-
-#### `semigroupAttributes`
-
-``` purescript
-instance semigroupAttributes :: Semigroup Attributes
-```
-
-
-#### `monoidAttributes`
-
-``` purescript
-instance monoidAttributes :: Monoid Attributes
+type Attributes = Options Attribute
 ```
 
 
@@ -3044,22 +3029,7 @@ wbr' :: Elements -> React Element
 #### `Events`
 
 ``` purescript
-newtype Events eff props state
-  = Events (Options (EventName eff props state))
-```
-
-
-#### `semigroupEvents`
-
-``` purescript
-instance semigroupEvents :: Semigroup (Events eff props state)
-```
-
-
-#### `monoidEvents`
-
-``` purescript
-instance monoidEvents :: Monoid (Events eff props state)
+type Events eff props state = Options (EventName eff props state)
 ```
 
 
