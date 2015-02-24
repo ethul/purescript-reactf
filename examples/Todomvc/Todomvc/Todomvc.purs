@@ -90,7 +90,7 @@ render ref (Props props) (State state) = do
       infoProps = Props unit
 
   html <- Dom.div'
-          |* [ Dom.section (Attr.Attributes $ Attr.id := "todoapp") mempty
+          |* [ Dom.section (Attr.id := "todoapp") mempty
                |* [ createElementFromClass headerClass headerProps mempty mempty
                   , createElementFromClass listClass listProps mempty mempty
                   , createElementFromClass footerClass footerProps mempty mempty
