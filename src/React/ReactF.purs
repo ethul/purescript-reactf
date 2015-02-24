@@ -11,6 +11,13 @@ module React.ReactF
   , LifecycleFn0()
   , LifecycleFn1()
   , LifecycleFn2()
+  , ComponentWillMount()
+  , ComponentDidMount()
+  , ComponentWillReceiveProps()
+  , ShouldComponentUpdate()
+  , ComponentWillUpdate()
+  , ComponentDidUpdate()
+  , ComponentWillUnmount()
   , createClass
   , createElementFromClass
   , createElementFromTagName
@@ -43,6 +50,20 @@ type LifecycleFn1 eff props state a = Reference props state -> Props props -> Ef
 
 type LifecycleFn2 eff props state a = Reference props state -> Props props -> State state -> Eff eff (Component props state a)
 
+type ComponentWillMount eff props state = LifecycleFn0 eff props state Unit
+
+type ComponentDidMount eff props state = LifecycleFn0 eff props state Unit
+
+type ComponentWillReceiveProps eff props state = LifecycleFn1 eff props state Unit
+
+type ShouldComponentUpdate eff props state = LifecycleFn2 eff props state Boolean
+
+type ComponentWillUpdate eff props state = LifecycleFn2 eff props state Unit
+
+type ComponentDidUpdate eff props state = LifecycleFn2 eff props state Unit
+
+type ComponentWillUnmount eff props state = LifecycleFn0 eff props state Unit
+
 type Spec eff props state
   = { render :: RenderFn props state
     , getInitialState :: State state
@@ -51,13 +72,13 @@ type Spec eff props state
     --, mixins
     --, statics
     , displayName :: DisplayName
-    , componentWillMount :: LifecycleFn0 eff props state Unit
-    , componentDidMount :: LifecycleFn0 eff props state Unit
-    , componentWillReceiveProps :: LifecycleFn1 eff props state Unit
-    , shouldComponentUpdate :: LifecycleFn2 eff props state Boolean
-    , componentWillUpdate :: LifecycleFn2 eff props state Unit
-    , componentDidUpdate :: LifecycleFn2 eff props state Unit
-    , componentWillUnmount :: LifecycleFn0 eff props state Unit
+    , componentWillMount :: ComponentWillMount eff props state
+    , componentDidMount :: ComponentDidMount eff props state
+    , componentWillReceiveProps :: ComponentWillReceiveProps eff props state
+    , shouldComponentUpdate :: ShouldComponentUpdate eff props state
+    , componentWillUpdate :: ComponentWillUpdate eff props state
+    , componentDidUpdate :: ComponentDidUpdate eff props state
+    , componentWillUnmount :: ComponentWillUnmount eff props state
     }
 
 newtype Specification eff props state = Specification (Spec eff props state)

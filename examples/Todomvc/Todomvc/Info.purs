@@ -8,6 +8,8 @@ module Todomvc.Info
 import Data.Monoid (mempty)
 import Data.Options ((:=))
 
+import Optic.Core ((.~))
+
 import React.Combinators ((|-), (|*))
 import React.ComponentF
 import React.ReactF
@@ -63,7 +65,8 @@ render ref (Props props) (State state) =
     style' = { paddingLeft: "5px", paddingRight: "5px" }
 
 spec :: forall eff. Specification eff InfoProps InfoState
-spec = case R.spec props state render of Specification a -> Specification a { displayName = "Info" }
+spec = R.spec props state render #
+       R.setDisplayName .~ "Info"
 
 info :: React (Class InfoProps InfoState)
 info = createClass spec

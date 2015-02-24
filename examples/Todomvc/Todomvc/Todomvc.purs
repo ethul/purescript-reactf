@@ -11,6 +11,8 @@ import Data.Maybe (fromMaybe)
 import Data.Monoid (mempty)
 import Data.Options ((:=))
 
+import Optic.Core ((.~))
+
 import React.Combinators ((|-), (|*))
 import React.ComponentF
 import React.ReactF
@@ -28,7 +30,7 @@ import qualified Todomvc.LocalStorage as LocalStorage
 import qualified Todomvc.Footer as Footer
 import qualified Todomvc.Info as Info
 
-type TodomvcLifecycleFn eff = LifecycleFn0 (localStorage :: LocalStorage.LocalStorageE | eff) TodomvcProps TodomvcState Unit
+type TodomvcComponentDidMount eff = ComponentDidMount (localStorage :: LocalStorage.LocalStorageE | eff) TodomvcProps TodomvcState
 
 type TodomvcSpecification eff = Specification (localStorage :: LocalStorage.LocalStorageE | eff) TodomvcProps TodomvcState
 
@@ -40,7 +42,7 @@ state = State { todos: [] }
 
 storageId = "reactjsf:todomvc:todos"
 
-componentDidMount :: forall eff. TodomvcLifecycleFn eff
+componentDidMount :: forall eff. TodomvcComponentDidMount eff
 componentDidMount ref = do
   maybeTodos <- LocalStorage.get storageId
   let todos = fromMaybe [] maybeTodos
@@ -99,10 +101,9 @@ render ref (Props props) (State state) = do
   return html
 
 spec :: forall eff. TodomvcSpecification eff
-spec = case R.spec props state render of
-            Specification a -> Specification a { displayName = "Todomvc"
-                                               , componentDidMount = componentDidMount
-                                               }
+spec = R.spec props state render #
+       R.setDisplayName .~ "Todomvc" #
+       R.setComponentDidMount .~ componentDidMount
 
 todomvc :: React (Class TodomvcProps TodomvcState)
 todomvc = createClass spec

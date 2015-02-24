@@ -2,2492 +2,4237 @@
 
 ## Module React.Attributes
 
-### Types
-
-#### `Attribute`
-
-    data Attribute
-
 #### `Attributes`
 
-    newtype Attributes
-      = Attributes (Options Attribute)
+``` purescript
+newtype Attributes
+  = Attributes (Options Attribute)
+```
 
-
-### Type Class Instances
-
-#### `monoidAttributes`
-
-    instance monoidAttributes :: Monoid Attributes
 
 #### `semigroupAttributes`
 
-    instance semigroupAttributes :: Semigroup Attributes
+``` purescript
+instance semigroupAttributes :: Semigroup Attributes
+```
 
 
-### Values
+#### `monoidAttributes`
 
-#### `_data`
+``` purescript
+instance monoidAttributes :: Monoid Attributes
+```
 
-    _data :: forall a. String -> Option Attribute a
 
-#### `_data'`
+#### `Attribute`
 
-    _data' :: Option Attribute String
+``` purescript
+data Attribute
+```
 
-#### `_type`
-
-    _type :: Option Attribute String
 
 #### `accept`
 
-    accept :: Option Attribute String
+``` purescript
+accept :: Option Attribute String
+```
+
 
 #### `acceptCharset`
 
-    acceptCharset :: Option Attribute String
+``` purescript
+acceptCharset :: Option Attribute String
+```
+
 
 #### `accessKey`
 
-    accessKey :: Option Attribute String
+``` purescript
+accessKey :: Option Attribute String
+```
+
 
 #### `action`
 
-    action :: Option Attribute String
+``` purescript
+action :: Option Attribute String
+```
+
 
 #### `allowFullScreen`
 
-    allowFullScreen :: Option Attribute Boolean
+``` purescript
+allowFullScreen :: Option Attribute Boolean
+```
+
 
 #### `allowTransparency`
 
-    allowTransparency :: Option Attribute Boolean
+``` purescript
+allowTransparency :: Option Attribute Boolean
+```
+
 
 #### `alt`
 
-    alt :: Option Attribute String
+``` purescript
+alt :: Option Attribute String
+```
 
-#### `aria`
-
-    aria :: String -> Option Attribute String
 
 #### `async`
 
-    async :: Option Attribute Boolean
+``` purescript
+async :: Option Attribute Boolean
+```
+
+
+#### `aria`
+
+``` purescript
+aria :: String -> Option Attribute String
+```
+
 
 #### `autoCapitalize`
 
-    autoCapitalize :: Option Attribute String
+``` purescript
+autoCapitalize :: Option Attribute String
+```
+
 
 #### `autoComplete`
 
-    autoComplete :: Option Attribute String
+``` purescript
+autoComplete :: Option Attribute String
+```
+
 
 #### `autoCorrect`
 
-    autoCorrect :: Option Attribute String
+``` purescript
+autoCorrect :: Option Attribute String
+```
+
 
 #### `autoPlay`
 
-    autoPlay :: Option Attribute Boolean
+``` purescript
+autoPlay :: Option Attribute Boolean
+```
+
 
 #### `cellPadding`
 
-    cellPadding :: Option Attribute Number
+``` purescript
+cellPadding :: Option Attribute Number
+```
+
 
 #### `cellSpacing`
 
-    cellSpacing :: Option Attribute Number
+``` purescript
+cellSpacing :: Option Attribute Number
+```
+
 
 #### `charSet`
 
-    charSet :: Option Attribute String
+``` purescript
+charSet :: Option Attribute String
+```
+
 
 #### `checked`
 
-    checked :: Option Attribute Boolean
+``` purescript
+checked :: Option Attribute Boolean
+```
+
 
 #### `classID`
 
-    classID :: Option Attribute String
+``` purescript
+classID :: Option Attribute String
+```
+
 
 #### `className`
 
-    className :: Option Attribute String
+``` purescript
+className :: Option Attribute String
+```
+
 
 #### `colSpan`
 
-    colSpan :: Option Attribute Number
+``` purescript
+colSpan :: Option Attribute Number
+```
+
 
 #### `cols`
 
-    cols :: Option Attribute Number
+``` purescript
+cols :: Option Attribute Number
+```
+
 
 #### `content`
 
-    content :: Option Attribute String
+``` purescript
+content :: Option Attribute String
+```
+
 
 #### `contentEditable`
 
-    contentEditable :: Option Attribute Boolean
+``` purescript
+contentEditable :: Option Attribute Boolean
+```
+
 
 #### `contextMenu`
 
-    contextMenu :: Option Attribute String
+``` purescript
+contextMenu :: Option Attribute String
+```
+
 
 #### `controls`
 
-    controls :: Option Attribute Boolean
+``` purescript
+controls :: Option Attribute Boolean
+```
+
 
 #### `coords`
 
-    coords :: Option Attribute String
+``` purescript
+coords :: Option Attribute String
+```
+
 
 #### `crossOrigin`
 
-    crossOrigin :: Option Attribute String
+``` purescript
+crossOrigin :: Option Attribute String
+```
+
 
 #### `cx`
 
-    cx :: Option Attribute Number
+``` purescript
+cx :: Option Attribute Number
+```
+
 
 #### `cy`
 
-    cy :: Option Attribute Number
+``` purescript
+cy :: Option Attribute Number
+```
+
 
 #### `d`
 
-    d :: Option Attribute String
+``` purescript
+d :: Option Attribute String
+```
+
 
 #### `dangerouslySetInnerHTML`
 
-    dangerouslySetInnerHTML :: Option Attribute { __html :: String }
+``` purescript
+dangerouslySetInnerHTML :: Option Attribute { __html :: String }
+```
+
+
+#### `_data`
+
+``` purescript
+_data :: forall a. String -> Option Attribute a
+```
+
+
+#### `_data'`
+
+``` purescript
+_data' :: Option Attribute String
+```
+
 
 #### `dateTime`
 
-    dateTime :: Option Attribute String
+``` purescript
+dateTime :: Option Attribute String
+```
+
 
 #### `defer`
 
-    defer :: Option Attribute Boolean
+``` purescript
+defer :: Option Attribute Boolean
+```
+
 
 #### `dir`
 
-    dir :: Option Attribute String
+``` purescript
+dir :: Option Attribute String
+```
+
 
 #### `disabled`
 
-    disabled :: Option Attribute Boolean
+``` purescript
+disabled :: Option Attribute Boolean
+```
+
 
 #### `download`
 
-    download :: Option Attribute Boolean
+``` purescript
+download :: Option Attribute Boolean
+```
+
 
 #### `draggable`
 
-    draggable :: Option Attribute Boolean
+``` purescript
+draggable :: Option Attribute Boolean
+```
+
 
 #### `dx`
 
-    dx :: Option Attribute Number
+``` purescript
+dx :: Option Attribute Number
+```
+
 
 #### `dy`
 
-    dy :: Option Attribute Number
+``` purescript
+dy :: Option Attribute Number
+```
+
 
 #### `encType`
 
-    encType :: Option Attribute String
+``` purescript
+encType :: Option Attribute String
+```
+
 
 #### `fill`
 
-    fill :: Option Attribute String
+``` purescript
+fill :: Option Attribute String
+```
+
 
 #### `fillOpacity`
 
-    fillOpacity :: Option Attribute Number
+``` purescript
+fillOpacity :: Option Attribute Number
+```
+
 
 #### `fontFamily`
 
-    fontFamily :: Option Attribute String
+``` purescript
+fontFamily :: Option Attribute String
+```
+
 
 #### `fontSize`
 
-    fontSize :: Option Attribute String
+``` purescript
+fontSize :: Option Attribute String
+```
+
 
 #### `form`
 
-    form :: Option Attribute String
+``` purescript
+form :: Option Attribute String
+```
+
 
 #### `formAction`
 
-    formAction :: Option Attribute String
+``` purescript
+formAction :: Option Attribute String
+```
+
 
 #### `formEncType`
 
-    formEncType :: Option Attribute String
+``` purescript
+formEncType :: Option Attribute String
+```
+
 
 #### `formMethod`
 
-    formMethod :: Option Attribute String
+``` purescript
+formMethod :: Option Attribute String
+```
+
 
 #### `formNoValidate`
 
-    formNoValidate :: Option Attribute Boolean
+``` purescript
+formNoValidate :: Option Attribute Boolean
+```
+
 
 #### `formTarget`
 
-    formTarget :: Option Attribute String
+``` purescript
+formTarget :: Option Attribute String
+```
+
 
 #### `frameBorder`
 
-    frameBorder :: Option Attribute Number
+``` purescript
+frameBorder :: Option Attribute Number
+```
+
 
 #### `fx`
 
-    fx :: Option Attribute Number
+``` purescript
+fx :: Option Attribute Number
+```
+
 
 #### `fy`
 
-    fy :: Option Attribute Number
+``` purescript
+fy :: Option Attribute Number
+```
+
 
 #### `gradientTransform`
 
-    gradientTransform :: Option Attribute String
+``` purescript
+gradientTransform :: Option Attribute String
+```
+
 
 #### `gradientUnits`
 
-    gradientUnits :: Option Attribute String
+``` purescript
+gradientUnits :: Option Attribute String
+```
+
 
 #### `height`
 
-    height :: Option Attribute String
+``` purescript
+height :: Option Attribute String
+```
+
 
 #### `hidden`
 
-    hidden :: Option Attribute String
+``` purescript
+hidden :: Option Attribute String
+```
+
 
 #### `href`
 
-    href :: Option Attribute String
+``` purescript
+href :: Option Attribute String
+```
+
 
 #### `hrefLang`
 
-    hrefLang :: Option Attribute String
+``` purescript
+hrefLang :: Option Attribute String
+```
+
 
 #### `htmlFor`
 
-    htmlFor :: Option Attribute String
+``` purescript
+htmlFor :: Option Attribute String
+```
+
 
 #### `httpEquiv`
 
-    httpEquiv :: Option Attribute String
+``` purescript
+httpEquiv :: Option Attribute String
+```
+
 
 #### `icon`
 
-    icon :: Option Attribute String
+``` purescript
+icon :: Option Attribute String
+```
+
 
 #### `id`
 
-    id :: Option Attribute String
+``` purescript
+id :: Option Attribute String
+```
+
 
 #### `itemProp`
 
-    itemProp :: Option Attribute String
+``` purescript
+itemProp :: Option Attribute String
+```
+
 
 #### `itemScope`
 
-    itemScope :: Option Attribute String
+``` purescript
+itemScope :: Option Attribute String
+```
+
 
 #### `itemType`
 
-    itemType :: Option Attribute String
+``` purescript
+itemType :: Option Attribute String
+```
+
 
 #### `key`
 
-    key :: Option Attribute String
+``` purescript
+key :: Option Attribute String
+```
+
 
 #### `label`
 
-    label :: Option Attribute String
+``` purescript
+label :: Option Attribute String
+```
+
 
 #### `lang`
 
-    lang :: Option Attribute String
+``` purescript
+lang :: Option Attribute String
+```
+
 
 #### `list`
 
-    list :: Option Attribute String
+``` purescript
+list :: Option Attribute String
+```
+
 
 #### `loop`
 
-    loop :: Option Attribute Boolean
+``` purescript
+loop :: Option Attribute Boolean
+```
+
 
 #### `manifest`
 
-    manifest :: Option Attribute String
+``` purescript
+manifest :: Option Attribute String
+```
+
 
 #### `marginHeight`
 
-    marginHeight :: Option Attribute Number
+``` purescript
+marginHeight :: Option Attribute Number
+```
+
 
 #### `marginWidth`
 
-    marginWidth :: Option Attribute Number
+``` purescript
+marginWidth :: Option Attribute Number
+```
+
 
 #### `markerEnd`
 
-    markerEnd :: Option Attribute String
+``` purescript
+markerEnd :: Option Attribute String
+```
+
 
 #### `markerMid`
 
-    markerMid :: Option Attribute String
+``` purescript
+markerMid :: Option Attribute String
+```
+
 
 #### `markerStart`
 
-    markerStart :: Option Attribute String
+``` purescript
+markerStart :: Option Attribute String
+```
+
 
 #### `max`
 
-    max :: Option Attribute Number
+``` purescript
+max :: Option Attribute Number
+```
+
 
 #### `maxLength`
 
-    maxLength :: Option Attribute Number
+``` purescript
+maxLength :: Option Attribute Number
+```
+
 
 #### `media`
 
-    media :: Option Attribute String
+``` purescript
+media :: Option Attribute String
+```
+
 
 #### `mediaGroup`
 
-    mediaGroup :: Option Attribute String
+``` purescript
+mediaGroup :: Option Attribute String
+```
+
 
 #### `method`
 
-    method :: Option Attribute String
+``` purescript
+method :: Option Attribute String
+```
+
 
 #### `min`
 
-    min :: Option Attribute Number
+``` purescript
+min :: Option Attribute Number
+```
+
 
 #### `multiple`
 
-    multiple :: Option Attribute Boolean
+``` purescript
+multiple :: Option Attribute Boolean
+```
+
 
 #### `muted`
 
-    muted :: Option Attribute Boolean
+``` purescript
+muted :: Option Attribute Boolean
+```
+
 
 #### `name`
 
-    name :: Option Attribute String
+``` purescript
+name :: Option Attribute String
+```
+
 
 #### `noValidate`
 
-    noValidate :: Option Attribute Boolean
+``` purescript
+noValidate :: Option Attribute Boolean
+```
+
 
 #### `offset`
 
-    offset :: Option Attribute String
+``` purescript
+offset :: Option Attribute String
+```
+
 
 #### `opacity`
 
-    opacity :: Option Attribute Number
+``` purescript
+opacity :: Option Attribute Number
+```
+
 
 #### `open`
 
-    open :: Option Attribute String
+``` purescript
+open :: Option Attribute String
+```
+
 
 #### `pattern`
 
-    pattern :: Option Attribute String
+``` purescript
+pattern :: Option Attribute String
+```
+
 
 #### `patternContentUnits`
 
-    patternContentUnits :: Option Attribute String
+``` purescript
+patternContentUnits :: Option Attribute String
+```
+
 
 #### `patternUnits`
 
-    patternUnits :: Option Attribute String
+``` purescript
+patternUnits :: Option Attribute String
+```
+
 
 #### `placeholder`
 
-    placeholder :: Option Attribute String
+``` purescript
+placeholder :: Option Attribute String
+```
+
 
 #### `points`
 
-    points :: Option Attribute String
+``` purescript
+points :: Option Attribute String
+```
+
 
 #### `poster`
 
-    poster :: Option Attribute String
+``` purescript
+poster :: Option Attribute String
+```
+
 
 #### `preload`
 
-    preload :: Option Attribute String
+``` purescript
+preload :: Option Attribute String
+```
+
 
 #### `preserveAspectRatio`
 
-    preserveAspectRatio :: Option Attribute String
+``` purescript
+preserveAspectRatio :: Option Attribute String
+```
+
 
 #### `property`
 
-    property :: Option Attribute String
+``` purescript
+property :: Option Attribute String
+```
+
 
 #### `r`
 
-    r :: Option Attribute Number
+``` purescript
+r :: Option Attribute Number
+```
+
 
 #### `radioGroup`
 
-    radioGroup :: Option Attribute String
+``` purescript
+radioGroup :: Option Attribute String
+```
+
 
 #### `readOnly`
 
-    readOnly :: Option Attribute Boolean
+``` purescript
+readOnly :: Option Attribute Boolean
+```
+
 
 #### `ref`
 
-    ref :: Option Attribute String
+``` purescript
+ref :: Option Attribute String
+```
+
 
 #### `rel`
 
-    rel :: Option Attribute String
+``` purescript
+rel :: Option Attribute String
+```
+
 
 #### `required`
 
-    required :: Option Attribute Boolean
+``` purescript
+required :: Option Attribute Boolean
+```
+
 
 #### `role`
 
-    role :: Option Attribute String
+``` purescript
+role :: Option Attribute String
+```
+
 
 #### `rowSpan`
 
-    rowSpan :: Option Attribute Number
+``` purescript
+rowSpan :: Option Attribute Number
+```
+
 
 #### `rows`
 
-    rows :: Option Attribute Number
+``` purescript
+rows :: Option Attribute Number
+```
+
 
 #### `rx`
 
-    rx :: Option Attribute Number
+``` purescript
+rx :: Option Attribute Number
+```
+
 
 #### `ry`
 
-    ry :: Option Attribute Number
+``` purescript
+ry :: Option Attribute Number
+```
+
 
 #### `sandbox`
 
-    sandbox :: Option Attribute String
+``` purescript
+sandbox :: Option Attribute String
+```
+
 
 #### `scope`
 
-    scope :: Option Attribute String
+``` purescript
+scope :: Option Attribute String
+```
+
 
 #### `scrolling`
 
-    scrolling :: Option Attribute String
+``` purescript
+scrolling :: Option Attribute String
+```
+
 
 #### `seamless`
 
-    seamless :: Option Attribute Boolean
+``` purescript
+seamless :: Option Attribute Boolean
+```
+
 
 #### `selected`
 
-    selected :: Option Attribute Boolean
+``` purescript
+selected :: Option Attribute Boolean
+```
+
 
 #### `shape`
 
-    shape :: Option Attribute String
+``` purescript
+shape :: Option Attribute String
+```
+
 
 #### `size`
 
-    size :: Option Attribute Number
+``` purescript
+size :: Option Attribute Number
+```
+
 
 #### `sizes`
 
-    sizes :: Option Attribute String
+``` purescript
+sizes :: Option Attribute String
+```
+
 
 #### `span`
 
-    span :: Option Attribute Number
+``` purescript
+span :: Option Attribute Number
+```
+
 
 #### `spellCheck`
 
-    spellCheck :: Option Attribute Boolean
+``` purescript
+spellCheck :: Option Attribute Boolean
+```
+
 
 #### `spreadMethod`
 
-    spreadMethod :: Option Attribute String
+``` purescript
+spreadMethod :: Option Attribute String
+```
+
 
 #### `src`
 
-    src :: Option Attribute String
+``` purescript
+src :: Option Attribute String
+```
+
 
 #### `srcDoc`
 
-    srcDoc :: Option Attribute String
+``` purescript
+srcDoc :: Option Attribute String
+```
+
 
 #### `srcSet`
 
-    srcSet :: Option Attribute String
+``` purescript
+srcSet :: Option Attribute String
+```
+
 
 #### `start`
 
-    start :: Option Attribute String
+``` purescript
+start :: Option Attribute String
+```
+
 
 #### `step`
 
-    step :: Option Attribute Number
+``` purescript
+step :: Option Attribute Number
+```
+
 
 #### `stopColor`
 
-    stopColor :: Option Attribute String
+``` purescript
+stopColor :: Option Attribute String
+```
+
 
 #### `stopOpacity`
 
-    stopOpacity :: Option Attribute Number
+``` purescript
+stopOpacity :: Option Attribute Number
+```
+
 
 #### `stroke`
 
-    stroke :: Option Attribute String
+``` purescript
+stroke :: Option Attribute String
+```
+
 
 #### `strokeDasharray`
 
-    strokeDasharray :: Option Attribute String
+``` purescript
+strokeDasharray :: Option Attribute String
+```
+
 
 #### `strokeLinecap`
 
-    strokeLinecap :: Option Attribute String
+``` purescript
+strokeLinecap :: Option Attribute String
+```
+
 
 #### `strokeOpacity`
 
-    strokeOpacity :: Option Attribute Number
+``` purescript
+strokeOpacity :: Option Attribute Number
+```
+
 
 #### `strokeWidth`
 
-    strokeWidth :: Option Attribute String
+``` purescript
+strokeWidth :: Option Attribute String
+```
+
 
 #### `style`
 
-    style :: forall a. Option Attribute {  | a }
+``` purescript
+style :: forall a. Option Attribute {  | a }
+```
+
 
 #### `tabIndex`
 
-    tabIndex :: Option Attribute Number
+``` purescript
+tabIndex :: Option Attribute Number
+```
+
 
 #### `target`
 
-    target :: Option Attribute String
+``` purescript
+target :: Option Attribute String
+```
+
 
 #### `textAnchor`
 
-    textAnchor :: Option Attribute String
+``` purescript
+textAnchor :: Option Attribute String
+```
+
 
 #### `title`
 
-    title :: Option Attribute String
+``` purescript
+title :: Option Attribute String
+```
+
 
 #### `transform`
 
-    transform :: Option Attribute String
+``` purescript
+transform :: Option Attribute String
+```
+
+
+#### `_type`
+
+``` purescript
+_type :: Option Attribute String
+```
+
 
 #### `useMap`
 
-    useMap :: Option Attribute String
+``` purescript
+useMap :: Option Attribute String
+```
+
 
 #### `value`
 
-    value :: Option Attribute String
+``` purescript
+value :: Option Attribute String
+```
+
 
 #### `version`
 
-    version :: Option Attribute String
+``` purescript
+version :: Option Attribute String
+```
+
 
 #### `viewBox`
 
-    viewBox :: Option Attribute String
+``` purescript
+viewBox :: Option Attribute String
+```
+
 
 #### `width`
 
-    width :: Option Attribute String
+``` purescript
+width :: Option Attribute String
+```
+
 
 #### `wmode`
 
-    wmode :: Option Attribute String
+``` purescript
+wmode :: Option Attribute String
+```
+
 
 #### `x`
 
-    x :: Option Attribute Number
+``` purescript
+x :: Option Attribute Number
+```
+
 
 #### `x1`
 
-    x1 :: Option Attribute Number
+``` purescript
+x1 :: Option Attribute Number
+```
+
 
 #### `x2`
 
-    x2 :: Option Attribute Number
+``` purescript
+x2 :: Option Attribute Number
+```
+
 
 #### `y`
 
-    y :: Option Attribute Number
+``` purescript
+y :: Option Attribute Number
+```
+
 
 #### `y1`
 
-    y1 :: Option Attribute Number
+``` purescript
+y1 :: Option Attribute Number
+```
+
 
 #### `y2`
 
-    y2 :: Option Attribute Number
+``` purescript
+y2 :: Option Attribute Number
+```
+
 
 
 ## Module React.Combinators
 
-### Values
+#### `(|-)`
+
+``` purescript
+(|-) :: (Elements -> React Element) -> React Element -> React Element
+```
+
 
 #### `(|*)`
 
-    (|*) :: (Elements -> React Element) -> [React Element] -> React Element
+``` purescript
+(|*) :: (Elements -> React Element) -> [React Element] -> React Element
+```
 
-#### `(|-)`
-
-    (|-) :: (Elements -> React Element) -> React Element -> React Element
 
 #### `child`
 
-    child :: (Elements -> React Element) -> React Element -> React Element
+``` purescript
+child :: (Elements -> React Element) -> React Element -> React Element
+```
+
 
 #### `children`
 
-    children :: (Elements -> React Element) -> [React Element] -> React Element
+``` purescript
+children :: (Elements -> React Element) -> [React Element] -> React Element
+```
+
 
 
 ## Module React.ComponentF
 
-### Types
-
 #### `Component`
 
-    type Component props state = FreeC (ComponentF props state)
+``` purescript
+type Component props state = FreeC (ComponentF props state)
+```
 
-#### `ComponentF`
-
-    data ComponentF props state a
-      = GetProps (Reference props state) (Props props -> a)
-      | GetState (Reference props state) (State state -> a)
-      | SetStateSync (Reference props state) (State state) a
-      | SetStateAsync (Reference props state) (State state) a
-
-#### `Props`
-
-    newtype Props props
-      = Props props
 
 #### `Reference`
 
-    data Reference props state
+``` purescript
+data Reference props state
+```
+
+
+#### `Props`
+
+``` purescript
+newtype Props props
+  = Props props
+```
+
 
 #### `State`
 
-    newtype State state
-      = State state
+``` purescript
+newtype State state
+  = State state
+```
 
 
-### Values
+#### `ComponentF`
+
+``` purescript
+data ComponentF props state a
+  = GetProps (Reference props state) (Props props -> a)
+  | GetState (Reference props state) (State state -> a)
+  | SetStateSync (Reference props state) (State state) a
+  | SetStateAsync (Reference props state) (State state) a
+```
+
 
 #### `getState`
 
-    getState :: forall props state. Reference props state -> Component props state (State state)
+``` purescript
+getState :: forall props state. Reference props state -> Component props state (State state)
+```
 
-#### `setStateAsync`
-
-    setStateAsync :: forall props state. Reference props state -> State state -> Component props state Unit
 
 #### `setStateSync`
 
-    setStateSync :: forall props state. Reference props state -> State state -> Component props state Unit
+``` purescript
+setStateSync :: forall props state. Reference props state -> State state -> Component props state Unit
+```
+
+
+#### `setStateAsync`
+
+``` purescript
+setStateAsync :: forall props state. Reference props state -> State state -> Component props state Unit
+```
+
 
 
 ## Module React.ComponentI
 
-### Values
-
 #### `run`
 
-    run :: forall props state a. Component props state a -> Eff (react :: ReactE) a
+``` purescript
+run :: forall props state a. Component props state a -> Eff (react :: ReactE) a
+```
+
 
 
 ## Module React.Dom
 
-### Values
-
-#### `_data`
-
-    _data :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `_data'`
-
-    _data' :: Elements -> React Element
-
-#### `a`
-
-    a :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `a'`
-
-    a' :: Elements -> React Element
-
-#### `abbr`
-
-    abbr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `abbr'`
-
-    abbr' :: Elements -> React Element
-
-#### `address`
-
-    address :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `address'`
-
-    address' :: Elements -> React Element
-
-#### `area`
-
-    area :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `area'`
-
-    area' :: Elements -> React Element
-
-#### `article`
-
-    article :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `article'`
-
-    article' :: Elements -> React Element
-
-#### `aside`
-
-    aside :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `aside'`
-
-    aside' :: Elements -> React Element
-
-#### `audio`
-
-    audio :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `audio'`
-
-    audio' :: Elements -> React Element
-
-#### `b`
-
-    b :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `b'`
-
-    b' :: Elements -> React Element
-
-#### `base`
-
-    base :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `base'`
-
-    base' :: Elements -> React Element
-
-#### `bdi`
-
-    bdi :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `bdi'`
-
-    bdi' :: Elements -> React Element
-
-#### `bdo`
-
-    bdo :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `bdo'`
-
-    bdo' :: Elements -> React Element
-
-#### `big`
-
-    big :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `big'`
-
-    big' :: Elements -> React Element
-
-#### `blockquote`
-
-    blockquote :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `blockquote'`
-
-    blockquote' :: Elements -> React Element
-
-#### `body`
-
-    body :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `body'`
-
-    body' :: Elements -> React Element
-
-#### `br`
-
-    br :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `br'`
-
-    br' :: Elements -> React Element
-
-#### `button`
-
-    button :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `button'`
-
-    button' :: Elements -> React Element
-
-#### `canvas`
-
-    canvas :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `canvas'`
-
-    canvas' :: Elements -> React Element
-
-#### `caption`
-
-    caption :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `caption'`
-
-    caption' :: Elements -> React Element
-
-#### `circle`
-
-    circle :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `circle'`
-
-    circle' :: Elements -> React Element
-
-#### `cite`
-
-    cite :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `cite'`
-
-    cite' :: Elements -> React Element
-
-#### `code`
-
-    code :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `code'`
-
-    code' :: Elements -> React Element
-
-#### `col`
-
-    col :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `col'`
-
-    col' :: Elements -> React Element
-
-#### `colgroup`
-
-    colgroup :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `colgroup'`
-
-    colgroup' :: Elements -> React Element
-
-#### `datalist`
-
-    datalist :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `datalist'`
-
-    datalist' :: Elements -> React Element
-
-#### `dd`
-
-    dd :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `dd'`
-
-    dd' :: Elements -> React Element
-
-#### `defs`
-
-    defs :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `defs'`
-
-    defs' :: Elements -> React Element
-
-#### `del`
-
-    del :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `del'`
-
-    del' :: Elements -> React Element
-
-#### `details`
-
-    details :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `details'`
-
-    details' :: Elements -> React Element
-
-#### `dfn`
-
-    dfn :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `dfn'`
-
-    dfn' :: Elements -> React Element
-
-#### `dialog`
-
-    dialog :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `dialog'`
-
-    dialog' :: Elements -> React Element
-
-#### `div`
-
-    div :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `div'`
-
-    div' :: Elements -> React Element
-
-#### `dl`
-
-    dl :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `dl'`
-
-    dl' :: Elements -> React Element
-
-#### `dt`
-
-    dt :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `dt'`
-
-    dt' :: Elements -> React Element
-
-#### `ellipse`
-
-    ellipse :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `ellipse'`
-
-    ellipse' :: Elements -> React Element
-
-#### `em`
-
-    em :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `em'`
-
-    em' :: Elements -> React Element
-
-#### `embed`
-
-    embed :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `embed'`
-
-    embed' :: Elements -> React Element
-
-#### `fieldset`
-
-    fieldset :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `fieldset'`
-
-    fieldset' :: Elements -> React Element
-
-#### `figcaption`
-
-    figcaption :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `figcaption'`
-
-    figcaption' :: Elements -> React Element
-
-#### `figure`
-
-    figure :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `figure'`
-
-    figure' :: Elements -> React Element
-
-#### `footer`
-
-    footer :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `footer'`
-
-    footer' :: Elements -> React Element
-
-#### `form`
-
-    form :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `form'`
-
-    form' :: Elements -> React Element
-
-#### `g`
-
-    g :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `g'`
-
-    g' :: Elements -> React Element
-
-#### `h1`
-
-    h1 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `h1'`
-
-    h1' :: Elements -> React Element
-
-#### `h2`
-
-    h2 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `h2'`
-
-    h2' :: Elements -> React Element
-
-#### `h3`
-
-    h3 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `h3'`
-
-    h3' :: Elements -> React Element
-
-#### `h4`
-
-    h4 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `h4'`
-
-    h4' :: Elements -> React Element
-
-#### `h5`
-
-    h5 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `h5'`
-
-    h5' :: Elements -> React Element
-
-#### `h6`
-
-    h6 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `h6'`
-
-    h6' :: Elements -> React Element
-
-#### `head`
-
-    head :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `head'`
-
-    head' :: Elements -> React Element
-
-#### `header`
-
-    header :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `header'`
-
-    header' :: Elements -> React Element
-
-#### `hr`
-
-    hr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `hr'`
-
-    hr' :: Elements -> React Element
-
-#### `html`
-
-    html :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `html'`
-
-    html' :: Elements -> React Element
-
-#### `i`
-
-    i :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `i'`
-
-    i' :: Elements -> React Element
-
-#### `iframe`
-
-    iframe :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `iframe'`
-
-    iframe' :: Elements -> React Element
-
-#### `img`
-
-    img :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `img'`
-
-    img' :: Elements -> React Element
-
-#### `input`
-
-    input :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `input'`
-
-    input' :: Elements -> React Element
-
-#### `ins`
-
-    ins :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `ins'`
-
-    ins' :: Elements -> React Element
-
-#### `kbd`
-
-    kbd :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `kbd'`
-
-    kbd' :: Elements -> React Element
-
-#### `keygen`
-
-    keygen :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `keygen'`
-
-    keygen' :: Elements -> React Element
-
-#### `label`
-
-    label :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `label'`
-
-    label' :: Elements -> React Element
-
-#### `legend`
-
-    legend :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `legend'`
-
-    legend' :: Elements -> React Element
-
-#### `li`
-
-    li :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `li'`
-
-    li' :: Elements -> React Element
-
-#### `line`
-
-    line :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `line'`
-
-    line' :: Elements -> React Element
-
-#### `linearGradient`
-
-    linearGradient :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `linearGradient'`
-
-    linearGradient' :: Elements -> React Element
-
-#### `link`
-
-    link :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `link'`
-
-    link' :: Elements -> React Element
-
-#### `main`
-
-    main :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `main'`
-
-    main' :: Elements -> React Element
-
-#### `map`
-
-    map :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `map'`
-
-    map' :: Elements -> React Element
-
-#### `mark`
-
-    mark :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `mark'`
-
-    mark' :: Elements -> React Element
-
-#### `mask`
-
-    mask :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `mask'`
-
-    mask' :: Elements -> React Element
-
-#### `menu`
-
-    menu :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `menu'`
-
-    menu' :: Elements -> React Element
-
-#### `menuitem`
-
-    menuitem :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `menuitem'`
-
-    menuitem' :: Elements -> React Element
-
-#### `meta`
-
-    meta :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `meta'`
-
-    meta' :: Elements -> React Element
-
-#### `meter`
-
-    meter :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `meter'`
-
-    meter' :: Elements -> React Element
-
-#### `nav`
-
-    nav :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `nav'`
-
-    nav' :: Elements -> React Element
-
-#### `noscript`
-
-    noscript :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `noscript'`
-
-    noscript' :: Elements -> React Element
-
 #### `null`
 
-    null :: React Element
+``` purescript
+null :: React Element
+```
 
-#### `object`
-
-    object :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `object'`
-
-    object' :: Elements -> React Element
-
-#### `ol`
-
-    ol :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `ol'`
-
-    ol' :: Elements -> React Element
-
-#### `optgroup`
-
-    optgroup :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `optgroup'`
-
-    optgroup' :: Elements -> React Element
-
-#### `option`
-
-    option :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `option'`
-
-    option' :: Elements -> React Element
-
-#### `output`
-
-    output :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `output'`
-
-    output' :: Elements -> React Element
-
-#### `p`
-
-    p :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `p'`
-
-    p' :: Elements -> React Element
-
-#### `param`
-
-    param :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `param'`
-
-    param' :: Elements -> React Element
-
-#### `path`
-
-    path :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `path'`
-
-    path' :: Elements -> React Element
-
-#### `pattern`
-
-    pattern :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `pattern'`
-
-    pattern' :: Elements -> React Element
-
-#### `picture`
-
-    picture :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `picture'`
-
-    picture' :: Elements -> React Element
-
-#### `polygon`
-
-    polygon :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `polygon'`
-
-    polygon' :: Elements -> React Element
-
-#### `polyline`
-
-    polyline :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `polyline'`
-
-    polyline' :: Elements -> React Element
-
-#### `pre`
-
-    pre :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `pre'`
-
-    pre' :: Elements -> React Element
-
-#### `progress`
-
-    progress :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `progress'`
-
-    progress' :: Elements -> React Element
-
-#### `q`
-
-    q :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `q'`
-
-    q' :: Elements -> React Element
-
-#### `radialGradient`
-
-    radialGradient :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `radialGradient'`
-
-    radialGradient' :: Elements -> React Element
-
-#### `rect`
-
-    rect :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `rect'`
-
-    rect' :: Elements -> React Element
-
-#### `rp`
-
-    rp :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `rp'`
-
-    rp' :: Elements -> React Element
-
-#### `rt`
-
-    rt :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `rt'`
-
-    rt' :: Elements -> React Element
-
-#### `ruby`
-
-    ruby :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `ruby'`
-
-    ruby' :: Elements -> React Element
-
-#### `s`
-
-    s :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `s'`
-
-    s' :: Elements -> React Element
-
-#### `samp`
-
-    samp :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `samp'`
-
-    samp' :: Elements -> React Element
-
-#### `script`
-
-    script :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `script'`
-
-    script' :: Elements -> React Element
-
-#### `section`
-
-    section :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `section'`
-
-    section' :: Elements -> React Element
-
-#### `select`
-
-    select :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `select'`
-
-    select' :: Elements -> React Element
-
-#### `small`
-
-    small :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `small'`
-
-    small' :: Elements -> React Element
-
-#### `source`
-
-    source :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `source'`
-
-    source' :: Elements -> React Element
-
-#### `span`
-
-    span :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `span'`
-
-    span' :: Elements -> React Element
-
-#### `stop`
-
-    stop :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `stop'`
-
-    stop' :: Elements -> React Element
-
-#### `strong`
-
-    strong :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `strong'`
-
-    strong' :: Elements -> React Element
-
-#### `style`
-
-    style :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `style'`
-
-    style' :: Elements -> React Element
-
-#### `sub`
-
-    sub :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `sub'`
-
-    sub' :: Elements -> React Element
-
-#### `summary`
-
-    summary :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `summary'`
-
-    summary' :: Elements -> React Element
-
-#### `sup`
-
-    sup :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `sup'`
-
-    sup' :: Elements -> React Element
-
-#### `svg`
-
-    svg :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `svg'`
-
-    svg' :: Elements -> React Element
-
-#### `table`
-
-    table :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `table'`
-
-    table' :: Elements -> React Element
-
-#### `tbody`
-
-    tbody :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `tbody'`
-
-    tbody' :: Elements -> React Element
-
-#### `td`
-
-    td :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `td'`
-
-    td' :: Elements -> React Element
-
-#### `text`
-
-    text :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `text'`
-
-    text' :: Elements -> React Element
-
-#### `textarea`
-
-    textarea :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
-
-#### `textarea'`
-
-    textarea' :: Elements -> React Element
 
 #### `textnode`
 
-    textnode :: String -> React Element
+``` purescript
+textnode :: String -> React Element
+```
+
+
+#### `a`
+
+``` purescript
+a :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `a'`
+
+``` purescript
+a' :: Elements -> React Element
+```
+
+
+#### `abbr`
+
+``` purescript
+abbr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `abbr'`
+
+``` purescript
+abbr' :: Elements -> React Element
+```
+
+
+#### `address`
+
+``` purescript
+address :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `address'`
+
+``` purescript
+address' :: Elements -> React Element
+```
+
+
+#### `area`
+
+``` purescript
+area :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `area'`
+
+``` purescript
+area' :: Elements -> React Element
+```
+
+
+#### `article`
+
+``` purescript
+article :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `article'`
+
+``` purescript
+article' :: Elements -> React Element
+```
+
+
+#### `aside`
+
+``` purescript
+aside :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `aside'`
+
+``` purescript
+aside' :: Elements -> React Element
+```
+
+
+#### `audio`
+
+``` purescript
+audio :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `audio'`
+
+``` purescript
+audio' :: Elements -> React Element
+```
+
+
+#### `b`
+
+``` purescript
+b :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `b'`
+
+``` purescript
+b' :: Elements -> React Element
+```
+
+
+#### `base`
+
+``` purescript
+base :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `base'`
+
+``` purescript
+base' :: Elements -> React Element
+```
+
+
+#### `bdi`
+
+``` purescript
+bdi :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `bdi'`
+
+``` purescript
+bdi' :: Elements -> React Element
+```
+
+
+#### `bdo`
+
+``` purescript
+bdo :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `bdo'`
+
+``` purescript
+bdo' :: Elements -> React Element
+```
+
+
+#### `big`
+
+``` purescript
+big :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `big'`
+
+``` purescript
+big' :: Elements -> React Element
+```
+
+
+#### `blockquote`
+
+``` purescript
+blockquote :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `blockquote'`
+
+``` purescript
+blockquote' :: Elements -> React Element
+```
+
+
+#### `body`
+
+``` purescript
+body :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `body'`
+
+``` purescript
+body' :: Elements -> React Element
+```
+
+
+#### `br`
+
+``` purescript
+br :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `br'`
+
+``` purescript
+br' :: Elements -> React Element
+```
+
+
+#### `button`
+
+``` purescript
+button :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `button'`
+
+``` purescript
+button' :: Elements -> React Element
+```
+
+
+#### `canvas`
+
+``` purescript
+canvas :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `canvas'`
+
+``` purescript
+canvas' :: Elements -> React Element
+```
+
+
+#### `caption`
+
+``` purescript
+caption :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `caption'`
+
+``` purescript
+caption' :: Elements -> React Element
+```
+
+
+#### `circle`
+
+``` purescript
+circle :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `circle'`
+
+``` purescript
+circle' :: Elements -> React Element
+```
+
+
+#### `cite`
+
+``` purescript
+cite :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `cite'`
+
+``` purescript
+cite' :: Elements -> React Element
+```
+
+
+#### `code`
+
+``` purescript
+code :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `code'`
+
+``` purescript
+code' :: Elements -> React Element
+```
+
+
+#### `col`
+
+``` purescript
+col :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `col'`
+
+``` purescript
+col' :: Elements -> React Element
+```
+
+
+#### `colgroup`
+
+``` purescript
+colgroup :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `colgroup'`
+
+``` purescript
+colgroup' :: Elements -> React Element
+```
+
+
+#### `_data`
+
+``` purescript
+_data :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `_data'`
+
+``` purescript
+_data' :: Elements -> React Element
+```
+
+
+#### `datalist`
+
+``` purescript
+datalist :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `datalist'`
+
+``` purescript
+datalist' :: Elements -> React Element
+```
+
+
+#### `dd`
+
+``` purescript
+dd :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `dd'`
+
+``` purescript
+dd' :: Elements -> React Element
+```
+
+
+#### `defs`
+
+``` purescript
+defs :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `defs'`
+
+``` purescript
+defs' :: Elements -> React Element
+```
+
+
+#### `del`
+
+``` purescript
+del :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `del'`
+
+``` purescript
+del' :: Elements -> React Element
+```
+
+
+#### `details`
+
+``` purescript
+details :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `details'`
+
+``` purescript
+details' :: Elements -> React Element
+```
+
+
+#### `dfn`
+
+``` purescript
+dfn :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `dfn'`
+
+``` purescript
+dfn' :: Elements -> React Element
+```
+
+
+#### `dialog`
+
+``` purescript
+dialog :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `dialog'`
+
+``` purescript
+dialog' :: Elements -> React Element
+```
+
+
+#### `div`
+
+``` purescript
+div :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `div'`
+
+``` purescript
+div' :: Elements -> React Element
+```
+
+
+#### `dl`
+
+``` purescript
+dl :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `dl'`
+
+``` purescript
+dl' :: Elements -> React Element
+```
+
+
+#### `dt`
+
+``` purescript
+dt :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `dt'`
+
+``` purescript
+dt' :: Elements -> React Element
+```
+
+
+#### `ellipse`
+
+``` purescript
+ellipse :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `ellipse'`
+
+``` purescript
+ellipse' :: Elements -> React Element
+```
+
+
+#### `em`
+
+``` purescript
+em :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `em'`
+
+``` purescript
+em' :: Elements -> React Element
+```
+
+
+#### `embed`
+
+``` purescript
+embed :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `embed'`
+
+``` purescript
+embed' :: Elements -> React Element
+```
+
+
+#### `fieldset`
+
+``` purescript
+fieldset :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `fieldset'`
+
+``` purescript
+fieldset' :: Elements -> React Element
+```
+
+
+#### `figcaption`
+
+``` purescript
+figcaption :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `figcaption'`
+
+``` purescript
+figcaption' :: Elements -> React Element
+```
+
+
+#### `figure`
+
+``` purescript
+figure :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `figure'`
+
+``` purescript
+figure' :: Elements -> React Element
+```
+
+
+#### `footer`
+
+``` purescript
+footer :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `footer'`
+
+``` purescript
+footer' :: Elements -> React Element
+```
+
+
+#### `form`
+
+``` purescript
+form :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `form'`
+
+``` purescript
+form' :: Elements -> React Element
+```
+
+
+#### `g`
+
+``` purescript
+g :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `g'`
+
+``` purescript
+g' :: Elements -> React Element
+```
+
+
+#### `h1`
+
+``` purescript
+h1 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `h1'`
+
+``` purescript
+h1' :: Elements -> React Element
+```
+
+
+#### `h2`
+
+``` purescript
+h2 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `h2'`
+
+``` purescript
+h2' :: Elements -> React Element
+```
+
+
+#### `h3`
+
+``` purescript
+h3 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `h3'`
+
+``` purescript
+h3' :: Elements -> React Element
+```
+
+
+#### `h4`
+
+``` purescript
+h4 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `h4'`
+
+``` purescript
+h4' :: Elements -> React Element
+```
+
+
+#### `h5`
+
+``` purescript
+h5 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `h5'`
+
+``` purescript
+h5' :: Elements -> React Element
+```
+
+
+#### `h6`
+
+``` purescript
+h6 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `h6'`
+
+``` purescript
+h6' :: Elements -> React Element
+```
+
+
+#### `head`
+
+``` purescript
+head :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `head'`
+
+``` purescript
+head' :: Elements -> React Element
+```
+
+
+#### `header`
+
+``` purescript
+header :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `header'`
+
+``` purescript
+header' :: Elements -> React Element
+```
+
+
+#### `hr`
+
+``` purescript
+hr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `hr'`
+
+``` purescript
+hr' :: Elements -> React Element
+```
+
+
+#### `html`
+
+``` purescript
+html :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `html'`
+
+``` purescript
+html' :: Elements -> React Element
+```
+
+
+#### `i`
+
+``` purescript
+i :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `i'`
+
+``` purescript
+i' :: Elements -> React Element
+```
+
+
+#### `iframe`
+
+``` purescript
+iframe :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `iframe'`
+
+``` purescript
+iframe' :: Elements -> React Element
+```
+
+
+#### `img`
+
+``` purescript
+img :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `img'`
+
+``` purescript
+img' :: Elements -> React Element
+```
+
+
+#### `input`
+
+``` purescript
+input :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `input'`
+
+``` purescript
+input' :: Elements -> React Element
+```
+
+
+#### `ins`
+
+``` purescript
+ins :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `ins'`
+
+``` purescript
+ins' :: Elements -> React Element
+```
+
+
+#### `kbd`
+
+``` purescript
+kbd :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `kbd'`
+
+``` purescript
+kbd' :: Elements -> React Element
+```
+
+
+#### `keygen`
+
+``` purescript
+keygen :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `keygen'`
+
+``` purescript
+keygen' :: Elements -> React Element
+```
+
+
+#### `label`
+
+``` purescript
+label :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `label'`
+
+``` purescript
+label' :: Elements -> React Element
+```
+
+
+#### `legend`
+
+``` purescript
+legend :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `legend'`
+
+``` purescript
+legend' :: Elements -> React Element
+```
+
+
+#### `li`
+
+``` purescript
+li :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `li'`
+
+``` purescript
+li' :: Elements -> React Element
+```
+
+
+#### `line`
+
+``` purescript
+line :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `line'`
+
+``` purescript
+line' :: Elements -> React Element
+```
+
+
+#### `linearGradient`
+
+``` purescript
+linearGradient :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `linearGradient'`
+
+``` purescript
+linearGradient' :: Elements -> React Element
+```
+
+
+#### `link`
+
+``` purescript
+link :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `link'`
+
+``` purescript
+link' :: Elements -> React Element
+```
+
+
+#### `main`
+
+``` purescript
+main :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `main'`
+
+``` purescript
+main' :: Elements -> React Element
+```
+
+
+#### `map`
+
+``` purescript
+map :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `map'`
+
+``` purescript
+map' :: Elements -> React Element
+```
+
+
+#### `mark`
+
+``` purescript
+mark :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `mark'`
+
+``` purescript
+mark' :: Elements -> React Element
+```
+
+
+#### `mask`
+
+``` purescript
+mask :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `mask'`
+
+``` purescript
+mask' :: Elements -> React Element
+```
+
+
+#### `menu`
+
+``` purescript
+menu :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `menu'`
+
+``` purescript
+menu' :: Elements -> React Element
+```
+
+
+#### `menuitem`
+
+``` purescript
+menuitem :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `menuitem'`
+
+``` purescript
+menuitem' :: Elements -> React Element
+```
+
+
+#### `meta`
+
+``` purescript
+meta :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `meta'`
+
+``` purescript
+meta' :: Elements -> React Element
+```
+
+
+#### `meter`
+
+``` purescript
+meter :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `meter'`
+
+``` purescript
+meter' :: Elements -> React Element
+```
+
+
+#### `nav`
+
+``` purescript
+nav :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `nav'`
+
+``` purescript
+nav' :: Elements -> React Element
+```
+
+
+#### `noscript`
+
+``` purescript
+noscript :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `noscript'`
+
+``` purescript
+noscript' :: Elements -> React Element
+```
+
+
+#### `object`
+
+``` purescript
+object :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `object'`
+
+``` purescript
+object' :: Elements -> React Element
+```
+
+
+#### `ol`
+
+``` purescript
+ol :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `ol'`
+
+``` purescript
+ol' :: Elements -> React Element
+```
+
+
+#### `optgroup`
+
+``` purescript
+optgroup :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `optgroup'`
+
+``` purescript
+optgroup' :: Elements -> React Element
+```
+
+
+#### `option`
+
+``` purescript
+option :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `option'`
+
+``` purescript
+option' :: Elements -> React Element
+```
+
+
+#### `output`
+
+``` purescript
+output :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `output'`
+
+``` purescript
+output' :: Elements -> React Element
+```
+
+
+#### `p`
+
+``` purescript
+p :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `p'`
+
+``` purescript
+p' :: Elements -> React Element
+```
+
+
+#### `param`
+
+``` purescript
+param :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `param'`
+
+``` purescript
+param' :: Elements -> React Element
+```
+
+
+#### `path`
+
+``` purescript
+path :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `path'`
+
+``` purescript
+path' :: Elements -> React Element
+```
+
+
+#### `pattern`
+
+``` purescript
+pattern :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `pattern'`
+
+``` purescript
+pattern' :: Elements -> React Element
+```
+
+
+#### `picture`
+
+``` purescript
+picture :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `picture'`
+
+``` purescript
+picture' :: Elements -> React Element
+```
+
+
+#### `polygon`
+
+``` purescript
+polygon :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `polygon'`
+
+``` purescript
+polygon' :: Elements -> React Element
+```
+
+
+#### `polyline`
+
+``` purescript
+polyline :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `polyline'`
+
+``` purescript
+polyline' :: Elements -> React Element
+```
+
+
+#### `pre`
+
+``` purescript
+pre :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `pre'`
+
+``` purescript
+pre' :: Elements -> React Element
+```
+
+
+#### `progress`
+
+``` purescript
+progress :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `progress'`
+
+``` purescript
+progress' :: Elements -> React Element
+```
+
+
+#### `q`
+
+``` purescript
+q :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `q'`
+
+``` purescript
+q' :: Elements -> React Element
+```
+
+
+#### `radialGradient`
+
+``` purescript
+radialGradient :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `radialGradient'`
+
+``` purescript
+radialGradient' :: Elements -> React Element
+```
+
+
+#### `rect`
+
+``` purescript
+rect :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `rect'`
+
+``` purescript
+rect' :: Elements -> React Element
+```
+
+
+#### `rp`
+
+``` purescript
+rp :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `rp'`
+
+``` purescript
+rp' :: Elements -> React Element
+```
+
+
+#### `rt`
+
+``` purescript
+rt :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `rt'`
+
+``` purescript
+rt' :: Elements -> React Element
+```
+
+
+#### `ruby`
+
+``` purescript
+ruby :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `ruby'`
+
+``` purescript
+ruby' :: Elements -> React Element
+```
+
+
+#### `s`
+
+``` purescript
+s :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `s'`
+
+``` purescript
+s' :: Elements -> React Element
+```
+
+
+#### `samp`
+
+``` purescript
+samp :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `samp'`
+
+``` purescript
+samp' :: Elements -> React Element
+```
+
+
+#### `script`
+
+``` purescript
+script :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `script'`
+
+``` purescript
+script' :: Elements -> React Element
+```
+
+
+#### `section`
+
+``` purescript
+section :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `section'`
+
+``` purescript
+section' :: Elements -> React Element
+```
+
+
+#### `select`
+
+``` purescript
+select :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `select'`
+
+``` purescript
+select' :: Elements -> React Element
+```
+
+
+#### `small`
+
+``` purescript
+small :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `small'`
+
+``` purescript
+small' :: Elements -> React Element
+```
+
+
+#### `source`
+
+``` purescript
+source :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `source'`
+
+``` purescript
+source' :: Elements -> React Element
+```
+
+
+#### `span`
+
+``` purescript
+span :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `span'`
+
+``` purescript
+span' :: Elements -> React Element
+```
+
+
+#### `stop`
+
+``` purescript
+stop :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `stop'`
+
+``` purescript
+stop' :: Elements -> React Element
+```
+
+
+#### `strong`
+
+``` purescript
+strong :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `strong'`
+
+``` purescript
+strong' :: Elements -> React Element
+```
+
+
+#### `style`
+
+``` purescript
+style :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `style'`
+
+``` purescript
+style' :: Elements -> React Element
+```
+
+
+#### `sub`
+
+``` purescript
+sub :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `sub'`
+
+``` purescript
+sub' :: Elements -> React Element
+```
+
+
+#### `summary`
+
+``` purescript
+summary :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `summary'`
+
+``` purescript
+summary' :: Elements -> React Element
+```
+
+
+#### `sup`
+
+``` purescript
+sup :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `sup'`
+
+``` purescript
+sup' :: Elements -> React Element
+```
+
+
+#### `svg`
+
+``` purescript
+svg :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `svg'`
+
+``` purescript
+svg' :: Elements -> React Element
+```
+
+
+#### `table`
+
+``` purescript
+table :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `table'`
+
+``` purescript
+table' :: Elements -> React Element
+```
+
+
+#### `tbody`
+
+``` purescript
+tbody :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `tbody'`
+
+``` purescript
+tbody' :: Elements -> React Element
+```
+
+
+#### `td`
+
+``` purescript
+td :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `td'`
+
+``` purescript
+td' :: Elements -> React Element
+```
+
+
+#### `text`
+
+``` purescript
+text :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `text'`
+
+``` purescript
+text' :: Elements -> React Element
+```
+
+
+#### `textarea`
+
+``` purescript
+textarea :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
+
+#### `textarea'`
+
+``` purescript
+textarea' :: Elements -> React Element
+```
+
 
 #### `tfoot`
 
-    tfoot :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+tfoot :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `tfoot'`
 
-    tfoot' :: Elements -> React Element
+``` purescript
+tfoot' :: Elements -> React Element
+```
+
 
 #### `th`
 
-    th :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+th :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `th'`
 
-    th' :: Elements -> React Element
+``` purescript
+th' :: Elements -> React Element
+```
+
 
 #### `thead`
 
-    thead :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+thead :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `thead'`
 
-    thead' :: Elements -> React Element
+``` purescript
+thead' :: Elements -> React Element
+```
+
 
 #### `time`
 
-    time :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+time :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `time'`
 
-    time' :: Elements -> React Element
+``` purescript
+time' :: Elements -> React Element
+```
+
 
 #### `title`
 
-    title :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+title :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `title'`
 
-    title' :: Elements -> React Element
+``` purescript
+title' :: Elements -> React Element
+```
+
 
 #### `tr`
 
-    tr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+tr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `tr'`
 
-    tr' :: Elements -> React Element
+``` purescript
+tr' :: Elements -> React Element
+```
+
 
 #### `track`
 
-    track :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+track :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `track'`
 
-    track' :: Elements -> React Element
+``` purescript
+track' :: Elements -> React Element
+```
+
 
 #### `tspan`
 
-    tspan :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+tspan :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `tspan'`
 
-    tspan' :: Elements -> React Element
+``` purescript
+tspan' :: Elements -> React Element
+```
+
 
 #### `u`
 
-    u :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+u :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `u'`
 
-    u' :: Elements -> React Element
+``` purescript
+u' :: Elements -> React Element
+```
+
 
 #### `ul`
 
-    ul :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+ul :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `ul'`
 
-    ul' :: Elements -> React Element
+``` purescript
+ul' :: Elements -> React Element
+```
+
 
 #### `var`
 
-    var :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+var :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `var'`
 
-    var' :: Elements -> React Element
+``` purescript
+var' :: Elements -> React Element
+```
+
 
 #### `video`
 
-    video :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+video :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `video'`
 
-    video' :: Elements -> React Element
+``` purescript
+video' :: Elements -> React Element
+```
+
 
 #### `wbr`
 
-    wbr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+wbr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `wbr'`
 
-    wbr' :: Elements -> React Element
+``` purescript
+wbr' :: Elements -> React Element
+```
+
 
 
 ## Module React.Events
 
-### Types
-
-#### `EventName`
-
-    data EventName :: # ! -> * -> * -> *
-
 #### `Events`
 
-    newtype Events eff props state
-      = Events (Options (EventName eff props state))
+``` purescript
+newtype Events eff props state
+  = Events (Options (EventName eff props state))
+```
 
-#### `SyntheticClipboardEvent`
-
-    newtype SyntheticClipboardEvent
-      = SyntheticClipboardEvent { clipboardData :: DOMDataTransfer, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
-
-#### `SyntheticClipboardEventFn`
-
-    newtype SyntheticClipboardEventFn eff props state
-      = SyntheticClipboardEventFn (SyntheticClipboardEvent -> Eff eff (Component props state Unit))
-
-#### `SyntheticCompositionEvent`
-
-    data SyntheticCompositionEvent
-
-#### `SyntheticCompositionEventFn`
-
-    newtype SyntheticCompositionEventFn eff props state
-      = SyntheticCompositionEventFn (SyntheticCompositionEvent -> Eff eff (Component props state Unit))
-
-#### `SyntheticDragEvent`
-
-    data SyntheticDragEvent
-
-#### `SyntheticDragEventFn`
-
-    newtype SyntheticDragEventFn eff props state
-      = SyntheticDragEventFn (SyntheticDragEvent -> Eff eff (Component props state Unit))
-
-#### `SyntheticFocusEvent`
-
-    newtype SyntheticFocusEvent
-      = SyntheticFocusEvent { relatedTarget :: DOMEventTarget, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
-
-#### `SyntheticFocusEventFn`
-
-    newtype SyntheticFocusEventFn eff props state
-      = SyntheticFocusEventFn (SyntheticFocusEvent -> Eff eff (Component props state Unit))
-
-#### `SyntheticInputEvent`
-
-    newtype SyntheticInputEvent
-      = SyntheticInputEvent { "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
-
-#### `SyntheticInputEventFn`
-
-    newtype SyntheticInputEventFn eff props state
-      = SyntheticInputEventFn (SyntheticInputEvent -> Eff eff (Component props state Unit))
-
-#### `SyntheticKeyboardEvent`
-
-    newtype SyntheticKeyboardEvent
-      = SyntheticKeyboardEvent { which :: Number, shiftKey :: Boolean, repeat :: Boolean, metaKey :: Boolean, location :: Number, locale :: String, keyCode :: Number, key :: String, getModifierState :: String -> Boolean, ctrlKey :: Boolean, charCode :: Number, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
-
-#### `SyntheticKeyboardEventFn`
-
-    newtype SyntheticKeyboardEventFn eff props state
-      = SyntheticKeyboardEventFn (SyntheticKeyboardEvent -> Eff eff (Component props state Unit))
-
-#### `SyntheticMouseEvent`
-
-    newtype SyntheticMouseEvent
-      = SyntheticMouseEvent { shiftKey :: Boolean, screenY :: Number, screenX :: Number, relatedTarget :: DOMEventTarget, pageY :: Number, pageX :: Number, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, clientY :: Number, clientX :: Number, buttons :: Number, button :: Number, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
-
-#### `SyntheticMouseEventFn`
-
-    newtype SyntheticMouseEventFn eff props state
-      = SyntheticMouseEventFn (SyntheticMouseEvent -> Eff eff (Component props state Unit))
-
-#### `SyntheticTouchEvent`
-
-    newtype SyntheticTouchEvent
-      = SyntheticTouchEvent { touches :: DOMTouchList, targetTouches :: DOMTouchList, shiftKey :: Boolean, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, changedTouches :: DOMTouchList, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
-
-#### `SyntheticTouchEventFn`
-
-    newtype SyntheticTouchEventFn eff props state
-      = SyntheticTouchEventFn (SyntheticTouchEvent -> Eff eff (Component props state Unit))
-
-#### `SyntheticUIEvent`
-
-    newtype SyntheticUIEvent
-      = SyntheticUIEvent { view :: DOMAbstractView, detail :: Number, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
-
-#### `SyntheticUIEventFn`
-
-    newtype SyntheticUIEventFn eff props state
-      = SyntheticUIEventFn (SyntheticUIEvent -> Eff eff (Component props state Unit))
-
-#### `SyntheticWheelEvent`
-
-    newtype SyntheticWheelEvent
-      = SyntheticWheelEvent { deltaZ :: Number, deltaY :: Number, deltaX :: Number, deltaMode :: Number, detail :: Number, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
-
-#### `SyntheticWheelEventFn`
-
-    newtype SyntheticWheelEventFn eff props state
-      = SyntheticWheelEventFn (SyntheticWheelEvent -> Eff eff (Component props state Unit))
-
-
-### Type Class Instances
-
-#### `isOptionSyntheticClipboardEventFn`
-
-    instance isOptionSyntheticClipboardEventFn :: IsOption (SyntheticClipboardEventFn eff props state)
-
-#### `isOptionSyntheticCompositionEventFn`
-
-    instance isOptionSyntheticCompositionEventFn :: IsOption (SyntheticCompositionEventFn eff props state)
-
-#### `isOptionSyntheticDragEventFn`
-
-    instance isOptionSyntheticDragEventFn :: IsOption (SyntheticDragEventFn eff props state)
-
-#### `isOptionSyntheticFocusEventFn`
-
-    instance isOptionSyntheticFocusEventFn :: IsOption (SyntheticFocusEventFn eff props state)
-
-#### `isOptionSyntheticInputEventFn`
-
-    instance isOptionSyntheticInputEventFn :: IsOption (SyntheticInputEventFn eff props state)
-
-#### `isOptionSyntheticKeyboardEventFn`
-
-    instance isOptionSyntheticKeyboardEventFn :: IsOption (SyntheticKeyboardEventFn eff props state)
-
-#### `isOptionSyntheticMouseEventFn`
-
-    instance isOptionSyntheticMouseEventFn :: IsOption (SyntheticMouseEventFn eff props state)
-
-#### `isOptionSyntheticTouchEventFn`
-
-    instance isOptionSyntheticTouchEventFn :: IsOption (SyntheticTouchEventFn eff props state)
-
-#### `isOptionSyntheticUIEventFn`
-
-    instance isOptionSyntheticUIEventFn :: IsOption (SyntheticUIEventFn eff props state)
-
-#### `isOptionSyntheticWheelEventFn`
-
-    instance isOptionSyntheticWheelEventFn :: IsOption (SyntheticWheelEventFn eff props state)
-
-#### `monoidEvents`
-
-    instance monoidEvents :: Monoid (Events eff props state)
 
 #### `semigroupEvents`
 
-    instance semigroupEvents :: Semigroup (Events eff props state)
+``` purescript
+instance semigroupEvents :: Semigroup (Events eff props state)
+```
 
 
-### Values
+#### `monoidEvents`
 
-#### `onBlur`
+``` purescript
+instance monoidEvents :: Monoid (Events eff props state)
+```
 
-    onBlur :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
 
-#### `onBlurCapture`
+#### `EventName`
 
-    onBlurCapture :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+``` purescript
+data EventName :: # ! -> * -> * -> *
+```
 
-#### `onChange`
 
-    onChange :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+#### `SyntheticClipboardEvent`
 
-#### `onChangeCapture`
+``` purescript
+newtype SyntheticClipboardEvent
+  = SyntheticClipboardEvent { clipboardData :: DOMDataTransfer, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+```
 
-    onChangeCapture :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
 
-#### `onClick`
+#### `SyntheticKeyboardEvent`
 
-    onClick :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+``` purescript
+newtype SyntheticKeyboardEvent
+  = SyntheticKeyboardEvent { which :: Number, shiftKey :: Boolean, repeat :: Boolean, metaKey :: Boolean, location :: Number, locale :: String, keyCode :: Number, key :: String, getModifierState :: String -> Boolean, ctrlKey :: Boolean, charCode :: Number, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+```
 
-#### `onClickCapture`
 
-    onClickCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+#### `SyntheticFocusEvent`
+
+``` purescript
+newtype SyntheticFocusEvent
+  = SyntheticFocusEvent { relatedTarget :: DOMEventTarget, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+```
+
+
+#### `SyntheticInputEvent`
+
+``` purescript
+newtype SyntheticInputEvent
+  = SyntheticInputEvent { "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+```
+
+
+#### `SyntheticMouseEvent`
+
+``` purescript
+newtype SyntheticMouseEvent
+  = SyntheticMouseEvent { shiftKey :: Boolean, screenY :: Number, screenX :: Number, relatedTarget :: DOMEventTarget, pageY :: Number, pageX :: Number, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, clientY :: Number, clientX :: Number, buttons :: Number, button :: Number, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+```
+
+
+#### `SyntheticTouchEvent`
+
+``` purescript
+newtype SyntheticTouchEvent
+  = SyntheticTouchEvent { touches :: DOMTouchList, targetTouches :: DOMTouchList, shiftKey :: Boolean, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, changedTouches :: DOMTouchList, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+```
+
+
+#### `SyntheticUIEvent`
+
+``` purescript
+newtype SyntheticUIEvent
+  = SyntheticUIEvent { view :: DOMAbstractView, detail :: Number, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+```
+
+
+#### `SyntheticWheelEvent`
+
+``` purescript
+newtype SyntheticWheelEvent
+  = SyntheticWheelEvent { deltaZ :: Number, deltaY :: Number, deltaX :: Number, deltaMode :: Number, detail :: Number, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+```
+
+
+#### `SyntheticCompositionEvent`
+
+``` purescript
+data SyntheticCompositionEvent
+```
+
+
+#### `SyntheticDragEvent`
+
+``` purescript
+data SyntheticDragEvent
+```
+
+
+#### `SyntheticClipboardEventFn`
+
+``` purescript
+newtype SyntheticClipboardEventFn eff props state
+  = SyntheticClipboardEventFn (SyntheticClipboardEvent -> Eff eff (Component props state Unit))
+```
+
+
+#### `SyntheticCompositionEventFn`
+
+``` purescript
+newtype SyntheticCompositionEventFn eff props state
+  = SyntheticCompositionEventFn (SyntheticCompositionEvent -> Eff eff (Component props state Unit))
+```
+
+
+#### `SyntheticDragEventFn`
+
+``` purescript
+newtype SyntheticDragEventFn eff props state
+  = SyntheticDragEventFn (SyntheticDragEvent -> Eff eff (Component props state Unit))
+```
+
+
+#### `SyntheticKeyboardEventFn`
+
+``` purescript
+newtype SyntheticKeyboardEventFn eff props state
+  = SyntheticKeyboardEventFn (SyntheticKeyboardEvent -> Eff eff (Component props state Unit))
+```
+
+
+#### `SyntheticFocusEventFn`
+
+``` purescript
+newtype SyntheticFocusEventFn eff props state
+  = SyntheticFocusEventFn (SyntheticFocusEvent -> Eff eff (Component props state Unit))
+```
+
+
+#### `SyntheticInputEventFn`
+
+``` purescript
+newtype SyntheticInputEventFn eff props state
+  = SyntheticInputEventFn (SyntheticInputEvent -> Eff eff (Component props state Unit))
+```
+
+
+#### `SyntheticMouseEventFn`
+
+``` purescript
+newtype SyntheticMouseEventFn eff props state
+  = SyntheticMouseEventFn (SyntheticMouseEvent -> Eff eff (Component props state Unit))
+```
+
+
+#### `SyntheticTouchEventFn`
+
+``` purescript
+newtype SyntheticTouchEventFn eff props state
+  = SyntheticTouchEventFn (SyntheticTouchEvent -> Eff eff (Component props state Unit))
+```
+
+
+#### `SyntheticUIEventFn`
+
+``` purescript
+newtype SyntheticUIEventFn eff props state
+  = SyntheticUIEventFn (SyntheticUIEvent -> Eff eff (Component props state Unit))
+```
+
+
+#### `SyntheticWheelEventFn`
+
+``` purescript
+newtype SyntheticWheelEventFn eff props state
+  = SyntheticWheelEventFn (SyntheticWheelEvent -> Eff eff (Component props state Unit))
+```
+
+
+#### `isOptionSyntheticClipboardEventFn`
+
+``` purescript
+instance isOptionSyntheticClipboardEventFn :: IsOption (SyntheticClipboardEventFn eff props state)
+```
+
+
+#### `isOptionSyntheticCompositionEventFn`
+
+``` purescript
+instance isOptionSyntheticCompositionEventFn :: IsOption (SyntheticCompositionEventFn eff props state)
+```
+
+
+#### `isOptionSyntheticDragEventFn`
+
+``` purescript
+instance isOptionSyntheticDragEventFn :: IsOption (SyntheticDragEventFn eff props state)
+```
+
+
+#### `isOptionSyntheticKeyboardEventFn`
+
+``` purescript
+instance isOptionSyntheticKeyboardEventFn :: IsOption (SyntheticKeyboardEventFn eff props state)
+```
+
+
+#### `isOptionSyntheticFocusEventFn`
+
+``` purescript
+instance isOptionSyntheticFocusEventFn :: IsOption (SyntheticFocusEventFn eff props state)
+```
+
+
+#### `isOptionSyntheticInputEventFn`
+
+``` purescript
+instance isOptionSyntheticInputEventFn :: IsOption (SyntheticInputEventFn eff props state)
+```
+
+
+#### `isOptionSyntheticMouseEventFn`
+
+``` purescript
+instance isOptionSyntheticMouseEventFn :: IsOption (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `isOptionSyntheticTouchEventFn`
+
+``` purescript
+instance isOptionSyntheticTouchEventFn :: IsOption (SyntheticTouchEventFn eff props state)
+```
+
+
+#### `isOptionSyntheticUIEventFn`
+
+``` purescript
+instance isOptionSyntheticUIEventFn :: IsOption (SyntheticUIEventFn eff props state)
+```
+
+
+#### `isOptionSyntheticWheelEventFn`
+
+``` purescript
+instance isOptionSyntheticWheelEventFn :: IsOption (SyntheticWheelEventFn eff props state)
+```
+
 
 #### `onCopy`
 
-    onCopy :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+``` purescript
+onCopy :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+```
+
 
 #### `onCopyCapture`
 
-    onCopyCapture :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+``` purescript
+onCopyCapture :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+```
+
 
 #### `onCut`
 
-    onCut :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+``` purescript
+onCut :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+```
+
 
 #### `onCutCapture`
 
-    onCutCapture :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+``` purescript
+onCutCapture :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+```
 
-#### `onDoubleClick`
-
-    onDoubleClick :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDoubleClickCapture`
-
-    onDoubleClickCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDrag`
-
-    onDrag :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragCapture`
-
-    onDragCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragEnd`
-
-    onDragEnd :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragEndCapture`
-
-    onDragEndCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragEnter`
-
-    onDragEnter :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragEnterCapture`
-
-    onDragEnterCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragExit`
-
-    onDragExit :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragExitCapture`
-
-    onDragExitCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragLeave`
-
-    onDragLeave :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragLeaveCapture`
-
-    onDragLeaveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragOver`
-
-    onDragOver :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragOverCapture`
-
-    onDragOverCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragStart`
-
-    onDragStart :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDragStartCapture`
-
-    onDragStartCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDrop`
-
-    onDrop :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onDropCapture`
-
-    onDropCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onFocus`
-
-    onFocus :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
-
-#### `onFocusCapture`
-
-    onFocusCapture :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
-
-#### `onInput`
-
-    onInput :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
-
-#### `onInputCapture`
-
-    onInputCapture :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
-
-#### `onKeyDown`
-
-    onKeyDown :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
-
-#### `onKeyDownCapture`
-
-    onKeyDownCapture :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
-
-#### `onKeyPress`
-
-    onKeyPress :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
-
-#### `onKeyPressCapture`
-
-    onKeyPressCapture :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
-
-#### `onKeyUp`
-
-    onKeyUp :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
-
-#### `onKeyUpCapture`
-
-    onKeyUpCapture :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
-
-#### `onMouseDown`
-
-    onMouseDown :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseDownCapture`
-
-    onMouseDownCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseEnter`
-
-    onMouseEnter :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseEnterCapture`
-
-    onMouseEnterCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseLeave`
-
-    onMouseLeave :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseLeaveCapture`
-
-    onMouseLeaveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseMove`
-
-    onMouseMove :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseMoveCapture`
-
-    onMouseMoveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseOut`
-
-    onMouseOut :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseOutCapture`
-
-    onMouseOutCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseOver`
-
-    onMouseOver :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseOverCapture`
-
-    onMouseOverCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseUp`
-
-    onMouseUp :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
-
-#### `onMouseUpCapture`
-
-    onMouseUpCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
 
 #### `onPaste`
 
-    onPaste :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+``` purescript
+onPaste :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+```
+
 
 #### `onPasteCapture`
 
-    onPasteCapture :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+``` purescript
+onPasteCapture :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+```
 
-#### `onScroll`
 
-    onScroll :: forall eff props state. Option (EventName eff props state) (SyntheticUIEventFn eff props state)
+#### `onFocus`
 
-#### `onScrollCapture`
+``` purescript
+onFocus :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+```
 
-    onScrollCapture :: forall eff props state. Option (EventName eff props state) (SyntheticUIEventFn eff props state)
+
+#### `onFocusCapture`
+
+``` purescript
+onFocusCapture :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+```
+
+
+#### `onBlur`
+
+``` purescript
+onBlur :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+```
+
+
+#### `onBlurCapture`
+
+``` purescript
+onBlurCapture :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+```
+
+
+#### `onChange`
+
+``` purescript
+onChange :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+```
+
+
+#### `onChangeCapture`
+
+``` purescript
+onChangeCapture :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+```
+
+
+#### `onInput`
+
+``` purescript
+onInput :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+```
+
+
+#### `onInputCapture`
+
+``` purescript
+onInputCapture :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+```
+
 
 #### `onSubmit`
 
-    onSubmit :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+``` purescript
+onSubmit :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+```
+
 
 #### `onSubmitCapture`
 
-    onSubmitCapture :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+``` purescript
+onSubmitCapture :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+```
+
+
+#### `onKeyDown`
+
+``` purescript
+onKeyDown :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+```
+
+
+#### `onKeyDownCapture`
+
+``` purescript
+onKeyDownCapture :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+```
+
+
+#### `onKeyPress`
+
+``` purescript
+onKeyPress :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+```
+
+
+#### `onKeyPressCapture`
+
+``` purescript
+onKeyPressCapture :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+```
+
+
+#### `onKeyUp`
+
+``` purescript
+onKeyUp :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+```
+
+
+#### `onKeyUpCapture`
+
+``` purescript
+onKeyUpCapture :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+```
+
+
+#### `onClick`
+
+``` purescript
+onClick :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onClickCapture`
+
+``` purescript
+onClickCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDoubleClick`
+
+``` purescript
+onDoubleClick :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDoubleClickCapture`
+
+``` purescript
+onDoubleClickCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDrag`
+
+``` purescript
+onDrag :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragCapture`
+
+``` purescript
+onDragCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragEnd`
+
+``` purescript
+onDragEnd :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragEndCapture`
+
+``` purescript
+onDragEndCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragEnter`
+
+``` purescript
+onDragEnter :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragEnterCapture`
+
+``` purescript
+onDragEnterCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragExit`
+
+``` purescript
+onDragExit :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragExitCapture`
+
+``` purescript
+onDragExitCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragLeave`
+
+``` purescript
+onDragLeave :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragLeaveCapture`
+
+``` purescript
+onDragLeaveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragOver`
+
+``` purescript
+onDragOver :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragOverCapture`
+
+``` purescript
+onDragOverCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragStart`
+
+``` purescript
+onDragStart :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDragStartCapture`
+
+``` purescript
+onDragStartCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDrop`
+
+``` purescript
+onDrop :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onDropCapture`
+
+``` purescript
+onDropCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseDown`
+
+``` purescript
+onMouseDown :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseDownCapture`
+
+``` purescript
+onMouseDownCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseEnter`
+
+``` purescript
+onMouseEnter :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseEnterCapture`
+
+``` purescript
+onMouseEnterCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseLeave`
+
+``` purescript
+onMouseLeave :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseLeaveCapture`
+
+``` purescript
+onMouseLeaveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseMove`
+
+``` purescript
+onMouseMove :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseMoveCapture`
+
+``` purescript
+onMouseMoveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseOut`
+
+``` purescript
+onMouseOut :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseOutCapture`
+
+``` purescript
+onMouseOutCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseOver`
+
+``` purescript
+onMouseOver :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseOverCapture`
+
+``` purescript
+onMouseOverCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseUp`
+
+``` purescript
+onMouseUp :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
+
+#### `onMouseUpCapture`
+
+``` purescript
+onMouseUpCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+```
+
 
 #### `onTouchCancel`
 
-    onTouchCancel :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+``` purescript
+onTouchCancel :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+```
+
 
 #### `onTouchCancelCapture`
 
-    onTouchCancelCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+``` purescript
+onTouchCancelCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+```
+
 
 #### `onTouchEnd`
 
-    onTouchEnd :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+``` purescript
+onTouchEnd :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+```
+
 
 #### `onTouchEndCapture`
 
-    onTouchEndCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+``` purescript
+onTouchEndCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+```
+
 
 #### `onTouchMove`
 
-    onTouchMove :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+``` purescript
+onTouchMove :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+```
+
 
 #### `onTouchMoveCapture`
 
-    onTouchMoveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+``` purescript
+onTouchMoveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+```
+
 
 #### `onTouchStart`
 
-    onTouchStart :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+``` purescript
+onTouchStart :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+```
+
 
 #### `onTouchStartCapture`
 
-    onTouchStartCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+``` purescript
+onTouchStartCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+```
+
+
+#### `onScroll`
+
+``` purescript
+onScroll :: forall eff props state. Option (EventName eff props state) (SyntheticUIEventFn eff props state)
+```
+
+
+#### `onScrollCapture`
+
+``` purescript
+onScrollCapture :: forall eff props state. Option (EventName eff props state) (SyntheticUIEventFn eff props state)
+```
+
 
 #### `onWheel`
 
-    onWheel :: forall eff props state. Option (EventName eff props state) (SyntheticWheelEventFn eff props state)
+``` purescript
+onWheel :: forall eff props state. Option (EventName eff props state) (SyntheticWheelEventFn eff props state)
+```
+
 
 #### `onWheelCapture`
 
-    onWheelCapture :: forall eff props state. Option (EventName eff props state) (SyntheticWheelEventFn eff props state)
+``` purescript
+onWheelCapture :: forall eff props state. Option (EventName eff props state) (SyntheticWheelEventFn eff props state)
+```
+
 
 
 ## Module React.ReactF
 
-### Types
+#### `DisplayName`
+
+``` purescript
+type DisplayName = String
+```
+
 
 #### `Class`
 
-    data Class props state
+``` purescript
+data Class props state
+```
 
-#### `DisplayName`
-
-    type DisplayName = String
 
 #### `Element`
 
-    data Element
+``` purescript
+data Element
+```
+
 
 #### `Elements`
 
-    type Elements = [Element]
+``` purescript
+type Elements = [Element]
+```
 
-#### `LifecycleFn0`
-
-    type LifecycleFn0 eff props state a = Reference props state -> Eff eff (Component props state a)
-
-#### `LifecycleFn1`
-
-    type LifecycleFn1 eff props state a = Reference props state -> Props props -> Eff eff (Component props state a)
-
-#### `LifecycleFn2`
-
-    type LifecycleFn2 eff props state a = Reference props state -> Props props -> State state -> Eff eff (Component props state a)
-
-#### `React`
-
-    type React = FreeC ReactF
-
-#### `ReactF`
-
-    data ReactF a
-      = CreateClass (forall eff props state. Specification eff props state) (forall props state. Class props state -> a)
-      | CreateElementFromClass (forall props state. Class props state) (forall props. Props props) (forall eff props state. Events eff props state) Elements (Element -> a)
-      | CreateElementFromTagName TagName Attributes (forall eff props state. Events eff props state) Elements (Element -> a)
-      | RenderSync Element DOMElement (forall props state. Reference props state -> a)
-      | RenderAsync Element DOMElement (forall props state. Reference props state -> a)
 
 #### `RenderFn`
 
-    type RenderFn props state = Reference props state -> Props props -> State state -> React Element
+``` purescript
+type RenderFn props state = Reference props state -> Props props -> State state -> React Element
+```
+
+
+#### `LifecycleFn0`
+
+``` purescript
+type LifecycleFn0 eff props state a = Reference props state -> Eff eff (Component props state a)
+```
+
+
+#### `LifecycleFn1`
+
+``` purescript
+type LifecycleFn1 eff props state a = Reference props state -> Props props -> Eff eff (Component props state a)
+```
+
+
+#### `LifecycleFn2`
+
+``` purescript
+type LifecycleFn2 eff props state a = Reference props state -> Props props -> State state -> Eff eff (Component props state a)
+```
+
+
+#### `ComponentWillMount`
+
+``` purescript
+type ComponentWillMount eff props state = LifecycleFn0 eff props state Unit
+```
+
+
+#### `ComponentDidMount`
+
+``` purescript
+type ComponentDidMount eff props state = LifecycleFn0 eff props state Unit
+```
+
+
+#### `ComponentWillReceiveProps`
+
+``` purescript
+type ComponentWillReceiveProps eff props state = LifecycleFn1 eff props state Unit
+```
+
+
+#### `ShouldComponentUpdate`
+
+``` purescript
+type ShouldComponentUpdate eff props state = LifecycleFn2 eff props state Boolean
+```
+
+
+#### `ComponentWillUpdate`
+
+``` purescript
+type ComponentWillUpdate eff props state = LifecycleFn2 eff props state Unit
+```
+
+
+#### `ComponentDidUpdate`
+
+``` purescript
+type ComponentDidUpdate eff props state = LifecycleFn2 eff props state Unit
+```
+
+
+#### `ComponentWillUnmount`
+
+``` purescript
+type ComponentWillUnmount eff props state = LifecycleFn0 eff props state Unit
+```
+
 
 #### `Spec`
 
-    type Spec eff props state = { componentWillUnmount :: LifecycleFn0 eff props state Unit, componentDidUpdate :: LifecycleFn2 eff props state Unit, componentWillUpdate :: LifecycleFn2 eff props state Unit, shouldComponentUpdate :: LifecycleFn2 eff props state Boolean, componentWillReceiveProps :: LifecycleFn1 eff props state Unit, componentDidMount :: LifecycleFn0 eff props state Unit, componentWillMount :: LifecycleFn0 eff props state Unit, displayName :: DisplayName, getDefaultProps :: Props props, getInitialState :: State state, render :: RenderFn props state }
+``` purescript
+type Spec eff props state = { componentWillUnmount :: ComponentWillUnmount eff props state, componentDidUpdate :: ComponentDidUpdate eff props state, componentWillUpdate :: ComponentWillUpdate eff props state, shouldComponentUpdate :: ShouldComponentUpdate eff props state, componentWillReceiveProps :: ComponentWillReceiveProps eff props state, componentDidMount :: ComponentDidMount eff props state, componentWillMount :: ComponentWillMount eff props state, displayName :: DisplayName, getDefaultProps :: Props props, getInitialState :: State state, render :: RenderFn props state }
+```
+
 
 #### `Specification`
 
-    newtype Specification eff props state
-      = Specification (Spec eff props state)
+``` purescript
+newtype Specification eff props state
+  = Specification (Spec eff props state)
+```
 
 
-### Values
+#### `React`
+
+``` purescript
+type React = FreeC ReactF
+```
+
+
+#### `ReactF`
+
+``` purescript
+data ReactF a
+  = CreateClass (forall eff props state. Specification eff props state) (forall props state. Class props state -> a)
+  | CreateElementFromClass (forall props state. Class props state) (forall props. Props props) (forall eff props state. Events eff props state) Elements (Element -> a)
+  | CreateElementFromTagName TagName Attributes (forall eff props state. Events eff props state) Elements (Element -> a)
+  | RenderSync Element DOMElement (forall props state. Reference props state -> a)
+  | RenderAsync Element DOMElement (forall props state. Reference props state -> a)
+```
+
 
 #### `createClass`
 
-    createClass :: forall eff props state. Specification eff props state -> React (Class props state)
+``` purescript
+createClass :: forall eff props state. Specification eff props state -> React (Class props state)
+```
+
 
 #### `createElementFromClass`
 
-    createElementFromClass :: forall eff props state. Class props state -> Props props -> Events eff props state -> Elements -> React Element
+``` purescript
+createElementFromClass :: forall eff props state. Class props state -> Props props -> Events eff props state -> Elements -> React Element
+```
+
 
 #### `createElementFromTagName`
 
-    createElementFromTagName :: forall eff props state. TagName -> Attributes -> Events eff props state -> Elements -> React Element
+``` purescript
+createElementFromTagName :: forall eff props state. TagName -> Attributes -> Events eff props state -> Elements -> React Element
+```
 
-#### `renderAsync`
-
-    renderAsync :: forall props spec. Element -> DOMElement -> React (Reference props spec)
 
 #### `renderSync`
 
-    renderSync :: forall props spec. Element -> DOMElement -> React (Reference props spec)
+``` purescript
+renderSync :: forall props spec. Element -> DOMElement -> React (Reference props spec)
+```
+
+
+#### `renderAsync`
+
+``` purescript
+renderAsync :: forall props spec. Element -> DOMElement -> React (Reference props spec)
+```
+
 
 
 ## Module React.ReactI
 
-### Types
-
 #### `ReactJs`
 
-    data ReactJs
+``` purescript
+data ReactJs
+```
 
-
-### Values
 
 #### `run`
 
-    run :: forall a. ReactJs -> React a -> Eff (react :: ReactE) a
+``` purescript
+run :: forall a. ReactJs -> React a -> Eff (react :: ReactE) a
+```
+
 
 
 ## Module React.Spec
 
-### Values
-
 #### `spec`
 
-    spec :: forall eff props state. Props props -> State state -> RenderFn props state -> Specification eff props state
+``` purescript
+spec :: forall eff props state. Props props -> State state -> RenderFn props state -> Specification eff props state
+```
+
+
+#### `setDisplayName`
+
+``` purescript
+setDisplayName :: forall eff props state. SetterP (Specification eff props state) String
+```
+
+
+#### `setComponentWillMount`
+
+``` purescript
+setComponentWillMount :: forall eff props state. SetterP (Specification eff props state) (ComponentWillMount eff props state)
+```
+
+
+#### `setComponentDidMount`
+
+``` purescript
+setComponentDidMount :: forall eff props state. SetterP (Specification eff props state) (ComponentDidMount eff props state)
+```
+
+
+#### `setComponentWillReceiveProps`
+
+``` purescript
+setComponentWillReceiveProps :: forall eff props state. SetterP (Specification eff props state) (ComponentWillReceiveProps eff props state)
+```
+
+
+#### `setShouldComponentUpdate`
+
+``` purescript
+setShouldComponentUpdate :: forall eff props state. SetterP (Specification eff props state) (ShouldComponentUpdate eff props state)
+```
+
+
+#### `setComponentWillUpdate`
+
+``` purescript
+setComponentWillUpdate :: forall eff props state. SetterP (Specification eff props state) (ComponentWillUpdate eff props state)
+```
+
+
+#### `setComponentDidUpdate`
+
+``` purescript
+setComponentDidUpdate :: forall eff props state. SetterP (Specification eff props state) (ComponentDidUpdate eff props state)
+```
+
+
+#### `setComponentWillUnmount`
+
+``` purescript
+setComponentWillUnmount :: forall eff props state. SetterP (Specification eff props state) (ComponentWillUnmount eff props state)
+```
+
 
 
 ## Module React.TagName
 
-### Types
-
 #### `TagName`
 
-    data TagName
-      = Null 
-      | Textnode 
-      | A 
-      | Abbr 
-      | Address 
-      | Area 
-      | Article 
-      | Aside 
-      | Audio 
-      | B 
-      | Base 
-      | Bdi 
-      | Bdo 
-      | Big 
-      | Blockquote 
-      | Body 
-      | Br 
-      | Button 
-      | Canvas 
-      | Caption 
-      | Circle 
-      | Cite 
-      | Code 
-      | Col 
-      | Colgroup 
-      | Data 
-      | Datalist 
-      | Dd 
-      | Defs 
-      | Del 
-      | Details 
-      | Dfn 
-      | Dialog 
-      | Div 
-      | Dl 
-      | Dt 
-      | Ellipse 
-      | Em 
-      | Embed 
-      | Fieldset 
-      | Figcaption 
-      | Figure 
-      | Footer 
-      | Form 
-      | G 
-      | H1 
-      | H2 
-      | H3 
-      | H4 
-      | H5 
-      | H6 
-      | Head 
-      | Header 
-      | Hr 
-      | Html 
-      | I 
-      | Iframe 
-      | Img 
-      | Input 
-      | Ins 
-      | Kbd 
-      | Keygen 
-      | Label 
-      | Legend 
-      | Li 
-      | Line 
-      | LinearGradient 
-      | Link 
-      | Main 
-      | Map 
-      | Mark 
-      | Mask 
-      | Menu 
-      | Menuitem 
-      | Meta 
-      | Meter 
-      | Nav 
-      | Noscript 
-      | Object 
-      | Ol 
-      | Optgroup 
-      | Option 
-      | Output 
-      | P 
-      | Param 
-      | Path 
-      | Pattern 
-      | Picture 
-      | Polygon 
-      | Polyline 
-      | Pre 
-      | Progress 
-      | Q 
-      | RadialGradient 
-      | Rect 
-      | Rp 
-      | Rt 
-      | Ruby 
-      | S 
-      | Samp 
-      | Script 
-      | Section 
-      | Select 
-      | Small 
-      | Source 
-      | Span 
-      | Stop 
-      | Strong 
-      | Style 
-      | Sub 
-      | Summary 
-      | Sup 
-      | Svg 
-      | Table 
-      | Tbody 
-      | Td 
-      | Text 
-      | Textarea 
-      | Tfoot 
-      | Th 
-      | Thead 
-      | Time 
-      | Title 
-      | Tr 
-      | Track 
-      | Tspan 
-      | U 
-      | Ul 
-      | Var 
-      | Video 
-      | Wbr 
+``` purescript
+data TagName
+  = Null 
+  | Textnode 
+  | A 
+  | Abbr 
+  | Address 
+  | Area 
+  | Article 
+  | Aside 
+  | Audio 
+  | B 
+  | Base 
+  | Bdi 
+  | Bdo 
+  | Big 
+  | Blockquote 
+  | Body 
+  | Br 
+  | Button 
+  | Canvas 
+  | Caption 
+  | Circle 
+  | Cite 
+  | Code 
+  | Col 
+  | Colgroup 
+  | Data 
+  | Datalist 
+  | Dd 
+  | Defs 
+  | Del 
+  | Details 
+  | Dfn 
+  | Dialog 
+  | Div 
+  | Dl 
+  | Dt 
+  | Ellipse 
+  | Em 
+  | Embed 
+  | Fieldset 
+  | Figcaption 
+  | Figure 
+  | Footer 
+  | Form 
+  | G 
+  | H1 
+  | H2 
+  | H3 
+  | H4 
+  | H5 
+  | H6 
+  | Head 
+  | Header 
+  | Hr 
+  | Html 
+  | I 
+  | Iframe 
+  | Img 
+  | Input 
+  | Ins 
+  | Kbd 
+  | Keygen 
+  | Label 
+  | Legend 
+  | Li 
+  | Line 
+  | LinearGradient 
+  | Link 
+  | Main 
+  | Map 
+  | Mark 
+  | Mask 
+  | Menu 
+  | Menuitem 
+  | Meta 
+  | Meter 
+  | Nav 
+  | Noscript 
+  | Object 
+  | Ol 
+  | Optgroup 
+  | Option 
+  | Output 
+  | P 
+  | Param 
+  | Path 
+  | Pattern 
+  | Picture 
+  | Polygon 
+  | Polyline 
+  | Pre 
+  | Progress 
+  | Q 
+  | RadialGradient 
+  | Rect 
+  | Rp 
+  | Rt 
+  | Ruby 
+  | S 
+  | Samp 
+  | Script 
+  | Section 
+  | Select 
+  | Small 
+  | Source 
+  | Span 
+  | Stop 
+  | Strong 
+  | Style 
+  | Sub 
+  | Summary 
+  | Sup 
+  | Svg 
+  | Table 
+  | Tbody 
+  | Td 
+  | Text 
+  | Textarea 
+  | Tfoot 
+  | Th 
+  | Thead 
+  | Time 
+  | Title 
+  | Tr 
+  | Track 
+  | Tspan 
+  | U 
+  | Ul 
+  | Var 
+  | Video 
+  | Wbr 
+```
 
-
-### Type Class Instances
 
 #### `showTagName`
 
-    instance showTagName :: Show TagName
+``` purescript
+instance showTagName :: Show TagName
+```
+
 
 
 ## Module React.Types
 
-### Types
-
 #### `DOMAbstractView`
 
-    data DOMAbstractView
+``` purescript
+data DOMAbstractView
+```
 
-#### `DOMDataTransfer`
-
-    data DOMDataTransfer
 
 #### `DOMElement`
 
-    data DOMElement
+``` purescript
+data DOMElement
+```
+
 
 #### `DOMEvent`
 
-    data DOMEvent
+``` purescript
+data DOMEvent
+```
+
 
 #### `DOMEventTarget`
 
-    data DOMEventTarget
+``` purescript
+data DOMEventTarget
+```
+
+
+#### `DOMDataTransfer`
+
+``` purescript
+data DOMDataTransfer
+```
+
 
 #### `DOMTouchList`
 
-    data DOMTouchList
+``` purescript
+data DOMTouchList
+```
+
 
 #### `ReactE`
 
-    data ReactE :: !
+``` purescript
+data ReactE :: !
+```
+
 
 
 

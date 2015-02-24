@@ -10,6 +10,8 @@ import Control.Monad.Eff.Unsafe (unsafeInterleaveEff)
 import Data.Monoid (mempty)
 import Data.Options ((:=))
 
+import Optic.Core ((.~))
+
 import React.Combinators ((|-), (|*))
 import React.ComponentF
 import React.ReactF
@@ -54,7 +56,8 @@ render ref (Props props) (State state) =
       unsafeInterleaveEff $ props.onSubmit state.title
 
 spec :: forall eff. Specification eff HeaderProps HeaderState
-spec = case R.spec props state render of Specification a -> Specification a { displayName = "Header" }
+spec = R.spec props state render #
+       R.setDisplayName .~ "Header"
 
 header :: React (Class HeaderProps HeaderState)
 header = createClass spec

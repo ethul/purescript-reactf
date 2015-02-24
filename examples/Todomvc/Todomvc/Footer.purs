@@ -8,6 +8,8 @@ module Todomvc.Footer
 import Data.Monoid (mempty)
 import Data.Options ((:=))
 
+import Optic.Core ((.~))
+
 import React.Combinators ((|-), (|*))
 import React.ComponentF
 import React.ReactF
@@ -65,7 +67,8 @@ render ref (Props props) (State state) =
     onClearCompleted (Evt.SyntheticMouseEvent e) = props.onClearCompleted
 
 spec :: forall eff. Specification eff FooterProps FooterState
-spec = case R.spec props state render of Specification a -> Specification a { displayName = "Footer" }
+spec = R.spec props state render #
+       R.setDisplayName .~ "Footer"
 
 footer :: React (Class FooterProps FooterState)
 footer = createClass spec
