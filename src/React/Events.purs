@@ -300,36 +300,34 @@ newtype SyntheticUIEventFn eff props state = SyntheticUIEventFn (SyntheticUIEven
 newtype SyntheticWheelEventFn eff props state = SyntheticWheelEventFn (SyntheticWheelEvent -> Eff eff (Component props state Unit))
 
 instance isOptionSyntheticClipboardEventFn :: IsOption (SyntheticClipboardEventFn eff props state) where
-  (:=) k (SyntheticClipboardEventFn v) = runFn2 eventFnOption k v
+  (:=) k (SyntheticClipboardEventFn v) = (optionFn k) := v
 
 instance isOptionSyntheticCompositionEventFn :: IsOption (SyntheticCompositionEventFn eff props state) where
-  (:=) k (SyntheticCompositionEventFn v) = runFn2 eventFnOption k v
+  (:=) k (SyntheticCompositionEventFn v) = (optionFn k) := v
 
 instance isOptionSyntheticDragEventFn :: IsOption (SyntheticDragEventFn eff props state) where
-  (:=) k (SyntheticDragEventFn v) = runFn2 eventFnOption k v
+  (:=) k (SyntheticDragEventFn v) = (optionFn k) := v
 
 instance isOptionSyntheticKeyboardEventFn :: IsOption (SyntheticKeyboardEventFn eff props state) where
-  (:=) k (SyntheticKeyboardEventFn v) = runFn2 eventFnOption k v
+  (:=) k (SyntheticKeyboardEventFn v) = (optionFn k) := v
 
 instance isOptionSyntheticFocusEventFn :: IsOption (SyntheticFocusEventFn eff props state) where
-  (:=) k (SyntheticFocusEventFn v) = runFn2 eventFnOption k v
+  (:=) k (SyntheticFocusEventFn v) = (optionFn k) := v
 
 instance isOptionSyntheticInputEventFn :: IsOption (SyntheticInputEventFn eff props state) where
-  (:=) k (SyntheticInputEventFn v) = runFn2 eventFnOption k v
+  (:=) k (SyntheticInputEventFn v) = (optionFn k) := v
 
 instance isOptionSyntheticMouseEventFn :: IsOption (SyntheticMouseEventFn eff props state) where
-  (:=) k (SyntheticMouseEventFn v) = runFn2 eventFnOption k v
+  (:=) k (SyntheticMouseEventFn v) = (optionFn k) := v
 
 instance isOptionSyntheticTouchEventFn :: IsOption (SyntheticTouchEventFn eff props state) where
-  (:=) k (SyntheticTouchEventFn v) = runFn2 eventFnOption k v
+  (:=) k (SyntheticTouchEventFn v) = (optionFn k) := v
 
 instance isOptionSyntheticUIEventFn :: IsOption (SyntheticUIEventFn eff props state) where
-  (:=) k (SyntheticUIEventFn v) = runFn2 eventFnOption k v
+  (:=) k (SyntheticUIEventFn v) = (optionFn k) := v
 
 instance isOptionSyntheticWheelEventFn :: IsOption (SyntheticWheelEventFn eff props state) where
-  (:=) k (SyntheticWheelEventFn v) = runFn2 eventFnOption k v
-
-foreign import eventFnOption "function eventFnOption(k, v){return [[k, v]];}" :: forall a b c. Fn2 a b (Options c)
+  (:=) k (SyntheticWheelEventFn v) = (optionFn k) := v
 
 foreign import onCopy "var onCopy = 'onCopy';" :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
 

@@ -22,8 +22,3 @@ type TodomvcState = { todos :: [Todo] }
 type TodomvcComponent = Component TodomvcProps TodomvcState Unit
 
 type TodomvcComponentEff = Eff (localStorage :: LocalStorageE) TodomvcComponent
-
-instance isOptionStyle :: IsOption { | a } where
-  (:=) k v = runFn2 styleFnOption k v
-
-foreign import styleFnOption "function styleFnOption(k, v){return [[k, v]];}" :: forall a b c. Fn2 a b (Options c)
