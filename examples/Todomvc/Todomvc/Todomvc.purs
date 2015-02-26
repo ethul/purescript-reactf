@@ -13,7 +13,7 @@ import Data.Options ((:=))
 
 import Optic.Core ((.~))
 
-import React.Combinators ((|-), (|*))
+import React.Combinators ((.>))
 import React.ComponentF
 import React.ReactF
 
@@ -90,8 +90,8 @@ render ref (Props props) (State state) = do
       infoProps = Props unit
 
   html <- Dom.div'
-          |* [ Dom.section (Attr.id := "todoapp") mempty
-               |* [ createElementFromClass headerClass headerProps mempty mempty
+          .> [ Dom.section (Attr.id := "todoapp") mempty
+               .> [ createElementFromClass headerClass headerProps mempty mempty
                   , createElementFromClass listClass listProps mempty mempty
                   , createElementFromClass footerClass footerProps mempty mempty
                   ]

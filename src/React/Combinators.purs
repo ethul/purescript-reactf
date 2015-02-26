@@ -1,25 +1,22 @@
 module React.Combinators
-  ( (|-)
-  , (|*)
-  , child
-  , children
+  ( IsElementNestable
+  , (.>)
   ) where
 
+import Control.Monad.Free (Free())
+
+import Data.Coyoneda (Coyoneda())
 import Data.Traversable (sequence)
 
-import React.ReactF (Element(), Elements(), React())
+import React.ReactF (Element(), Elements(), React(), ReactF())
 
-infixr 1 |-
-infixr 1 |*
+infixr 1 .>
 
-(|-) :: (Elements -> React Element) -> React Element -> React Element
-(|-) = child
+class IsElementNestable a where
+  (.>) :: (Elements -> React Element) -> a -> React Element
 
-(|*) :: (Elements -> React Element) -> [React Element] -> React Element
-(|*) = children
+instance isElementNestableOne :: IsElementNestable (Free (Coyoneda ReactF) Element) where
+  (.>) k fa = fa >>= (\a -> k [a])
 
-child :: (Elements -> React Element) -> React Element -> React Element
-child k fa = fa >>= (\a -> k [a])
-
-children :: (Elements -> React Element) -> [React Element] -> React Element
-children k fas = sequence fas >>= k
+instance isElementNestableMany :: IsElementNestable [(Free (Coyoneda ReactF) Element)] where
+  (.>) k fas = sequence fas >>= k

@@ -1097,31 +1097,25 @@ y2 :: Option Attribute Number
 
 ## Module React.Combinators
 
-#### `(|-)`
+#### `IsElementNestable`
 
 ``` purescript
-(|-) :: (Elements -> React Element) -> React Element -> React Element
+class IsElementNestable a where
+  (.>) :: (Elements -> React Element) -> a -> React Element
 ```
 
 
-#### `(|*)`
+#### `isElementNestableOne`
 
 ``` purescript
-(|*) :: (Elements -> React Element) -> [React Element] -> React Element
+instance isElementNestableOne :: IsElementNestable (Free (Coyoneda ReactF) Element)
 ```
 
 
-#### `child`
+#### `isElementNestableMany`
 
 ``` purescript
-child :: (Elements -> React Element) -> React Element -> React Element
-```
-
-
-#### `children`
-
-``` purescript
-children :: (Elements -> React Element) -> [React Element] -> React Element
+instance isElementNestableMany :: IsElementNestable [Free (Coyoneda ReactF) Element]
 ```
 
 

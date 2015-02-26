@@ -10,7 +10,7 @@ import Data.Options ((:=))
 
 import Optic.Core ((.~))
 
-import React.Combinators ((|-), (|*))
+import React.Combinators ((.>))
 import React.ComponentF
 import React.ReactF
 
@@ -33,31 +33,31 @@ state = State unit
 render :: RenderFn InfoProps InfoState
 render ref (Props props) (State state) =
   Dom.footer (Attr.id := "info") mempty
-  |* [ Dom.p'
-       |- Dom.textnode "Double-click to edit a todo"
+  .> [ Dom.p'
+       .> Dom.textnode "Double-click to edit a todo"
      , Dom.p'
-       |* [ Dom.textnode "Info:"
+       .> [ Dom.textnode "Info:"
           , Dom.a (Attr.href := "http://twitter.com/cburgdorf" <>
                    Attr.style := style) mempty
-            |- Dom.textnode "Christoph Burgdorf"
+            .> Dom.textnode "Christoph Burgdorf"
           , Dom.textnode ","
           , Dom.a (Attr.href := "http://ericbidelman.com" <>
                    Attr.style := style) mempty
-            |- Dom.textnode "Eric Bidelman"
+            .> Dom.textnode "Eric Bidelman"
           , Dom.textnode ","
           , Dom.a (Attr.href := "http://jacobmumm.com" <>
                    Attr.style := style') mempty
-            |- Dom.textnode "Jacob Mumm"
+            .> Dom.textnode "Jacob Mumm"
           , Dom.textnode "and"
           , Dom.a (Attr.href := "http://igorminar.com" <>
                    Attr.style := style) mempty
-            |- Dom.textnode "Igor Minar"
+            .> Dom.textnode "Igor Minar"
           ]
      , Dom.p'
-       |* [ Dom.textnode "Part of"
+       .> [ Dom.textnode "Part of"
           , Dom.a (Attr.href := "http://todomvc.com" <>
                    Attr.style := style) mempty
-            |- Dom.textnode "TodoMVC"
+            .> Dom.textnode "TodoMVC"
           ]
      ]
   where
