@@ -12,7 +12,7 @@ import Data.Options ((:=))
 
 import Optic.Core ((.~))
 
-import React.Combinators ((|-), (|*))
+import React.Combinators ((.>))
 import React.ComponentF
 import React.ReactF
 import React.Types
@@ -38,11 +38,11 @@ state = State { title: "" }
 render :: RenderFn HeaderProps HeaderState
 render ref (Props props) (State state) =
   Dom.header (Attr.id := "header") mempty
-  |* [ Dom.h1'
-       |- Dom.textnode "todos"
+  .> [ Dom.h1'
+       .> Dom.textnode "todos"
      , Dom.form (Attr.id := "todo-form")
                 (Evt.onSubmit := Evt.SyntheticInputEventFn onSubmit)
-       |- Dom.input (Attr.id := "new-todo" <>
+       .> Dom.input (Attr.id := "new-todo" <>
                      Attr.placeholder := "What needs to be done?" <>
                      Attr.value := state.title)
                     (Evt.onChange := Evt.SyntheticInputEventFn onChange) mempty
