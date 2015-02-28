@@ -1,6 +1,5 @@
 module Todomvc.List
   ( ListProps()
-  , ListState()
   , spec
   , list
   ) where
@@ -23,22 +22,17 @@ import Todomvc.Todo
 import Todomvc.Types
 
 type ListProps = { todos :: [Todo]
-                 , onCompleted :: Todo -> TodomvcComponentEff
-                 , onRemoved :: Todo -> TodomvcComponentEff
+                 , onCompleted :: Todo -> TodomvcComponent
+                 , onRemoved :: Todo -> TodomvcComponent
                  }
-
-type ListState = Unit
 
 props :: Props ListProps
 props = Props { todos: []
-              , onCompleted: const $ pure $ pure unit
-              , onRemoved: const $ pure $ pure unit
+              , onCompleted: const $ pure unit
+              , onRemoved: const $ pure unit
               }
 
-state :: State ListState
-state = State unit
-
-renderTodo ref props todo@(Todo a) =
+renderTodo props todo@(Todo a) =
   Dom.li (Attr.className := if a.completed then "completed" else "") mempty
   .> Dom.div (Attr.className := "view") mempty
      .> [ Dom.input (Attr.className := "toggle" <>
@@ -56,19 +50,19 @@ renderTodo ref props todo@(Todo a) =
     onChange todo (Evt.SyntheticInputEvent e) = props.onCompleted todo
     onRemove todo (Evt.SyntheticMouseEvent e) = props.onRemoved todo
 
-render :: RenderFn ListProps ListState
-render ref (Props props) (State state) =
+render :: PureRenderFn ListProps
+render (Props props) =
   Dom.section (Attr.id := "main") mempty
   .> [ Dom.input (Attr.id := "toggle-all" <> Attr._type := "checkbox") mempty mempty
      , Dom.label (Attr.htmlFor := "toggle-all") mempty
        .> Dom.textnode "Mark all as completed"
      , Dom.ul (Attr.id := "todo-list") mempty
-       .> renderTodo ref props <$> props.todos
+       .> renderTodo props <$> props.todos
      ]
 
-spec :: forall eff. Specification eff ListProps ListState
-spec = R.spec props state render #
+spec :: Specification _ ListProps _
+spec = R.pureSpec props render #
        R.setDisplayName .~ "List"
 
-list :: React (Class ListProps ListState)
+list :: React (Class ListProps _)
 list = createClass spec

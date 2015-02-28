@@ -97,14 +97,12 @@ import Data.Options
 import Data.Function
 import Data.Monoid (Monoid, mempty)
 
-import DOM (DOM())
-
 import React.ComponentF (Component())
 import React.Types
 
-type Events eff props state = Options (EventName eff props state)
+type Events eff = Options (EventName eff)
 
-foreign import data EventName :: # ! -> * -> * -> *
+foreign import data EventName :: # ! -> *
 
 newtype SyntheticClipboardEvent
   = SyntheticClipboardEvent { bubbles :: Boolean
@@ -114,8 +112,8 @@ newtype SyntheticClipboardEvent
                             , eventPhase :: Number
                             , isTrusted :: Boolean
                             , nativeEvent :: DOMEvent
-                            , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
-                            , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
+                            , preventDefault :: EffApplyFn0 Unit
+                            , stopPropagation :: EffApplyFn0 Unit
                             , target :: DOMEventTarget
                             , timeStamp :: Number
                             , "type" :: String
@@ -130,8 +128,8 @@ newtype SyntheticKeyboardEvent
                            , eventPhase :: Number
                            , isTrusted :: Boolean
                            , nativeEvent :: DOMEvent
-                           , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
-                           , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
+                           , preventDefault :: EffApplyFn0 Unit
+                           , stopPropagation :: EffApplyFn0 Unit
                            , target :: DOMEventTarget
                            , timeStamp :: Number
                            , "type" :: String
@@ -157,8 +155,8 @@ newtype SyntheticFocusEvent
                         , eventPhase :: Number
                         , isTrusted :: Boolean
                         , nativeEvent :: DOMEvent
-                        , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
-                        , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
+                        , preventDefault :: EffApplyFn0 Unit
+                        , stopPropagation :: EffApplyFn0 Unit
                         , target :: DOMEventTarget
                         , timeStamp :: Number
                         , "type" :: String
@@ -173,8 +171,8 @@ newtype SyntheticInputEvent
                         , eventPhase :: Number
                         , isTrusted :: Boolean
                         , nativeEvent :: DOMEvent
-                        , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
-                        , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
+                        , preventDefault :: EffApplyFn0 Unit
+                        , stopPropagation :: EffApplyFn0 Unit
                         , target :: DOMEventTarget
                         , timeStamp :: Number
                         , "type" :: String
@@ -188,8 +186,8 @@ newtype SyntheticMouseEvent
                         , eventPhase :: Number
                         , isTrusted :: Boolean
                         , nativeEvent :: DOMEvent
-                        , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
-                        , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
+                        , preventDefault :: EffApplyFn0 Unit
+                        , stopPropagation :: EffApplyFn0 Unit
                         , target :: DOMEventTarget
                         , timeStamp :: Number
                         , "type" :: String
@@ -217,8 +215,8 @@ newtype SyntheticTouchEvent
                         , eventPhase :: Number
                         , isTrusted :: Boolean
                         , nativeEvent :: DOMEvent
-                        , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
-                        , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
+                        , preventDefault :: EffApplyFn0 Unit
+                        , stopPropagation :: EffApplyFn0 Unit
                         , target :: DOMEventTarget
                         , timeStamp :: Number
                         , "type" :: String
@@ -240,8 +238,8 @@ newtype SyntheticUIEvent
                      , eventPhase :: Number
                      , isTrusted :: Boolean
                      , nativeEvent :: DOMEvent
-                     , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
-                     , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
+                     , preventDefault :: EffApplyFn0 Unit
+                     , stopPropagation :: EffApplyFn0 Unit
                      , target :: DOMEventTarget
                      , timeStamp :: Number
                      , "type" :: String
@@ -257,8 +255,8 @@ newtype SyntheticWheelEvent
                         , eventPhase :: Number
                         , isTrusted :: Boolean
                         , nativeEvent :: DOMEvent
-                        , preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit
-                        , stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit
+                        , preventDefault :: EffApplyFn0 Unit
+                        , stopPropagation :: EffApplyFn0 Unit
                         , target :: DOMEventTarget
                         , timeStamp :: Number
                         , "type" :: String
@@ -273,188 +271,218 @@ data SyntheticCompositionEvent
 
 data SyntheticDragEvent
 
-newtype SyntheticClipboardEventFn eff props state = SyntheticClipboardEventFn (SyntheticClipboardEvent -> Eff eff (Component props state Unit))
+newtype SyntheticClipboardEventFn eff = SyntheticClipboardEventFn (SyntheticClipboardEvent -> Component eff Unit)
 
-newtype SyntheticCompositionEventFn eff props state = SyntheticCompositionEventFn (SyntheticCompositionEvent -> Eff eff (Component props state Unit))
+newtype SyntheticCompositionEventFn eff = SyntheticCompositionEventFn (SyntheticCompositionEvent -> Component eff Unit)
 
-newtype SyntheticDragEventFn eff props state = SyntheticDragEventFn (SyntheticDragEvent -> Eff eff (Component props state Unit))
+newtype SyntheticDragEventFn eff = SyntheticDragEventFn (SyntheticDragEvent -> Component eff Unit)
 
-newtype SyntheticKeyboardEventFn eff props state = SyntheticKeyboardEventFn (SyntheticKeyboardEvent -> Eff eff (Component props state Unit))
+newtype SyntheticKeyboardEventFn eff = SyntheticKeyboardEventFn (SyntheticKeyboardEvent -> Component eff Unit)
 
-newtype SyntheticFocusEventFn eff props state = SyntheticFocusEventFn (SyntheticFocusEvent -> Eff eff (Component props state Unit))
+newtype SyntheticFocusEventFn eff = SyntheticFocusEventFn (SyntheticFocusEvent -> Component eff Unit)
 
-newtype SyntheticInputEventFn eff props state = SyntheticInputEventFn (SyntheticInputEvent -> Eff eff (Component props state Unit))
+newtype SyntheticInputEventFn eff = SyntheticInputEventFn (SyntheticInputEvent -> Component eff Unit)
 
-newtype SyntheticMouseEventFn eff props state = SyntheticMouseEventFn (SyntheticMouseEvent -> Eff eff (Component props state Unit))
+newtype SyntheticMouseEventFn eff = SyntheticMouseEventFn (SyntheticMouseEvent -> Component eff Unit)
 
-newtype SyntheticTouchEventFn eff props state = SyntheticTouchEventFn (SyntheticTouchEvent -> Eff eff (Component props state Unit))
+newtype SyntheticTouchEventFn eff = SyntheticTouchEventFn (SyntheticTouchEvent -> Component eff Unit)
 
-newtype SyntheticUIEventFn eff props state = SyntheticUIEventFn (SyntheticUIEvent -> Eff eff (Component props state Unit))
+newtype SyntheticUIEventFn eff = SyntheticUIEventFn (SyntheticUIEvent -> Component eff Unit)
 
-newtype SyntheticWheelEventFn eff props state = SyntheticWheelEventFn (SyntheticWheelEvent -> Eff eff (Component props state Unit))
+newtype SyntheticWheelEventFn eff = SyntheticWheelEventFn (SyntheticWheelEvent -> Component eff Unit)
 
-instance isOptionSyntheticClipboardEventFn :: IsOption (SyntheticClipboardEventFn eff props state) where
+instance isOptionSyntheticClipboardEventFn :: IsOption (SyntheticClipboardEventFn eff) where
   (:=) k (SyntheticClipboardEventFn v) = (optionFn k) := v
 
-instance isOptionSyntheticCompositionEventFn :: IsOption (SyntheticCompositionEventFn eff props state) where
+instance isOptionSyntheticCompositionEventFn :: IsOption (SyntheticCompositionEventFn eff) where
   (:=) k (SyntheticCompositionEventFn v) = (optionFn k) := v
 
-instance isOptionSyntheticDragEventFn :: IsOption (SyntheticDragEventFn eff props state) where
+instance isOptionSyntheticDragEventFn :: IsOption (SyntheticDragEventFn eff) where
   (:=) k (SyntheticDragEventFn v) = (optionFn k) := v
 
-instance isOptionSyntheticKeyboardEventFn :: IsOption (SyntheticKeyboardEventFn eff props state) where
+instance isOptionSyntheticKeyboardEventFn :: IsOption (SyntheticKeyboardEventFn eff) where
   (:=) k (SyntheticKeyboardEventFn v) = (optionFn k) := v
 
-instance isOptionSyntheticFocusEventFn :: IsOption (SyntheticFocusEventFn eff props state) where
+instance isOptionSyntheticFocusEventFn :: IsOption (SyntheticFocusEventFn eff) where
   (:=) k (SyntheticFocusEventFn v) = (optionFn k) := v
 
-instance isOptionSyntheticInputEventFn :: IsOption (SyntheticInputEventFn eff props state) where
+instance isOptionSyntheticInputEventFn :: IsOption (SyntheticInputEventFn eff) where
   (:=) k (SyntheticInputEventFn v) = (optionFn k) := v
 
-instance isOptionSyntheticMouseEventFn :: IsOption (SyntheticMouseEventFn eff props state) where
+instance isOptionSyntheticMouseEventFn :: IsOption (SyntheticMouseEventFn eff) where
   (:=) k (SyntheticMouseEventFn v) = (optionFn k) := v
 
-instance isOptionSyntheticTouchEventFn :: IsOption (SyntheticTouchEventFn eff props state) where
+instance isOptionSyntheticTouchEventFn :: IsOption (SyntheticTouchEventFn eff) where
   (:=) k (SyntheticTouchEventFn v) = (optionFn k) := v
 
-instance isOptionSyntheticUIEventFn :: IsOption (SyntheticUIEventFn eff props state) where
+instance isOptionSyntheticUIEventFn :: IsOption (SyntheticUIEventFn eff) where
   (:=) k (SyntheticUIEventFn v) = (optionFn k) := v
 
-instance isOptionSyntheticWheelEventFn :: IsOption (SyntheticWheelEventFn eff props state) where
+instance isOptionSyntheticWheelEventFn :: IsOption (SyntheticWheelEventFn eff) where
   (:=) k (SyntheticWheelEventFn v) = (optionFn k) := v
 
-foreign import onCopy "var onCopy = 'onCopy';" :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+instance effApplyFnsSyntheticClipboardEvent :: EffApplyFns SyntheticClipboardEvent where
+  effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import onCopyCapture "var onCopyCapture = 'onCopyCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+instance effApplyFnsSyntheticCompositionEvent :: EffApplyFns SyntheticCompositionEvent where
+  effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import onCut "var onCut = 'onCut';" :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+instance effApplyFnsSyntheticDragEvent :: EffApplyFns SyntheticDragEvent where
+  effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import onCutCapture "var onCutCapture = 'onCutCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+instance effApplyFnsSyntheticKeyboardEvent :: EffApplyFns SyntheticKeyboardEvent where
+  effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import onPaste "var onPaste = 'onPaste';" :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+instance effApplyFnsSyntheticFocusEvent :: EffApplyFns SyntheticFocusEvent where
+  effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import onPasteCapture "var onPasteCapture = 'onPasteCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+instance effApplyFnsSyntheticInputEvent :: EffApplyFns SyntheticInputEvent where
+  effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import onFocus "var onFocus = 'onFocus';" :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+instance effApplyFnsSyntheticMouseEvent :: EffApplyFns SyntheticMouseEvent where
+  effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import onFocusCapture "var onFocusCapture = 'onFocusCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+instance effApplyFnsSyntheticTouchEvent :: EffApplyFns SyntheticTouchEvent where
+  effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import onBlur "var onBlur = 'onBlur';" :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+instance effApplyFnsSyntheticUIEvent :: EffApplyFns SyntheticUIEvent where
+  effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import onBlurCapture "var onBlurCapture = 'onBlurCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+instance effApplyFnsSyntheticWheelEvent :: EffApplyFns SyntheticWheelEvent where
+  effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import onChange "var onChange = 'onChange';" :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+foreign import onCopy "var onCopy = 'onCopy';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 
-foreign import onChangeCapture "var onChangeCapture = 'onChangeCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+foreign import onCopyCapture "var onCopyCapture = 'onCopyCapture';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 
-foreign import onInput "var onInput = 'onInput';" :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+foreign import onCut "var onCut = 'onCut';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 
-foreign import onInputCapture "var onInputCapture = 'onInputCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+foreign import onCutCapture "var onCutCapture = 'onCutCapture';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 
-foreign import onSubmit "var onSubmit = 'onSubmit';" :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+foreign import onPaste "var onPaste = 'onPaste';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 
-foreign import onSubmitCapture "var onSubmitCapture = 'onSubmitCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+foreign import onPasteCapture "var onPasteCapture = 'onPasteCapture';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 
-foreign import onKeyDown "var onKeyDown = 'onKeyDown';" :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+foreign import onFocus "var onFocus = 'onFocus';" :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
 
-foreign import onKeyDownCapture "var onKeyDownCapture = 'onKeyDownCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+foreign import onFocusCapture "var onFocusCapture = 'onFocusCapture';" :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
 
-foreign import onKeyPress "var onKeyPress = 'onKeyPress';" :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+foreign import onBlur "var onBlur = 'onBlur';" :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
 
-foreign import onKeyPressCapture "var onKeyPressCapture = 'onKeyPressCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+foreign import onBlurCapture "var onBlurCapture = 'onBlurCapture';" :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
 
-foreign import onKeyUp "var onKeyUp = 'onKeyUp';" :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+foreign import onChange "var onChange = 'onChange';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 
-foreign import onKeyUpCapture "var onKeyUpCapture = 'onKeyUpCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+foreign import onChangeCapture "var onChangeCapture = 'onChangeCapture';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 
-foreign import onClick "var onClick = 'onClick';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onInput "var onInput = 'onInput';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 
-foreign import onClickCapture "var onClickCapture = 'onClickCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onInputCapture "var onInputCapture = 'onInputCapture';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 
-foreign import onDoubleClick "var onDoubleClick = 'onDoubleClick';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onSubmit "var onSubmit = 'onSubmit';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 
-foreign import onDoubleClickCapture "var onDoubleClickCapture = 'onDoubleClickCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onSubmitCapture "var onSubmitCapture = 'onSubmitCapture';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 
-foreign import onDrag "var onDrag = 'onDrag';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onKeyDown "var onKeyDown = 'onKeyDown';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 
-foreign import onDragCapture "var onDragCapture = 'onDragCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onKeyDownCapture "var onKeyDownCapture = 'onKeyDownCapture';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 
-foreign import onDragEnd "var onDragEnd = 'onDragEnd';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onKeyPress "var onKeyPress = 'onKeyPress';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 
-foreign import onDragEndCapture "var onDragEndCapture = 'onDragEndCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onKeyPressCapture "var onKeyPressCapture = 'onKeyPressCapture';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 
-foreign import onDragEnter "var onDragEnter = 'onDragEnter';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onKeyUp "var onKeyUp = 'onKeyUp';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 
-foreign import onDragEnterCapture "var onDragEnterCapture = 'onDragEnterCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onKeyUpCapture "var onKeyUpCapture = 'onKeyUpCapture';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 
-foreign import onDragExit "var onDragExit = 'onDragExit';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onClick "var onClick = 'onClick';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onDragExitCapture "var onDragExitCapture = 'onDragExitCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onClickCapture "var onClickCapture = 'onClickCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onDragLeave "var onDragLeave = 'onDragLeave';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDoubleClick "var onDoubleClick = 'onDoubleClick';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onDragLeaveCapture "var onDragLeaveCapture = 'onDragLeaveCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDoubleClickCapture "var onDoubleClickCapture = 'onDoubleClickCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onDragOver "var onDragOver = 'onDragOver';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDrag "var onDrag = 'onDrag';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onDragOverCapture "var onDragOverCapture = 'onDragOverCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragCapture "var onDragCapture = 'onDragCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onDragStart "var onDragStart = 'onDragStart';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragEnd "var onDragEnd = 'onDragEnd';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onDragStartCapture "var onDragStartCapture = 'onDragStartCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragEndCapture "var onDragEndCapture = 'onDragEndCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onDrop "var onDrop = 'onDrop';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragEnter "var onDragEnter = 'onDragEnter';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onDropCapture "var onDropCapture = 'onDropCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragEnterCapture "var onDragEnterCapture = 'onDragEnterCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseDown "var onMouseDown = 'onMouseDown';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragExit "var onDragExit = 'onDragExit';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseDownCapture "var onMouseDownCapture = 'onMouseDownCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragExitCapture "var onDragExitCapture = 'onDragExitCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseEnter "var onMouseEnter = 'onMouseEnter';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragLeave "var onDragLeave = 'onDragLeave';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseEnterCapture "var onMouseEnterCapture = 'onMouseEnterCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragLeaveCapture "var onDragLeaveCapture = 'onDragLeaveCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseLeave "var onMouseLeave = 'onMouseLeave';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragOver "var onDragOver = 'onDragOver';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseLeaveCapture "var onMouseLeaveCapture = 'onMouseLeaveCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragOverCapture "var onDragOverCapture = 'onDragOverCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseMove "var onMouseMove = 'onMouseMove';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragStart "var onDragStart = 'onDragStart';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseMoveCapture "var onMouseMoveCapture = 'onMouseMoveCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDragStartCapture "var onDragStartCapture = 'onDragStartCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseOut "var onMouseOut = 'onMouseOut';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDrop "var onDrop = 'onDrop';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseOutCapture "var onMouseOutCapture = 'onMouseOutCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onDropCapture "var onDropCapture = 'onDropCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseOver "var onMouseOver = 'onMouseOver';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onMouseDown "var onMouseDown = 'onMouseDown';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseOverCapture "var onMouseOverCapture = 'onMouseOverCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onMouseDownCapture "var onMouseDownCapture = 'onMouseDownCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseUp "var onMouseUp = 'onMouseUp';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onMouseEnter "var onMouseEnter = 'onMouseEnter';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onMouseUpCapture "var onMouseUpCapture = 'onMouseUpCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+foreign import onMouseEnterCapture "var onMouseEnterCapture = 'onMouseEnterCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onTouchCancel "var onTouchCancel = 'onTouchCancel';" :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+foreign import onMouseLeave "var onMouseLeave = 'onMouseLeave';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onTouchCancelCapture "var onTouchCancelCapture = 'onTouchCancelCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+foreign import onMouseLeaveCapture "var onMouseLeaveCapture = 'onMouseLeaveCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onTouchEnd "var onTouchEnd = 'onTouchEnd';" :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+foreign import onMouseMove "var onMouseMove = 'onMouseMove';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onTouchEndCapture "var onTouchEndCapture = 'onTouchEndCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+foreign import onMouseMoveCapture "var onMouseMoveCapture = 'onMouseMoveCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onTouchMove "var onTouchMove = 'onTouchMove';" :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+foreign import onMouseOut "var onMouseOut = 'onMouseOut';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onTouchMoveCapture "var onTouchMoveCapture = 'onTouchMoveCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+foreign import onMouseOutCapture "var onMouseOutCapture = 'onMouseOutCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onTouchStart "var onTouchStart = 'onTouchStart';" :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+foreign import onMouseOver "var onMouseOver = 'onMouseOver';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onTouchStartCapture "var onTouchStartCapture = 'onTouchStartCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+foreign import onMouseOverCapture "var onMouseOverCapture = 'onMouseOverCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onScroll "var onScroll = 'onScroll';" :: forall eff props state. Option (EventName eff props state) (SyntheticUIEventFn eff props state)
+foreign import onMouseUp "var onMouseUp = 'onMouseUp';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onScrollCapture "var onScrollCapture = 'onScrollCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticUIEventFn eff props state)
+foreign import onMouseUpCapture "var onMouseUpCapture = 'onMouseUpCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
-foreign import onWheel "var onWheel = 'onWheel';" :: forall eff props state. Option (EventName eff props state) (SyntheticWheelEventFn eff props state)
+foreign import onTouchCancel "var onTouchCancel = 'onTouchCancel';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
 
-foreign import onWheelCapture "var onWheelCapture = 'onWheelCapture';" :: forall eff props state. Option (EventName eff props state) (SyntheticWheelEventFn eff props state)
+foreign import onTouchCancelCapture "var onTouchCancelCapture = 'onTouchCancelCapture';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+
+foreign import onTouchEnd "var onTouchEnd = 'onTouchEnd';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+
+foreign import onTouchEndCapture "var onTouchEndCapture = 'onTouchEndCapture';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+
+foreign import onTouchMove "var onTouchMove = 'onTouchMove';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+
+foreign import onTouchMoveCapture "var onTouchMoveCapture = 'onTouchMoveCapture';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+
+foreign import onTouchStart "var onTouchStart = 'onTouchStart';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+
+foreign import onTouchStartCapture "var onTouchStartCapture = 'onTouchStartCapture';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+
+foreign import onScroll "var onScroll = 'onScroll';" :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
+
+foreign import onScrollCapture "var onScrollCapture = 'onScrollCapture';" :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
+
+foreign import onWheel "var onWheel = 'onWheel';" :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)
+
+foreign import onWheelCapture "var onWheelCapture = 'onWheelCapture';" :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)

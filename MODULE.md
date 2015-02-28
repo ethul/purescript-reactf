@@ -1125,7 +1125,7 @@ instance isElementNestableMany :: IsElementNestable [Free (Coyoneda ReactF) Elem
 #### `Component`
 
 ``` purescript
-type Component props state = FreeC (ComponentF props state)
+type Component eff = FreeC (ComponentF eff)
 ```
 
 
@@ -1155,32 +1155,40 @@ newtype State state
 #### `ComponentF`
 
 ``` purescript
-data ComponentF props state a
-  = GetProps (Reference props state) (Props props -> a)
-  | GetState (Reference props state) (State state -> a)
-  | SetStateSync (Reference props state) (State state) a
-  | SetStateAsync (Reference props state) (State state) a
+data ComponentF eff a
+  = GetProps (forall props state. Reference props state) (forall props. Props props -> a)
+  | GetState (forall props state. Reference props state) (forall state. State state -> a)
+  | SetStateSync (forall props state. Reference props state) (forall state. State state) a
+  | SetStateAsync (forall props state. Reference props state) (forall state. State state) a
+  | ComponentEff (forall ret. Eff eff ret) (forall ret. ret -> a)
+```
+
+
+#### `monadEffComponent`
+
+``` purescript
+instance monadEffComponent :: MonadEff eff (Free (Coyoneda (ComponentF eff)))
 ```
 
 
 #### `getState`
 
 ``` purescript
-getState :: forall props state. Reference props state -> Component props state (State state)
+getState :: forall eff props state. Reference props state -> Component eff (State state)
 ```
 
 
 #### `setStateSync`
 
 ``` purescript
-setStateSync :: forall props state. Reference props state -> State state -> Component props state Unit
+setStateSync :: forall eff props state. Reference props state -> State state -> Component eff Unit
 ```
 
 
 #### `setStateAsync`
 
 ``` purescript
-setStateAsync :: forall props state. Reference props state -> State state -> Component props state Unit
+setStateAsync :: forall eff props state. Reference props state -> State state -> Component eff Unit
 ```
 
 
@@ -1190,7 +1198,7 @@ setStateAsync :: forall props state. Reference props state -> State state -> Com
 #### `run`
 
 ``` purescript
-run :: forall props state a. Component props state a -> Eff (react :: ReactE) a
+run :: forall eff a. Component eff a -> Eff (react :: ReactE) a
 ```
 
 
@@ -1214,7 +1222,7 @@ textnode :: String -> React Element
 #### `a`
 
 ``` purescript
-a :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+a :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1228,7 +1236,7 @@ a' :: Elements -> React Element
 #### `abbr`
 
 ``` purescript
-abbr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+abbr :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1242,7 +1250,7 @@ abbr' :: Elements -> React Element
 #### `address`
 
 ``` purescript
-address :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+address :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1256,7 +1264,7 @@ address' :: Elements -> React Element
 #### `area`
 
 ``` purescript
-area :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+area :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1270,7 +1278,7 @@ area' :: Elements -> React Element
 #### `article`
 
 ``` purescript
-article :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+article :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1284,7 +1292,7 @@ article' :: Elements -> React Element
 #### `aside`
 
 ``` purescript
-aside :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+aside :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1298,7 +1306,7 @@ aside' :: Elements -> React Element
 #### `audio`
 
 ``` purescript
-audio :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+audio :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1312,7 +1320,7 @@ audio' :: Elements -> React Element
 #### `b`
 
 ``` purescript
-b :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+b :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1326,7 +1334,7 @@ b' :: Elements -> React Element
 #### `base`
 
 ``` purescript
-base :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+base :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1340,7 +1348,7 @@ base' :: Elements -> React Element
 #### `bdi`
 
 ``` purescript
-bdi :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+bdi :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1354,7 +1362,7 @@ bdi' :: Elements -> React Element
 #### `bdo`
 
 ``` purescript
-bdo :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+bdo :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1368,7 +1376,7 @@ bdo' :: Elements -> React Element
 #### `big`
 
 ``` purescript
-big :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+big :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1382,7 +1390,7 @@ big' :: Elements -> React Element
 #### `blockquote`
 
 ``` purescript
-blockquote :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+blockquote :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1396,7 +1404,7 @@ blockquote' :: Elements -> React Element
 #### `body`
 
 ``` purescript
-body :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+body :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1410,7 +1418,7 @@ body' :: Elements -> React Element
 #### `br`
 
 ``` purescript
-br :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+br :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1424,7 +1432,7 @@ br' :: Elements -> React Element
 #### `button`
 
 ``` purescript
-button :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+button :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1438,7 +1446,7 @@ button' :: Elements -> React Element
 #### `canvas`
 
 ``` purescript
-canvas :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+canvas :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1452,7 +1460,7 @@ canvas' :: Elements -> React Element
 #### `caption`
 
 ``` purescript
-caption :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+caption :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1466,7 +1474,7 @@ caption' :: Elements -> React Element
 #### `circle`
 
 ``` purescript
-circle :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+circle :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1480,7 +1488,7 @@ circle' :: Elements -> React Element
 #### `cite`
 
 ``` purescript
-cite :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+cite :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1494,7 +1502,7 @@ cite' :: Elements -> React Element
 #### `code`
 
 ``` purescript
-code :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+code :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1508,7 +1516,7 @@ code' :: Elements -> React Element
 #### `col`
 
 ``` purescript
-col :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+col :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1522,7 +1530,7 @@ col' :: Elements -> React Element
 #### `colgroup`
 
 ``` purescript
-colgroup :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+colgroup :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1536,7 +1544,7 @@ colgroup' :: Elements -> React Element
 #### `_data`
 
 ``` purescript
-_data :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+_data :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1550,7 +1558,7 @@ _data' :: Elements -> React Element
 #### `datalist`
 
 ``` purescript
-datalist :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+datalist :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1564,7 +1572,7 @@ datalist' :: Elements -> React Element
 #### `dd`
 
 ``` purescript
-dd :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+dd :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1578,7 +1586,7 @@ dd' :: Elements -> React Element
 #### `defs`
 
 ``` purescript
-defs :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+defs :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1592,7 +1600,7 @@ defs' :: Elements -> React Element
 #### `del`
 
 ``` purescript
-del :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+del :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1606,7 +1614,7 @@ del' :: Elements -> React Element
 #### `details`
 
 ``` purescript
-details :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+details :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1620,7 +1628,7 @@ details' :: Elements -> React Element
 #### `dfn`
 
 ``` purescript
-dfn :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+dfn :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1634,7 +1642,7 @@ dfn' :: Elements -> React Element
 #### `dialog`
 
 ``` purescript
-dialog :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+dialog :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1648,7 +1656,7 @@ dialog' :: Elements -> React Element
 #### `div`
 
 ``` purescript
-div :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+div :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1662,7 +1670,7 @@ div' :: Elements -> React Element
 #### `dl`
 
 ``` purescript
-dl :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+dl :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1676,7 +1684,7 @@ dl' :: Elements -> React Element
 #### `dt`
 
 ``` purescript
-dt :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+dt :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1690,7 +1698,7 @@ dt' :: Elements -> React Element
 #### `ellipse`
 
 ``` purescript
-ellipse :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+ellipse :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1704,7 +1712,7 @@ ellipse' :: Elements -> React Element
 #### `em`
 
 ``` purescript
-em :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+em :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1718,7 +1726,7 @@ em' :: Elements -> React Element
 #### `embed`
 
 ``` purescript
-embed :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+embed :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1732,7 +1740,7 @@ embed' :: Elements -> React Element
 #### `fieldset`
 
 ``` purescript
-fieldset :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+fieldset :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1746,7 +1754,7 @@ fieldset' :: Elements -> React Element
 #### `figcaption`
 
 ``` purescript
-figcaption :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+figcaption :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1760,7 +1768,7 @@ figcaption' :: Elements -> React Element
 #### `figure`
 
 ``` purescript
-figure :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+figure :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1774,7 +1782,7 @@ figure' :: Elements -> React Element
 #### `footer`
 
 ``` purescript
-footer :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+footer :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1788,7 +1796,7 @@ footer' :: Elements -> React Element
 #### `form`
 
 ``` purescript
-form :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+form :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1802,7 +1810,7 @@ form' :: Elements -> React Element
 #### `g`
 
 ``` purescript
-g :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+g :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1816,7 +1824,7 @@ g' :: Elements -> React Element
 #### `h1`
 
 ``` purescript
-h1 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+h1 :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1830,7 +1838,7 @@ h1' :: Elements -> React Element
 #### `h2`
 
 ``` purescript
-h2 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+h2 :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1844,7 +1852,7 @@ h2' :: Elements -> React Element
 #### `h3`
 
 ``` purescript
-h3 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+h3 :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1858,7 +1866,7 @@ h3' :: Elements -> React Element
 #### `h4`
 
 ``` purescript
-h4 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+h4 :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1872,7 +1880,7 @@ h4' :: Elements -> React Element
 #### `h5`
 
 ``` purescript
-h5 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+h5 :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1886,7 +1894,7 @@ h5' :: Elements -> React Element
 #### `h6`
 
 ``` purescript
-h6 :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+h6 :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1900,7 +1908,7 @@ h6' :: Elements -> React Element
 #### `head`
 
 ``` purescript
-head :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+head :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1914,7 +1922,7 @@ head' :: Elements -> React Element
 #### `header`
 
 ``` purescript
-header :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+header :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1928,7 +1936,7 @@ header' :: Elements -> React Element
 #### `hr`
 
 ``` purescript
-hr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+hr :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1942,7 +1950,7 @@ hr' :: Elements -> React Element
 #### `html`
 
 ``` purescript
-html :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+html :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1956,7 +1964,7 @@ html' :: Elements -> React Element
 #### `i`
 
 ``` purescript
-i :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+i :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1970,7 +1978,7 @@ i' :: Elements -> React Element
 #### `iframe`
 
 ``` purescript
-iframe :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+iframe :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1984,7 +1992,7 @@ iframe' :: Elements -> React Element
 #### `img`
 
 ``` purescript
-img :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+img :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -1998,7 +2006,7 @@ img' :: Elements -> React Element
 #### `input`
 
 ``` purescript
-input :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+input :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2012,7 +2020,7 @@ input' :: Elements -> React Element
 #### `ins`
 
 ``` purescript
-ins :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+ins :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2026,7 +2034,7 @@ ins' :: Elements -> React Element
 #### `kbd`
 
 ``` purescript
-kbd :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+kbd :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2040,7 +2048,7 @@ kbd' :: Elements -> React Element
 #### `keygen`
 
 ``` purescript
-keygen :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+keygen :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2054,7 +2062,7 @@ keygen' :: Elements -> React Element
 #### `label`
 
 ``` purescript
-label :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+label :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2068,7 +2076,7 @@ label' :: Elements -> React Element
 #### `legend`
 
 ``` purescript
-legend :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+legend :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2082,7 +2090,7 @@ legend' :: Elements -> React Element
 #### `li`
 
 ``` purescript
-li :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+li :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2096,7 +2104,7 @@ li' :: Elements -> React Element
 #### `line`
 
 ``` purescript
-line :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+line :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2110,7 +2118,7 @@ line' :: Elements -> React Element
 #### `linearGradient`
 
 ``` purescript
-linearGradient :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+linearGradient :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2124,7 +2132,7 @@ linearGradient' :: Elements -> React Element
 #### `link`
 
 ``` purescript
-link :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+link :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2138,7 +2146,7 @@ link' :: Elements -> React Element
 #### `main`
 
 ``` purescript
-main :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+main :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2152,7 +2160,7 @@ main' :: Elements -> React Element
 #### `map`
 
 ``` purescript
-map :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+map :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2166,7 +2174,7 @@ map' :: Elements -> React Element
 #### `mark`
 
 ``` purescript
-mark :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+mark :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2180,7 +2188,7 @@ mark' :: Elements -> React Element
 #### `mask`
 
 ``` purescript
-mask :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+mask :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2194,7 +2202,7 @@ mask' :: Elements -> React Element
 #### `menu`
 
 ``` purescript
-menu :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+menu :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2208,7 +2216,7 @@ menu' :: Elements -> React Element
 #### `menuitem`
 
 ``` purescript
-menuitem :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+menuitem :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2222,7 +2230,7 @@ menuitem' :: Elements -> React Element
 #### `meta`
 
 ``` purescript
-meta :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+meta :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2236,7 +2244,7 @@ meta' :: Elements -> React Element
 #### `meter`
 
 ``` purescript
-meter :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+meter :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2250,7 +2258,7 @@ meter' :: Elements -> React Element
 #### `nav`
 
 ``` purescript
-nav :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+nav :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2264,7 +2272,7 @@ nav' :: Elements -> React Element
 #### `noscript`
 
 ``` purescript
-noscript :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+noscript :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2278,7 +2286,7 @@ noscript' :: Elements -> React Element
 #### `object`
 
 ``` purescript
-object :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+object :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2292,7 +2300,7 @@ object' :: Elements -> React Element
 #### `ol`
 
 ``` purescript
-ol :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+ol :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2306,7 +2314,7 @@ ol' :: Elements -> React Element
 #### `optgroup`
 
 ``` purescript
-optgroup :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+optgroup :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2320,7 +2328,7 @@ optgroup' :: Elements -> React Element
 #### `option`
 
 ``` purescript
-option :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+option :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2334,7 +2342,7 @@ option' :: Elements -> React Element
 #### `output`
 
 ``` purescript
-output :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+output :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2348,7 +2356,7 @@ output' :: Elements -> React Element
 #### `p`
 
 ``` purescript
-p :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+p :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2362,7 +2370,7 @@ p' :: Elements -> React Element
 #### `param`
 
 ``` purescript
-param :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+param :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2376,7 +2384,7 @@ param' :: Elements -> React Element
 #### `path`
 
 ``` purescript
-path :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+path :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2390,7 +2398,7 @@ path' :: Elements -> React Element
 #### `pattern`
 
 ``` purescript
-pattern :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+pattern :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2404,7 +2412,7 @@ pattern' :: Elements -> React Element
 #### `picture`
 
 ``` purescript
-picture :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+picture :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2418,7 +2426,7 @@ picture' :: Elements -> React Element
 #### `polygon`
 
 ``` purescript
-polygon :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+polygon :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2432,7 +2440,7 @@ polygon' :: Elements -> React Element
 #### `polyline`
 
 ``` purescript
-polyline :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+polyline :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2446,7 +2454,7 @@ polyline' :: Elements -> React Element
 #### `pre`
 
 ``` purescript
-pre :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+pre :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2460,7 +2468,7 @@ pre' :: Elements -> React Element
 #### `progress`
 
 ``` purescript
-progress :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+progress :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2474,7 +2482,7 @@ progress' :: Elements -> React Element
 #### `q`
 
 ``` purescript
-q :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+q :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2488,7 +2496,7 @@ q' :: Elements -> React Element
 #### `radialGradient`
 
 ``` purescript
-radialGradient :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+radialGradient :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2502,7 +2510,7 @@ radialGradient' :: Elements -> React Element
 #### `rect`
 
 ``` purescript
-rect :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+rect :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2516,7 +2524,7 @@ rect' :: Elements -> React Element
 #### `rp`
 
 ``` purescript
-rp :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+rp :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2530,7 +2538,7 @@ rp' :: Elements -> React Element
 #### `rt`
 
 ``` purescript
-rt :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+rt :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2544,7 +2552,7 @@ rt' :: Elements -> React Element
 #### `ruby`
 
 ``` purescript
-ruby :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+ruby :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2558,7 +2566,7 @@ ruby' :: Elements -> React Element
 #### `s`
 
 ``` purescript
-s :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+s :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2572,7 +2580,7 @@ s' :: Elements -> React Element
 #### `samp`
 
 ``` purescript
-samp :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+samp :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2586,7 +2594,7 @@ samp' :: Elements -> React Element
 #### `script`
 
 ``` purescript
-script :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+script :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2600,7 +2608,7 @@ script' :: Elements -> React Element
 #### `section`
 
 ``` purescript
-section :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+section :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2614,7 +2622,7 @@ section' :: Elements -> React Element
 #### `select`
 
 ``` purescript
-select :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+select :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2628,7 +2636,7 @@ select' :: Elements -> React Element
 #### `small`
 
 ``` purescript
-small :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+small :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2642,7 +2650,7 @@ small' :: Elements -> React Element
 #### `source`
 
 ``` purescript
-source :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+source :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2656,7 +2664,7 @@ source' :: Elements -> React Element
 #### `span`
 
 ``` purescript
-span :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+span :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2670,7 +2678,7 @@ span' :: Elements -> React Element
 #### `stop`
 
 ``` purescript
-stop :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+stop :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2684,7 +2692,7 @@ stop' :: Elements -> React Element
 #### `strong`
 
 ``` purescript
-strong :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+strong :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2698,7 +2706,7 @@ strong' :: Elements -> React Element
 #### `style`
 
 ``` purescript
-style :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+style :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2712,7 +2720,7 @@ style' :: Elements -> React Element
 #### `sub`
 
 ``` purescript
-sub :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+sub :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2726,7 +2734,7 @@ sub' :: Elements -> React Element
 #### `summary`
 
 ``` purescript
-summary :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+summary :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2740,7 +2748,7 @@ summary' :: Elements -> React Element
 #### `sup`
 
 ``` purescript
-sup :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+sup :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2754,7 +2762,7 @@ sup' :: Elements -> React Element
 #### `svg`
 
 ``` purescript
-svg :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+svg :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2768,7 +2776,7 @@ svg' :: Elements -> React Element
 #### `table`
 
 ``` purescript
-table :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+table :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2782,7 +2790,7 @@ table' :: Elements -> React Element
 #### `tbody`
 
 ``` purescript
-tbody :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+tbody :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2796,7 +2804,7 @@ tbody' :: Elements -> React Element
 #### `td`
 
 ``` purescript
-td :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+td :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2810,7 +2818,7 @@ td' :: Elements -> React Element
 #### `text`
 
 ``` purescript
-text :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+text :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2824,7 +2832,7 @@ text' :: Elements -> React Element
 #### `textarea`
 
 ``` purescript
-textarea :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+textarea :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2838,7 +2846,7 @@ textarea' :: Elements -> React Element
 #### `tfoot`
 
 ``` purescript
-tfoot :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+tfoot :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2852,7 +2860,7 @@ tfoot' :: Elements -> React Element
 #### `th`
 
 ``` purescript
-th :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+th :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2866,7 +2874,7 @@ th' :: Elements -> React Element
 #### `thead`
 
 ``` purescript
-thead :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+thead :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2880,7 +2888,7 @@ thead' :: Elements -> React Element
 #### `time`
 
 ``` purescript
-time :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+time :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2894,7 +2902,7 @@ time' :: Elements -> React Element
 #### `title`
 
 ``` purescript
-title :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+title :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2908,7 +2916,7 @@ title' :: Elements -> React Element
 #### `tr`
 
 ``` purescript
-tr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+tr :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2922,7 +2930,7 @@ tr' :: Elements -> React Element
 #### `track`
 
 ``` purescript
-track :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+track :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2936,7 +2944,7 @@ track' :: Elements -> React Element
 #### `tspan`
 
 ``` purescript
-tspan :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+tspan :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2950,7 +2958,7 @@ tspan' :: Elements -> React Element
 #### `u`
 
 ``` purescript
-u :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+u :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2964,7 +2972,7 @@ u' :: Elements -> React Element
 #### `ul`
 
 ``` purescript
-ul :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+ul :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2978,7 +2986,7 @@ ul' :: Elements -> React Element
 #### `var`
 
 ``` purescript
-var :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+var :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -2992,7 +3000,7 @@ var' :: Elements -> React Element
 #### `video`
 
 ``` purescript
-video :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+video :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -3006,7 +3014,7 @@ video' :: Elements -> React Element
 #### `wbr`
 
 ``` purescript
-wbr :: forall eff props state. Attributes -> Events eff props state -> Elements -> React Element
+wbr :: forall eff. Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -3023,14 +3031,14 @@ wbr' :: Elements -> React Element
 #### `Events`
 
 ``` purescript
-type Events eff props state = Options (EventName eff props state)
+type Events eff = Options (EventName eff)
 ```
 
 
 #### `EventName`
 
 ``` purescript
-data EventName :: # ! -> * -> * -> *
+data EventName :: # ! -> *
 ```
 
 
@@ -3038,7 +3046,7 @@ data EventName :: # ! -> * -> * -> *
 
 ``` purescript
 newtype SyntheticClipboardEvent
-  = SyntheticClipboardEvent { clipboardData :: DOMDataTransfer, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticClipboardEvent { clipboardData :: DOMDataTransfer, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
 ```
 
 
@@ -3046,7 +3054,7 @@ newtype SyntheticClipboardEvent
 
 ``` purescript
 newtype SyntheticKeyboardEvent
-  = SyntheticKeyboardEvent { which :: Number, shiftKey :: Boolean, repeat :: Boolean, metaKey :: Boolean, location :: Number, locale :: String, keyCode :: Number, key :: String, getModifierState :: String -> Boolean, ctrlKey :: Boolean, charCode :: Number, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticKeyboardEvent { which :: Number, shiftKey :: Boolean, repeat :: Boolean, metaKey :: Boolean, location :: Number, locale :: String, keyCode :: Number, key :: String, getModifierState :: String -> Boolean, ctrlKey :: Boolean, charCode :: Number, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
 ```
 
 
@@ -3054,7 +3062,7 @@ newtype SyntheticKeyboardEvent
 
 ``` purescript
 newtype SyntheticFocusEvent
-  = SyntheticFocusEvent { relatedTarget :: DOMEventTarget, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticFocusEvent { relatedTarget :: DOMEventTarget, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
 ```
 
 
@@ -3062,7 +3070,7 @@ newtype SyntheticFocusEvent
 
 ``` purescript
 newtype SyntheticInputEvent
-  = SyntheticInputEvent { "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticInputEvent { "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
 ```
 
 
@@ -3070,7 +3078,7 @@ newtype SyntheticInputEvent
 
 ``` purescript
 newtype SyntheticMouseEvent
-  = SyntheticMouseEvent { shiftKey :: Boolean, screenY :: Number, screenX :: Number, relatedTarget :: DOMEventTarget, pageY :: Number, pageX :: Number, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, clientY :: Number, clientX :: Number, buttons :: Number, button :: Number, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticMouseEvent { shiftKey :: Boolean, screenY :: Number, screenX :: Number, relatedTarget :: DOMEventTarget, pageY :: Number, pageX :: Number, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, clientY :: Number, clientX :: Number, buttons :: Number, button :: Number, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
 ```
 
 
@@ -3078,7 +3086,7 @@ newtype SyntheticMouseEvent
 
 ``` purescript
 newtype SyntheticTouchEvent
-  = SyntheticTouchEvent { touches :: DOMTouchList, targetTouches :: DOMTouchList, shiftKey :: Boolean, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, changedTouches :: DOMTouchList, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticTouchEvent { touches :: DOMTouchList, targetTouches :: DOMTouchList, shiftKey :: Boolean, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, changedTouches :: DOMTouchList, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
 ```
 
 
@@ -3086,7 +3094,7 @@ newtype SyntheticTouchEvent
 
 ``` purescript
 newtype SyntheticUIEvent
-  = SyntheticUIEvent { view :: DOMAbstractView, detail :: Number, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticUIEvent { view :: DOMAbstractView, detail :: Number, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
 ```
 
 
@@ -3094,7 +3102,7 @@ newtype SyntheticUIEvent
 
 ``` purescript
 newtype SyntheticWheelEvent
-  = SyntheticWheelEvent { deltaZ :: Number, deltaY :: Number, deltaX :: Number, deltaMode :: Number, detail :: Number, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: forall eff. Eff (dom :: DOM | eff) Unit, preventDefault :: forall eff. Eff (dom :: DOM | eff) Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticWheelEvent { deltaZ :: Number, deltaY :: Number, deltaX :: Number, deltaMode :: Number, detail :: Number, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
 ```
 
 
@@ -3115,626 +3123,696 @@ data SyntheticDragEvent
 #### `SyntheticClipboardEventFn`
 
 ``` purescript
-newtype SyntheticClipboardEventFn eff props state
-  = SyntheticClipboardEventFn (SyntheticClipboardEvent -> Eff eff (Component props state Unit))
+newtype SyntheticClipboardEventFn eff
+  = SyntheticClipboardEventFn (SyntheticClipboardEvent -> Component eff Unit)
 ```
 
 
 #### `SyntheticCompositionEventFn`
 
 ``` purescript
-newtype SyntheticCompositionEventFn eff props state
-  = SyntheticCompositionEventFn (SyntheticCompositionEvent -> Eff eff (Component props state Unit))
+newtype SyntheticCompositionEventFn eff
+  = SyntheticCompositionEventFn (SyntheticCompositionEvent -> Component eff Unit)
 ```
 
 
 #### `SyntheticDragEventFn`
 
 ``` purescript
-newtype SyntheticDragEventFn eff props state
-  = SyntheticDragEventFn (SyntheticDragEvent -> Eff eff (Component props state Unit))
+newtype SyntheticDragEventFn eff
+  = SyntheticDragEventFn (SyntheticDragEvent -> Component eff Unit)
 ```
 
 
 #### `SyntheticKeyboardEventFn`
 
 ``` purescript
-newtype SyntheticKeyboardEventFn eff props state
-  = SyntheticKeyboardEventFn (SyntheticKeyboardEvent -> Eff eff (Component props state Unit))
+newtype SyntheticKeyboardEventFn eff
+  = SyntheticKeyboardEventFn (SyntheticKeyboardEvent -> Component eff Unit)
 ```
 
 
 #### `SyntheticFocusEventFn`
 
 ``` purescript
-newtype SyntheticFocusEventFn eff props state
-  = SyntheticFocusEventFn (SyntheticFocusEvent -> Eff eff (Component props state Unit))
+newtype SyntheticFocusEventFn eff
+  = SyntheticFocusEventFn (SyntheticFocusEvent -> Component eff Unit)
 ```
 
 
 #### `SyntheticInputEventFn`
 
 ``` purescript
-newtype SyntheticInputEventFn eff props state
-  = SyntheticInputEventFn (SyntheticInputEvent -> Eff eff (Component props state Unit))
+newtype SyntheticInputEventFn eff
+  = SyntheticInputEventFn (SyntheticInputEvent -> Component eff Unit)
 ```
 
 
 #### `SyntheticMouseEventFn`
 
 ``` purescript
-newtype SyntheticMouseEventFn eff props state
-  = SyntheticMouseEventFn (SyntheticMouseEvent -> Eff eff (Component props state Unit))
+newtype SyntheticMouseEventFn eff
+  = SyntheticMouseEventFn (SyntheticMouseEvent -> Component eff Unit)
 ```
 
 
 #### `SyntheticTouchEventFn`
 
 ``` purescript
-newtype SyntheticTouchEventFn eff props state
-  = SyntheticTouchEventFn (SyntheticTouchEvent -> Eff eff (Component props state Unit))
+newtype SyntheticTouchEventFn eff
+  = SyntheticTouchEventFn (SyntheticTouchEvent -> Component eff Unit)
 ```
 
 
 #### `SyntheticUIEventFn`
 
 ``` purescript
-newtype SyntheticUIEventFn eff props state
-  = SyntheticUIEventFn (SyntheticUIEvent -> Eff eff (Component props state Unit))
+newtype SyntheticUIEventFn eff
+  = SyntheticUIEventFn (SyntheticUIEvent -> Component eff Unit)
 ```
 
 
 #### `SyntheticWheelEventFn`
 
 ``` purescript
-newtype SyntheticWheelEventFn eff props state
-  = SyntheticWheelEventFn (SyntheticWheelEvent -> Eff eff (Component props state Unit))
+newtype SyntheticWheelEventFn eff
+  = SyntheticWheelEventFn (SyntheticWheelEvent -> Component eff Unit)
 ```
 
 
 #### `isOptionSyntheticClipboardEventFn`
 
 ``` purescript
-instance isOptionSyntheticClipboardEventFn :: IsOption (SyntheticClipboardEventFn eff props state)
+instance isOptionSyntheticClipboardEventFn :: IsOption (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `isOptionSyntheticCompositionEventFn`
 
 ``` purescript
-instance isOptionSyntheticCompositionEventFn :: IsOption (SyntheticCompositionEventFn eff props state)
+instance isOptionSyntheticCompositionEventFn :: IsOption (SyntheticCompositionEventFn eff)
 ```
 
 
 #### `isOptionSyntheticDragEventFn`
 
 ``` purescript
-instance isOptionSyntheticDragEventFn :: IsOption (SyntheticDragEventFn eff props state)
+instance isOptionSyntheticDragEventFn :: IsOption (SyntheticDragEventFn eff)
 ```
 
 
 #### `isOptionSyntheticKeyboardEventFn`
 
 ``` purescript
-instance isOptionSyntheticKeyboardEventFn :: IsOption (SyntheticKeyboardEventFn eff props state)
+instance isOptionSyntheticKeyboardEventFn :: IsOption (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `isOptionSyntheticFocusEventFn`
 
 ``` purescript
-instance isOptionSyntheticFocusEventFn :: IsOption (SyntheticFocusEventFn eff props state)
+instance isOptionSyntheticFocusEventFn :: IsOption (SyntheticFocusEventFn eff)
 ```
 
 
 #### `isOptionSyntheticInputEventFn`
 
 ``` purescript
-instance isOptionSyntheticInputEventFn :: IsOption (SyntheticInputEventFn eff props state)
+instance isOptionSyntheticInputEventFn :: IsOption (SyntheticInputEventFn eff)
 ```
 
 
 #### `isOptionSyntheticMouseEventFn`
 
 ``` purescript
-instance isOptionSyntheticMouseEventFn :: IsOption (SyntheticMouseEventFn eff props state)
+instance isOptionSyntheticMouseEventFn :: IsOption (SyntheticMouseEventFn eff)
 ```
 
 
 #### `isOptionSyntheticTouchEventFn`
 
 ``` purescript
-instance isOptionSyntheticTouchEventFn :: IsOption (SyntheticTouchEventFn eff props state)
+instance isOptionSyntheticTouchEventFn :: IsOption (SyntheticTouchEventFn eff)
 ```
 
 
 #### `isOptionSyntheticUIEventFn`
 
 ``` purescript
-instance isOptionSyntheticUIEventFn :: IsOption (SyntheticUIEventFn eff props state)
+instance isOptionSyntheticUIEventFn :: IsOption (SyntheticUIEventFn eff)
 ```
 
 
 #### `isOptionSyntheticWheelEventFn`
 
 ``` purescript
-instance isOptionSyntheticWheelEventFn :: IsOption (SyntheticWheelEventFn eff props state)
+instance isOptionSyntheticWheelEventFn :: IsOption (SyntheticWheelEventFn eff)
+```
+
+
+#### `effApplyFnsSyntheticClipboardEvent`
+
+``` purescript
+instance effApplyFnsSyntheticClipboardEvent :: EffApplyFns SyntheticClipboardEvent
+```
+
+
+#### `effApplyFnsSyntheticCompositionEvent`
+
+``` purescript
+instance effApplyFnsSyntheticCompositionEvent :: EffApplyFns SyntheticCompositionEvent
+```
+
+
+#### `effApplyFnsSyntheticDragEvent`
+
+``` purescript
+instance effApplyFnsSyntheticDragEvent :: EffApplyFns SyntheticDragEvent
+```
+
+
+#### `effApplyFnsSyntheticKeyboardEvent`
+
+``` purescript
+instance effApplyFnsSyntheticKeyboardEvent :: EffApplyFns SyntheticKeyboardEvent
+```
+
+
+#### `effApplyFnsSyntheticFocusEvent`
+
+``` purescript
+instance effApplyFnsSyntheticFocusEvent :: EffApplyFns SyntheticFocusEvent
+```
+
+
+#### `effApplyFnsSyntheticInputEvent`
+
+``` purescript
+instance effApplyFnsSyntheticInputEvent :: EffApplyFns SyntheticInputEvent
+```
+
+
+#### `effApplyFnsSyntheticMouseEvent`
+
+``` purescript
+instance effApplyFnsSyntheticMouseEvent :: EffApplyFns SyntheticMouseEvent
+```
+
+
+#### `effApplyFnsSyntheticTouchEvent`
+
+``` purescript
+instance effApplyFnsSyntheticTouchEvent :: EffApplyFns SyntheticTouchEvent
+```
+
+
+#### `effApplyFnsSyntheticUIEvent`
+
+``` purescript
+instance effApplyFnsSyntheticUIEvent :: EffApplyFns SyntheticUIEvent
+```
+
+
+#### `effApplyFnsSyntheticWheelEvent`
+
+``` purescript
+instance effApplyFnsSyntheticWheelEvent :: EffApplyFns SyntheticWheelEvent
 ```
 
 
 #### `onCopy`
 
 ``` purescript
-onCopy :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+onCopy :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onCopyCapture`
 
 ``` purescript
-onCopyCapture :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+onCopyCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onCut`
 
 ``` purescript
-onCut :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+onCut :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onCutCapture`
 
 ``` purescript
-onCutCapture :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+onCutCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onPaste`
 
 ``` purescript
-onPaste :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+onPaste :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onPasteCapture`
 
 ``` purescript
-onPasteCapture :: forall eff props state. Option (EventName eff props state) (SyntheticClipboardEventFn eff props state)
+onPasteCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onFocus`
 
 ``` purescript
-onFocus :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+onFocus :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
 ```
 
 
 #### `onFocusCapture`
 
 ``` purescript
-onFocusCapture :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+onFocusCapture :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
 ```
 
 
 #### `onBlur`
 
 ``` purescript
-onBlur :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+onBlur :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
 ```
 
 
 #### `onBlurCapture`
 
 ``` purescript
-onBlurCapture :: forall eff props state. Option (EventName eff props state) (SyntheticFocusEventFn eff props state)
+onBlurCapture :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
 ```
 
 
 #### `onChange`
 
 ``` purescript
-onChange :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+onChange :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 ```
 
 
 #### `onChangeCapture`
 
 ``` purescript
-onChangeCapture :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+onChangeCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 ```
 
 
 #### `onInput`
 
 ``` purescript
-onInput :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+onInput :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 ```
 
 
 #### `onInputCapture`
 
 ``` purescript
-onInputCapture :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+onInputCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 ```
 
 
 #### `onSubmit`
 
 ``` purescript
-onSubmit :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+onSubmit :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 ```
 
 
 #### `onSubmitCapture`
 
 ``` purescript
-onSubmitCapture :: forall eff props state. Option (EventName eff props state) (SyntheticInputEventFn eff props state)
+onSubmitCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 ```
 
 
 #### `onKeyDown`
 
 ``` purescript
-onKeyDown :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+onKeyDown :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onKeyDownCapture`
 
 ``` purescript
-onKeyDownCapture :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+onKeyDownCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onKeyPress`
 
 ``` purescript
-onKeyPress :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+onKeyPress :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onKeyPressCapture`
 
 ``` purescript
-onKeyPressCapture :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+onKeyPressCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onKeyUp`
 
 ``` purescript
-onKeyUp :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+onKeyUp :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onKeyUpCapture`
 
 ``` purescript
-onKeyUpCapture :: forall eff props state. Option (EventName eff props state) (SyntheticKeyboardEventFn eff props state)
+onKeyUpCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onClick`
 
 ``` purescript
-onClick :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onClick :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onClickCapture`
 
 ``` purescript
-onClickCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDoubleClick`
 
 ``` purescript
-onDoubleClick :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDoubleClick :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDoubleClickCapture`
 
 ``` purescript
-onDoubleClickCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDoubleClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDrag`
 
 ``` purescript
-onDrag :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDrag :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragCapture`
 
 ``` purescript
-onDragCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragEnd`
 
 ``` purescript
-onDragEnd :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragEnd :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragEndCapture`
 
 ``` purescript
-onDragEndCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragEndCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragEnter`
 
 ``` purescript
-onDragEnter :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragEnter :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragEnterCapture`
 
 ``` purescript
-onDragEnterCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragEnterCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragExit`
 
 ``` purescript
-onDragExit :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragExit :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragExitCapture`
 
 ``` purescript
-onDragExitCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragExitCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragLeave`
 
 ``` purescript
-onDragLeave :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragLeave :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragLeaveCapture`
 
 ``` purescript
-onDragLeaveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragLeaveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragOver`
 
 ``` purescript
-onDragOver :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragOver :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragOverCapture`
 
 ``` purescript
-onDragOverCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragOverCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragStart`
 
 ``` purescript
-onDragStart :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragStart :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDragStartCapture`
 
 ``` purescript
-onDragStartCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDragStartCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDrop`
 
 ``` purescript
-onDrop :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDrop :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDropCapture`
 
 ``` purescript
-onDropCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onDropCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseDown`
 
 ``` purescript
-onMouseDown :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseDown :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseDownCapture`
 
 ``` purescript
-onMouseDownCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseDownCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseEnter`
 
 ``` purescript
-onMouseEnter :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseEnter :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseEnterCapture`
 
 ``` purescript
-onMouseEnterCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseEnterCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseLeave`
 
 ``` purescript
-onMouseLeave :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseLeave :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseLeaveCapture`
 
 ``` purescript
-onMouseLeaveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseLeaveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseMove`
 
 ``` purescript
-onMouseMove :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseMove :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseMoveCapture`
 
 ``` purescript
-onMouseMoveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseMoveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseOut`
 
 ``` purescript
-onMouseOut :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseOut :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseOutCapture`
 
 ``` purescript
-onMouseOutCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseOutCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseOver`
 
 ``` purescript
-onMouseOver :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseOver :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseOverCapture`
 
 ``` purescript
-onMouseOverCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseOverCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseUp`
 
 ``` purescript
-onMouseUp :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseUp :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseUpCapture`
 
 ``` purescript
-onMouseUpCapture :: forall eff props state. Option (EventName eff props state) (SyntheticMouseEventFn eff props state)
+onMouseUpCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onTouchCancel`
 
 ``` purescript
-onTouchCancel :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+onTouchCancel :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchCancelCapture`
 
 ``` purescript
-onTouchCancelCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+onTouchCancelCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchEnd`
 
 ``` purescript
-onTouchEnd :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+onTouchEnd :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchEndCapture`
 
 ``` purescript
-onTouchEndCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+onTouchEndCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchMove`
 
 ``` purescript
-onTouchMove :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+onTouchMove :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchMoveCapture`
 
 ``` purescript
-onTouchMoveCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+onTouchMoveCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchStart`
 
 ``` purescript
-onTouchStart :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+onTouchStart :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchStartCapture`
 
 ``` purescript
-onTouchStartCapture :: forall eff props state. Option (EventName eff props state) (SyntheticTouchEventFn eff props state)
+onTouchStartCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onScroll`
 
 ``` purescript
-onScroll :: forall eff props state. Option (EventName eff props state) (SyntheticUIEventFn eff props state)
+onScroll :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
 ```
 
 
 #### `onScrollCapture`
 
 ``` purescript
-onScrollCapture :: forall eff props state. Option (EventName eff props state) (SyntheticUIEventFn eff props state)
+onScrollCapture :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
 ```
 
 
 #### `onWheel`
 
 ``` purescript
-onWheel :: forall eff props state. Option (EventName eff props state) (SyntheticWheelEventFn eff props state)
+onWheel :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)
 ```
 
 
 #### `onWheelCapture`
 
 ``` purescript
-onWheelCapture :: forall eff props state. Option (EventName eff props state) (SyntheticWheelEventFn eff props state)
+onWheelCapture :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)
 ```
 
 
@@ -3776,24 +3854,31 @@ type RenderFn props state = Reference props state -> Props props -> State state 
 ```
 
 
+#### `PureRenderFn`
+
+``` purescript
+type PureRenderFn props = Props props -> React Element
+```
+
+
 #### `LifecycleFn0`
 
 ``` purescript
-type LifecycleFn0 eff props state a = Reference props state -> Eff eff (Component props state a)
+type LifecycleFn0 eff props state a = Reference props state -> Component eff a
 ```
 
 
 #### `LifecycleFn1`
 
 ``` purescript
-type LifecycleFn1 eff props state a = Reference props state -> Props props -> Eff eff (Component props state a)
+type LifecycleFn1 eff props state a = Reference props state -> Props props -> Component eff a
 ```
 
 
 #### `LifecycleFn2`
 
 ``` purescript
-type LifecycleFn2 eff props state a = Reference props state -> Props props -> State state -> Eff eff (Component props state a)
+type LifecycleFn2 eff props state a = Reference props state -> Props props -> State state -> Component eff a
 ```
 
 
@@ -3846,18 +3931,26 @@ type ComponentWillUnmount eff props state = LifecycleFn0 eff props state Unit
 ```
 
 
-#### `Spec`
+#### `PureSpec`
 
 ``` purescript
-type Spec eff props state = { componentWillUnmount :: ComponentWillUnmount eff props state, componentDidUpdate :: ComponentDidUpdate eff props state, componentWillUpdate :: ComponentWillUpdate eff props state, shouldComponentUpdate :: ShouldComponentUpdate eff props state, componentWillReceiveProps :: ComponentWillReceiveProps eff props state, componentDidMount :: ComponentDidMount eff props state, componentWillMount :: ComponentWillMount eff props state, displayName :: DisplayName, getDefaultProps :: Props props, getInitialState :: State state, render :: RenderFn props state }
+type PureSpec props = { displayName :: DisplayName, getDefaultProps :: Props props, render :: PureRenderFn props }
+```
+
+
+#### `ImpureSpec`
+
+``` purescript
+type ImpureSpec eff props state = { componentWillUnmount :: ComponentWillUnmount eff props state, componentDidUpdate :: ComponentDidUpdate eff props state, componentWillUpdate :: ComponentWillUpdate eff props state, shouldComponentUpdate :: ShouldComponentUpdate eff props state, componentWillReceiveProps :: ComponentWillReceiveProps eff props state, componentDidMount :: ComponentDidMount eff props state, componentWillMount :: ComponentWillMount eff props state, displayName :: DisplayName, getDefaultProps :: Props props, getInitialState :: State state, render :: RenderFn props state }
 ```
 
 
 #### `Specification`
 
 ``` purescript
-newtype Specification eff props state
-  = Specification (Spec eff props state)
+data Specification eff props state
+  = PureSpecification (PureSpec props)
+  | ImpureSpecification (ImpureSpec eff props state)
 ```
 
 
@@ -3873,8 +3966,8 @@ type React = FreeC ReactF
 ``` purescript
 data ReactF a
   = CreateClass (forall eff props state. Specification eff props state) (forall props state. Class props state -> a)
-  | CreateElementFromClass (forall props state. Class props state) (forall props. Props props) (forall eff props state. Events eff props state) Elements (Element -> a)
-  | CreateElementFromTagName TagName Attributes (forall eff props state. Events eff props state) Elements (Element -> a)
+  | CreateElementFromClass (forall props state. Class props state) (forall props. Props props) (forall eff. Events eff) Elements (Element -> a)
+  | CreateElementFromTagName TagName Attributes (forall eff. Events eff) Elements (Element -> a)
   | RenderSync Element DOMElement (forall props state. Reference props state -> a)
   | RenderAsync Element DOMElement (forall props state. Reference props state -> a)
 ```
@@ -3890,14 +3983,14 @@ createClass :: forall eff props state. Specification eff props state -> React (C
 #### `createElementFromClass`
 
 ``` purescript
-createElementFromClass :: forall eff props state. Class props state -> Props props -> Events eff props state -> Elements -> React Element
+createElementFromClass :: forall eff props state. Class props state -> Props props -> Events eff -> Elements -> React Element
 ```
 
 
 #### `createElementFromTagName`
 
 ``` purescript
-createElementFromTagName :: forall eff props state. TagName -> Attributes -> Events eff props state -> Elements -> React Element
+createElementFromTagName :: forall eff props state. TagName -> Attributes -> Events eff -> Elements -> React Element
 ```
 
 
@@ -3918,10 +4011,19 @@ renderAsync :: forall props spec. Element -> DOMElement -> React (Reference prop
 
 ## Module React.ReactI
 
+#### `ReactJsImport`
+
+``` purescript
+data ReactJsImport
+```
+
+
 #### `ReactJs`
 
 ``` purescript
 data ReactJs
+  = ReactJs ReactJsImport
+  | ReactJsAddons ReactJsImport
 ```
 
 
@@ -3935,10 +4037,17 @@ run :: forall a. ReactJs -> React a -> Eff (react :: ReactE) a
 
 ## Module React.Spec
 
-#### `spec`
+#### `impureSpec`
 
 ``` purescript
-spec :: forall eff props state. Props props -> State state -> RenderFn props state -> Specification eff props state
+impureSpec :: forall eff props state. Props props -> State state -> RenderFn props state -> Specification eff props state
+```
+
+
+#### `pureSpec`
+
+``` purescript
+pureSpec :: forall props. Props props -> PureRenderFn props -> Specification _ props _
 ```
 
 
@@ -4188,6 +4297,28 @@ data DOMDataTransfer
 
 ``` purescript
 data DOMTouchList
+```
+
+
+#### `EffApplyFn0`
+
+``` purescript
+data EffApplyFn0 ret
+```
+
+
+#### `EffApplyFns`
+
+``` purescript
+class EffApplyFns a where
+  effApplyFn0 :: forall eff ret. EffApplyFn0 ret -> a -> Eff (dom :: DOM | eff) ret
+```
+
+
+#### `effApplyFn0Fn`
+
+``` purescript
+effApplyFn0Fn :: forall eff ret a. Fn2 (EffApplyFn0 ret) a (Eff (dom :: DOM | eff) ret)
 ```
 
 

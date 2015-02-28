@@ -5,7 +5,7 @@ module Todomvc.Header
   , header
   ) where
 
-import Control.Monad.Eff.Unsafe (unsafeInterleaveEff)
+import Control.Monad.Eff.Class (liftEff)
 
 import Data.Monoid (mempty)
 import Data.Options ((:=))
@@ -25,12 +25,12 @@ import qualified React.Spec as R
 import Todomvc.Todo (Todo())
 import Todomvc.Types
 
-type HeaderProps = { onSubmit :: String -> TodomvcComponentEff }
+type HeaderProps = { onSubmit :: String -> TodomvcComponent }
 
 type HeaderState = { title :: String }
 
 props :: Props HeaderProps
-props = Props { onSubmit: const $ pure $ pure unit }
+props = Props { onSubmit: const $ pure unit }
 
 state :: State HeaderState
 state = State { title: "" }
@@ -49,14 +49,17 @@ render ref (Props props) (State state) =
      ]
   where
     onChange (Evt.SyntheticInputEvent e) =
-      pure $ setStateAsync ref $ State { title: eventTargetValue e.target }
+      setStateAsync ref $ State { title: eventTargetValue e.target }
 
-    onSubmit (Evt.SyntheticInputEvent e) = do
-      e.preventDefault
-      unsafeInterleaveEff $ props.onSubmit state.title
+    onSubmit evt@(Evt.SyntheticInputEvent e) = do
+      liftEff $ effApplyFn0 e.preventDefault evt
+      props.onSubmit state.title
+      setStateAsync ref $ State { title: "" }
+      return unit
+
 
 spec :: forall eff. Specification eff HeaderProps HeaderState
-spec = R.spec props state render #
+spec = R.impureSpec props state render #
        R.setDisplayName .~ "Header"
 
 header :: React (Class HeaderProps HeaderState)

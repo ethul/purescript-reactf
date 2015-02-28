@@ -5,9 +5,11 @@ module React.ReactF
   , Elements()
   , React(..)
   , ReactF(..)
-  , Spec(..)
+  , PureSpec(..)
+  , ImpureSpec(..)
   , Specification(..)
   , RenderFn()
+  , PureRenderFn()
   , LifecycleFn0()
   , LifecycleFn1()
   , LifecycleFn2()
@@ -44,11 +46,13 @@ type Elements = [Element]
 
 type RenderFn props state = Reference props state -> Props props -> State state -> React Element
 
-type LifecycleFn0 eff props state a = Reference props state -> Eff eff (Component props state a)
+type PureRenderFn props = Props props -> React Element
 
-type LifecycleFn1 eff props state a = Reference props state -> Props props -> Eff eff (Component props state a)
+type LifecycleFn0 eff props state a = Reference props state -> Component eff a
 
-type LifecycleFn2 eff props state a = Reference props state -> Props props -> State state -> Eff eff (Component props state a)
+type LifecycleFn1 eff props state a = Reference props state -> Props props -> Component eff a
+
+type LifecycleFn2 eff props state a = Reference props state -> Props props -> State state -> Component eff a
 
 type ComponentWillMount eff props state = LifecycleFn0 eff props state Unit
 
@@ -64,7 +68,13 @@ type ComponentDidUpdate eff props state = LifecycleFn2 eff props state Unit
 
 type ComponentWillUnmount eff props state = LifecycleFn0 eff props state Unit
 
-type Spec eff props state
+type PureSpec props
+  = { render :: PureRenderFn props
+    , getDefaultProps :: Props props
+    , displayName :: DisplayName
+    }
+
+type ImpureSpec eff props state
   = { render :: RenderFn props state
     , getInitialState :: State state
     , getDefaultProps :: Props props
@@ -81,24 +91,26 @@ type Spec eff props state
     , componentWillUnmount :: ComponentWillUnmount eff props state
     }
 
-newtype Specification eff props state = Specification (Spec eff props state)
+data Specification eff props state
+  = PureSpecification (PureSpec props)
+  | ImpureSpecification (ImpureSpec eff props state)
 
 type React = FreeC ReactF
 
 data ReactF a
   = CreateClass (forall eff props state. Specification eff props state) (forall props state. Class props state -> a)
-  | CreateElementFromClass (forall props state. Class props state) (forall props. Props props) (forall eff props state. Events eff props state) Elements (Element -> a)
-  | CreateElementFromTagName TagName Attributes (forall eff props state. Events eff props state) Elements (Element -> a)
+  | CreateElementFromClass (forall props state. Class props state) (forall props. Props props) (forall eff. Events eff) Elements (Element -> a)
+  | CreateElementFromTagName TagName Attributes (forall eff. Events eff) Elements (Element -> a)
   | RenderSync Element DOMElement (forall props state. Reference props state -> a)
   | RenderAsync Element DOMElement (forall props state. Reference props state -> a)
 
 createClass :: forall eff props state. Specification eff props state -> React (Class props state)
 createClass spec = liftFC $ CreateClass (unsafeSpec spec) unsafeClass
 
-createElementFromClass :: forall eff props state. Class props state -> Props props -> Events eff props state -> Elements -> React Element
+createElementFromClass :: forall eff props state. Class props state -> Props props -> Events eff -> Elements -> React Element
 createElementFromClass cls props evts els = liftFC $ CreateElementFromClass (unsafeClass cls) (unsafeProps props) (unsafeEvents evts) els id
 
-createElementFromTagName :: forall eff props state. TagName -> Attributes -> Events eff props state -> Elements -> React Element
+createElementFromTagName :: forall eff props state. TagName -> Attributes -> Events eff -> Elements -> React Element
 createElementFromTagName name attrs evts els = liftFC $ CreateElementFromTagName name attrs (unsafeEvents evts) els id
 
 renderSync :: forall props spec. Element -> DOMElement -> React (Reference props spec)
@@ -109,7 +121,7 @@ renderAsync el dom = liftFC $ RenderAsync el dom unsafeReference
 
 foreign import unsafeSpec "function unsafeSpec(spec){return spec;}" :: forall a b c d e f. Specification a b c -> Specification d e f
 
-foreign import unsafeEvents "function unsafeEvents(evts){return evts;}" :: forall a b c d e f. Events a b c -> Events d e f
+foreign import unsafeEvents "function unsafeEvents(evts){return evts;}" :: forall a b. Events a -> Events b
 
 foreign import unsafeClass "function unsafeClass(cls){return cls;}" :: forall a b c d. Class a b -> Class c d
 

@@ -1,6 +1,5 @@
 module Todomvc.Info
   ( InfoProps()
-  , InfoState()
   , spec
   , info
   ) where
@@ -22,16 +21,11 @@ import Todomvc.Types
 
 type InfoProps = Unit
 
-type InfoState = Unit
-
 props :: Props InfoProps
 props = Props unit
 
-state :: State InfoState
-state = State unit
-
-render :: RenderFn InfoProps InfoState
-render ref (Props props) (State state) =
+render :: PureRenderFn InfoProps
+render _ =
   Dom.footer (Attr.id := "info") mempty
   .> [ Dom.p'
        .> Dom.textnode "Double-click to edit a todo"
@@ -64,9 +58,9 @@ render ref (Props props) (State state) =
     style = { paddingLeft: "5px" }
     style' = { paddingLeft: "5px", paddingRight: "5px" }
 
-spec :: forall eff. Specification eff InfoProps InfoState
-spec = R.spec props state render #
+spec :: Specification _ InfoProps _
+spec = R.pureSpec props render #
        R.setDisplayName .~ "Info"
 
-info :: React (Class InfoProps InfoState)
+info :: React (Class InfoProps _)
 info = createClass spec
