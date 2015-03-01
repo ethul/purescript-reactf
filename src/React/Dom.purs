@@ -1,5 +1,5 @@
 module React.Dom
-  ( null, textnode
+  ( null, raw
   , a, a'
   , abbr, abbr'
   , address, address'
@@ -141,10 +141,10 @@ import qualified React.TagName as T
 null :: React Element
 null = createElementFromTagName T.Null mempty mempty mempty
 
-textnode :: String -> React Element
-textnode a = createElementFromTagName T.Textnode mempty mempty [toTextnode a]
+raw :: String -> React Element
+raw a = createElementFromTagName T.Raw mempty mempty [toRaw a]
 
-foreign import toTextnode "function toTextnode(a){return a;}" :: String -> Element
+foreign import toRaw "function toRaw(a){ return a; }" :: String -> Element
 
 a :: forall eff. Attributes -> Events eff -> Elements -> React Element
 a = createElementFromTagName T.A

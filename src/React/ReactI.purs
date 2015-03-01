@@ -18,7 +18,7 @@ import React.ComponentF (Component(), Props(), Reference())
 import qualified React.ComponentI as CI
 import React.Events (Events())
 import React.ReactF
-import React.TagName (TagName(Null, Textnode))
+import React.TagName (TagName(Null, Raw))
 import React.Types (DOMElement(), ReactE())
 
 data ReactJsImport
@@ -38,7 +38,7 @@ reactN reactjs fa =
        k <$> runFn7 createElementFromClassFn rjs CI.run cls props evts events els
 
        CreateElementFromTagName tag attrs evts els k ->
-       k <$> runFn9 createElementFromTagNameFn rjs CI.run {_tag: tag, _null: Null, _textNode: Textnode} show attrs attributes evts events els
+       k <$> runFn9 createElementFromTagNameFn rjs CI.run {_tag: tag, _null: Null, _raw: Raw} show attrs attributes evts events els
 
        RenderSync el dom k ->
        k <$> runFn3 renderFn rjs el dom
@@ -216,7 +216,7 @@ foreign import createElementFromTagNameFn """
 
       var nullString = show(tags._null);
 
-      var textNodeString = show(tags._textNode);
+      var rawString = show(tags._raw);
 
       var attributes = attributesFn(attrs);
 
@@ -233,13 +233,13 @@ foreign import createElementFromTagNameFn """
       var props = React.__spread({}, attributes, events$prime);
 
       if (tagName === nullString) return null;
-      else if (tagName === textNodeString) return els;
+      else if (tagName === rawString) return els;
       else return React.DOM[tagName](props, els);
     };
   }
 """ :: forall eff props state a. Fn9 ReactJsImport
                                      (Component eff a -> Eff (react :: ReactE) a)
-                                     { _tag :: TagName, _null :: TagName, _textNode :: TagName }
+                                     { _tag :: TagName, _null :: TagName, _raw :: TagName }
                                      (TagName -> String)
                                      Attributes
                                      (Attributes -> Foreign)
