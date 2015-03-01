@@ -1,10 +1,11 @@
 module Todomvc.Todomvc
   ( TodomvcSpecification()
+  , Classes(..)
   , spec
   , todomvc
   ) where
 
-import Control.Monad.Eff (Eff())
+import Control.Monad.Eff.Class (liftEff)
 
 import Data.Array (filter, length)
 import Data.Maybe (fromMaybe)
@@ -44,13 +45,14 @@ storageId = "reactjsf:todomvc:todos"
 
 componentDidMount :: forall eff. TodomvcComponentDidMount eff
 componentDidMount ref = do
-  maybeTodos <- LocalStorage.get storageId
+  maybeTodos <- liftEff $ LocalStorage.get storageId
   let todos = fromMaybe [] maybeTodos
-  return $ setStateAsync ref (State { todos: todos })
+  setStateAsync ref (State { todos: todos })
 
+update :: Reference TodomvcProps TodomvcState -> [Todo] -> TodomvcComponent
 update ref todos = do
-  LocalStorage.put storageId (todos :: [Todo])
-  return $ setStateAsync ref (State { todos: todos })
+  liftEff $ LocalStorage.put storageId todos
+  setStateAsync ref (State { todos: todos })
 
 addTodo ref todos title =
   update ref updated
@@ -70,12 +72,8 @@ clearCompletedTodos ref todos =
   update ref updated
     where updated = filter (\(Todo a) -> not a.completed) todos
 
-render :: RenderFn TodomvcProps TodomvcState
-render ref (Props props) (State state) = do
-  headerClass <- Header.header
-  listClass <- List.list
-  footerClass <- Footer.footer
-  infoClass <- Info.info
+render :: Classes -> RenderFn TodomvcProps TodomvcState
+render cls ref (Props props) (State state) = do
 
   let remaining = filter (\(Todo a) -> not a.completed) state.todos
       headerProps = Props { onSubmit: addTodo ref state.todos }
@@ -91,19 +89,26 @@ render ref (Props props) (State state) = do
 
   html <- Dom.div'
           .> [ Dom.section (Attr.id := "todoapp") mempty
-               .> [ createElementFromClass headerClass headerProps mempty mempty
-                  , createElementFromClass listClass listProps mempty mempty
-                  , createElementFromClass footerClass footerProps mempty mempty
+               .> [ createElementFromClass cls.header headerProps mempty mempty
+                  , createElementFromClass cls.list listProps mempty mempty
+                  , createElementFromClass cls.footer footerProps mempty mempty
                   ]
-             , createElementFromClass infoClass infoProps mempty mempty
+             , createElementFromClass cls.info infoProps mempty mempty
              ]
 
   return html
 
-spec :: forall eff. TodomvcSpecification eff
-spec = R.spec props state render #
-       R.setDisplayName .~ "Todomvc" #
-       R.setComponentDidMount .~ componentDidMount
+type Classes
+  = { header :: Class Header.HeaderProps Header.HeaderState
+    , list :: Class List.ListProps (State Unit)
+    , footer :: Class Footer.FooterProps (State Unit)
+    , info :: Class Info.InfoProps (State Unit)
+    }
 
-todomvc :: React (Class TodomvcProps TodomvcState)
-todomvc = createClass spec
+spec :: forall eff. Classes -> TodomvcSpecification eff
+spec cls = R.impureSpec props state (render cls) #
+           R.setDisplayName .~ "Todomvc" #
+           R.setComponentDidMount .~ componentDidMount
+
+todomvc :: Classes -> React (Class TodomvcProps TodomvcState)
+todomvc cls = createClass $ spec cls

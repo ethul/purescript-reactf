@@ -1,4 +1,4 @@
-var Main = require('./Todomvc/Main.purs');
+var Main = require('./src/Main.purs');
 
 var _cssBase = require('todomvc-common/base.css');
 

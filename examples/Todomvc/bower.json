@@ -14,6 +14,7 @@
     "purescript-argonaut": "~0.4.0",
     "purescript-either": "~0.1.4",
     "purescript-maybe": "~0.2.1",
-    "purescript-arrays": "~0.3.2"
+    "purescript-arrays": "~0.3.2",
+    "purescript-monad-eff": "~0.1.0"
   }
 }

@@ -19,6 +19,7 @@
     "purescript-free": "~0.3.0",
     "purescript-lens": "~0.6.0",
     "purescript-options": "~0.0.1",
-    "purescript-monoid": "~0.2.0"
+    "purescript-monoid": "~0.2.0",
+    "purescript-monad-eff": "~0.1.0"
   }
 }
