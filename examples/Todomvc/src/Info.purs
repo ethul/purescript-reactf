@@ -28,30 +28,30 @@ render :: PureRenderFn InfoProps
 render _ =
   Dom.footer (Attr.id := "info") mempty
   .> [ Dom.p'
-       .> Dom.textnode "Double-click to edit a todo"
+       .> Dom.raw "Double-click to edit a todo"
      , Dom.p'
-       .> [ Dom.textnode "Info:"
+       .> [ Dom.raw "Info:"
           , Dom.a (Attr.href := "http://twitter.com/cburgdorf" <>
                    Attr.style := style) mempty
-            .> Dom.textnode "Christoph Burgdorf"
-          , Dom.textnode ","
+            .> Dom.raw "Christoph Burgdorf"
+          , Dom.raw ","
           , Dom.a (Attr.href := "http://ericbidelman.com" <>
                    Attr.style := style) mempty
-            .> Dom.textnode "Eric Bidelman"
-          , Dom.textnode ","
+            .> Dom.raw "Eric Bidelman"
+          , Dom.raw ","
           , Dom.a (Attr.href := "http://jacobmumm.com" <>
                    Attr.style := style') mempty
-            .> Dom.textnode "Jacob Mumm"
-          , Dom.textnode "and"
+            .> Dom.raw "Jacob Mumm"
+          , Dom.raw "and"
           , Dom.a (Attr.href := "http://igorminar.com" <>
                    Attr.style := style) mempty
-            .> Dom.textnode "Igor Minar"
+            .> Dom.raw "Igor Minar"
           ]
      , Dom.p'
-       .> [ Dom.textnode "Part of"
+       .> [ Dom.raw "Part of"
           , Dom.a (Attr.href := "http://todomvc.com" <>
                    Attr.style := style) mempty
-            .> Dom.textnode "TodoMVC"
+            .> Dom.raw "TodoMVC"
           ]
      ]
   where

@@ -37,25 +37,25 @@ render (Props props) =
   Dom.footer (Attr.id := "footer") mempty
   .> [ Dom.span (Attr.id := "todo-count") mempty
        .> [ Dom.strong (Attr.style := {paddingRight: "5px"}) mempty
-            .> Dom.textnode (show props.remainingCount)
-          , Dom.textnode $ if props.remainingCount == 1
+            .> Dom.raw (show props.remainingCount)
+          , Dom.raw $ if props.remainingCount == 1
                               then "item left"
                               else "items left"
           ]
      , Dom.ul (Attr.id := "filters") mempty
        .> [ Dom.li'
             .> Dom.a'
-               .> Dom.textnode "All"
+               .> Dom.raw "All"
           , Dom.li'
             .> Dom.a'
-               .> Dom.textnode "Active"
+               .> Dom.raw "Active"
           , Dom.li'
             .> Dom.a'
-               .> Dom.textnode "Completed"
+               .> Dom.raw "Completed"
           ]
      , Dom.button (Attr.id := "clear-completed")
                   (Evt.onClick := Evt.SyntheticMouseEventFn onClearCompleted)
-       .> Dom.textnode (show $ props.todosCount - props.remainingCount)
+       .> Dom.raw (show $ props.todosCount - props.remainingCount)
      ]
   where
     onClearCompleted (Evt.SyntheticMouseEvent e) = props.onClearCompleted

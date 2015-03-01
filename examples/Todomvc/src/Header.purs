@@ -39,7 +39,7 @@ render :: RenderFn HeaderProps HeaderState
 render ref (Props props) (State state) =
   Dom.header (Attr.id := "header") mempty
   .> [ Dom.h1'
-       .> Dom.textnode "todos"
+       .> Dom.raw "todos"
      , Dom.form (Attr.id := "todo-form")
                 (Evt.onSubmit := Evt.SyntheticInputEventFn onSubmit)
        .> Dom.input (Attr.id := "new-todo" <>

@@ -351,138 +351,208 @@ instance effApplyFnsSyntheticUIEvent :: EffApplyFns SyntheticUIEvent where
 instance effApplyFnsSyntheticWheelEvent :: EffApplyFns SyntheticWheelEvent where
   effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import onCopy "var onCopy = 'onCopy';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+foreign import mkEvent "function mkEvent(name){ return name; }" :: forall eff eventFn. String -> Option (EventName eff) (eventFn eff)
 
-foreign import onCopyCapture "var onCopyCapture = 'onCopyCapture';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCopy :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCopy = mkEvent "onCopy"
 
-foreign import onCut "var onCut = 'onCut';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCopyCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCopyCapture = mkEvent "onCopyCapture"
 
-foreign import onCutCapture "var onCutCapture = 'onCutCapture';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCut :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCut = mkEvent "onCut"
 
-foreign import onPaste "var onPaste = 'onPaste';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCutCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCutCapture = mkEvent "onCutCapture"
 
-foreign import onPasteCapture "var onPasteCapture = 'onPasteCapture';" :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onPaste :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onPaste = mkEvent "onPaste"
 
-foreign import onFocus "var onFocus = 'onFocus';" :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onPasteCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onPasteCapture = mkEvent "onPasteCapture"
 
-foreign import onFocusCapture "var onFocusCapture = 'onFocusCapture';" :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onFocus :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onFocus = mkEvent "onFocus"
 
-foreign import onBlur "var onBlur = 'onBlur';" :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onFocusCapture :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onFocusCapture = mkEvent "onFocusCapture"
 
-foreign import onBlurCapture "var onBlurCapture = 'onBlurCapture';" :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onBlur :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onBlur = mkEvent "onBlur"
 
-foreign import onChange "var onChange = 'onChange';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onBlurCapture :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onBlurCapture = mkEvent "onBlurCapture"
 
-foreign import onChangeCapture "var onChangeCapture = 'onChangeCapture';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onChange :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onChange = mkEvent "onChange"
 
-foreign import onInput "var onInput = 'onInput';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onChangeCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onChangeCapture = mkEvent "onChangeCapture"
 
-foreign import onInputCapture "var onInputCapture = 'onInputCapture';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onInput :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onInput = mkEvent "onInput"
 
-foreign import onSubmit "var onSubmit = 'onSubmit';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onInputCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onInputCapture = mkEvent "onInputCapture"
 
-foreign import onSubmitCapture "var onSubmitCapture = 'onSubmitCapture';" :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onSubmit :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onSubmit = mkEvent "onSubmit"
 
-foreign import onKeyDown "var onKeyDown = 'onKeyDown';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onSubmitCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onSubmitCapture = mkEvent "onSubmitCapture"
 
-foreign import onKeyDownCapture "var onKeyDownCapture = 'onKeyDownCapture';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyDown :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyDown = mkEvent "onKeyDown"
 
-foreign import onKeyPress "var onKeyPress = 'onKeyPress';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyDownCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyDownCapture = mkEvent "onKeyDownCapture"
 
-foreign import onKeyPressCapture "var onKeyPressCapture = 'onKeyPressCapture';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyPress :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyPress = mkEvent "onKeyPress"
 
-foreign import onKeyUp "var onKeyUp = 'onKeyUp';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyPressCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyPressCapture = mkEvent "onKeyPressCapture"
 
-foreign import onKeyUpCapture "var onKeyUpCapture = 'onKeyUpCapture';" :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyUp :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyUp = mkEvent "onKeyUp"
 
-foreign import onClick "var onClick = 'onClick';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onKeyUpCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyUpCapture = mkEvent "onKeyUpCapture"
 
-foreign import onClickCapture "var onClickCapture = 'onClickCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onClick :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onClick = mkEvent "onClick"
 
-foreign import onDoubleClick "var onDoubleClick = 'onDoubleClick';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onClickCapture = mkEvent "onClickCapture"
 
-foreign import onDoubleClickCapture "var onDoubleClickCapture = 'onDoubleClickCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDoubleClick :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDoubleClick = mkEvent "onDoubleClick"
 
-foreign import onDrag "var onDrag = 'onDrag';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDoubleClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDoubleClickCapture = mkEvent "onDoubleClickCapture"
 
-foreign import onDragCapture "var onDragCapture = 'onDragCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDrag :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDrag = mkEvent "onDrag"
 
-foreign import onDragEnd "var onDragEnd = 'onDragEnd';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragCapture = mkEvent "onDragCapture"
 
-foreign import onDragEndCapture "var onDragEndCapture = 'onDragEndCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragEnd :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragEnd = mkEvent "onDragEnd"
 
-foreign import onDragEnter "var onDragEnter = 'onDragEnter';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragEndCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragEndCapture = mkEvent "onDragEndCapture"
 
-foreign import onDragEnterCapture "var onDragEnterCapture = 'onDragEnterCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragEnter :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragEnter = mkEvent "onDragEnter"
 
-foreign import onDragExit "var onDragExit = 'onDragExit';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragEnterCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragEnterCapture = mkEvent "onDragEnterCapture"
 
-foreign import onDragExitCapture "var onDragExitCapture = 'onDragExitCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragExit :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragExit = mkEvent "onDragExit"
 
-foreign import onDragLeave "var onDragLeave = 'onDragLeave';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragExitCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragExitCapture = mkEvent "onDragExitCapture"
 
-foreign import onDragLeaveCapture "var onDragLeaveCapture = 'onDragLeaveCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragLeave :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragLeave = mkEvent "onDragLeave"
 
-foreign import onDragOver "var onDragOver = 'onDragOver';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragLeaveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragLeaveCapture = mkEvent "onDragLeaveCapture"
 
-foreign import onDragOverCapture "var onDragOverCapture = 'onDragOverCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragOver :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragOver = mkEvent "onDragOver"
 
-foreign import onDragStart "var onDragStart = 'onDragStart';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragOverCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragOverCapture = mkEvent "onDragOverCapture"
 
-foreign import onDragStartCapture "var onDragStartCapture = 'onDragStartCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragStart :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragStart = mkEvent "onDragStart"
 
-foreign import onDrop "var onDrop = 'onDrop';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragStartCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDragStartCapture = mkEvent "onDragStartCapture"
 
-foreign import onDropCapture "var onDropCapture = 'onDropCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDrop :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDrop = mkEvent "onDrop"
 
-foreign import onMouseDown "var onMouseDown = 'onMouseDown';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDropCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDropCapture = mkEvent "onDropCapture"
 
-foreign import onMouseDownCapture "var onMouseDownCapture = 'onMouseDownCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseDown :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseDown = mkEvent "onMouseDown"
 
-foreign import onMouseEnter "var onMouseEnter = 'onMouseEnter';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseDownCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseDownCapture = mkEvent "onMouseDownCapture"
 
-foreign import onMouseEnterCapture "var onMouseEnterCapture = 'onMouseEnterCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseEnter :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseEnter = mkEvent "onMouseEnter"
 
-foreign import onMouseLeave "var onMouseLeave = 'onMouseLeave';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseEnterCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseEnterCapture = mkEvent "onMouseEnterCapture"
 
-foreign import onMouseLeaveCapture "var onMouseLeaveCapture = 'onMouseLeaveCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseLeave :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseLeave = mkEvent "onMouseLeave"
 
-foreign import onMouseMove "var onMouseMove = 'onMouseMove';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseLeaveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseLeaveCapture = mkEvent "onMouseLeaveCapture"
 
-foreign import onMouseMoveCapture "var onMouseMoveCapture = 'onMouseMoveCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseMove :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseMove = mkEvent "onMouseMove"
 
-foreign import onMouseOut "var onMouseOut = 'onMouseOut';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseMoveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseMoveCapture = mkEvent "onMouseMoveCapture"
 
-foreign import onMouseOutCapture "var onMouseOutCapture = 'onMouseOutCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOut :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOut = mkEvent "onMouseOut"
 
-foreign import onMouseOver "var onMouseOver = 'onMouseOver';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOutCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOutCapture = mkEvent "onMouseOutCapture"
 
-foreign import onMouseOverCapture "var onMouseOverCapture = 'onMouseOverCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOver :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOver = mkEvent "onMouseOver"
 
-foreign import onMouseUp "var onMouseUp = 'onMouseUp';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOverCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOverCapture = mkEvent "onMouseOverCapture"
 
-foreign import onMouseUpCapture "var onMouseUpCapture = 'onMouseUpCapture';" :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseUp :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseUp = mkEvent "onMouseUp"
 
-foreign import onTouchCancel "var onTouchCancel = 'onTouchCancel';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onMouseUpCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseUpCapture = mkEvent "onMouseUpCapture"
 
-foreign import onTouchCancelCapture "var onTouchCancelCapture = 'onTouchCancelCapture';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchCancel :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchCancel = mkEvent "onTouchCancel"
 
-foreign import onTouchEnd "var onTouchEnd = 'onTouchEnd';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchCancelCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchCancelCapture = mkEvent "onTouchCancelCapture"
 
-foreign import onTouchEndCapture "var onTouchEndCapture = 'onTouchEndCapture';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchEnd :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchEnd = mkEvent "onTouchEnd"
 
-foreign import onTouchMove "var onTouchMove = 'onTouchMove';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchEndCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchEndCapture = mkEvent "onTouchEndCapture"
 
-foreign import onTouchMoveCapture "var onTouchMoveCapture = 'onTouchMoveCapture';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchMove :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchMove = mkEvent "onTouchMove"
 
-foreign import onTouchStart "var onTouchStart = 'onTouchStart';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchMoveCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchMoveCapture = mkEvent "onTouchMoveCapture"
 
-foreign import onTouchStartCapture "var onTouchStartCapture = 'onTouchStartCapture';" :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchStart :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchStart = mkEvent "onTouchStart"
 
-foreign import onScroll "var onScroll = 'onScroll';" :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
+onTouchStartCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchStartCapture = mkEvent "onTouchStartCapture"
 
-foreign import onScrollCapture "var onScrollCapture = 'onScrollCapture';" :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
+onScroll :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
+onScroll = mkEvent "onScroll"
 
-foreign import onWheel "var onWheel = 'onWheel';" :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)
+onScrollCapture :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
+onScrollCapture = mkEvent "onScrollCapture"
 
-foreign import onWheelCapture "var onWheelCapture = 'onWheelCapture';" :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)
+onWheel :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)
+onWheel = mkEvent "onWheel"
+
+onWheelCapture :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)
+onWheelCapture = mkEvent "onWheelCapture"

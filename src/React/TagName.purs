@@ -2,7 +2,7 @@ module React.TagName (TagName(..)) where
 
 data TagName
   = Null
-  | Textnode
+  | Raw
   | A
   | Abbr
   | Address
@@ -136,7 +136,7 @@ data TagName
 instance showTagName :: Show TagName where
   show a = case a of
                 Null -> "null"
-                Textnode -> "textnode"
+                Raw -> "raw"
                 A -> "a"
                 Abbr -> "abbr"
                 Address -> "address"
