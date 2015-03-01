@@ -1,6 +1,8 @@
 module React.Events
   ( Events()
   , EventName()
+  , SyntheticEventRecord(..)
+  , SyntheticEvent(..)
   , SyntheticClipboardEvent(..)
   , SyntheticCompositionEvent(..)
   , SyntheticDragEvent(..)
@@ -11,6 +13,7 @@ module React.Events
   , SyntheticTouchEvent(..)
   , SyntheticUIEvent(..)
   , SyntheticWheelEvent(..)
+  , SyntheticEventFn(..)
   , SyntheticClipboardEventFn(..)
   , SyntheticCompositionEventFn(..)
   , SyntheticDragEventFn(..)
@@ -21,32 +24,22 @@ module React.Events
   , SyntheticTouchEventFn(..)
   , SyntheticUIEventFn(..)
   , SyntheticWheelEventFn(..)
+  , onError
+  , onErrorCapture
+  , onLoad
+  , onLoadCapture
+  , onInput
+  , onInputCapture
+  , onReset
+  , onResetCapture
+  , onSubmit
+  , onSubmitCapture
   , onCopy
   , onCopyCapture
   , onCut
   , onCutCapture
   , onPaste
   , onPasteCapture
-  , onFocus
-  , onFocusCapture
-  , onBlur
-  , onBlurCapture
-  , onChange
-  , onChangeCapture
-  , onInput
-  , onInputCapture
-  , onSubmit
-  , onSubmitCapture
-  , onKeyDown
-  , onKeyDownCapture
-  , onKeyPress
-  , onKeyPressCapture
-  , onKeyUp
-  , onKeyUpCapture
-  , onClick
-  , onClickCapture
-  , onDoubleClick
-  , onDoubleClickCapture
   , onDrag
   , onDragCapture
   , onDragEnd
@@ -63,6 +56,24 @@ module React.Events
   , onDragStartCapture
   , onDrop
   , onDropCapture
+  , onFocus
+  , onFocusCapture
+  , onBlur
+  , onBlurCapture
+  , onChange
+  , onChangeCapture
+  , onKeyDown
+  , onKeyDownCapture
+  , onKeyPress
+  , onKeyPressCapture
+  , onKeyUp
+  , onKeyUpCapture
+  , onClick
+  , onClickCapture
+  , onContextMenu
+  , onContextMenuCapture
+  , onDoubleClick
+  , onDoubleClickCapture
   , onMouseDown
   , onMouseDownCapture
   , onMouseEnter
@@ -104,172 +115,97 @@ type Events eff = Options (EventName eff)
 
 foreign import data EventName :: # ! -> *
 
+type SyntheticEventRecord event
+  = { bubbles :: Boolean
+    , cancelable :: Boolean
+    , currentTarget :: DOMEventTarget
+    , defaultPrevented :: Boolean
+    , eventPhase :: Number
+    , isTrusted :: Boolean
+    , nativeEvent :: DOMEvent
+    , preventDefault :: EffApplyFn0 Unit
+    , stopPropagation :: EffApplyFn0 Unit
+    , target :: DOMEventTarget
+    , timeStamp :: Number
+    , "type" :: String
+    | event
+    }
+
+newtype SyntheticEvent
+  = SyntheticEvent (SyntheticEventRecord ())
+
 newtype SyntheticClipboardEvent
-  = SyntheticClipboardEvent { bubbles :: Boolean
-                            , cancelable :: Boolean
-                            , currentTarget :: DOMEventTarget
-                            , defaultPrevented :: Boolean
-                            , eventPhase :: Number
-                            , isTrusted :: Boolean
-                            , nativeEvent :: DOMEvent
-                            , preventDefault :: EffApplyFn0 Unit
-                            , stopPropagation :: EffApplyFn0 Unit
-                            , target :: DOMEventTarget
-                            , timeStamp :: Number
-                            , "type" :: String
-                            , clipboardData :: DOMDataTransfer
-                            }
+  = SyntheticClipboardEvent (SyntheticEventRecord (clipboardData :: DOMDataTransfer))
+
+newtype SyntheticCompositionEvent
+  = SyntheticCompositionEvent (SyntheticEventRecord ("data" :: DOMString))
+
+newtype SyntheticDragEvent
+  = SyntheticDragEvent (SyntheticEventRecord (dataTransfer :: DOMDataTransfer))
 
 newtype SyntheticKeyboardEvent
-  = SyntheticKeyboardEvent { bubbles :: Boolean
-                           , cancelable :: Boolean
-                           , currentTarget :: DOMEventTarget
-                           , defaultPrevented :: Boolean
-                           , eventPhase :: Number
-                           , isTrusted :: Boolean
-                           , nativeEvent :: DOMEvent
-                           , preventDefault :: EffApplyFn0 Unit
-                           , stopPropagation :: EffApplyFn0 Unit
-                           , target :: DOMEventTarget
-                           , timeStamp :: Number
-                           , "type" :: String
-                           , altKey :: Boolean
-                           , charCode :: Number
-                           , ctrlKey :: Boolean
-                           , getModifierState :: String -> Boolean
-                           , key :: String
-                           , keyCode :: Number
-                           , locale :: String
-                           , location :: Number
-                           , metaKey :: Boolean
-                           , repeat :: Boolean
-                           , shiftKey :: Boolean
-                           , which :: Number
-                           }
+  = SyntheticKeyboardEvent (SyntheticEventRecord ( altKey :: Boolean
+                                                 , charCode :: Number
+                                                 , ctrlKey :: Boolean
+                                                 , getModifierState :: String -> Boolean
+                                                 , key :: String
+                                                 , keyCode :: Number
+                                                 , locale :: String
+                                                 , location :: Number
+                                                 , metaKey :: Boolean
+                                                 , repeat :: Boolean
+                                                 , shiftKey :: Boolean
+                                                 , which :: Number
+                                                 ))
 
 newtype SyntheticFocusEvent
-  = SyntheticFocusEvent { bubbles :: Boolean
-                        , cancelable :: Boolean
-                        , currentTarget :: DOMEventTarget
-                        , defaultPrevented :: Boolean
-                        , eventPhase :: Number
-                        , isTrusted :: Boolean
-                        , nativeEvent :: DOMEvent
-                        , preventDefault :: EffApplyFn0 Unit
-                        , stopPropagation :: EffApplyFn0 Unit
-                        , target :: DOMEventTarget
-                        , timeStamp :: Number
-                        , "type" :: String
-                        , relatedTarget :: DOMEventTarget
-                        }
+  = SyntheticFocusEvent (SyntheticEventRecord (relatedTarget :: DOMEventTarget))
 
 newtype SyntheticInputEvent
-  = SyntheticInputEvent { bubbles :: Boolean
-                        , cancelable :: Boolean
-                        , currentTarget :: DOMEventTarget
-                        , defaultPrevented :: Boolean
-                        , eventPhase :: Number
-                        , isTrusted :: Boolean
-                        , nativeEvent :: DOMEvent
-                        , preventDefault :: EffApplyFn0 Unit
-                        , stopPropagation :: EffApplyFn0 Unit
-                        , target :: DOMEventTarget
-                        , timeStamp :: Number
-                        , "type" :: String
-                        }
+  = SyntheticInputEvent (SyntheticEventRecord ())
 
 newtype SyntheticMouseEvent
-  = SyntheticMouseEvent { bubbles :: Boolean
-                        , cancelable :: Boolean
-                        , currentTarget :: DOMEventTarget
-                        , defaultPrevented :: Boolean
-                        , eventPhase :: Number
-                        , isTrusted :: Boolean
-                        , nativeEvent :: DOMEvent
-                        , preventDefault :: EffApplyFn0 Unit
-                        , stopPropagation :: EffApplyFn0 Unit
-                        , target :: DOMEventTarget
-                        , timeStamp :: Number
-                        , "type" :: String
-                        , altKey :: Boolean
-                        , button :: Number
-                        , buttons :: Number
-                        , clientX :: Number
-                        , clientY :: Number
-                        , ctrlKey :: Boolean
-                        , getModifierState :: String -> Boolean
-                        , metaKey :: Boolean
-                        , pageX :: Number
-                        , pageY :: Number
-                        , relatedTarget :: DOMEventTarget
-                        , screenX :: Number
-                        , screenY :: Number
-                        , shiftKey :: Boolean
-                        }
+  = SyntheticMouseEvent (SyntheticEventRecord ( altKey :: Boolean
+                                              , button :: Number
+                                              , buttons :: Number
+                                              , clientX :: Number
+                                              , clientY :: Number
+                                              , ctrlKey :: Boolean
+                                              , getModifierState :: String -> Boolean
+                                              , metaKey :: Boolean
+                                              , pageX :: Number
+                                              , pageY :: Number
+                                              , relatedTarget :: DOMEventTarget
+                                              , screenX :: Number
+                                              , screenY :: Number
+                                              , shiftKey :: Boolean
+                                              ))
 
 newtype SyntheticTouchEvent
-  = SyntheticTouchEvent { bubbles :: Boolean
-                        , cancelable :: Boolean
-                        , currentTarget :: DOMEventTarget
-                        , defaultPrevented :: Boolean
-                        , eventPhase :: Number
-                        , isTrusted :: Boolean
-                        , nativeEvent :: DOMEvent
-                        , preventDefault :: EffApplyFn0 Unit
-                        , stopPropagation :: EffApplyFn0 Unit
-                        , target :: DOMEventTarget
-                        , timeStamp :: Number
-                        , "type" :: String
-                        , altKey :: Boolean
-                        , changedTouches :: DOMTouchList
-                        , ctrlKey :: Boolean
-                        , getModifierState :: String -> Boolean
-                        , metaKey :: Boolean
-                        , shiftKey :: Boolean
-                        , targetTouches :: DOMTouchList
-                        , touches :: DOMTouchList
-                        }
+  = SyntheticTouchEvent (SyntheticEventRecord ( altKey :: Boolean
+                                              , changedTouches :: DOMTouchList
+                                              , ctrlKey :: Boolean
+                                              , getModifierState :: String -> Boolean
+                                              , metaKey :: Boolean
+                                              , shiftKey :: Boolean
+                                              , targetTouches :: DOMTouchList
+                                              , touches :: DOMTouchList
+                                              ))
 
 newtype SyntheticUIEvent
-  = SyntheticUIEvent { bubbles :: Boolean
-                     , cancelable :: Boolean
-                     , currentTarget :: DOMEventTarget
-                     , defaultPrevented :: Boolean
-                     , eventPhase :: Number
-                     , isTrusted :: Boolean
-                     , nativeEvent :: DOMEvent
-                     , preventDefault :: EffApplyFn0 Unit
-                     , stopPropagation :: EffApplyFn0 Unit
-                     , target :: DOMEventTarget
-                     , timeStamp :: Number
-                     , "type" :: String
-                     , detail :: Number
-                     , view :: DOMAbstractView
-                     }
+  = SyntheticUIEvent (SyntheticEventRecord ( detail :: Number
+                                           , view :: DOMAbstractView
+                                           ))
 
 newtype SyntheticWheelEvent
-  = SyntheticWheelEvent { bubbles :: Boolean
-                        , cancelable :: Boolean
-                        , currentTarget :: DOMEventTarget
-                        , defaultPrevented :: Boolean
-                        , eventPhase :: Number
-                        , isTrusted :: Boolean
-                        , nativeEvent :: DOMEvent
-                        , preventDefault :: EffApplyFn0 Unit
-                        , stopPropagation :: EffApplyFn0 Unit
-                        , target :: DOMEventTarget
-                        , timeStamp :: Number
-                        , "type" :: String
-                        , detail :: Number
-                        , deltaMode :: Number
-                        , deltaX :: Number
-                        , deltaY :: Number
-                        , deltaZ :: Number
-                        }
+  = SyntheticWheelEvent (SyntheticEventRecord ( detail :: Number
+                                              , deltaMode :: Number
+                                              , deltaX :: Number
+                                              , deltaY :: Number
+                                              , deltaZ :: Number
+                                              ))
 
-data SyntheticCompositionEvent
-
-data SyntheticDragEvent
+newtype SyntheticEventFn eff = SyntheticEventFn (SyntheticEvent -> Component eff Unit)
 
 newtype SyntheticClipboardEventFn eff = SyntheticClipboardEventFn (SyntheticClipboardEvent -> Component eff Unit)
 
@@ -290,6 +226,9 @@ newtype SyntheticTouchEventFn eff = SyntheticTouchEventFn (SyntheticTouchEvent -
 newtype SyntheticUIEventFn eff = SyntheticUIEventFn (SyntheticUIEvent -> Component eff Unit)
 
 newtype SyntheticWheelEventFn eff = SyntheticWheelEventFn (SyntheticWheelEvent -> Component eff Unit)
+
+instance isOptionSyntheticEventFn :: IsOption (SyntheticEventFn eff) where
+  (:=) k (SyntheticEventFn v) = (optionFn k) := v
 
 instance isOptionSyntheticClipboardEventFn :: IsOption (SyntheticClipboardEventFn eff) where
   (:=) k (SyntheticClipboardEventFn v) = (optionFn k) := v
@@ -320,6 +259,9 @@ instance isOptionSyntheticUIEventFn :: IsOption (SyntheticUIEventFn eff) where
 
 instance isOptionSyntheticWheelEventFn :: IsOption (SyntheticWheelEventFn eff) where
   (:=) k (SyntheticWheelEventFn v) = (optionFn k) := v
+
+instance effApplyFnsSyntheticEvent :: EffApplyFns SyntheticEvent where
+  effApplyFn0 = runFn2 effApplyFn0Fn
 
 instance effApplyFnsSyntheticClipboardEvent :: EffApplyFns SyntheticClipboardEvent where
   effApplyFn0 = runFn2 effApplyFn0Fn
@@ -353,6 +295,36 @@ instance effApplyFnsSyntheticWheelEvent :: EffApplyFns SyntheticWheelEvent where
 
 foreign import mkEvent "function mkEvent(name){ return name; }" :: forall eff eventFn. String -> Option (EventName eff) (eventFn eff)
 
+onError :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onError  = mkEvent "onError"
+
+onErrorCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onErrorCapture = mkEvent "onErrorCapture"
+
+onInput :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onInput = mkEvent "onInput"
+
+onInputCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onInputCapture = mkEvent "onInputCapture"
+
+onLoad :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onLoad = mkEvent "onLoad"
+
+onLoadCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onLoadCapture = mkEvent "onLoadCapture"
+
+onReset :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onReset = mkEvent "onReset"
+
+onResetCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onResetCapture = mkEvent "onResetCapture"
+
+onSubmit :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onSubmit = mkEvent "onSubmit"
+
+onSubmitCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onSubmitCapture = mkEvent "onSubmitCapture"
+
 onCopy :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 onCopy = mkEvent "onCopy"
 
@@ -371,6 +343,54 @@ onPaste = mkEvent "onPaste"
 onPasteCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
 onPasteCapture = mkEvent "onPasteCapture"
 
+onDrag :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDrag = mkEvent "onDrag"
+
+onDragCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragCapture = mkEvent "onDragCapture"
+
+onDragEnd :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragEnd = mkEvent "onDragEnd"
+
+onDragEndCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragEndCapture = mkEvent "onDragEndCapture"
+
+onDragEnter :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragEnter = mkEvent "onDragEnter"
+
+onDragEnterCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragEnterCapture = mkEvent "onDragEnterCapture"
+
+onDragExit :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragExit = mkEvent "onDragExit"
+
+onDragExitCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragExitCapture = mkEvent "onDragExitCapture"
+
+onDragLeave :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragLeave = mkEvent "onDragLeave"
+
+onDragLeaveCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragLeaveCapture = mkEvent "onDragLeaveCapture"
+
+onDragOver :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragOver = mkEvent "onDragOver"
+
+onDragOverCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragOverCapture = mkEvent "onDragOverCapture"
+
+onDragStart :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragStart = mkEvent "onDragStart"
+
+onDragStartCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragStartCapture = mkEvent "onDragStartCapture"
+
+onDrop :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDrop = mkEvent "onDrop"
+
+onDropCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDropCapture = mkEvent "onDropCapture"
+
 onFocus :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
 onFocus = mkEvent "onFocus"
 
@@ -388,18 +408,6 @@ onChange = mkEvent "onChange"
 
 onChangeCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 onChangeCapture = mkEvent "onChangeCapture"
-
-onInput :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
-onInput = mkEvent "onInput"
-
-onInputCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
-onInputCapture = mkEvent "onInputCapture"
-
-onSubmit :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
-onSubmit = mkEvent "onSubmit"
-
-onSubmitCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
-onSubmitCapture = mkEvent "onSubmitCapture"
 
 onKeyDown :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
 onKeyDown = mkEvent "onKeyDown"
@@ -425,59 +433,17 @@ onClick = mkEvent "onClick"
 onClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 onClickCapture = mkEvent "onClickCapture"
 
+onContextMenu :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onContextMenu = mkEvent "onContextMenu"
+
+onContextMenuCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onContextMenuCapture = mkEvent "onContextMenuCapture"
+
 onDoubleClick :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 onDoubleClick = mkEvent "onDoubleClick"
 
 onDoubleClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 onDoubleClickCapture = mkEvent "onDoubleClickCapture"
-
-onDrag :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDrag = mkEvent "onDrag"
-
-onDragCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragCapture = mkEvent "onDragCapture"
-
-onDragEnd :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragEnd = mkEvent "onDragEnd"
-
-onDragEndCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragEndCapture = mkEvent "onDragEndCapture"
-
-onDragEnter :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragEnter = mkEvent "onDragEnter"
-
-onDragEnterCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragEnterCapture = mkEvent "onDragEnterCapture"
-
-onDragExit :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragExit = mkEvent "onDragExit"
-
-onDragExitCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragExitCapture = mkEvent "onDragExitCapture"
-
-onDragLeave :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragLeave = mkEvent "onDragLeave"
-
-onDragLeaveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragLeaveCapture = mkEvent "onDragLeaveCapture"
-
-onDragOver :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragOver = mkEvent "onDragOver"
-
-onDragOverCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragOverCapture = mkEvent "onDragOverCapture"
-
-onDragStart :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragStart = mkEvent "onDragStart"
-
-onDragStartCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDragStartCapture = mkEvent "onDragStartCapture"
-
-onDrop :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDrop = mkEvent "onDrop"
-
-onDropCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDropCapture = mkEvent "onDropCapture"
 
 onMouseDown :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 onMouseDown = mkEvent "onMouseDown"
