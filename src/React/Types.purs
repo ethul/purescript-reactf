@@ -5,6 +5,7 @@ module React.Types
   , DOMEvent()
   , DOMEventTarget()
   , DOMTouchList()
+  , DOMString()
   , ReactE()
   , EffApplyFn0()
   , EffApplyFns
@@ -29,6 +30,8 @@ data DOMEventTarget
 data DOMDataTransfer
 
 data DOMTouchList
+
+data DOMString
 
 data EffApplyFn0 ret
 

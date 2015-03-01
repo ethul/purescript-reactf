@@ -41,7 +41,7 @@ render ref (Props props) (State state) =
   .> [ Dom.h1'
        .> Dom.raw "todos"
      , Dom.form (Attr.id := "todo-form")
-                (Evt.onSubmit := Evt.SyntheticInputEventFn onSubmit)
+                (Evt.onSubmit := Evt.SyntheticEventFn onSubmit)
        .> Dom.input (Attr.id := "new-todo" <>
                      Attr.placeholder := "What needs to be done?" <>
                      Attr.value := state.title)
@@ -51,7 +51,7 @@ render ref (Props props) (State state) =
     onChange (Evt.SyntheticInputEvent e) =
       setStateAsync ref $ State { title: eventTargetValue e.target }
 
-    onSubmit evt@(Evt.SyntheticInputEvent e) = do
+    onSubmit evt@(Evt.SyntheticEvent e) = do
       liftEff $ effApplyFn0 e.preventDefault evt
       props.onSubmit state.title
       setStateAsync ref $ State { title: "" }

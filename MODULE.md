@@ -3042,11 +3042,42 @@ data EventName :: # ! -> *
 ```
 
 
+#### `SyntheticEventRecord`
+
+``` purescript
+type SyntheticEventRecord event = { "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean | event }
+```
+
+
+#### `SyntheticEvent`
+
+``` purescript
+newtype SyntheticEvent
+  = SyntheticEvent (SyntheticEventRecord ())
+```
+
+
 #### `SyntheticClipboardEvent`
 
 ``` purescript
 newtype SyntheticClipboardEvent
-  = SyntheticClipboardEvent { clipboardData :: DOMDataTransfer, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticClipboardEvent (SyntheticEventRecord (clipboardData :: DOMDataTransfer))
+```
+
+
+#### `SyntheticCompositionEvent`
+
+``` purescript
+newtype SyntheticCompositionEvent
+  = SyntheticCompositionEvent (SyntheticEventRecord ("data" :: DOMString))
+```
+
+
+#### `SyntheticDragEvent`
+
+``` purescript
+newtype SyntheticDragEvent
+  = SyntheticDragEvent (SyntheticEventRecord (dataTransfer :: DOMDataTransfer))
 ```
 
 
@@ -3054,7 +3085,7 @@ newtype SyntheticClipboardEvent
 
 ``` purescript
 newtype SyntheticKeyboardEvent
-  = SyntheticKeyboardEvent { which :: Number, shiftKey :: Boolean, repeat :: Boolean, metaKey :: Boolean, location :: Number, locale :: String, keyCode :: Number, key :: String, getModifierState :: String -> Boolean, ctrlKey :: Boolean, charCode :: Number, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticKeyboardEvent (SyntheticEventRecord (which :: Number, shiftKey :: Boolean, repeat :: Boolean, metaKey :: Boolean, location :: Number, locale :: String, keyCode :: Number, key :: String, getModifierState :: String -> Boolean, ctrlKey :: Boolean, charCode :: Number, altKey :: Boolean))
 ```
 
 
@@ -3062,7 +3093,7 @@ newtype SyntheticKeyboardEvent
 
 ``` purescript
 newtype SyntheticFocusEvent
-  = SyntheticFocusEvent { relatedTarget :: DOMEventTarget, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticFocusEvent (SyntheticEventRecord (relatedTarget :: DOMEventTarget))
 ```
 
 
@@ -3070,7 +3101,7 @@ newtype SyntheticFocusEvent
 
 ``` purescript
 newtype SyntheticInputEvent
-  = SyntheticInputEvent { "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticInputEvent (SyntheticEventRecord ())
 ```
 
 
@@ -3078,7 +3109,7 @@ newtype SyntheticInputEvent
 
 ``` purescript
 newtype SyntheticMouseEvent
-  = SyntheticMouseEvent { shiftKey :: Boolean, screenY :: Number, screenX :: Number, relatedTarget :: DOMEventTarget, pageY :: Number, pageX :: Number, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, clientY :: Number, clientX :: Number, buttons :: Number, button :: Number, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticMouseEvent (SyntheticEventRecord (shiftKey :: Boolean, screenY :: Number, screenX :: Number, relatedTarget :: DOMEventTarget, pageY :: Number, pageX :: Number, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, clientY :: Number, clientX :: Number, buttons :: Number, button :: Number, altKey :: Boolean))
 ```
 
 
@@ -3086,7 +3117,7 @@ newtype SyntheticMouseEvent
 
 ``` purescript
 newtype SyntheticTouchEvent
-  = SyntheticTouchEvent { touches :: DOMTouchList, targetTouches :: DOMTouchList, shiftKey :: Boolean, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, changedTouches :: DOMTouchList, altKey :: Boolean, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticTouchEvent (SyntheticEventRecord (touches :: DOMTouchList, targetTouches :: DOMTouchList, shiftKey :: Boolean, metaKey :: Boolean, getModifierState :: String -> Boolean, ctrlKey :: Boolean, changedTouches :: DOMTouchList, altKey :: Boolean))
 ```
 
 
@@ -3094,7 +3125,7 @@ newtype SyntheticTouchEvent
 
 ``` purescript
 newtype SyntheticUIEvent
-  = SyntheticUIEvent { view :: DOMAbstractView, detail :: Number, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticUIEvent (SyntheticEventRecord (view :: DOMAbstractView, detail :: Number))
 ```
 
 
@@ -3102,21 +3133,15 @@ newtype SyntheticUIEvent
 
 ``` purescript
 newtype SyntheticWheelEvent
-  = SyntheticWheelEvent { deltaZ :: Number, deltaY :: Number, deltaX :: Number, deltaMode :: Number, detail :: Number, "type" :: String, timeStamp :: Number, target :: DOMEventTarget, stopPropagation :: EffApplyFn0 Unit, preventDefault :: EffApplyFn0 Unit, nativeEvent :: DOMEvent, isTrusted :: Boolean, eventPhase :: Number, defaultPrevented :: Boolean, currentTarget :: DOMEventTarget, cancelable :: Boolean, bubbles :: Boolean }
+  = SyntheticWheelEvent (SyntheticEventRecord (deltaZ :: Number, deltaY :: Number, deltaX :: Number, deltaMode :: Number, detail :: Number))
 ```
 
 
-#### `SyntheticCompositionEvent`
+#### `SyntheticEventFn`
 
 ``` purescript
-data SyntheticCompositionEvent
-```
-
-
-#### `SyntheticDragEvent`
-
-``` purescript
-data SyntheticDragEvent
+newtype SyntheticEventFn eff
+  = SyntheticEventFn (SyntheticEvent -> Component eff Unit)
 ```
 
 
@@ -3200,6 +3225,13 @@ newtype SyntheticWheelEventFn eff
 ```
 
 
+#### `isOptionSyntheticEventFn`
+
+``` purescript
+instance isOptionSyntheticEventFn :: IsOption (SyntheticEventFn eff)
+```
+
+
 #### `isOptionSyntheticClipboardEventFn`
 
 ``` purescript
@@ -3267,6 +3299,13 @@ instance isOptionSyntheticUIEventFn :: IsOption (SyntheticUIEventFn eff)
 
 ``` purescript
 instance isOptionSyntheticWheelEventFn :: IsOption (SyntheticWheelEventFn eff)
+```
+
+
+#### `effApplyFnsSyntheticEvent`
+
+``` purescript
+instance effApplyFnsSyntheticEvent :: EffApplyFns SyntheticEvent
 ```
 
 
@@ -3340,6 +3379,76 @@ instance effApplyFnsSyntheticWheelEvent :: EffApplyFns SyntheticWheelEvent
 ```
 
 
+#### `onError`
+
+``` purescript
+onError :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+```
+
+
+#### `onErrorCapture`
+
+``` purescript
+onErrorCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+```
+
+
+#### `onInput`
+
+``` purescript
+onInput :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+```
+
+
+#### `onInputCapture`
+
+``` purescript
+onInputCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+```
+
+
+#### `onLoad`
+
+``` purescript
+onLoad :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+```
+
+
+#### `onLoadCapture`
+
+``` purescript
+onLoadCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+```
+
+
+#### `onReset`
+
+``` purescript
+onReset :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+```
+
+
+#### `onResetCapture`
+
+``` purescript
+onResetCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+```
+
+
+#### `onSubmit`
+
+``` purescript
+onSubmit :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+```
+
+
+#### `onSubmitCapture`
+
+``` purescript
+onSubmitCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+```
+
+
 #### `onCopy`
 
 ``` purescript
@@ -3382,6 +3491,118 @@ onPasteCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn 
 ```
 
 
+#### `onDrag`
+
+``` purescript
+onDrag :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragCapture`
+
+``` purescript
+onDragCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragEnd`
+
+``` purescript
+onDragEnd :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragEndCapture`
+
+``` purescript
+onDragEndCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragEnter`
+
+``` purescript
+onDragEnter :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragEnterCapture`
+
+``` purescript
+onDragEnterCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragExit`
+
+``` purescript
+onDragExit :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragExitCapture`
+
+``` purescript
+onDragExitCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragLeave`
+
+``` purescript
+onDragLeave :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragLeaveCapture`
+
+``` purescript
+onDragLeaveCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragOver`
+
+``` purescript
+onDragOver :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragOverCapture`
+
+``` purescript
+onDragOverCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragStart`
+
+``` purescript
+onDragStart :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDragStartCapture`
+
+``` purescript
+onDragStartCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDrop`
+
+``` purescript
+onDrop :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
+#### `onDropCapture`
+
+``` purescript
+onDropCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+```
+
+
 #### `onFocus`
 
 ``` purescript
@@ -3421,34 +3642,6 @@ onChange :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 
 ``` purescript
 onChangeCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
-```
-
-
-#### `onInput`
-
-``` purescript
-onInput :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
-```
-
-
-#### `onInputCapture`
-
-``` purescript
-onInputCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
-```
-
-
-#### `onSubmit`
-
-``` purescript
-onSubmit :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
-```
-
-
-#### `onSubmitCapture`
-
-``` purescript
-onSubmitCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
 ```
 
 
@@ -3508,6 +3701,20 @@ onClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
+#### `onContextMenu`
+
+``` purescript
+onContextMenu :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+```
+
+
+#### `onContextMenuCapture`
+
+``` purescript
+onContextMenuCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+```
+
+
 #### `onDoubleClick`
 
 ``` purescript
@@ -3519,118 +3726,6 @@ onDoubleClick :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 
 ``` purescript
 onDoubleClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDrag`
-
-``` purescript
-onDrag :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragCapture`
-
-``` purescript
-onDragCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragEnd`
-
-``` purescript
-onDragEnd :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragEndCapture`
-
-``` purescript
-onDragEndCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragEnter`
-
-``` purescript
-onDragEnter :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragEnterCapture`
-
-``` purescript
-onDragEnterCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragExit`
-
-``` purescript
-onDragExit :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragExitCapture`
-
-``` purescript
-onDragExitCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragLeave`
-
-``` purescript
-onDragLeave :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragLeaveCapture`
-
-``` purescript
-onDragLeaveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragOver`
-
-``` purescript
-onDragOver :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragOverCapture`
-
-``` purescript
-onDragOverCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragStart`
-
-``` purescript
-onDragStart :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDragStartCapture`
-
-``` purescript
-onDragStartCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDrop`
-
-``` purescript
-onDrop :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-```
-
-
-#### `onDropCapture`
-
-``` purescript
-onDropCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
 ```
 
 
@@ -4297,6 +4392,13 @@ data DOMDataTransfer
 
 ``` purescript
 data DOMTouchList
+```
+
+
+#### `DOMString`
+
+``` purescript
+data DOMString
 ```
 
 
