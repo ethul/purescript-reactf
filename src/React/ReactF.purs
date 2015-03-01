@@ -105,26 +105,18 @@ data ReactF a
   | RenderAsync Element DOMElement (forall props state. Reference props state -> a)
 
 createClass :: forall eff props state. Specification eff props state -> React (Class props state)
-createClass spec = liftFC $ CreateClass (unsafeSpec spec) unsafeClass
+createClass spec = liftFC $ CreateClass (coerce spec) coerce
 
 createElementFromClass :: forall eff props state. Class props state -> Props props -> Events eff -> Elements -> React Element
-createElementFromClass cls props evts els = liftFC $ CreateElementFromClass (unsafeClass cls) (unsafeProps props) (unsafeEvents evts) els id
+createElementFromClass cls props evts els = liftFC $ CreateElementFromClass (coerce cls) (coerce props) (coerce evts) els id
 
 createElementFromTagName :: forall eff props state. TagName -> Attributes -> Events eff -> Elements -> React Element
-createElementFromTagName name attrs evts els = liftFC $ CreateElementFromTagName name attrs (unsafeEvents evts) els id
+createElementFromTagName name attrs evts els = liftFC $ CreateElementFromTagName name attrs (coerce evts) els id
 
 renderSync :: forall props spec. Element -> DOMElement -> React (Reference props spec)
-renderSync el dom = liftFC $ RenderSync el dom unsafeReference
+renderSync el dom = liftFC $ RenderSync el dom coerce
 
 renderAsync :: forall props spec. Element -> DOMElement -> React (Reference props spec)
-renderAsync el dom = liftFC $ RenderAsync el dom unsafeReference
+renderAsync el dom = liftFC $ RenderAsync el dom coerce
 
-foreign import unsafeSpec "function unsafeSpec(spec){return spec;}" :: forall a b c d e f. Specification a b c -> Specification d e f
-
-foreign import unsafeEvents "function unsafeEvents(evts){return evts;}" :: forall a b. Events a -> Events b
-
-foreign import unsafeClass "function unsafeClass(cls){return cls;}" :: forall a b c d. Class a b -> Class c d
-
-foreign import unsafeProps "function unsafeProps(props){return props;}" :: forall a b. Props a -> Props b
-
-foreign import unsafeReference "function unsafeReference(ctx){return ctx;}" :: forall a b c d. Reference a b -> Reference c d
+foreign import coerce "function coerce(a){return a;}" :: forall a b. a -> b
