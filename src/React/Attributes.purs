@@ -166,310 +166,466 @@ type Attributes = Options Attribute
 
 data Attribute
 
-foreign import accept "var accept = 'accept';" :: Option Attribute String
+foreign import mkAttribute "function mkAttribute(name){ return name; }" :: forall a. String -> Option Attribute a
 
-foreign import acceptCharset "var acceptCharset = 'acceptCharset';" :: Option Attribute String
+accept :: Option Attribute String
+accept = mkAttribute "accept"
 
-foreign import accessKey "var accessKey = 'accessKey';" :: Option Attribute String
+acceptCharset :: Option Attribute String
+acceptCharset = mkAttribute "acceptCharset"
 
-foreign import action "var action = 'action';" :: Option Attribute String
+accessKey :: Option Attribute String
+accessKey = mkAttribute "accessKey"
 
-foreign import allowFullScreen "var allowFullScreen = 'allowFullScreen';" :: Option Attribute Boolean
+action :: Option Attribute String
+action = mkAttribute "action"
 
-foreign import allowTransparency "var allowTransparency = 'allowTransparency';" :: Option Attribute Boolean
+allowFullScreen :: Option Attribute Boolean
+allowFullScreen = mkAttribute "allowFullScreen"
 
-foreign import alt "var alt = 'alt';" :: Option Attribute String
+allowTransparency :: Option Attribute Boolean
+allowTransparency = mkAttribute "allowTransparency"
 
-foreign import async "var async = 'async';" :: Option Attribute Boolean
+alt :: Option Attribute String
+alt = mkAttribute "alt"
 
-foreign import aria "function aria(a){ return 'aria-' + a; }" :: String -> Option Attribute String
+async :: Option Attribute Boolean
+async = mkAttribute "async"
 
-foreign import autoCapitalize "var autoCapitalize = 'autoCapitalize';" :: Option Attribute String
+aria :: String -> Option Attribute String
+aria s = mkAttribute $ "aria-" ++ s
 
-foreign import autoComplete "var autoComplete = 'autoComplete';" :: Option Attribute String
+autoCapitalize :: Option Attribute String
+autoCapitalize = mkAttribute "autoCapitalize"
 
-foreign import autoCorrect "var autoCorrect = 'autoCorrect';" :: Option Attribute String
+autoComplete :: Option Attribute String
+autoComplete = mkAttribute "autoComplete"
 
-foreign import autoPlay "var autoPlay = 'autoPlay';" :: Option Attribute Boolean
+autoCorrect :: Option Attribute String
+autoCorrect = mkAttribute "autoCorrect"
 
-foreign import cellPadding "var cellPadding = 'cellPadding';" :: Option Attribute Number
+autoPlay :: Option Attribute Boolean
+autoPlay = mkAttribute "autoPlay"
 
-foreign import cellSpacing "var cellSpacing = 'cellSpacing';" :: Option Attribute Number
+cellPadding :: Option Attribute Number
+cellPadding = mkAttribute "cellPadding"
 
-foreign import charSet "var charSet = 'charSet';" :: Option Attribute String
+cellSpacing :: Option Attribute Number
+cellSpacing = mkAttribute "cellSpacing"
 
-foreign import checked "var checked = 'checked';" :: Option Attribute Boolean
+charSet :: Option Attribute String
+charSet = mkAttribute "charSet"
 
-foreign import classID "var classID = 'classID';" :: Option Attribute String
+checked :: Option Attribute Boolean
+checked = mkAttribute "checked"
 
-foreign import className "var className = 'className';" :: Option Attribute String
+classID :: Option Attribute String
+classID = mkAttribute "classID"
 
-foreign import colSpan "var colSpan = 'colSpan';" :: Option Attribute Number
+className :: Option Attribute String
+className = mkAttribute "className"
 
-foreign import cols "var cols = 'cols';" :: Option Attribute Number
+colSpan :: Option Attribute Number
+colSpan = mkAttribute "colSpan"
 
-foreign import content "var content = 'content';" :: Option Attribute String
+cols :: Option Attribute Number
+cols = mkAttribute "cols"
 
-foreign import contentEditable "var contentEditable = 'contentEditable';" :: Option Attribute Boolean
+content :: Option Attribute String
+content = mkAttribute "content"
 
-foreign import contextMenu "var contextMenu = 'contextMenu';" :: Option Attribute String
+contentEditable :: Option Attribute Boolean
+contentEditable = mkAttribute "contentEditable"
 
-foreign import controls "var controls = 'controls';" :: Option Attribute Boolean
+contextMenu :: Option Attribute String
+contextMenu = mkAttribute "contextMenu"
 
-foreign import coords "var coords = 'coords';" :: Option Attribute String
+controls :: Option Attribute Boolean
+controls = mkAttribute "controls"
 
-foreign import crossOrigin "var crossOrigin = 'crossOrigin';" :: Option Attribute String
+coords :: Option Attribute String
+coords = mkAttribute "coords"
 
-foreign import cx "var cx = 'cx';" :: Option Attribute Number
+crossOrigin :: Option Attribute String
+crossOrigin = mkAttribute "crossOrigin"
 
-foreign import cy "var cy = 'cy';" :: Option Attribute Number
+cx :: Option Attribute Number
+cx = mkAttribute "cx"
 
-foreign import d "var d = 'd';" :: Option Attribute String
+cy :: Option Attribute Number
+cy = mkAttribute "cy"
 
-foreign import dangerouslySetInnerHTML "var dangerouslySetInnerHTML = 'dangerouslySetInnerHTML';" :: Option Attribute { __html :: String }
+d :: Option Attribute String
+d = mkAttribute "d"
 
-foreign import _data "function _data(a){ return 'data-' + a; }" :: forall a. String -> Option Attribute a
+dangerouslySetInnerHTML :: Option Attribute { __html :: String }
+dangerouslySetInnerHTML = mkAttribute "dangerouslySetInnerHTML"
 
-foreign import _data' "var _data$prime = 'data';" :: Option Attribute String
+_data :: forall value. String -> Option Attribute value
+_data s = mkAttribute $ "data-" ++ s
 
-foreign import dateTime "var dateTime = 'dateTime';" :: Option Attribute String
+_data' :: Option Attribute String
+_data' = mkAttribute "data"
 
-foreign import defer "var defer = 'defer';" :: Option Attribute Boolean
+dateTime :: Option Attribute String
+dateTime = mkAttribute "dateTime"
 
-foreign import dir "var dir = 'dir';" :: Option Attribute String
+defer :: Option Attribute Boolean
+defer = mkAttribute "defer"
 
-foreign import disabled "var disabled = 'disabled';" :: Option Attribute Boolean
+dir :: Option Attribute String
+dir = mkAttribute "dir"
 
-foreign import download "var download = 'download';" :: Option Attribute Boolean
+disabled :: Option Attribute Boolean
+disabled = mkAttribute "disabled"
 
-foreign import draggable "var draggable = 'draggable';" :: Option Attribute Boolean
+download :: Option Attribute Boolean
+download = mkAttribute "download"
 
-foreign import dx "var dx = 'dx';" :: Option Attribute Number
+draggable :: Option Attribute Boolean
+draggable = mkAttribute "draggable"
 
-foreign import dy "var dy = 'dy';" :: Option Attribute Number
+dx :: Option Attribute Number
+dx = mkAttribute "dx"
 
-foreign import encType "var encType = 'encType';" :: Option Attribute String
+dy :: Option Attribute Number
+dy = mkAttribute "dy"
 
-foreign import fill "var fill = 'fill';" :: Option Attribute String
+encType :: Option Attribute String
+encType = mkAttribute "encType"
 
-foreign import fillOpacity "var fillOpacity = 'fillOpacity';" :: Option Attribute Number
+fill :: Option Attribute String
+fill = mkAttribute "fill"
 
-foreign import fontFamily "var fontFamily = 'fontFamily';" :: Option Attribute String
+fillOpacity :: Option Attribute Number
+fillOpacity = mkAttribute "fillOpacity"
 
-foreign import fontSize "var fontSize = 'fontSize';" :: Option Attribute String
+fontFamily :: Option Attribute String
+fontFamily = mkAttribute "fontFamily"
 
-foreign import form "var form = 'form';" :: Option Attribute String
+fontSize :: Option Attribute String
+fontSize = mkAttribute "fontSize"
 
-foreign import formAction "var formAction = 'formAction';" :: Option Attribute String
+form :: Option Attribute String
+form = mkAttribute "form"
 
-foreign import formEncType "var formEncType = 'formEncType';" :: Option Attribute String
+formAction :: Option Attribute String
+formAction = mkAttribute "formAction"
 
-foreign import formMethod "var formMethod = 'formMethod';" :: Option Attribute String
+formEncType :: Option Attribute String
+formEncType = mkAttribute "formEncType"
 
-foreign import formNoValidate "var formNoValidate = 'formNoValidate';" :: Option Attribute Boolean
+formMethod :: Option Attribute String
+formMethod = mkAttribute "formMethod"
 
-foreign import formTarget "var formTarget = 'formTarget';" :: Option Attribute String
+formNoValidate :: Option Attribute Boolean
+formNoValidate = mkAttribute "formNoValidate"
 
-foreign import frameBorder "var frameBorder = 'frameBorder';" :: Option Attribute Number
+formTarget :: Option Attribute String
+formTarget = mkAttribute "formTarget"
 
-foreign import fx "var fx = 'fx';" :: Option Attribute Number
+frameBorder :: Option Attribute Number
+frameBorder = mkAttribute "frameBorder"
 
-foreign import fy "var fy = 'fy';" :: Option Attribute Number
+fx :: Option Attribute Number
+fx = mkAttribute "fx"
 
-foreign import gradientTransform "var gradientTransform = 'gradientTransform';" :: Option Attribute String
+fy :: Option Attribute Number
+fy = mkAttribute "fy"
 
-foreign import gradientUnits "var gradientUnits = 'gradientUnits';" :: Option Attribute String
+gradientTransform :: Option Attribute String
+gradientTransform = mkAttribute "gradientTransform"
 
-foreign import height "var height = 'height';" :: Option Attribute String
+gradientUnits :: Option Attribute String
+gradientUnits = mkAttribute "gradientUnits"
 
-foreign import hidden "var hidden = 'hidden';" :: Option Attribute String
+height :: Option Attribute String
+height = mkAttribute "height"
 
-foreign import href "var href = 'href';" :: Option Attribute String
+hidden :: Option Attribute String
+hidden = mkAttribute "hidden"
 
-foreign import hrefLang "var hrefLang = 'hrefLang';" :: Option Attribute String
+href :: Option Attribute String
+href = mkAttribute "href"
 
-foreign import htmlFor "var htmlFor = 'htmlFor';" :: Option Attribute String
+hrefLang :: Option Attribute String
+hrefLang = mkAttribute "hrefLang"
 
-foreign import httpEquiv "var httpEquiv = 'httpEquiv';" :: Option Attribute String
+htmlFor :: Option Attribute String
+htmlFor = mkAttribute "htmlFor"
 
-foreign import icon "var icon = 'icon';" :: Option Attribute String
+httpEquiv :: Option Attribute String
+httpEquiv = mkAttribute "httpEquiv"
 
-foreign import id "var id = 'id';" :: Option Attribute String
+icon :: Option Attribute String
+icon = mkAttribute "icon"
 
-foreign import itemProp "var itemProp = 'itemProp';" :: Option Attribute String
+id :: Option Attribute String
+id = mkAttribute "id"
 
-foreign import itemScope "var itemScope = 'itemScope';" :: Option Attribute String
+itemProp :: Option Attribute String
+itemProp = mkAttribute "itemProp"
 
-foreign import itemType "var itemType = 'itemType';" :: Option Attribute String
+itemScope :: Option Attribute String
+itemScope = mkAttribute "itemScope"
 
-foreign import key "var key = 'key';" :: Option Attribute String
+itemType :: Option Attribute String
+itemType = mkAttribute "itemType"
 
-foreign import label "var label = 'label';" :: Option Attribute String
+key :: Option Attribute String
+key = mkAttribute "key"
 
-foreign import lang "var lang = 'lang';" :: Option Attribute String
+label :: Option Attribute String
+label = mkAttribute "label"
 
-foreign import list "var list = 'list';" :: Option Attribute String
+lang :: Option Attribute String
+lang = mkAttribute "lang"
 
-foreign import loop "var loop = 'loop';" :: Option Attribute Boolean
+list :: Option Attribute String
+list = mkAttribute "list"
 
-foreign import manifest "var manifest = 'manifest';" :: Option Attribute String
+loop :: Option Attribute Boolean
+loop = mkAttribute "loop"
 
-foreign import marginHeight "var marginHeight = 'marginHeight';" :: Option Attribute Number
+manifest :: Option Attribute String
+manifest = mkAttribute "manifest"
 
-foreign import marginWidth "var marginWidth = 'marginWidth';" :: Option Attribute Number
+marginHeight :: Option Attribute Number
+marginHeight = mkAttribute "marginHeight"
 
-foreign import markerEnd "var markerEnd = 'markerEnd';" :: Option Attribute String
+marginWidth :: Option Attribute Number
+marginWidth = mkAttribute "marginWidth"
 
-foreign import markerMid "var markerMid = 'markerMid';" :: Option Attribute String
+markerEnd :: Option Attribute String
+markerEnd = mkAttribute "markerEnd"
 
-foreign import markerStart "var markerStart = 'markerStart';" :: Option Attribute String
+markerMid :: Option Attribute String
+markerMid = mkAttribute "markerMid"
 
-foreign import max "var max = 'max';" :: Option Attribute Number
+markerStart :: Option Attribute String
+markerStart = mkAttribute "markerStart"
 
-foreign import maxLength "var maxLength = 'maxLength';" :: Option Attribute Number
+max :: Option Attribute Number
+max = mkAttribute "max"
 
-foreign import media "var media = 'media';" :: Option Attribute String
+maxLength :: Option Attribute Number
+maxLength = mkAttribute "maxLength"
 
-foreign import mediaGroup "var mediaGroup = 'mediaGroup';" :: Option Attribute String
+media :: Option Attribute String
+media = mkAttribute "media"
 
-foreign import method "var method = 'method';" :: Option Attribute String
+mediaGroup :: Option Attribute String
+mediaGroup = mkAttribute "mediaGroup"
 
-foreign import min "var min = 'min';" :: Option Attribute Number
+method :: Option Attribute String
+method = mkAttribute "method"
 
-foreign import multiple "var multiple = 'multiple';" :: Option Attribute Boolean
+min :: Option Attribute Number
+min = mkAttribute "min"
 
-foreign import muted "var muted = 'muted';" :: Option Attribute Boolean
+multiple :: Option Attribute Boolean
+multiple = mkAttribute "multiple"
 
-foreign import name "var name = 'name';" :: Option Attribute String
+muted :: Option Attribute Boolean
+muted = mkAttribute "muted"
 
-foreign import noValidate "var noValidate = 'noValidate';" :: Option Attribute Boolean
+name :: Option Attribute String
+name = mkAttribute "name"
 
-foreign import offset "var offset = 'offset';" :: Option Attribute String
+noValidate :: Option Attribute Boolean
+noValidate = mkAttribute "noValidate"
 
-foreign import opacity "var opacity = 'opacity';" :: Option Attribute Number
+offset :: Option Attribute String
+offset = mkAttribute "offset"
 
-foreign import open "var open = 'open';" :: Option Attribute String
+opacity :: Option Attribute Number
+opacity = mkAttribute "opacity"
 
-foreign import pattern "var pattern = 'pattern';" :: Option Attribute String
+open :: Option Attribute String
+open = mkAttribute "open"
 
-foreign import patternContentUnits "var patternContentUnits = 'patternContentUnits';" :: Option Attribute String
+pattern :: Option Attribute String
+pattern = mkAttribute "pattern"
 
-foreign import patternUnits "var patternUnits = 'patternUnits';" :: Option Attribute String
+patternContentUnits :: Option Attribute String
+patternContentUnits = mkAttribute "patternContentUnits"
 
-foreign import placeholder "var placeholder = 'placeholder';" :: Option Attribute String
+patternUnits :: Option Attribute String
+patternUnits = mkAttribute "patternUnits"
 
-foreign import points "var points = 'points';" :: Option Attribute String
+placeholder :: Option Attribute String
+placeholder = mkAttribute "placeholder"
 
-foreign import poster "var poster = 'poster';" :: Option Attribute String
+points :: Option Attribute String
+points = mkAttribute "points"
 
-foreign import preload "var preload = 'preload';" :: Option Attribute String
+poster :: Option Attribute String
+poster = mkAttribute "poster"
 
-foreign import preserveAspectRatio "var preserveAspectRatio = 'preserveAspectRatio';" :: Option Attribute String
+preload :: Option Attribute String
+preload = mkAttribute "preload"
 
-foreign import property "var property = 'property';" :: Option Attribute String
+preserveAspectRatio :: Option Attribute String
+preserveAspectRatio = mkAttribute "preserveAspectRatio"
 
-foreign import r "var r = 'r';" :: Option Attribute Number
+property :: Option Attribute String
+property = mkAttribute "property"
 
-foreign import radioGroup "var radioGroup = 'radioGroup';" :: Option Attribute String
+r :: Option Attribute Number
+r = mkAttribute "r"
 
-foreign import readOnly "var readOnly = 'readOnly';" :: Option Attribute Boolean
+radioGroup :: Option Attribute String
+radioGroup = mkAttribute "radioGroup"
 
-foreign import ref "var ref = 'ref';" :: Option Attribute String
+readOnly :: Option Attribute Boolean
+readOnly = mkAttribute "readOnly"
 
-foreign import rel "var rel = 'rel';" :: Option Attribute String
+ref :: Option Attribute String
+ref = mkAttribute "ref"
 
-foreign import required "var required = 'required';" :: Option Attribute Boolean
+rel :: Option Attribute String
+rel = mkAttribute "rel"
 
-foreign import role "var role = 'role';" :: Option Attribute String
+required :: Option Attribute Boolean
+required = mkAttribute "required"
 
-foreign import rowSpan "var rowSpan = 'rowSpan';" :: Option Attribute Number
+role :: Option Attribute String
+role = mkAttribute "role"
 
-foreign import rows "var rows = 'rows';" :: Option Attribute Number
+rowSpan :: Option Attribute Number
+rowSpan = mkAttribute "rowSpan"
 
-foreign import rx "var rx = 'rx';" :: Option Attribute Number
+rows :: Option Attribute Number
+rows = mkAttribute "rows"
 
-foreign import ry "var ry = 'ry';" :: Option Attribute Number
+rx :: Option Attribute Number
+rx = mkAttribute "rx"
 
-foreign import sandbox "var sandbox = 'sandbox';" :: Option Attribute String
+ry :: Option Attribute Number
+ry = mkAttribute "ry"
 
-foreign import scope "var scope = 'scope';" :: Option Attribute String
+sandbox :: Option Attribute String
+sandbox = mkAttribute "sandbox"
 
-foreign import scrolling "var scrolling = 'scrolling';" :: Option Attribute String
+scope :: Option Attribute String
+scope = mkAttribute "scope"
 
-foreign import seamless "var seamless = 'seamless';" :: Option Attribute Boolean
+scrolling :: Option Attribute String
+scrolling = mkAttribute "scrolling"
 
-foreign import selected "var selected = 'selected';" :: Option Attribute Boolean
+seamless :: Option Attribute Boolean
+seamless = mkAttribute "seamless"
 
-foreign import shape "var shape = 'shape';" :: Option Attribute String
+selected :: Option Attribute Boolean
+selected = mkAttribute "selected"
 
-foreign import size "var size = 'size';" :: Option Attribute Number
+shape :: Option Attribute String
+shape = mkAttribute "shape"
 
-foreign import sizes "var sizes = 'sizes';" :: Option Attribute String
+size :: Option Attribute Number
+size = mkAttribute "size"
 
-foreign import span "var span = 'span';" :: Option Attribute Number
+sizes :: Option Attribute String
+sizes = mkAttribute "sizes"
 
-foreign import spellCheck "var spellCheck = 'spellCheck';" :: Option Attribute Boolean
+span :: Option Attribute Number
+span = mkAttribute "span"
 
-foreign import spreadMethod "var spreadMethod = 'spreadMethod';" :: Option Attribute String
+spellCheck :: Option Attribute Boolean
+spellCheck = mkAttribute "spellCheck"
 
-foreign import src "var src = 'src';" :: Option Attribute String
+spreadMethod :: Option Attribute String
+spreadMethod = mkAttribute "spreadMethod"
 
-foreign import srcDoc "var srcDoc = 'srcDoc';" :: Option Attribute String
+src :: Option Attribute String
+src = mkAttribute "src"
 
-foreign import srcSet "var srcSet = 'srcSet';" :: Option Attribute String
+srcDoc :: Option Attribute String
+srcDoc = mkAttribute "srcDoc"
 
-foreign import start "var start = 'start';" :: Option Attribute String
+srcSet :: Option Attribute String
+srcSet = mkAttribute "srcSet"
 
-foreign import step "var step = 'step';" :: Option Attribute Number
+start :: Option Attribute String
+start = mkAttribute "start"
 
-foreign import stopColor "var stopColor = 'stopColor';" :: Option Attribute String
+step :: Option Attribute Number
+step = mkAttribute "step"
 
-foreign import stopOpacity "var stopOpacity = 'stopOpacity';" :: Option Attribute Number
+stopColor :: Option Attribute String
+stopColor = mkAttribute "stopColor"
 
-foreign import stroke "var stroke = 'stroke';" :: Option Attribute String
+stopOpacity :: Option Attribute Number
+stopOpacity = mkAttribute "stopOpacity"
 
-foreign import strokeDasharray "var strokeDasharray = 'strokeDasharray';" :: Option Attribute String
+stroke :: Option Attribute String
+stroke = mkAttribute "stroke"
 
-foreign import strokeLinecap "var strokeLinecap = 'strokeLinecap';" :: Option Attribute String
+strokeDasharray :: Option Attribute String
+strokeDasharray = mkAttribute "strokeDasharray"
 
-foreign import strokeOpacity "var strokeOpacity = 'strokeOpacity';" :: Option Attribute Number
+strokeLinecap :: Option Attribute String
+strokeLinecap = mkAttribute "strokeLinecap"
 
-foreign import strokeWidth "var strokeWidth = 'strokeWidth';" :: Option Attribute String
+strokeOpacity :: Option Attribute Number
+strokeOpacity = mkAttribute "strokeOpacity"
 
-foreign import style "var style = 'style';" :: forall a. Option Attribute { | a }
+strokeWidth :: Option Attribute String
+strokeWidth = mkAttribute "strokeWidth"
 
-foreign import tabIndex "var tabIndex = 'tabIndex';" :: Option Attribute Number
+style :: forall style. Option Attribute { | style }
+style = mkAttribute "style"
 
-foreign import target "var target = 'target';" :: Option Attribute String
+tabIndex :: Option Attribute Number
+tabIndex = mkAttribute "tabIndex"
 
-foreign import textAnchor "var textAnchor = 'textAnchor';" :: Option Attribute String
+target :: Option Attribute String
+target = mkAttribute "target"
 
-foreign import title "var title = 'title';" :: Option Attribute String
+textAnchor :: Option Attribute String
+textAnchor = mkAttribute "textAnchor"
 
-foreign import transform "var transform = 'transform';" :: Option Attribute String
+title :: Option Attribute String
+title = mkAttribute "title"
 
-foreign import _type "var _type = 'type';" :: Option Attribute String
+transform :: Option Attribute String
+transform = mkAttribute "transform"
 
-foreign import useMap "var useMap = 'useMap';" :: Option Attribute String
+_type :: Option Attribute String
+_type = mkAttribute "type"
 
-foreign import value "var value = 'value';" :: Option Attribute String
+useMap :: Option Attribute String
+useMap = mkAttribute "useMap"
 
-foreign import version "var version = 'version';" :: Option Attribute String
+value :: Option Attribute String
+value = mkAttribute "value"
 
-foreign import viewBox "var viewBox = 'viewBox';" :: Option Attribute String
+version :: Option Attribute String
+version = mkAttribute "version"
 
-foreign import width "var width = 'width';" :: Option Attribute String
+viewBox :: Option Attribute String
+viewBox = mkAttribute "viewBox"
 
-foreign import wmode "var wmode = 'wmode';" :: Option Attribute String
+width :: Option Attribute String
+width = mkAttribute "width"
 
-foreign import x "var x = 'x';" :: Option Attribute Number
+wmode :: Option Attribute String
+wmode = mkAttribute "wmode"
 
-foreign import x1 "var x1 = 'x1';" :: Option Attribute Number
+x :: Option Attribute Number
+x = mkAttribute "x"
 
-foreign import x2 "var x2 = 'x2';" :: Option Attribute Number
+x1 :: Option Attribute Number
+x1 = mkAttribute "x1"
 
-foreign import y "var y = 'y';" :: Option Attribute Number
+x2 :: Option Attribute Number
+x2 = mkAttribute "x2"
 
-foreign import y1 "var y1 = 'y1';" :: Option Attribute Number
+y :: Option Attribute Number
+y = mkAttribute "y"
 
-foreign import y2 "var y2 = 'y2';" :: Option Attribute Number
+y1 :: Option Attribute Number
+y1 = mkAttribute "y1"
+
+y2 :: Option Attribute Number
+y2 = mkAttribute "y2"
