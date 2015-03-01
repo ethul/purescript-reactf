@@ -41,7 +41,7 @@ renderTodo props todo@(Todo a) =
                     (Evt.onChange := Evt.SyntheticInputEventFn (onChange todo))
                     mempty
         , Dom.label'
-          .> Dom.textnode a.title
+          .> Dom.raw a.title
         , Dom.button (Attr.className := "destroy")
                      (Evt.onClick := Evt.SyntheticMouseEventFn (onRemove todo))
                      mempty
@@ -55,7 +55,7 @@ render (Props props) =
   Dom.section (Attr.id := "main") mempty
   .> [ Dom.input (Attr.id := "toggle-all" <> Attr._type := "checkbox") mempty mempty
      , Dom.label (Attr.htmlFor := "toggle-all") mempty
-       .> Dom.textnode "Mark all as completed"
+       .> Dom.raw "Mark all as completed"
      , Dom.ul (Attr.id := "todo-list") mempty
        .> renderTodo props <$> props.todos
      ]

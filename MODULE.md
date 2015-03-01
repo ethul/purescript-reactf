@@ -236,7 +236,7 @@ dangerouslySetInnerHTML :: Option Attribute { __html :: String }
 #### `_data`
 
 ``` purescript
-_data :: forall a. String -> Option Attribute a
+_data :: forall value. String -> Option Attribute value
 ```
 
 
@@ -964,7 +964,7 @@ strokeWidth :: Option Attribute String
 #### `style`
 
 ``` purescript
-style :: forall a. Option Attribute {  | a }
+style :: forall style. Option Attribute {  | style }
 ```
 
 
@@ -1212,10 +1212,10 @@ null :: React Element
 ```
 
 
-#### `textnode`
+#### `raw`
 
 ``` purescript
-textnode :: String -> React Element
+raw :: String -> React Element
 ```
 
 
@@ -4115,7 +4115,7 @@ setComponentWillUnmount :: forall eff props state. SetterP (Specification eff pr
 ``` purescript
 data TagName
   = Null 
-  | Textnode 
+  | Raw 
   | A 
   | Abbr 
   | Address 
