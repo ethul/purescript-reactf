@@ -2,7 +2,7 @@ module React.ComponentI (run) where
 
 import Control.Monad.Eff (Eff())
 import Control.Monad.Eff.Unsafe (unsafeInterleaveEff)
-import Control.Monad.Free (goEffC)
+import Control.Monad.Free (runFreeCM)
 
 import Data.Coyoneda (Natural())
 import Data.Function
@@ -18,7 +18,7 @@ componentN (SetStateAsync ref s a) = const a <$> runFn2 setStateAsyncFn ref s
 componentN (ComponentEff eff k) = k <$> unsafeInterleaveEff eff
 
 run :: forall eff a. Component eff a -> Eff (react :: ReactE) a
-run fa = goEffC componentN fa
+run fa = runFreeCM componentN fa
 
 foreign import getPropsFn """
   function getPropsFn(ref) {
