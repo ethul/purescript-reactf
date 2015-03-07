@@ -5,7 +5,7 @@ module React.ReactI
   ) where
 
 import Control.Monad.Eff (Eff())
-import Control.Monad.Free (goEffC)
+import Control.Monad.Free (runFreeCM)
 
 import Data.Coyoneda (Natural())
 import Data.Foreign (Foreign())
@@ -58,7 +58,7 @@ reactN reactjs fa =
                ReactJsAddons a -> Just a
 
 run :: forall a. ReactJs -> React a -> Eff (react :: ReactE) a
-run js fa = goEffC (reactN js) fa
+run js fa = runFreeCM (reactN js) fa
 
 foreign import createClassFromPureSpecFn """
   function createClassFromPureSpecFn(maybe, React, MaybeReactWithAddons, spec, run) {
