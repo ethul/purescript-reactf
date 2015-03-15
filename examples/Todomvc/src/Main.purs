@@ -27,7 +27,7 @@ program = do
                                   , footer: footerClass
                                   , info: infoClass
                                   }
-  todomvcEl <- createElementFromClass todomvcClass (Props unit) mempty mempty
+  todomvcEl <- createElementFromClass todomvcClass (Props unit) mempty
   renderAsync todomvcEl dom
 
 main = run (ReactJsAddons reactjs) program

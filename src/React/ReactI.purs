@@ -10,16 +10,19 @@ import Control.Monad.Free (runFreeCM)
 import Data.Coyoneda (Natural())
 import Data.Foreign (Foreign())
 import Data.Function
-import Data.Options (options)
+import Data.Options (Option(), options, key)
 import Data.Maybe (Maybe(..), maybe)
+import Data.StrMap (StrMap(), fromList, member)
+import Data.Tuple (Tuple(..))
 
 import React.Attributes (Attributes())
 import React.ComponentF (Component(), Props(), Reference())
-import qualified React.ComponentI as CI
-import React.Events (Events())
 import React.ReactF
 import React.TagName (TagName(Null, Raw))
 import React.Types (DOMElement(), ReactE())
+
+import qualified React.ComponentI as C
+import qualified React.Events as E
 
 data ReactJsImport
 
@@ -32,13 +35,13 @@ reactN reactjs fa =
        k <$> runFn5 createClassFromPureSpecFn maybe rjs addons spec (run reactjs)
 
        CreateClass (ImpureSpecification spec) k ->
-       k <$> runFn4 createClassFromImpureSpecFn rjs CI.run spec (run reactjs)
+       k <$> runFn4 createClassFromImpureSpecFn rjs C.run spec (run reactjs)
 
-       CreateElementFromClass cls props evts els k ->
-       k <$> runFn7 createElementFromClassFn rjs CI.run cls props evts events els
+       CreateElementFromClass cls props els k ->
+       k <$> runFn4 createElementFromClassFn rjs cls props els
 
-       CreateElementFromTagName tag attrs evts els k ->
-       k <$> runFn9 createElementFromTagNameFn rjs CI.run {_tag: tag, _null: Null, _raw: Raw} show attrs attributes evts events els
+       CreateElementFromTagName tag attrs els k ->
+       k <$> runFn9 createElementFromTagNameFn rjs C.run {_tag: tag, _null: Null, _raw: Raw} show attrs attributes events member els
 
        RenderSync el dom k ->
        k <$> runFn3 renderFn rjs el dom
@@ -47,7 +50,6 @@ reactN reactjs fa =
        k <$> runFn3 renderFn rjs el dom
 
   where attributes a = options a
-        events a = options a
         rjs =
           case reactjs of
                ReactJs a -> a
@@ -181,36 +183,21 @@ foreign import createClassFromImpureSpecFn """
                                      (Eff eff (Class props state))
 
 foreign import createElementFromClassFn """
-  function createElementFromClassFn(React, runComponent, cls, props, evts, eventsFn, els) {
+  function createElementFromClassFn(React, cls, props, els) {
     return function(){
-      var events = eventsFn(evts);
-
-      var events$prime = Object.keys(events).reduce(function(b, k){
-        b[k] = function(event){
-          var fa = events[k](event);
-          return runComponent(fa)();
-        };
-        return b;
-      }, {});
-
-      var props$prime = React.__spread({}, events$prime, props);
-
-      var elem = React.createElement(cls, props$prime, els);
+      var elem = React.createElement(cls, props, els);
 
       return elem;
     };
   }
-""" :: forall eff props state a. Fn7 ReactJsImport
-                                     (Component eff a -> Eff (react :: ReactE) a)
+""" :: forall eff props state a. Fn4 ReactJsImport
                                      (Class props state)
                                      (Props props)
-                                     (Events eff)
-                                     (Events eff -> Foreign)
                                      Elements
                                      (Eff eff Element)
 
 foreign import createElementFromTagNameFn """
-  function createElementFromTagNameFn(React, runComponent, tags, show, attrs, attributesFn, evts, eventsFn, els) {
+  function createElementFromTagNameFn(React, runComponent, tags, show, attrs, attributesFn, events, member, els) {
     return function(){
       var tagName = show(tags._tag);
 
@@ -220,17 +207,16 @@ foreign import createElementFromTagNameFn """
 
       var attributes = attributesFn(attrs);
 
-      var events = eventsFn(evts);
-
-      var events$prime = Object.keys(events).reduce(function(b, k){
-        b[k] = function(event){
-          var fa = events[k](event);
-          return runComponent(fa)();
-        };
+      var props = Object.keys(attributes).reduce(function(b, k){
+        if (!member(k)(events)) b[k] = attributes[k];
+        else {
+          b[k] = function(event){
+            var fa = attributes[k](event);
+            return runComponent(fa)();
+          };
+        }
         return b;
       }, {});
-
-      var props = React.__spread({}, attributes, events$prime);
 
       if (tagName === nullString) return null;
       else if (tagName === rawString) return els;
@@ -243,8 +229,8 @@ foreign import createElementFromTagNameFn """
                                      (TagName -> String)
                                      Attributes
                                      (Attributes -> Foreign)
-                                     (Events eff)
-                                     (Events eff -> Foreign)
+                                     (StrMap Unit)
+                                     (String -> StrMap Unit -> Boolean)
                                      Elements
                                      (Eff eff Element)
 
@@ -259,3 +245,83 @@ foreign import renderFn """
                                    Element
                                    DOMElement
                                    (Eff eff (Reference props state))
+
+events :: StrMap Unit
+events = fromList $ (flip Tuple) unit <$> as
+  where as = [ key E.onError
+             , key E.onErrorCapture
+             , key E.onLoad
+             , key E.onLoadCapture
+             , key E.onInput
+             , key E.onInputCapture
+             , key E.onReset
+             , key E.onResetCapture
+             , key E.onSubmit
+             , key E.onSubmitCapture
+             , key E.onCopy
+             , key E.onCopyCapture
+             , key E.onCut
+             , key E.onCutCapture
+             , key E.onPaste
+             , key E.onPasteCapture
+             , key E.onDrag
+             , key E.onDragCapture
+             , key E.onDragEnd
+             , key E.onDragEndCapture
+             , key E.onDragEnter
+             , key E.onDragEnterCapture
+             , key E.onDragExit
+             , key E.onDragExitCapture
+             , key E.onDragLeave
+             , key E.onDragLeaveCapture
+             , key E.onDragOver
+             , key E.onDragOverCapture
+             , key E.onDragStart
+             , key E.onDragStartCapture
+             , key E.onDrop
+             , key E.onDropCapture
+             , key E.onFocus
+             , key E.onFocusCapture
+             , key E.onBlur
+             , key E.onBlurCapture
+             , key E.onChange
+             , key E.onChangeCapture
+             , key E.onKeyDown
+             , key E.onKeyDownCapture
+             , key E.onKeyPress
+             , key E.onKeyPressCapture
+             , key E.onKeyUp
+             , key E.onKeyUpCapture
+             , key E.onClick
+             , key E.onClickCapture
+             , key E.onContextMenu
+             , key E.onContextMenuCapture
+             , key E.onDoubleClick
+             , key E.onDoubleClickCapture
+             , key E.onMouseDown
+             , key E.onMouseDownCapture
+             , key E.onMouseEnter
+             , key E.onMouseEnterCapture
+             , key E.onMouseLeave
+             , key E.onMouseLeaveCapture
+             , key E.onMouseMove
+             , key E.onMouseMoveCapture
+             , key E.onMouseOut
+             , key E.onMouseOutCapture
+             , key E.onMouseOver
+             , key E.onMouseOverCapture
+             , key E.onMouseUp
+             , key E.onMouseUpCapture
+             , key E.onTouchCancel
+             , key E.onTouchCancelCapture
+             , key E.onTouchEnd
+             , key E.onTouchEndCapture
+             , key E.onTouchMove
+             , key E.onTouchMoveCapture
+             , key E.onTouchStart
+             , key E.onTouchStartCapture
+             , key E.onScroll
+             , key E.onScrollCapture
+             , key E.onWheel
+             , key E.onWheelCapture
+             ]

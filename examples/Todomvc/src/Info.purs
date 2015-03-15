@@ -26,31 +26,31 @@ props = Props unit
 
 render :: PureRenderFn InfoProps
 render _ =
-  Dom.footer (Attr.id := "info") mempty
+  Dom.footer (Attr.id := "info")
   .> [ Dom.p'
        .> Dom.raw "Double-click to edit a todo"
      , Dom.p'
        .> [ Dom.raw "Info:"
           , Dom.a (Attr.href := "http://twitter.com/cburgdorf" <>
-                   Attr.style := style) mempty
+                   Attr.style := style)
             .> Dom.raw "Christoph Burgdorf"
           , Dom.raw ","
           , Dom.a (Attr.href := "http://ericbidelman.com" <>
-                   Attr.style := style) mempty
+                   Attr.style := style)
             .> Dom.raw "Eric Bidelman"
           , Dom.raw ","
           , Dom.a (Attr.href := "http://jacobmumm.com" <>
-                   Attr.style := style') mempty
+                   Attr.style := style')
             .> Dom.raw "Jacob Mumm"
           , Dom.raw "and"
           , Dom.a (Attr.href := "http://igorminar.com" <>
-                   Attr.style := style) mempty
+                   Attr.style := style)
             .> Dom.raw "Igor Minar"
           ]
      , Dom.p'
        .> [ Dom.raw "Part of"
           , Dom.a (Attr.href := "http://todomvc.com" <>
-                   Attr.style := style) mempty
+                   Attr.style := style)
             .> Dom.raw "TodoMVC"
           ]
      ]

@@ -159,473 +159,471 @@ module React.Attributes
 
 import Prelude hiding (id)
 
-import Data.Options
+import Data.Options (Option(), Options(), IsOption, opt)
 import Data.Monoid (Monoid, mempty)
 
 type Attributes = Options Attribute
 
 data Attribute
 
-foreign import mkAttribute "function mkAttribute(name){ return name; }" :: forall a. String -> Option Attribute a
-
 accept :: Option Attribute String
-accept = mkAttribute "accept"
+accept = opt "accept"
 
 acceptCharset :: Option Attribute String
-acceptCharset = mkAttribute "acceptCharset"
+acceptCharset = opt "acceptCharset"
 
 accessKey :: Option Attribute String
-accessKey = mkAttribute "accessKey"
+accessKey = opt "accessKey"
 
 action :: Option Attribute String
-action = mkAttribute "action"
+action = opt "action"
 
 allowFullScreen :: Option Attribute Boolean
-allowFullScreen = mkAttribute "allowFullScreen"
+allowFullScreen = opt "allowFullScreen"
 
 allowTransparency :: Option Attribute Boolean
-allowTransparency = mkAttribute "allowTransparency"
+allowTransparency = opt "allowTransparency"
 
 alt :: Option Attribute String
-alt = mkAttribute "alt"
+alt = opt "alt"
 
 async :: Option Attribute Boolean
-async = mkAttribute "async"
+async = opt "async"
 
 aria :: String -> Option Attribute String
-aria s = mkAttribute $ "aria-" ++ s
+aria s = opt $ "aria-" ++ s
 
 autoCapitalize :: Option Attribute String
-autoCapitalize = mkAttribute "autoCapitalize"
+autoCapitalize = opt "autoCapitalize"
 
 autoComplete :: Option Attribute String
-autoComplete = mkAttribute "autoComplete"
+autoComplete = opt "autoComplete"
 
 autoCorrect :: Option Attribute String
-autoCorrect = mkAttribute "autoCorrect"
+autoCorrect = opt "autoCorrect"
 
 autoPlay :: Option Attribute Boolean
-autoPlay = mkAttribute "autoPlay"
+autoPlay = opt "autoPlay"
 
 cellPadding :: Option Attribute Number
-cellPadding = mkAttribute "cellPadding"
+cellPadding = opt "cellPadding"
 
 cellSpacing :: Option Attribute Number
-cellSpacing = mkAttribute "cellSpacing"
+cellSpacing = opt "cellSpacing"
 
 charSet :: Option Attribute String
-charSet = mkAttribute "charSet"
+charSet = opt "charSet"
 
 checked :: Option Attribute Boolean
-checked = mkAttribute "checked"
+checked = opt "checked"
 
 classID :: Option Attribute String
-classID = mkAttribute "classID"
+classID = opt "classID"
 
 className :: Option Attribute String
-className = mkAttribute "className"
+className = opt "className"
 
 colSpan :: Option Attribute Number
-colSpan = mkAttribute "colSpan"
+colSpan = opt "colSpan"
 
 cols :: Option Attribute Number
-cols = mkAttribute "cols"
+cols = opt "cols"
 
 content :: Option Attribute String
-content = mkAttribute "content"
+content = opt "content"
 
 contentEditable :: Option Attribute Boolean
-contentEditable = mkAttribute "contentEditable"
+contentEditable = opt "contentEditable"
 
 contextMenu :: Option Attribute String
-contextMenu = mkAttribute "contextMenu"
+contextMenu = opt "contextMenu"
 
 controls :: Option Attribute Boolean
-controls = mkAttribute "controls"
+controls = opt "controls"
 
 coords :: Option Attribute String
-coords = mkAttribute "coords"
+coords = opt "coords"
 
 crossOrigin :: Option Attribute String
-crossOrigin = mkAttribute "crossOrigin"
+crossOrigin = opt "crossOrigin"
 
 cx :: Option Attribute Number
-cx = mkAttribute "cx"
+cx = opt "cx"
 
 cy :: Option Attribute Number
-cy = mkAttribute "cy"
+cy = opt "cy"
 
 d :: Option Attribute String
-d = mkAttribute "d"
+d = opt "d"
 
 dangerouslySetInnerHTML :: Option Attribute { __html :: String }
-dangerouslySetInnerHTML = mkAttribute "dangerouslySetInnerHTML"
+dangerouslySetInnerHTML = opt "dangerouslySetInnerHTML"
 
-_data :: forall value. String -> Option Attribute value
-_data s = mkAttribute $ "data-" ++ s
+_data :: forall value. (IsOption value) => String -> Option Attribute value
+_data s = opt $ "data-" ++ s
 
 _data' :: Option Attribute String
-_data' = mkAttribute "data"
+_data' = opt "data"
 
 dateTime :: Option Attribute String
-dateTime = mkAttribute "dateTime"
+dateTime = opt "dateTime"
 
 defer :: Option Attribute Boolean
-defer = mkAttribute "defer"
+defer = opt "defer"
 
 dir :: Option Attribute String
-dir = mkAttribute "dir"
+dir = opt "dir"
 
 disabled :: Option Attribute Boolean
-disabled = mkAttribute "disabled"
+disabled = opt "disabled"
 
 download :: Option Attribute Boolean
-download = mkAttribute "download"
+download = opt "download"
 
 draggable :: Option Attribute Boolean
-draggable = mkAttribute "draggable"
+draggable = opt "draggable"
 
 dx :: Option Attribute Number
-dx = mkAttribute "dx"
+dx = opt "dx"
 
 dy :: Option Attribute Number
-dy = mkAttribute "dy"
+dy = opt "dy"
 
 encType :: Option Attribute String
-encType = mkAttribute "encType"
+encType = opt "encType"
 
 fill :: Option Attribute String
-fill = mkAttribute "fill"
+fill = opt "fill"
 
 fillOpacity :: Option Attribute Number
-fillOpacity = mkAttribute "fillOpacity"
+fillOpacity = opt "fillOpacity"
 
 fontFamily :: Option Attribute String
-fontFamily = mkAttribute "fontFamily"
+fontFamily = opt "fontFamily"
 
 fontSize :: Option Attribute String
-fontSize = mkAttribute "fontSize"
+fontSize = opt "fontSize"
 
 form :: Option Attribute String
-form = mkAttribute "form"
+form = opt "form"
 
 formAction :: Option Attribute String
-formAction = mkAttribute "formAction"
+formAction = opt "formAction"
 
 formEncType :: Option Attribute String
-formEncType = mkAttribute "formEncType"
+formEncType = opt "formEncType"
 
 formMethod :: Option Attribute String
-formMethod = mkAttribute "formMethod"
+formMethod = opt "formMethod"
 
 formNoValidate :: Option Attribute Boolean
-formNoValidate = mkAttribute "formNoValidate"
+formNoValidate = opt "formNoValidate"
 
 formTarget :: Option Attribute String
-formTarget = mkAttribute "formTarget"
+formTarget = opt "formTarget"
 
 frameBorder :: Option Attribute Number
-frameBorder = mkAttribute "frameBorder"
+frameBorder = opt "frameBorder"
 
 fx :: Option Attribute Number
-fx = mkAttribute "fx"
+fx = opt "fx"
 
 fy :: Option Attribute Number
-fy = mkAttribute "fy"
+fy = opt "fy"
 
 gradientTransform :: Option Attribute String
-gradientTransform = mkAttribute "gradientTransform"
+gradientTransform = opt "gradientTransform"
 
 gradientUnits :: Option Attribute String
-gradientUnits = mkAttribute "gradientUnits"
+gradientUnits = opt "gradientUnits"
 
 height :: Option Attribute String
-height = mkAttribute "height"
+height = opt "height"
 
 hidden :: Option Attribute String
-hidden = mkAttribute "hidden"
+hidden = opt "hidden"
 
 href :: Option Attribute String
-href = mkAttribute "href"
+href = opt "href"
 
 hrefLang :: Option Attribute String
-hrefLang = mkAttribute "hrefLang"
+hrefLang = opt "hrefLang"
 
 htmlFor :: Option Attribute String
-htmlFor = mkAttribute "htmlFor"
+htmlFor = opt "htmlFor"
 
 httpEquiv :: Option Attribute String
-httpEquiv = mkAttribute "httpEquiv"
+httpEquiv = opt "httpEquiv"
 
 icon :: Option Attribute String
-icon = mkAttribute "icon"
+icon = opt "icon"
 
 id :: Option Attribute String
-id = mkAttribute "id"
+id = opt "id"
 
 itemProp :: Option Attribute String
-itemProp = mkAttribute "itemProp"
+itemProp = opt "itemProp"
 
 itemScope :: Option Attribute String
-itemScope = mkAttribute "itemScope"
+itemScope = opt "itemScope"
 
 itemType :: Option Attribute String
-itemType = mkAttribute "itemType"
+itemType = opt "itemType"
 
 key :: Option Attribute String
-key = mkAttribute "key"
+key = opt "key"
 
 label :: Option Attribute String
-label = mkAttribute "label"
+label = opt "label"
 
 lang :: Option Attribute String
-lang = mkAttribute "lang"
+lang = opt "lang"
 
 list :: Option Attribute String
-list = mkAttribute "list"
+list = opt "list"
 
 loop :: Option Attribute Boolean
-loop = mkAttribute "loop"
+loop = opt "loop"
 
 manifest :: Option Attribute String
-manifest = mkAttribute "manifest"
+manifest = opt "manifest"
 
 marginHeight :: Option Attribute Number
-marginHeight = mkAttribute "marginHeight"
+marginHeight = opt "marginHeight"
 
 marginWidth :: Option Attribute Number
-marginWidth = mkAttribute "marginWidth"
+marginWidth = opt "marginWidth"
 
 markerEnd :: Option Attribute String
-markerEnd = mkAttribute "markerEnd"
+markerEnd = opt "markerEnd"
 
 markerMid :: Option Attribute String
-markerMid = mkAttribute "markerMid"
+markerMid = opt "markerMid"
 
 markerStart :: Option Attribute String
-markerStart = mkAttribute "markerStart"
+markerStart = opt "markerStart"
 
 max :: Option Attribute Number
-max = mkAttribute "max"
+max = opt "max"
 
 maxLength :: Option Attribute Number
-maxLength = mkAttribute "maxLength"
+maxLength = opt "maxLength"
 
 media :: Option Attribute String
-media = mkAttribute "media"
+media = opt "media"
 
 mediaGroup :: Option Attribute String
-mediaGroup = mkAttribute "mediaGroup"
+mediaGroup = opt "mediaGroup"
 
 method :: Option Attribute String
-method = mkAttribute "method"
+method = opt "method"
 
 min :: Option Attribute Number
-min = mkAttribute "min"
+min = opt "min"
 
 multiple :: Option Attribute Boolean
-multiple = mkAttribute "multiple"
+multiple = opt "multiple"
 
 muted :: Option Attribute Boolean
-muted = mkAttribute "muted"
+muted = opt "muted"
 
 name :: Option Attribute String
-name = mkAttribute "name"
+name = opt "name"
 
 noValidate :: Option Attribute Boolean
-noValidate = mkAttribute "noValidate"
+noValidate = opt "noValidate"
 
 offset :: Option Attribute String
-offset = mkAttribute "offset"
+offset = opt "offset"
 
 opacity :: Option Attribute Number
-opacity = mkAttribute "opacity"
+opacity = opt "opacity"
 
 open :: Option Attribute String
-open = mkAttribute "open"
+open = opt "open"
 
 pattern :: Option Attribute String
-pattern = mkAttribute "pattern"
+pattern = opt "pattern"
 
 patternContentUnits :: Option Attribute String
-patternContentUnits = mkAttribute "patternContentUnits"
+patternContentUnits = opt "patternContentUnits"
 
 patternUnits :: Option Attribute String
-patternUnits = mkAttribute "patternUnits"
+patternUnits = opt "patternUnits"
 
 placeholder :: Option Attribute String
-placeholder = mkAttribute "placeholder"
+placeholder = opt "placeholder"
 
 points :: Option Attribute String
-points = mkAttribute "points"
+points = opt "points"
 
 poster :: Option Attribute String
-poster = mkAttribute "poster"
+poster = opt "poster"
 
 preload :: Option Attribute String
-preload = mkAttribute "preload"
+preload = opt "preload"
 
 preserveAspectRatio :: Option Attribute String
-preserveAspectRatio = mkAttribute "preserveAspectRatio"
+preserveAspectRatio = opt "preserveAspectRatio"
 
 property :: Option Attribute String
-property = mkAttribute "property"
+property = opt "property"
 
 r :: Option Attribute Number
-r = mkAttribute "r"
+r = opt "r"
 
 radioGroup :: Option Attribute String
-radioGroup = mkAttribute "radioGroup"
+radioGroup = opt "radioGroup"
 
 readOnly :: Option Attribute Boolean
-readOnly = mkAttribute "readOnly"
+readOnly = opt "readOnly"
 
 ref :: Option Attribute String
-ref = mkAttribute "ref"
+ref = opt "ref"
 
 rel :: Option Attribute String
-rel = mkAttribute "rel"
+rel = opt "rel"
 
 required :: Option Attribute Boolean
-required = mkAttribute "required"
+required = opt "required"
 
 role :: Option Attribute String
-role = mkAttribute "role"
+role = opt "role"
 
 rowSpan :: Option Attribute Number
-rowSpan = mkAttribute "rowSpan"
+rowSpan = opt "rowSpan"
 
 rows :: Option Attribute Number
-rows = mkAttribute "rows"
+rows = opt "rows"
 
 rx :: Option Attribute Number
-rx = mkAttribute "rx"
+rx = opt "rx"
 
 ry :: Option Attribute Number
-ry = mkAttribute "ry"
+ry = opt "ry"
 
 sandbox :: Option Attribute String
-sandbox = mkAttribute "sandbox"
+sandbox = opt "sandbox"
 
 scope :: Option Attribute String
-scope = mkAttribute "scope"
+scope = opt "scope"
 
 scrolling :: Option Attribute String
-scrolling = mkAttribute "scrolling"
+scrolling = opt "scrolling"
 
 seamless :: Option Attribute Boolean
-seamless = mkAttribute "seamless"
+seamless = opt "seamless"
 
 selected :: Option Attribute Boolean
-selected = mkAttribute "selected"
+selected = opt "selected"
 
 shape :: Option Attribute String
-shape = mkAttribute "shape"
+shape = opt "shape"
 
 size :: Option Attribute Number
-size = mkAttribute "size"
+size = opt "size"
 
 sizes :: Option Attribute String
-sizes = mkAttribute "sizes"
+sizes = opt "sizes"
 
 span :: Option Attribute Number
-span = mkAttribute "span"
+span = opt "span"
 
 spellCheck :: Option Attribute Boolean
-spellCheck = mkAttribute "spellCheck"
+spellCheck = opt "spellCheck"
 
 spreadMethod :: Option Attribute String
-spreadMethod = mkAttribute "spreadMethod"
+spreadMethod = opt "spreadMethod"
 
 src :: Option Attribute String
-src = mkAttribute "src"
+src = opt "src"
 
 srcDoc :: Option Attribute String
-srcDoc = mkAttribute "srcDoc"
+srcDoc = opt "srcDoc"
 
 srcSet :: Option Attribute String
-srcSet = mkAttribute "srcSet"
+srcSet = opt "srcSet"
 
 start :: Option Attribute String
-start = mkAttribute "start"
+start = opt "start"
 
 step :: Option Attribute Number
-step = mkAttribute "step"
+step = opt "step"
 
 stopColor :: Option Attribute String
-stopColor = mkAttribute "stopColor"
+stopColor = opt "stopColor"
 
 stopOpacity :: Option Attribute Number
-stopOpacity = mkAttribute "stopOpacity"
+stopOpacity = opt "stopOpacity"
 
 stroke :: Option Attribute String
-stroke = mkAttribute "stroke"
+stroke = opt "stroke"
 
 strokeDasharray :: Option Attribute String
-strokeDasharray = mkAttribute "strokeDasharray"
+strokeDasharray = opt "strokeDasharray"
 
 strokeLinecap :: Option Attribute String
-strokeLinecap = mkAttribute "strokeLinecap"
+strokeLinecap = opt "strokeLinecap"
 
 strokeOpacity :: Option Attribute Number
-strokeOpacity = mkAttribute "strokeOpacity"
+strokeOpacity = opt "strokeOpacity"
 
 strokeWidth :: Option Attribute String
-strokeWidth = mkAttribute "strokeWidth"
+strokeWidth = opt "strokeWidth"
 
 style :: forall style. Option Attribute { | style }
-style = mkAttribute "style"
+style = opt "style"
 
 tabIndex :: Option Attribute Number
-tabIndex = mkAttribute "tabIndex"
+tabIndex = opt "tabIndex"
 
 target :: Option Attribute String
-target = mkAttribute "target"
+target = opt "target"
 
 textAnchor :: Option Attribute String
-textAnchor = mkAttribute "textAnchor"
+textAnchor = opt "textAnchor"
 
 title :: Option Attribute String
-title = mkAttribute "title"
+title = opt "title"
 
 transform :: Option Attribute String
-transform = mkAttribute "transform"
+transform = opt "transform"
 
 _type :: Option Attribute String
-_type = mkAttribute "type"
+_type = opt "type"
 
 useMap :: Option Attribute String
-useMap = mkAttribute "useMap"
+useMap = opt "useMap"
 
 value :: Option Attribute String
-value = mkAttribute "value"
+value = opt "value"
 
 version :: Option Attribute String
-version = mkAttribute "version"
+version = opt "version"
 
 viewBox :: Option Attribute String
-viewBox = mkAttribute "viewBox"
+viewBox = opt "viewBox"
 
 width :: Option Attribute String
-width = mkAttribute "width"
+width = opt "width"
 
 wmode :: Option Attribute String
-wmode = mkAttribute "wmode"
+wmode = opt "wmode"
 
 x :: Option Attribute Number
-x = mkAttribute "x"
+x = opt "x"
 
 x1 :: Option Attribute Number
-x1 = mkAttribute "x1"
+x1 = opt "x1"
 
 x2 :: Option Attribute Number
-x2 = mkAttribute "x2"
+x2 = opt "x2"
 
 y :: Option Attribute Number
-y = mkAttribute "y"
+y = opt "y"
 
 y1 :: Option Attribute Number
-y1 = mkAttribute "y1"
+y1 = opt "y1"
 
 y2 :: Option Attribute Number
-y2 = mkAttribute "y2"
+y2 = opt "y2"

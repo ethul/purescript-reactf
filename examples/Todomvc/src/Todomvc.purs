@@ -76,24 +76,24 @@ render :: Classes -> RenderFn TodomvcProps TodomvcState
 render cls ref (Props props) (State state) = do
 
   let remaining = filter (\(Todo a) -> not a.completed) state.todos
-      headerProps = Props { onSubmit: addTodo ref state.todos }
+      headerProps = Props { handleSubmit: addTodo ref state.todos }
       listProps = Props { todos: state.todos
-                        , onCompleted: todoCompleted ref state.todos
-                        , onRemoved: todoRemoved ref state.todos
+                        , handleCompleted: todoCompleted ref state.todos
+                        , handleRemoved: todoRemoved ref state.todos
                         }
       footerProps = Props { remainingCount: length remaining
                           , todosCount: length state.todos
-                          , onClearCompleted: clearCompletedTodos ref state.todos
+                          , handleClearCompleted: clearCompletedTodos ref state.todos
                           }
       infoProps = Props unit
 
   html <- Dom.div'
-          .> [ Dom.section (Attr.id := "todoapp") mempty
-               .> [ createElementFromClass cls.header headerProps mempty mempty
-                  , createElementFromClass cls.list listProps mempty mempty
-                  , createElementFromClass cls.footer footerProps mempty mempty
+          .> [ Dom.section (Attr.id := "todoapp")
+               .> [ createElementFromClass cls.header headerProps mempty
+                  , createElementFromClass cls.list listProps mempty
+                  , createElementFromClass cls.footer footerProps mempty
                   ]
-             , createElementFromClass cls.info infoProps mempty mempty
+             , createElementFromClass cls.info infoProps mempty
              ]
 
   return html

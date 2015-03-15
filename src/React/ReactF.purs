@@ -32,7 +32,6 @@ import Control.Monad.Free (FreeC(), liftFC)
 
 import React.Attributes (Attributes())
 import React.ComponentF (Component(), Reference(), Props(), State())
-import React.Events (Events())
 import React.TagName (TagName())
 import React.Types (DOMElement())
 
@@ -99,19 +98,19 @@ type React = FreeC ReactF
 
 data ReactF a
   = CreateClass (forall eff props state. Specification eff props state) (forall props state. Class props state -> a)
-  | CreateElementFromClass (forall props state. Class props state) (forall props. Props props) (forall eff. Events eff) Elements (Element -> a)
-  | CreateElementFromTagName TagName Attributes (forall eff. Events eff) Elements (Element -> a)
+  | CreateElementFromClass (forall props state. Class props state) (forall props. Props props) Elements (Element -> a)
+  | CreateElementFromTagName TagName Attributes Elements (Element -> a)
   | RenderSync Element DOMElement (forall props state. Reference props state -> a)
   | RenderAsync Element DOMElement (forall props state. Reference props state -> a)
 
 createClass :: forall eff props state. Specification eff props state -> React (Class props state)
 createClass spec = liftFC $ CreateClass (coerce spec) coerce
 
-createElementFromClass :: forall eff props state. Class props state -> Props props -> Events eff -> Elements -> React Element
-createElementFromClass cls props evts els = liftFC $ CreateElementFromClass (coerce cls) (coerce props) (coerce evts) els id
+createElementFromClass :: forall props state. Class props state -> Props props -> Elements -> React Element
+createElementFromClass cls props els = liftFC $ CreateElementFromClass (coerce cls) (coerce props) els id
 
-createElementFromTagName :: forall eff props state. TagName -> Attributes -> Events eff -> Elements -> React Element
-createElementFromTagName name attrs evts els = liftFC $ CreateElementFromTagName name attrs (coerce evts) els id
+createElementFromTagName :: forall props state. TagName -> Attributes -> Elements -> React Element
+createElementFromTagName name attrs els = liftFC $ CreateElementFromTagName name attrs els id
 
 renderSync :: forall props spec. Element -> DOMElement -> React (Reference props spec)
 renderSync el dom = liftFC $ RenderSync el dom coerce
