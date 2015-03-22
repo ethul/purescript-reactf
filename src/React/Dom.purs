@@ -134,788 +134,788 @@ module React.Dom
 import Data.Monoid (mempty)
 
 import React.Attributes (Attributes())
-import React.Events (Events())
 import React.ReactF (Element(), Elements(), React(), createElementFromTagName)
+
 import qualified React.TagName as T
 
 null :: React Element
-null = createElementFromTagName T.Null mempty mempty mempty
+null = createElementFromTagName T.Null mempty mempty
 
 raw :: String -> React Element
-raw a = createElementFromTagName T.Raw mempty mempty [toRaw a]
+raw a = createElementFromTagName T.Raw mempty [toRaw a]
 
 foreign import toRaw "function toRaw(a){ return a; }" :: String -> Element
 
-a :: forall eff. Attributes -> Events eff -> Elements -> React Element
+a :: Attributes -> Elements -> React Element
 a = createElementFromTagName T.A
 
 a' :: Elements -> React Element
-a' = a mempty mempty
+a' = a mempty
 
-abbr :: forall eff. Attributes -> Events eff -> Elements -> React Element
+abbr :: Attributes -> Elements -> React Element
 abbr = createElementFromTagName T.Abbr
 
 abbr' :: Elements -> React Element
-abbr' = abbr mempty mempty
+abbr' = abbr mempty
 
-address :: forall eff. Attributes -> Events eff -> Elements -> React Element
+address :: Attributes -> Elements -> React Element
 address = createElementFromTagName T.Address
 
 address' :: Elements -> React Element
-address' = address mempty mempty
+address' = address mempty
 
-area :: forall eff. Attributes -> Events eff -> Elements -> React Element
+area :: Attributes -> Elements -> React Element
 area = createElementFromTagName T.Area
 
 area' :: Elements -> React Element
-area' = area mempty mempty
+area' = area mempty
 
-article :: forall eff. Attributes -> Events eff -> Elements -> React Element
+article :: Attributes -> Elements -> React Element
 article = createElementFromTagName T.Article
 
 article' :: Elements -> React Element
-article' = article mempty mempty
+article' = article mempty
 
-aside :: forall eff. Attributes -> Events eff -> Elements -> React Element
+aside :: Attributes -> Elements -> React Element
 aside = createElementFromTagName T.Aside
 
 aside' :: Elements -> React Element
-aside' = aside mempty mempty
+aside' = aside mempty
 
-audio :: forall eff. Attributes -> Events eff -> Elements -> React Element
+audio :: Attributes -> Elements -> React Element
 audio = createElementFromTagName T.Audio
 
 audio' :: Elements -> React Element
-audio' = audio mempty mempty
+audio' = audio mempty
 
-b :: forall eff. Attributes -> Events eff -> Elements -> React Element
+b :: Attributes -> Elements -> React Element
 b = createElementFromTagName T.B
 
 b' :: Elements -> React Element
-b' = b mempty mempty
+b' = b mempty
 
-base :: forall eff. Attributes -> Events eff -> Elements -> React Element
+base :: Attributes -> Elements -> React Element
 base = createElementFromTagName T.Base
 
 base' :: Elements -> React Element
-base' = base mempty mempty
+base' = base mempty
 
-bdi :: forall eff. Attributes -> Events eff -> Elements -> React Element
+bdi :: Attributes -> Elements -> React Element
 bdi = createElementFromTagName T.Bdi
 
 bdi' :: Elements -> React Element
-bdi' = bdi mempty mempty
+bdi' = bdi mempty
 
-bdo :: forall eff. Attributes -> Events eff -> Elements -> React Element
+bdo :: Attributes -> Elements -> React Element
 bdo = createElementFromTagName T.Bdo
 
 bdo' :: Elements -> React Element
-bdo' = bdo mempty mempty
+bdo' = bdo mempty
 
-big :: forall eff. Attributes -> Events eff -> Elements -> React Element
+big :: Attributes -> Elements -> React Element
 big = createElementFromTagName T.Big
 
 big' :: Elements -> React Element
-big' = big mempty mempty
+big' = big mempty
 
-blockquote :: forall eff. Attributes -> Events eff -> Elements -> React Element
+blockquote :: Attributes -> Elements -> React Element
 blockquote = createElementFromTagName T.Blockquote
 
 blockquote' :: Elements -> React Element
-blockquote' = blockquote mempty mempty
+blockquote' = blockquote mempty
 
-body :: forall eff. Attributes -> Events eff -> Elements -> React Element
+body :: Attributes -> Elements -> React Element
 body = createElementFromTagName T.Body
 
 body' :: Elements -> React Element
-body' = body mempty mempty
+body' = body mempty
 
-br :: forall eff. Attributes -> Events eff -> Elements -> React Element
+br :: Attributes -> Elements -> React Element
 br = createElementFromTagName T.Br
 
 br' :: Elements -> React Element
-br' = br mempty mempty
+br' = br mempty
 
-button :: forall eff. Attributes -> Events eff -> Elements -> React Element
+button :: Attributes -> Elements -> React Element
 button = createElementFromTagName T.Button
 
 button' :: Elements -> React Element
-button' = button mempty mempty
+button' = button mempty
 
-canvas :: forall eff. Attributes -> Events eff -> Elements -> React Element
+canvas :: Attributes -> Elements -> React Element
 canvas = createElementFromTagName T.Canvas
 
 canvas' :: Elements -> React Element
-canvas' = canvas mempty mempty
+canvas' = canvas mempty
 
-caption :: forall eff. Attributes -> Events eff -> Elements -> React Element
+caption :: Attributes -> Elements -> React Element
 caption = createElementFromTagName T.Caption
 
 caption' :: Elements -> React Element
-caption' = caption mempty mempty
+caption' = caption mempty
 
-circle :: forall eff. Attributes -> Events eff -> Elements -> React Element
+circle :: Attributes -> Elements -> React Element
 circle = createElementFromTagName T.Circle
 
 circle' :: Elements -> React Element
-circle' = circle mempty mempty
+circle' = circle mempty
 
-cite :: forall eff. Attributes -> Events eff -> Elements -> React Element
+cite :: Attributes -> Elements -> React Element
 cite = createElementFromTagName T.Cite
 
 cite' :: Elements -> React Element
-cite' = cite mempty mempty
+cite' = cite mempty
 
-code :: forall eff. Attributes -> Events eff -> Elements -> React Element
+code :: Attributes -> Elements -> React Element
 code = createElementFromTagName T.Code
 
 code' :: Elements -> React Element
-code' = code mempty mempty
+code' = code mempty
 
-col :: forall eff. Attributes -> Events eff -> Elements -> React Element
+col :: Attributes -> Elements -> React Element
 col = createElementFromTagName T.Col
 
 col' :: Elements -> React Element
-col' = col mempty mempty
+col' = col mempty
 
-colgroup :: forall eff. Attributes -> Events eff -> Elements -> React Element
+colgroup :: Attributes -> Elements -> React Element
 colgroup = createElementFromTagName T.Colgroup
 
 colgroup' :: Elements -> React Element
-colgroup' = colgroup mempty mempty
+colgroup' = colgroup mempty
 
-_data :: forall eff. Attributes -> Events eff -> Elements -> React Element
+_data :: Attributes -> Elements -> React Element
 _data = createElementFromTagName T.Data
 
 _data' :: Elements -> React Element
-_data' = _data mempty mempty
+_data' = _data mempty
 
-datalist :: forall eff. Attributes -> Events eff -> Elements -> React Element
+datalist :: Attributes -> Elements -> React Element
 datalist = createElementFromTagName T.Datalist
 
 datalist' :: Elements -> React Element
-datalist' = datalist mempty mempty
+datalist' = datalist mempty
 
-dd :: forall eff. Attributes -> Events eff -> Elements -> React Element
+dd :: Attributes -> Elements -> React Element
 dd = createElementFromTagName T.Dd
 
 dd' :: Elements -> React Element
-dd' = dd mempty mempty
+dd' = dd mempty
 
-defs :: forall eff. Attributes -> Events eff -> Elements -> React Element
+defs :: Attributes -> Elements -> React Element
 defs = createElementFromTagName T.Defs
 
 defs' :: Elements -> React Element
-defs' = defs mempty mempty
+defs' = defs mempty
 
-del :: forall eff. Attributes -> Events eff -> Elements -> React Element
+del :: Attributes -> Elements -> React Element
 del = createElementFromTagName T.Del
 
 del' :: Elements -> React Element
-del' = del mempty mempty
+del' = del mempty
 
-details :: forall eff. Attributes -> Events eff -> Elements -> React Element
+details :: Attributes -> Elements -> React Element
 details = createElementFromTagName T.Details
 
 details' :: Elements -> React Element
-details' = details mempty mempty
+details' = details mempty
 
-dfn :: forall eff. Attributes -> Events eff -> Elements -> React Element
+dfn :: Attributes -> Elements -> React Element
 dfn = createElementFromTagName T.Dfn
 
 dfn' :: Elements -> React Element
-dfn' = dfn mempty mempty
+dfn' = dfn mempty
 
-dialog :: forall eff. Attributes -> Events eff -> Elements -> React Element
+dialog :: Attributes -> Elements -> React Element
 dialog = createElementFromTagName T.Dialog
 
 dialog' :: Elements -> React Element
-dialog' = dialog mempty mempty
+dialog' = dialog mempty
 
-div :: forall eff. Attributes -> Events eff -> Elements -> React Element
+div :: Attributes -> Elements -> React Element
 div = createElementFromTagName T.Div
 
 div' :: Elements -> React Element
-div' = div mempty mempty
+div' = div mempty
 
-dl :: forall eff. Attributes -> Events eff -> Elements -> React Element
+dl :: Attributes -> Elements -> React Element
 dl = createElementFromTagName T.Dl
 
 dl' :: Elements -> React Element
-dl' = dl mempty mempty
+dl' = dl mempty
 
-dt :: forall eff. Attributes -> Events eff -> Elements -> React Element
+dt :: Attributes -> Elements -> React Element
 dt = createElementFromTagName T.Dt
 
 dt' :: Elements -> React Element
-dt' = dt mempty mempty
+dt' = dt mempty
 
-ellipse :: forall eff. Attributes -> Events eff -> Elements -> React Element
+ellipse :: Attributes -> Elements -> React Element
 ellipse = createElementFromTagName T.Ellipse
 
 ellipse' :: Elements -> React Element
-ellipse' = ellipse mempty mempty
+ellipse' = ellipse mempty
 
-em :: forall eff. Attributes -> Events eff -> Elements -> React Element
+em :: Attributes -> Elements -> React Element
 em = createElementFromTagName T.Em
 
 em' :: Elements -> React Element
-em' = em mempty mempty
+em' = em mempty
 
-embed :: forall eff. Attributes -> Events eff -> Elements -> React Element
+embed :: Attributes -> Elements -> React Element
 embed = createElementFromTagName T.Embed
 
 embed' :: Elements -> React Element
-embed' = embed mempty mempty
+embed' = embed mempty
 
-fieldset :: forall eff. Attributes -> Events eff -> Elements -> React Element
+fieldset :: Attributes -> Elements -> React Element
 fieldset = createElementFromTagName T.Fieldset
 
 fieldset' :: Elements -> React Element
-fieldset' = fieldset mempty mempty
+fieldset' = fieldset mempty
 
-figcaption :: forall eff. Attributes -> Events eff -> Elements -> React Element
+figcaption :: Attributes -> Elements -> React Element
 figcaption = createElementFromTagName T.Figcaption
 
 figcaption' :: Elements -> React Element
-figcaption' = figcaption mempty mempty
+figcaption' = figcaption mempty
 
-figure :: forall eff. Attributes -> Events eff -> Elements -> React Element
+figure :: Attributes -> Elements -> React Element
 figure = createElementFromTagName T.Figure
 
 figure' :: Elements -> React Element
-figure' = figure mempty mempty
+figure' = figure mempty
 
-footer :: forall eff. Attributes -> Events eff -> Elements -> React Element
+footer :: Attributes -> Elements -> React Element
 footer = createElementFromTagName T.Footer
 
 footer' :: Elements -> React Element
-footer' = footer mempty mempty
+footer' = footer mempty
 
-form :: forall eff. Attributes -> Events eff -> Elements -> React Element
+form :: Attributes -> Elements -> React Element
 form = createElementFromTagName T.Form
 
 form' :: Elements -> React Element
-form' = form mempty mempty
+form' = form mempty
 
-g :: forall eff. Attributes -> Events eff -> Elements -> React Element
+g :: Attributes -> Elements -> React Element
 g = createElementFromTagName T.G
 
 g' :: Elements -> React Element
-g' = g mempty mempty
+g' = g mempty
 
-h1 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h1 :: Attributes -> Elements -> React Element
 h1 = createElementFromTagName T.H1
 
 h1' :: Elements -> React Element
-h1' = h1 mempty mempty
+h1' = h1 mempty
 
-h2 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h2 :: Attributes -> Elements -> React Element
 h2 = createElementFromTagName T.H2
 
 h2' :: Elements -> React Element
-h2' = h2 mempty mempty
+h2' = h2 mempty
 
-h3 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h3 :: Attributes -> Elements -> React Element
 h3 = createElementFromTagName T.H3
 
 h3' :: Elements -> React Element
-h3' = h3 mempty mempty
+h3' = h3 mempty
 
-h4 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h4 :: Attributes -> Elements -> React Element
 h4 = createElementFromTagName T.H4
 
 h4' :: Elements -> React Element
-h4' = h4 mempty mempty
+h4' = h4 mempty
 
-h5 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h5 :: Attributes -> Elements -> React Element
 h5 = createElementFromTagName T.H5
 
 h5' :: Elements -> React Element
-h5' = h5 mempty mempty
+h5' = h5 mempty
 
-h6 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h6 :: Attributes -> Elements -> React Element
 h6 = createElementFromTagName T.H6
 
 h6' :: Elements -> React Element
-h6' = h6 mempty mempty
+h6' = h6 mempty
 
-head :: forall eff. Attributes -> Events eff -> Elements -> React Element
+head :: Attributes -> Elements -> React Element
 head = createElementFromTagName T.Head
 
 head' :: Elements -> React Element
-head' = head mempty mempty
+head' = head mempty
 
-header :: forall eff. Attributes -> Events eff -> Elements -> React Element
+header :: Attributes -> Elements -> React Element
 header = createElementFromTagName T.Header
 
 header' :: Elements -> React Element
-header' = header mempty mempty
+header' = header mempty
 
-hr :: forall eff. Attributes -> Events eff -> Elements -> React Element
+hr :: Attributes -> Elements -> React Element
 hr = createElementFromTagName T.Hr
 
 hr' :: Elements -> React Element
-hr' = hr mempty mempty
+hr' = hr mempty
 
-html :: forall eff. Attributes -> Events eff -> Elements -> React Element
+html :: Attributes -> Elements -> React Element
 html = createElementFromTagName T.Html
 
 html' :: Elements -> React Element
-html' = html mempty mempty
+html' = html mempty
 
-i :: forall eff. Attributes -> Events eff -> Elements -> React Element
+i :: Attributes -> Elements -> React Element
 i = createElementFromTagName T.I
 
 i' :: Elements -> React Element
-i' = i mempty mempty
+i' = i mempty
 
-iframe :: forall eff. Attributes -> Events eff -> Elements -> React Element
+iframe :: Attributes -> Elements -> React Element
 iframe = createElementFromTagName T.Iframe
 
 iframe' :: Elements -> React Element
-iframe' = iframe mempty mempty
+iframe' = iframe mempty
 
-img :: forall eff. Attributes -> Events eff -> Elements -> React Element
+img :: Attributes -> Elements -> React Element
 img = createElementFromTagName T.Img
 
 img' :: Elements -> React Element
-img' = img mempty mempty
+img' = img mempty
 
-input :: forall eff. Attributes -> Events eff -> Elements -> React Element
+input :: Attributes -> Elements -> React Element
 input = createElementFromTagName T.Input
 
 input' :: Elements -> React Element
-input' = input mempty mempty
+input' = input mempty
 
-ins :: forall eff. Attributes -> Events eff -> Elements -> React Element
+ins :: Attributes -> Elements -> React Element
 ins = createElementFromTagName T.Ins
 
 ins' :: Elements -> React Element
-ins' = ins mempty mempty
+ins' = ins mempty
 
-kbd :: forall eff. Attributes -> Events eff -> Elements -> React Element
+kbd :: Attributes -> Elements -> React Element
 kbd = createElementFromTagName T.Kbd
 
 kbd' :: Elements -> React Element
-kbd' = kbd mempty mempty
+kbd' = kbd mempty
 
-keygen :: forall eff. Attributes -> Events eff -> Elements -> React Element
+keygen :: Attributes -> Elements -> React Element
 keygen = createElementFromTagName T.Keygen
 
 keygen' :: Elements -> React Element
-keygen' = keygen mempty mempty
+keygen' = keygen mempty
 
-label :: forall eff. Attributes -> Events eff -> Elements -> React Element
+label :: Attributes -> Elements -> React Element
 label = createElementFromTagName T.Label
 
 label' :: Elements -> React Element
-label' = label mempty mempty
+label' = label mempty
 
-legend :: forall eff. Attributes -> Events eff -> Elements -> React Element
+legend :: Attributes -> Elements -> React Element
 legend = createElementFromTagName T.Legend
 
 legend' :: Elements -> React Element
-legend' = legend mempty mempty
+legend' = legend mempty
 
-li :: forall eff. Attributes -> Events eff -> Elements -> React Element
+li :: Attributes -> Elements -> React Element
 li = createElementFromTagName T.Li
 
 li' :: Elements -> React Element
-li' = li mempty mempty
+li' = li mempty
 
-line :: forall eff. Attributes -> Events eff -> Elements -> React Element
+line :: Attributes -> Elements -> React Element
 line = createElementFromTagName T.Line
 
 line' :: Elements -> React Element
-line' = line mempty mempty
+line' = line mempty
 
-linearGradient :: forall eff. Attributes -> Events eff -> Elements -> React Element
+linearGradient :: Attributes -> Elements -> React Element
 linearGradient = createElementFromTagName T.LinearGradient
 
 linearGradient' :: Elements -> React Element
-linearGradient' = linearGradient mempty mempty
+linearGradient' = linearGradient mempty
 
-link :: forall eff. Attributes -> Events eff -> Elements -> React Element
+link :: Attributes -> Elements -> React Element
 link = createElementFromTagName T.Link
 
 link' :: Elements -> React Element
-link' = link mempty mempty
+link' = link mempty
 
-main :: forall eff. Attributes -> Events eff -> Elements -> React Element
+main :: Attributes -> Elements -> React Element
 main = createElementFromTagName T.Main
 
 main' :: Elements -> React Element
-main' = main mempty mempty
+main' = main mempty
 
-map :: forall eff. Attributes -> Events eff -> Elements -> React Element
+map :: Attributes -> Elements -> React Element
 map = createElementFromTagName T.Map
 
 map' :: Elements -> React Element
-map' = map mempty mempty
+map' = map mempty
 
-mark :: forall eff. Attributes -> Events eff -> Elements -> React Element
+mark :: Attributes -> Elements -> React Element
 mark = createElementFromTagName T.Mark
 
 mark' :: Elements -> React Element
-mark' = mark mempty mempty
+mark' = mark mempty
 
-mask :: forall eff. Attributes -> Events eff -> Elements -> React Element
+mask :: Attributes -> Elements -> React Element
 mask = createElementFromTagName T.Mask
 
 mask' :: Elements -> React Element
-mask' = mask mempty mempty
+mask' = mask mempty
 
-menu :: forall eff. Attributes -> Events eff -> Elements -> React Element
+menu :: Attributes -> Elements -> React Element
 menu = createElementFromTagName T.Menu
 
 menu' :: Elements -> React Element
-menu' = menu mempty mempty
+menu' = menu mempty
 
-menuitem :: forall eff. Attributes -> Events eff -> Elements -> React Element
+menuitem :: Attributes -> Elements -> React Element
 menuitem = createElementFromTagName T.Menuitem
 
 menuitem' :: Elements -> React Element
-menuitem' = menuitem mempty mempty
+menuitem' = menuitem mempty
 
-meta :: forall eff. Attributes -> Events eff -> Elements -> React Element
+meta :: Attributes -> Elements -> React Element
 meta = createElementFromTagName T.Meta
 
 meta' :: Elements -> React Element
-meta' = meta mempty mempty
+meta' = meta mempty
 
-meter :: forall eff. Attributes -> Events eff -> Elements -> React Element
+meter :: Attributes -> Elements -> React Element
 meter = createElementFromTagName T.Meter
 
 meter' :: Elements -> React Element
-meter' = meter mempty mempty
+meter' = meter mempty
 
-nav :: forall eff. Attributes -> Events eff -> Elements -> React Element
+nav :: Attributes -> Elements -> React Element
 nav = createElementFromTagName T.Nav
 
 nav' :: Elements -> React Element
-nav' = nav mempty mempty
+nav' = nav mempty
 
-noscript :: forall eff. Attributes -> Events eff -> Elements -> React Element
+noscript :: Attributes -> Elements -> React Element
 noscript = createElementFromTagName T.Noscript
 
 noscript' :: Elements -> React Element
-noscript' = noscript mempty mempty
+noscript' = noscript mempty
 
-object :: forall eff. Attributes -> Events eff -> Elements -> React Element
+object :: Attributes -> Elements -> React Element
 object = createElementFromTagName T.Object
 
 object' :: Elements -> React Element
-object' = object mempty mempty
+object' = object mempty
 
-ol :: forall eff. Attributes -> Events eff -> Elements -> React Element
+ol :: Attributes -> Elements -> React Element
 ol = createElementFromTagName T.Ol
 
 ol' :: Elements -> React Element
-ol' = ol mempty mempty
+ol' = ol mempty
 
-optgroup :: forall eff. Attributes -> Events eff -> Elements -> React Element
+optgroup :: Attributes -> Elements -> React Element
 optgroup = createElementFromTagName T.Optgroup
 
 optgroup' :: Elements -> React Element
-optgroup' = optgroup mempty mempty
+optgroup' = optgroup mempty
 
-option :: forall eff. Attributes -> Events eff -> Elements -> React Element
+option :: Attributes -> Elements -> React Element
 option = createElementFromTagName T.Option
 
 option' :: Elements -> React Element
-option' = option mempty mempty
+option' = option mempty
 
-output :: forall eff. Attributes -> Events eff -> Elements -> React Element
+output :: Attributes -> Elements -> React Element
 output = createElementFromTagName T.Output
 
 output' :: Elements -> React Element
-output' = output mempty mempty
+output' = output mempty
 
-p :: forall eff. Attributes -> Events eff -> Elements -> React Element
+p :: Attributes -> Elements -> React Element
 p = createElementFromTagName T.P
 
 p' :: Elements -> React Element
-p' = p mempty mempty
+p' = p mempty
 
-param :: forall eff. Attributes -> Events eff -> Elements -> React Element
+param :: Attributes -> Elements -> React Element
 param = createElementFromTagName T.Param
 
 param' :: Elements -> React Element
-param' = param mempty mempty
+param' = param mempty
 
-path :: forall eff. Attributes -> Events eff -> Elements -> React Element
+path :: Attributes -> Elements -> React Element
 path = createElementFromTagName T.Path
 
 path' :: Elements -> React Element
-path' = path mempty mempty
+path' = path mempty
 
-pattern :: forall eff. Attributes -> Events eff -> Elements -> React Element
+pattern :: Attributes -> Elements -> React Element
 pattern = createElementFromTagName T.Pattern
 
 pattern' :: Elements -> React Element
-pattern' = pattern mempty mempty
+pattern' = pattern mempty
 
-picture :: forall eff. Attributes -> Events eff -> Elements -> React Element
+picture :: Attributes -> Elements -> React Element
 picture = createElementFromTagName T.Picture
 
 picture' :: Elements -> React Element
-picture' = picture mempty mempty
+picture' = picture mempty
 
-polygon :: forall eff. Attributes -> Events eff -> Elements -> React Element
+polygon :: Attributes -> Elements -> React Element
 polygon = createElementFromTagName T.Polygon
 
 polygon' :: Elements -> React Element
-polygon' = polygon mempty mempty
+polygon' = polygon mempty
 
-polyline :: forall eff. Attributes -> Events eff -> Elements -> React Element
+polyline :: Attributes -> Elements -> React Element
 polyline = createElementFromTagName T.Polyline
 
 polyline' :: Elements -> React Element
-polyline' = polyline mempty mempty
+polyline' = polyline mempty
 
-pre :: forall eff. Attributes -> Events eff -> Elements -> React Element
+pre :: Attributes -> Elements -> React Element
 pre = createElementFromTagName T.Pre
 
 pre' :: Elements -> React Element
-pre' = pre mempty mempty
+pre' = pre mempty
 
-progress :: forall eff. Attributes -> Events eff -> Elements -> React Element
+progress :: Attributes -> Elements -> React Element
 progress = createElementFromTagName T.Progress
 
 progress' :: Elements -> React Element
-progress' = progress mempty mempty
+progress' = progress mempty
 
-q :: forall eff. Attributes -> Events eff -> Elements -> React Element
+q :: Attributes -> Elements -> React Element
 q = createElementFromTagName T.Q
 
 q' :: Elements -> React Element
-q' = q mempty mempty
+q' = q mempty
 
-radialGradient :: forall eff. Attributes -> Events eff -> Elements -> React Element
+radialGradient :: Attributes -> Elements -> React Element
 radialGradient = createElementFromTagName T.RadialGradient
 
 radialGradient' :: Elements -> React Element
-radialGradient' = radialGradient mempty mempty
+radialGradient' = radialGradient mempty
 
-rect :: forall eff. Attributes -> Events eff -> Elements -> React Element
+rect :: Attributes -> Elements -> React Element
 rect = createElementFromTagName T.Rect
 
 rect' :: Elements -> React Element
-rect' = rect mempty mempty
+rect' = rect mempty
 
-rp :: forall eff. Attributes -> Events eff -> Elements -> React Element
+rp :: Attributes -> Elements -> React Element
 rp = createElementFromTagName T.Rp
 
 rp' :: Elements -> React Element
-rp' = rp mempty mempty
+rp' = rp mempty
 
-rt :: forall eff. Attributes -> Events eff -> Elements -> React Element
+rt :: Attributes -> Elements -> React Element
 rt = createElementFromTagName T.Rt
 
 rt' :: Elements -> React Element
-rt' = rt mempty mempty
+rt' = rt mempty
 
-ruby :: forall eff. Attributes -> Events eff -> Elements -> React Element
+ruby :: Attributes -> Elements -> React Element
 ruby = createElementFromTagName T.Ruby
 
 ruby' :: Elements -> React Element
-ruby' = ruby mempty mempty
+ruby' = ruby mempty
 
-s :: forall eff. Attributes -> Events eff -> Elements -> React Element
+s :: Attributes -> Elements -> React Element
 s = createElementFromTagName T.S
 
 s' :: Elements -> React Element
-s' = s mempty mempty
+s' = s mempty
 
-samp :: forall eff. Attributes -> Events eff -> Elements -> React Element
+samp :: Attributes -> Elements -> React Element
 samp = createElementFromTagName T.Samp
 
 samp' :: Elements -> React Element
-samp' = samp mempty mempty
+samp' = samp mempty
 
-script :: forall eff. Attributes -> Events eff -> Elements -> React Element
+script :: Attributes -> Elements -> React Element
 script = createElementFromTagName T.Script
 
 script' :: Elements -> React Element
-script' = script mempty mempty
+script' = script mempty
 
-section :: forall eff. Attributes -> Events eff -> Elements -> React Element
+section :: Attributes -> Elements -> React Element
 section = createElementFromTagName T.Section
 
 section' :: Elements -> React Element
-section' = section mempty mempty
+section' = section mempty
 
-select :: forall eff. Attributes -> Events eff -> Elements -> React Element
+select :: Attributes -> Elements -> React Element
 select = createElementFromTagName T.Select
 
 select' :: Elements -> React Element
-select' = select mempty mempty
+select' = select mempty
 
-small :: forall eff. Attributes -> Events eff -> Elements -> React Element
+small :: Attributes -> Elements -> React Element
 small = createElementFromTagName T.Small
 
 small' :: Elements -> React Element
-small' = small mempty mempty
+small' = small mempty
 
-source :: forall eff. Attributes -> Events eff -> Elements -> React Element
+source :: Attributes -> Elements -> React Element
 source = createElementFromTagName T.Source
 
 source' :: Elements -> React Element
-source' = source mempty mempty
+source' = source mempty
 
-span :: forall eff. Attributes -> Events eff -> Elements -> React Element
+span :: Attributes -> Elements -> React Element
 span = createElementFromTagName T.Span
 
 span' :: Elements -> React Element
-span' = span mempty mempty
+span' = span mempty
 
-stop :: forall eff. Attributes -> Events eff -> Elements -> React Element
+stop :: Attributes -> Elements -> React Element
 stop = createElementFromTagName T.Stop
 
 stop' :: Elements -> React Element
-stop' = stop mempty mempty
+stop' = stop mempty
 
-strong :: forall eff. Attributes -> Events eff -> Elements -> React Element
+strong :: Attributes -> Elements -> React Element
 strong = createElementFromTagName T.Strong
 
 strong' :: Elements -> React Element
-strong' = strong mempty mempty
+strong' = strong mempty
 
-style :: forall eff. Attributes -> Events eff -> Elements -> React Element
+style :: Attributes -> Elements -> React Element
 style = createElementFromTagName T.Style
 
 style' :: Elements -> React Element
-style' = style mempty mempty
+style' = style mempty
 
-sub :: forall eff. Attributes -> Events eff -> Elements -> React Element
+sub :: Attributes -> Elements -> React Element
 sub = createElementFromTagName T.Sub
 
 sub' :: Elements -> React Element
-sub' = sub mempty mempty
+sub' = sub mempty
 
-summary :: forall eff. Attributes -> Events eff -> Elements -> React Element
+summary :: Attributes -> Elements -> React Element
 summary = createElementFromTagName T.Summary
 
 summary' :: Elements -> React Element
-summary' = summary mempty mempty
+summary' = summary mempty
 
-sup :: forall eff. Attributes -> Events eff -> Elements -> React Element
+sup :: Attributes -> Elements -> React Element
 sup = createElementFromTagName T.Sup
 
 sup' :: Elements -> React Element
-sup' = sup mempty mempty
+sup' = sup mempty
 
-svg :: forall eff. Attributes -> Events eff -> Elements -> React Element
+svg :: Attributes -> Elements -> React Element
 svg = createElementFromTagName T.Svg
 
 svg' :: Elements -> React Element
-svg' = svg mempty mempty
+svg' = svg mempty
 
-table :: forall eff. Attributes -> Events eff -> Elements -> React Element
+table :: Attributes -> Elements -> React Element
 table = createElementFromTagName T.Table
 
 table' :: Elements -> React Element
-table' = table mempty mempty
+table' = table mempty
 
-tbody :: forall eff. Attributes -> Events eff -> Elements -> React Element
+tbody :: Attributes -> Elements -> React Element
 tbody = createElementFromTagName T.Tbody
 
 tbody' :: Elements -> React Element
-tbody' = tbody mempty mempty
+tbody' = tbody mempty
 
-td :: forall eff. Attributes -> Events eff -> Elements -> React Element
+td :: Attributes -> Elements -> React Element
 td = createElementFromTagName T.Td
 
 td' :: Elements -> React Element
-td' = td mempty mempty
+td' = td mempty
 
-text :: forall eff. Attributes -> Events eff -> Elements -> React Element
+text :: Attributes -> Elements -> React Element
 text = createElementFromTagName T.Text
 
 text' :: Elements -> React Element
-text' = text mempty mempty
+text' = text mempty
 
-textarea :: forall eff. Attributes -> Events eff -> Elements -> React Element
+textarea :: Attributes -> Elements -> React Element
 textarea = createElementFromTagName T.Textarea
 
 textarea' :: Elements -> React Element
-textarea' = textarea mempty mempty
+textarea' = textarea mempty
 
-tfoot :: forall eff. Attributes -> Events eff -> Elements -> React Element
+tfoot :: Attributes -> Elements -> React Element
 tfoot = createElementFromTagName T.Tfoot
 
 tfoot' :: Elements -> React Element
-tfoot' = tfoot mempty mempty
+tfoot' = tfoot mempty
 
-th :: forall eff. Attributes -> Events eff -> Elements -> React Element
+th :: Attributes -> Elements -> React Element
 th = createElementFromTagName T.Th
 
 th' :: Elements -> React Element
-th' = th mempty mempty
+th' = th mempty
 
-thead :: forall eff. Attributes -> Events eff -> Elements -> React Element
+thead :: Attributes -> Elements -> React Element
 thead = createElementFromTagName T.Thead
 
 thead' :: Elements -> React Element
-thead' = thead mempty mempty
+thead' = thead mempty
 
-time :: forall eff. Attributes -> Events eff -> Elements -> React Element
+time :: Attributes -> Elements -> React Element
 time = createElementFromTagName T.Time
 
 time' :: Elements -> React Element
-time' = time mempty mempty
+time' = time mempty
 
-title :: forall eff. Attributes -> Events eff -> Elements -> React Element
+title :: Attributes -> Elements -> React Element
 title = createElementFromTagName T.Title
 
 title' :: Elements -> React Element
-title' = title mempty mempty
+title' = title mempty
 
-tr :: forall eff. Attributes -> Events eff -> Elements -> React Element
+tr :: Attributes -> Elements -> React Element
 tr = createElementFromTagName T.Tr
 
 tr' :: Elements -> React Element
-tr' = tr mempty mempty
+tr' = tr mempty
 
-track :: forall eff. Attributes -> Events eff -> Elements -> React Element
+track :: Attributes -> Elements -> React Element
 track = createElementFromTagName T.Track
 
 track' :: Elements -> React Element
-track' = track mempty mempty
+track' = track mempty
 
-tspan :: forall eff. Attributes -> Events eff -> Elements -> React Element
+tspan :: Attributes -> Elements -> React Element
 tspan = createElementFromTagName T.Tspan
 
 tspan' :: Elements -> React Element
-tspan' = tspan mempty mempty
+tspan' = tspan mempty
 
-u :: forall eff. Attributes -> Events eff -> Elements -> React Element
+u :: Attributes -> Elements -> React Element
 u = createElementFromTagName T.U
 
 u' :: Elements -> React Element
-u' = u mempty mempty
+u' = u mempty
 
-ul :: forall eff. Attributes -> Events eff -> Elements -> React Element
+ul :: Attributes -> Elements -> React Element
 ul = createElementFromTagName T.Ul
 
 ul' :: Elements -> React Element
-ul' = ul mempty mempty
+ul' = ul mempty
 
-var :: forall eff. Attributes -> Events eff -> Elements -> React Element
+var :: Attributes -> Elements -> React Element
 var = createElementFromTagName T.Var
 
 var' :: Elements -> React Element
-var' = var mempty mempty
+var' = var mempty
 
-video :: forall eff. Attributes -> Events eff -> Elements -> React Element
+video :: Attributes -> Elements -> React Element
 video = createElementFromTagName T.Video
 
 video' :: Elements -> React Element
-video' = video mempty mempty
+video' = video mempty
 
-wbr :: forall eff. Attributes -> Events eff -> Elements -> React Element
+wbr :: Attributes -> Elements -> React Element
 wbr = createElementFromTagName T.Wbr
 
 wbr' :: Elements -> React Element
-wbr' = wbr mempty mempty
+wbr' = wbr mempty

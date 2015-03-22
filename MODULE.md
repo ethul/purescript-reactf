@@ -236,7 +236,7 @@ dangerouslySetInnerHTML :: Option Attribute { __html :: String }
 #### `_data`
 
 ``` purescript
-_data :: forall value. String -> Option Attribute value
+_data :: forall value. (IsOption value) => String -> Option Attribute value
 ```
 
 
@@ -1222,7 +1222,7 @@ raw :: String -> React Element
 #### `a`
 
 ``` purescript
-a :: forall eff. Attributes -> Events eff -> Elements -> React Element
+a :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1236,7 +1236,7 @@ a' :: Elements -> React Element
 #### `abbr`
 
 ``` purescript
-abbr :: forall eff. Attributes -> Events eff -> Elements -> React Element
+abbr :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1250,7 +1250,7 @@ abbr' :: Elements -> React Element
 #### `address`
 
 ``` purescript
-address :: forall eff. Attributes -> Events eff -> Elements -> React Element
+address :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1264,7 +1264,7 @@ address' :: Elements -> React Element
 #### `area`
 
 ``` purescript
-area :: forall eff. Attributes -> Events eff -> Elements -> React Element
+area :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1278,7 +1278,7 @@ area' :: Elements -> React Element
 #### `article`
 
 ``` purescript
-article :: forall eff. Attributes -> Events eff -> Elements -> React Element
+article :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1292,7 +1292,7 @@ article' :: Elements -> React Element
 #### `aside`
 
 ``` purescript
-aside :: forall eff. Attributes -> Events eff -> Elements -> React Element
+aside :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1306,7 +1306,7 @@ aside' :: Elements -> React Element
 #### `audio`
 
 ``` purescript
-audio :: forall eff. Attributes -> Events eff -> Elements -> React Element
+audio :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1320,7 +1320,7 @@ audio' :: Elements -> React Element
 #### `b`
 
 ``` purescript
-b :: forall eff. Attributes -> Events eff -> Elements -> React Element
+b :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1334,7 +1334,7 @@ b' :: Elements -> React Element
 #### `base`
 
 ``` purescript
-base :: forall eff. Attributes -> Events eff -> Elements -> React Element
+base :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1348,7 +1348,7 @@ base' :: Elements -> React Element
 #### `bdi`
 
 ``` purescript
-bdi :: forall eff. Attributes -> Events eff -> Elements -> React Element
+bdi :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1362,7 +1362,7 @@ bdi' :: Elements -> React Element
 #### `bdo`
 
 ``` purescript
-bdo :: forall eff. Attributes -> Events eff -> Elements -> React Element
+bdo :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1376,7 +1376,7 @@ bdo' :: Elements -> React Element
 #### `big`
 
 ``` purescript
-big :: forall eff. Attributes -> Events eff -> Elements -> React Element
+big :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1390,7 +1390,7 @@ big' :: Elements -> React Element
 #### `blockquote`
 
 ``` purescript
-blockquote :: forall eff. Attributes -> Events eff -> Elements -> React Element
+blockquote :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1404,7 +1404,7 @@ blockquote' :: Elements -> React Element
 #### `body`
 
 ``` purescript
-body :: forall eff. Attributes -> Events eff -> Elements -> React Element
+body :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1418,7 +1418,7 @@ body' :: Elements -> React Element
 #### `br`
 
 ``` purescript
-br :: forall eff. Attributes -> Events eff -> Elements -> React Element
+br :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1432,7 +1432,7 @@ br' :: Elements -> React Element
 #### `button`
 
 ``` purescript
-button :: forall eff. Attributes -> Events eff -> Elements -> React Element
+button :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1446,7 +1446,7 @@ button' :: Elements -> React Element
 #### `canvas`
 
 ``` purescript
-canvas :: forall eff. Attributes -> Events eff -> Elements -> React Element
+canvas :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1460,7 +1460,7 @@ canvas' :: Elements -> React Element
 #### `caption`
 
 ``` purescript
-caption :: forall eff. Attributes -> Events eff -> Elements -> React Element
+caption :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1474,7 +1474,7 @@ caption' :: Elements -> React Element
 #### `circle`
 
 ``` purescript
-circle :: forall eff. Attributes -> Events eff -> Elements -> React Element
+circle :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1488,7 +1488,7 @@ circle' :: Elements -> React Element
 #### `cite`
 
 ``` purescript
-cite :: forall eff. Attributes -> Events eff -> Elements -> React Element
+cite :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1502,7 +1502,7 @@ cite' :: Elements -> React Element
 #### `code`
 
 ``` purescript
-code :: forall eff. Attributes -> Events eff -> Elements -> React Element
+code :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1516,7 +1516,7 @@ code' :: Elements -> React Element
 #### `col`
 
 ``` purescript
-col :: forall eff. Attributes -> Events eff -> Elements -> React Element
+col :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1530,7 +1530,7 @@ col' :: Elements -> React Element
 #### `colgroup`
 
 ``` purescript
-colgroup :: forall eff. Attributes -> Events eff -> Elements -> React Element
+colgroup :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1544,7 +1544,7 @@ colgroup' :: Elements -> React Element
 #### `_data`
 
 ``` purescript
-_data :: forall eff. Attributes -> Events eff -> Elements -> React Element
+_data :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1558,7 +1558,7 @@ _data' :: Elements -> React Element
 #### `datalist`
 
 ``` purescript
-datalist :: forall eff. Attributes -> Events eff -> Elements -> React Element
+datalist :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1572,7 +1572,7 @@ datalist' :: Elements -> React Element
 #### `dd`
 
 ``` purescript
-dd :: forall eff. Attributes -> Events eff -> Elements -> React Element
+dd :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1586,7 +1586,7 @@ dd' :: Elements -> React Element
 #### `defs`
 
 ``` purescript
-defs :: forall eff. Attributes -> Events eff -> Elements -> React Element
+defs :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1600,7 +1600,7 @@ defs' :: Elements -> React Element
 #### `del`
 
 ``` purescript
-del :: forall eff. Attributes -> Events eff -> Elements -> React Element
+del :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1614,7 +1614,7 @@ del' :: Elements -> React Element
 #### `details`
 
 ``` purescript
-details :: forall eff. Attributes -> Events eff -> Elements -> React Element
+details :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1628,7 +1628,7 @@ details' :: Elements -> React Element
 #### `dfn`
 
 ``` purescript
-dfn :: forall eff. Attributes -> Events eff -> Elements -> React Element
+dfn :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1642,7 +1642,7 @@ dfn' :: Elements -> React Element
 #### `dialog`
 
 ``` purescript
-dialog :: forall eff. Attributes -> Events eff -> Elements -> React Element
+dialog :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1656,7 +1656,7 @@ dialog' :: Elements -> React Element
 #### `div`
 
 ``` purescript
-div :: forall eff. Attributes -> Events eff -> Elements -> React Element
+div :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1670,7 +1670,7 @@ div' :: Elements -> React Element
 #### `dl`
 
 ``` purescript
-dl :: forall eff. Attributes -> Events eff -> Elements -> React Element
+dl :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1684,7 +1684,7 @@ dl' :: Elements -> React Element
 #### `dt`
 
 ``` purescript
-dt :: forall eff. Attributes -> Events eff -> Elements -> React Element
+dt :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1698,7 +1698,7 @@ dt' :: Elements -> React Element
 #### `ellipse`
 
 ``` purescript
-ellipse :: forall eff. Attributes -> Events eff -> Elements -> React Element
+ellipse :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1712,7 +1712,7 @@ ellipse' :: Elements -> React Element
 #### `em`
 
 ``` purescript
-em :: forall eff. Attributes -> Events eff -> Elements -> React Element
+em :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1726,7 +1726,7 @@ em' :: Elements -> React Element
 #### `embed`
 
 ``` purescript
-embed :: forall eff. Attributes -> Events eff -> Elements -> React Element
+embed :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1740,7 +1740,7 @@ embed' :: Elements -> React Element
 #### `fieldset`
 
 ``` purescript
-fieldset :: forall eff. Attributes -> Events eff -> Elements -> React Element
+fieldset :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1754,7 +1754,7 @@ fieldset' :: Elements -> React Element
 #### `figcaption`
 
 ``` purescript
-figcaption :: forall eff. Attributes -> Events eff -> Elements -> React Element
+figcaption :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1768,7 +1768,7 @@ figcaption' :: Elements -> React Element
 #### `figure`
 
 ``` purescript
-figure :: forall eff. Attributes -> Events eff -> Elements -> React Element
+figure :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1782,7 +1782,7 @@ figure' :: Elements -> React Element
 #### `footer`
 
 ``` purescript
-footer :: forall eff. Attributes -> Events eff -> Elements -> React Element
+footer :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1796,7 +1796,7 @@ footer' :: Elements -> React Element
 #### `form`
 
 ``` purescript
-form :: forall eff. Attributes -> Events eff -> Elements -> React Element
+form :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1810,7 +1810,7 @@ form' :: Elements -> React Element
 #### `g`
 
 ``` purescript
-g :: forall eff. Attributes -> Events eff -> Elements -> React Element
+g :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1824,7 +1824,7 @@ g' :: Elements -> React Element
 #### `h1`
 
 ``` purescript
-h1 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h1 :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1838,7 +1838,7 @@ h1' :: Elements -> React Element
 #### `h2`
 
 ``` purescript
-h2 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h2 :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1852,7 +1852,7 @@ h2' :: Elements -> React Element
 #### `h3`
 
 ``` purescript
-h3 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h3 :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1866,7 +1866,7 @@ h3' :: Elements -> React Element
 #### `h4`
 
 ``` purescript
-h4 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h4 :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1880,7 +1880,7 @@ h4' :: Elements -> React Element
 #### `h5`
 
 ``` purescript
-h5 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h5 :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1894,7 +1894,7 @@ h5' :: Elements -> React Element
 #### `h6`
 
 ``` purescript
-h6 :: forall eff. Attributes -> Events eff -> Elements -> React Element
+h6 :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1908,7 +1908,7 @@ h6' :: Elements -> React Element
 #### `head`
 
 ``` purescript
-head :: forall eff. Attributes -> Events eff -> Elements -> React Element
+head :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1922,7 +1922,7 @@ head' :: Elements -> React Element
 #### `header`
 
 ``` purescript
-header :: forall eff. Attributes -> Events eff -> Elements -> React Element
+header :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1936,7 +1936,7 @@ header' :: Elements -> React Element
 #### `hr`
 
 ``` purescript
-hr :: forall eff. Attributes -> Events eff -> Elements -> React Element
+hr :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1950,7 +1950,7 @@ hr' :: Elements -> React Element
 #### `html`
 
 ``` purescript
-html :: forall eff. Attributes -> Events eff -> Elements -> React Element
+html :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1964,7 +1964,7 @@ html' :: Elements -> React Element
 #### `i`
 
 ``` purescript
-i :: forall eff. Attributes -> Events eff -> Elements -> React Element
+i :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1978,7 +1978,7 @@ i' :: Elements -> React Element
 #### `iframe`
 
 ``` purescript
-iframe :: forall eff. Attributes -> Events eff -> Elements -> React Element
+iframe :: Attributes -> Elements -> React Element
 ```
 
 
@@ -1992,7 +1992,7 @@ iframe' :: Elements -> React Element
 #### `img`
 
 ``` purescript
-img :: forall eff. Attributes -> Events eff -> Elements -> React Element
+img :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2006,7 +2006,7 @@ img' :: Elements -> React Element
 #### `input`
 
 ``` purescript
-input :: forall eff. Attributes -> Events eff -> Elements -> React Element
+input :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2020,7 +2020,7 @@ input' :: Elements -> React Element
 #### `ins`
 
 ``` purescript
-ins :: forall eff. Attributes -> Events eff -> Elements -> React Element
+ins :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2034,7 +2034,7 @@ ins' :: Elements -> React Element
 #### `kbd`
 
 ``` purescript
-kbd :: forall eff. Attributes -> Events eff -> Elements -> React Element
+kbd :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2048,7 +2048,7 @@ kbd' :: Elements -> React Element
 #### `keygen`
 
 ``` purescript
-keygen :: forall eff. Attributes -> Events eff -> Elements -> React Element
+keygen :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2062,7 +2062,7 @@ keygen' :: Elements -> React Element
 #### `label`
 
 ``` purescript
-label :: forall eff. Attributes -> Events eff -> Elements -> React Element
+label :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2076,7 +2076,7 @@ label' :: Elements -> React Element
 #### `legend`
 
 ``` purescript
-legend :: forall eff. Attributes -> Events eff -> Elements -> React Element
+legend :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2090,7 +2090,7 @@ legend' :: Elements -> React Element
 #### `li`
 
 ``` purescript
-li :: forall eff. Attributes -> Events eff -> Elements -> React Element
+li :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2104,7 +2104,7 @@ li' :: Elements -> React Element
 #### `line`
 
 ``` purescript
-line :: forall eff. Attributes -> Events eff -> Elements -> React Element
+line :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2118,7 +2118,7 @@ line' :: Elements -> React Element
 #### `linearGradient`
 
 ``` purescript
-linearGradient :: forall eff. Attributes -> Events eff -> Elements -> React Element
+linearGradient :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2132,7 +2132,7 @@ linearGradient' :: Elements -> React Element
 #### `link`
 
 ``` purescript
-link :: forall eff. Attributes -> Events eff -> Elements -> React Element
+link :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2146,7 +2146,7 @@ link' :: Elements -> React Element
 #### `main`
 
 ``` purescript
-main :: forall eff. Attributes -> Events eff -> Elements -> React Element
+main :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2160,7 +2160,7 @@ main' :: Elements -> React Element
 #### `map`
 
 ``` purescript
-map :: forall eff. Attributes -> Events eff -> Elements -> React Element
+map :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2174,7 +2174,7 @@ map' :: Elements -> React Element
 #### `mark`
 
 ``` purescript
-mark :: forall eff. Attributes -> Events eff -> Elements -> React Element
+mark :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2188,7 +2188,7 @@ mark' :: Elements -> React Element
 #### `mask`
 
 ``` purescript
-mask :: forall eff. Attributes -> Events eff -> Elements -> React Element
+mask :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2202,7 +2202,7 @@ mask' :: Elements -> React Element
 #### `menu`
 
 ``` purescript
-menu :: forall eff. Attributes -> Events eff -> Elements -> React Element
+menu :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2216,7 +2216,7 @@ menu' :: Elements -> React Element
 #### `menuitem`
 
 ``` purescript
-menuitem :: forall eff. Attributes -> Events eff -> Elements -> React Element
+menuitem :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2230,7 +2230,7 @@ menuitem' :: Elements -> React Element
 #### `meta`
 
 ``` purescript
-meta :: forall eff. Attributes -> Events eff -> Elements -> React Element
+meta :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2244,7 +2244,7 @@ meta' :: Elements -> React Element
 #### `meter`
 
 ``` purescript
-meter :: forall eff. Attributes -> Events eff -> Elements -> React Element
+meter :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2258,7 +2258,7 @@ meter' :: Elements -> React Element
 #### `nav`
 
 ``` purescript
-nav :: forall eff. Attributes -> Events eff -> Elements -> React Element
+nav :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2272,7 +2272,7 @@ nav' :: Elements -> React Element
 #### `noscript`
 
 ``` purescript
-noscript :: forall eff. Attributes -> Events eff -> Elements -> React Element
+noscript :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2286,7 +2286,7 @@ noscript' :: Elements -> React Element
 #### `object`
 
 ``` purescript
-object :: forall eff. Attributes -> Events eff -> Elements -> React Element
+object :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2300,7 +2300,7 @@ object' :: Elements -> React Element
 #### `ol`
 
 ``` purescript
-ol :: forall eff. Attributes -> Events eff -> Elements -> React Element
+ol :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2314,7 +2314,7 @@ ol' :: Elements -> React Element
 #### `optgroup`
 
 ``` purescript
-optgroup :: forall eff. Attributes -> Events eff -> Elements -> React Element
+optgroup :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2328,7 +2328,7 @@ optgroup' :: Elements -> React Element
 #### `option`
 
 ``` purescript
-option :: forall eff. Attributes -> Events eff -> Elements -> React Element
+option :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2342,7 +2342,7 @@ option' :: Elements -> React Element
 #### `output`
 
 ``` purescript
-output :: forall eff. Attributes -> Events eff -> Elements -> React Element
+output :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2356,7 +2356,7 @@ output' :: Elements -> React Element
 #### `p`
 
 ``` purescript
-p :: forall eff. Attributes -> Events eff -> Elements -> React Element
+p :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2370,7 +2370,7 @@ p' :: Elements -> React Element
 #### `param`
 
 ``` purescript
-param :: forall eff. Attributes -> Events eff -> Elements -> React Element
+param :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2384,7 +2384,7 @@ param' :: Elements -> React Element
 #### `path`
 
 ``` purescript
-path :: forall eff. Attributes -> Events eff -> Elements -> React Element
+path :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2398,7 +2398,7 @@ path' :: Elements -> React Element
 #### `pattern`
 
 ``` purescript
-pattern :: forall eff. Attributes -> Events eff -> Elements -> React Element
+pattern :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2412,7 +2412,7 @@ pattern' :: Elements -> React Element
 #### `picture`
 
 ``` purescript
-picture :: forall eff. Attributes -> Events eff -> Elements -> React Element
+picture :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2426,7 +2426,7 @@ picture' :: Elements -> React Element
 #### `polygon`
 
 ``` purescript
-polygon :: forall eff. Attributes -> Events eff -> Elements -> React Element
+polygon :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2440,7 +2440,7 @@ polygon' :: Elements -> React Element
 #### `polyline`
 
 ``` purescript
-polyline :: forall eff. Attributes -> Events eff -> Elements -> React Element
+polyline :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2454,7 +2454,7 @@ polyline' :: Elements -> React Element
 #### `pre`
 
 ``` purescript
-pre :: forall eff. Attributes -> Events eff -> Elements -> React Element
+pre :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2468,7 +2468,7 @@ pre' :: Elements -> React Element
 #### `progress`
 
 ``` purescript
-progress :: forall eff. Attributes -> Events eff -> Elements -> React Element
+progress :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2482,7 +2482,7 @@ progress' :: Elements -> React Element
 #### `q`
 
 ``` purescript
-q :: forall eff. Attributes -> Events eff -> Elements -> React Element
+q :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2496,7 +2496,7 @@ q' :: Elements -> React Element
 #### `radialGradient`
 
 ``` purescript
-radialGradient :: forall eff. Attributes -> Events eff -> Elements -> React Element
+radialGradient :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2510,7 +2510,7 @@ radialGradient' :: Elements -> React Element
 #### `rect`
 
 ``` purescript
-rect :: forall eff. Attributes -> Events eff -> Elements -> React Element
+rect :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2524,7 +2524,7 @@ rect' :: Elements -> React Element
 #### `rp`
 
 ``` purescript
-rp :: forall eff. Attributes -> Events eff -> Elements -> React Element
+rp :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2538,7 +2538,7 @@ rp' :: Elements -> React Element
 #### `rt`
 
 ``` purescript
-rt :: forall eff. Attributes -> Events eff -> Elements -> React Element
+rt :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2552,7 +2552,7 @@ rt' :: Elements -> React Element
 #### `ruby`
 
 ``` purescript
-ruby :: forall eff. Attributes -> Events eff -> Elements -> React Element
+ruby :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2566,7 +2566,7 @@ ruby' :: Elements -> React Element
 #### `s`
 
 ``` purescript
-s :: forall eff. Attributes -> Events eff -> Elements -> React Element
+s :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2580,7 +2580,7 @@ s' :: Elements -> React Element
 #### `samp`
 
 ``` purescript
-samp :: forall eff. Attributes -> Events eff -> Elements -> React Element
+samp :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2594,7 +2594,7 @@ samp' :: Elements -> React Element
 #### `script`
 
 ``` purescript
-script :: forall eff. Attributes -> Events eff -> Elements -> React Element
+script :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2608,7 +2608,7 @@ script' :: Elements -> React Element
 #### `section`
 
 ``` purescript
-section :: forall eff. Attributes -> Events eff -> Elements -> React Element
+section :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2622,7 +2622,7 @@ section' :: Elements -> React Element
 #### `select`
 
 ``` purescript
-select :: forall eff. Attributes -> Events eff -> Elements -> React Element
+select :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2636,7 +2636,7 @@ select' :: Elements -> React Element
 #### `small`
 
 ``` purescript
-small :: forall eff. Attributes -> Events eff -> Elements -> React Element
+small :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2650,7 +2650,7 @@ small' :: Elements -> React Element
 #### `source`
 
 ``` purescript
-source :: forall eff. Attributes -> Events eff -> Elements -> React Element
+source :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2664,7 +2664,7 @@ source' :: Elements -> React Element
 #### `span`
 
 ``` purescript
-span :: forall eff. Attributes -> Events eff -> Elements -> React Element
+span :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2678,7 +2678,7 @@ span' :: Elements -> React Element
 #### `stop`
 
 ``` purescript
-stop :: forall eff. Attributes -> Events eff -> Elements -> React Element
+stop :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2692,7 +2692,7 @@ stop' :: Elements -> React Element
 #### `strong`
 
 ``` purescript
-strong :: forall eff. Attributes -> Events eff -> Elements -> React Element
+strong :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2706,7 +2706,7 @@ strong' :: Elements -> React Element
 #### `style`
 
 ``` purescript
-style :: forall eff. Attributes -> Events eff -> Elements -> React Element
+style :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2720,7 +2720,7 @@ style' :: Elements -> React Element
 #### `sub`
 
 ``` purescript
-sub :: forall eff. Attributes -> Events eff -> Elements -> React Element
+sub :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2734,7 +2734,7 @@ sub' :: Elements -> React Element
 #### `summary`
 
 ``` purescript
-summary :: forall eff. Attributes -> Events eff -> Elements -> React Element
+summary :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2748,7 +2748,7 @@ summary' :: Elements -> React Element
 #### `sup`
 
 ``` purescript
-sup :: forall eff. Attributes -> Events eff -> Elements -> React Element
+sup :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2762,7 +2762,7 @@ sup' :: Elements -> React Element
 #### `svg`
 
 ``` purescript
-svg :: forall eff. Attributes -> Events eff -> Elements -> React Element
+svg :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2776,7 +2776,7 @@ svg' :: Elements -> React Element
 #### `table`
 
 ``` purescript
-table :: forall eff. Attributes -> Events eff -> Elements -> React Element
+table :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2790,7 +2790,7 @@ table' :: Elements -> React Element
 #### `tbody`
 
 ``` purescript
-tbody :: forall eff. Attributes -> Events eff -> Elements -> React Element
+tbody :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2804,7 +2804,7 @@ tbody' :: Elements -> React Element
 #### `td`
 
 ``` purescript
-td :: forall eff. Attributes -> Events eff -> Elements -> React Element
+td :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2818,7 +2818,7 @@ td' :: Elements -> React Element
 #### `text`
 
 ``` purescript
-text :: forall eff. Attributes -> Events eff -> Elements -> React Element
+text :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2832,7 +2832,7 @@ text' :: Elements -> React Element
 #### `textarea`
 
 ``` purescript
-textarea :: forall eff. Attributes -> Events eff -> Elements -> React Element
+textarea :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2846,7 +2846,7 @@ textarea' :: Elements -> React Element
 #### `tfoot`
 
 ``` purescript
-tfoot :: forall eff. Attributes -> Events eff -> Elements -> React Element
+tfoot :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2860,7 +2860,7 @@ tfoot' :: Elements -> React Element
 #### `th`
 
 ``` purescript
-th :: forall eff. Attributes -> Events eff -> Elements -> React Element
+th :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2874,7 +2874,7 @@ th' :: Elements -> React Element
 #### `thead`
 
 ``` purescript
-thead :: forall eff. Attributes -> Events eff -> Elements -> React Element
+thead :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2888,7 +2888,7 @@ thead' :: Elements -> React Element
 #### `time`
 
 ``` purescript
-time :: forall eff. Attributes -> Events eff -> Elements -> React Element
+time :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2902,7 +2902,7 @@ time' :: Elements -> React Element
 #### `title`
 
 ``` purescript
-title :: forall eff. Attributes -> Events eff -> Elements -> React Element
+title :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2916,7 +2916,7 @@ title' :: Elements -> React Element
 #### `tr`
 
 ``` purescript
-tr :: forall eff. Attributes -> Events eff -> Elements -> React Element
+tr :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2930,7 +2930,7 @@ tr' :: Elements -> React Element
 #### `track`
 
 ``` purescript
-track :: forall eff. Attributes -> Events eff -> Elements -> React Element
+track :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2944,7 +2944,7 @@ track' :: Elements -> React Element
 #### `tspan`
 
 ``` purescript
-tspan :: forall eff. Attributes -> Events eff -> Elements -> React Element
+tspan :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2958,7 +2958,7 @@ tspan' :: Elements -> React Element
 #### `u`
 
 ``` purescript
-u :: forall eff. Attributes -> Events eff -> Elements -> React Element
+u :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2972,7 +2972,7 @@ u' :: Elements -> React Element
 #### `ul`
 
 ``` purescript
-ul :: forall eff. Attributes -> Events eff -> Elements -> React Element
+ul :: Attributes -> Elements -> React Element
 ```
 
 
@@ -2986,7 +2986,7 @@ ul' :: Elements -> React Element
 #### `var`
 
 ``` purescript
-var :: forall eff. Attributes -> Events eff -> Elements -> React Element
+var :: Attributes -> Elements -> React Element
 ```
 
 
@@ -3000,7 +3000,7 @@ var' :: Elements -> React Element
 #### `video`
 
 ``` purescript
-video :: forall eff. Attributes -> Events eff -> Elements -> React Element
+video :: Attributes -> Elements -> React Element
 ```
 
 
@@ -3014,7 +3014,7 @@ video' :: Elements -> React Element
 #### `wbr`
 
 ``` purescript
-wbr :: forall eff. Attributes -> Events eff -> Elements -> React Element
+wbr :: Attributes -> Elements -> React Element
 ```
 
 
@@ -3027,20 +3027,6 @@ wbr' :: Elements -> React Element
 
 
 ## Module React.Events
-
-#### `Events`
-
-``` purescript
-type Events eff = Options (EventName eff)
-```
-
-
-#### `EventName`
-
-``` purescript
-data EventName :: # ! -> *
-```
-
 
 #### `SyntheticEventRecord`
 
@@ -3382,532 +3368,532 @@ instance effApplyFnsSyntheticWheelEvent :: EffApplyFns SyntheticWheelEvent
 #### `onError`
 
 ``` purescript
-onError :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onError :: forall eff. Option Attribute (SyntheticEventFn eff)
 ```
 
 
 #### `onErrorCapture`
 
 ``` purescript
-onErrorCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onErrorCapture :: forall eff. Option Attribute (SyntheticEventFn eff)
 ```
 
 
 #### `onInput`
 
 ``` purescript
-onInput :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onInput :: forall eff. Option Attribute (SyntheticEventFn eff)
 ```
 
 
 #### `onInputCapture`
 
 ``` purescript
-onInputCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onInputCapture :: forall eff. Option Attribute (SyntheticEventFn eff)
 ```
 
 
 #### `onLoad`
 
 ``` purescript
-onLoad :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onLoad :: forall eff. Option Attribute (SyntheticEventFn eff)
 ```
 
 
 #### `onLoadCapture`
 
 ``` purescript
-onLoadCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onLoadCapture :: forall eff. Option Attribute (SyntheticEventFn eff)
 ```
 
 
 #### `onReset`
 
 ``` purescript
-onReset :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onReset :: forall eff. Option Attribute (SyntheticEventFn eff)
 ```
 
 
 #### `onResetCapture`
 
 ``` purescript
-onResetCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onResetCapture :: forall eff. Option Attribute (SyntheticEventFn eff)
 ```
 
 
 #### `onSubmit`
 
 ``` purescript
-onSubmit :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onSubmit :: forall eff. Option Attribute (SyntheticEventFn eff)
 ```
 
 
 #### `onSubmitCapture`
 
 ``` purescript
-onSubmitCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
+onSubmitCapture :: forall eff. Option Attribute (SyntheticEventFn eff)
 ```
 
 
 #### `onCopy`
 
 ``` purescript
-onCopy :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCopy :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onCopyCapture`
 
 ``` purescript
-onCopyCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCopyCapture :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onCut`
 
 ``` purescript
-onCut :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCut :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onCutCapture`
 
 ``` purescript
-onCutCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onCutCapture :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onPaste`
 
 ``` purescript
-onPaste :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onPaste :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onPasteCapture`
 
 ``` purescript
-onPasteCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
+onPasteCapture :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
 ```
 
 
 #### `onDrag`
 
 ``` purescript
-onDrag :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDrag :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragCapture`
 
 ``` purescript
-onDragCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragEnd`
 
 ``` purescript
-onDragEnd :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragEnd :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragEndCapture`
 
 ``` purescript
-onDragEndCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragEndCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragEnter`
 
 ``` purescript
-onDragEnter :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragEnter :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragEnterCapture`
 
 ``` purescript
-onDragEnterCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragEnterCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragExit`
 
 ``` purescript
-onDragExit :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragExit :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragExitCapture`
 
 ``` purescript
-onDragExitCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragExitCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragLeave`
 
 ``` purescript
-onDragLeave :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragLeave :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragLeaveCapture`
 
 ``` purescript
-onDragLeaveCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragLeaveCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragOver`
 
 ``` purescript
-onDragOver :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragOver :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragOverCapture`
 
 ``` purescript
-onDragOverCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragOverCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragStart`
 
 ``` purescript
-onDragStart :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragStart :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDragStartCapture`
 
 ``` purescript
-onDragStartCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDragStartCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDrop`
 
 ``` purescript
-onDrop :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDrop :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onDropCapture`
 
 ``` purescript
-onDropCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
+onDropCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
 ```
 
 
 #### `onFocus`
 
 ``` purescript
-onFocus :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onFocus :: forall eff. Option Attribute (SyntheticFocusEventFn eff)
 ```
 
 
 #### `onFocusCapture`
 
 ``` purescript
-onFocusCapture :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onFocusCapture :: forall eff. Option Attribute (SyntheticFocusEventFn eff)
 ```
 
 
 #### `onBlur`
 
 ``` purescript
-onBlur :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onBlur :: forall eff. Option Attribute (SyntheticFocusEventFn eff)
 ```
 
 
 #### `onBlurCapture`
 
 ``` purescript
-onBlurCapture :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
+onBlurCapture :: forall eff. Option Attribute (SyntheticFocusEventFn eff)
 ```
 
 
 #### `onChange`
 
 ``` purescript
-onChange :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onChange :: forall eff. Option Attribute (SyntheticInputEventFn eff)
 ```
 
 
 #### `onChangeCapture`
 
 ``` purescript
-onChangeCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
+onChangeCapture :: forall eff. Option Attribute (SyntheticInputEventFn eff)
 ```
 
 
 #### `onKeyDown`
 
 ``` purescript
-onKeyDown :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyDown :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onKeyDownCapture`
 
 ``` purescript
-onKeyDownCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyDownCapture :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onKeyPress`
 
 ``` purescript
-onKeyPress :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyPress :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onKeyPressCapture`
 
 ``` purescript
-onKeyPressCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyPressCapture :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onKeyUp`
 
 ``` purescript
-onKeyUp :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyUp :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onKeyUpCapture`
 
 ``` purescript
-onKeyUpCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
+onKeyUpCapture :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
 ```
 
 
 #### `onClick`
 
 ``` purescript
-onClick :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onClick :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onClickCapture`
 
 ``` purescript
-onClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onClickCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onContextMenu`
 
 ``` purescript
-onContextMenu :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onContextMenu :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onContextMenuCapture`
 
 ``` purescript
-onContextMenuCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onContextMenuCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDoubleClick`
 
 ``` purescript
-onDoubleClick :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDoubleClick :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onDoubleClickCapture`
 
 ``` purescript
-onDoubleClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onDoubleClickCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseDown`
 
 ``` purescript
-onMouseDown :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseDown :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseDownCapture`
 
 ``` purescript
-onMouseDownCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseDownCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseEnter`
 
 ``` purescript
-onMouseEnter :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseEnter :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseEnterCapture`
 
 ``` purescript
-onMouseEnterCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseEnterCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseLeave`
 
 ``` purescript
-onMouseLeave :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseLeave :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseLeaveCapture`
 
 ``` purescript
-onMouseLeaveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseLeaveCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseMove`
 
 ``` purescript
-onMouseMove :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseMove :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseMoveCapture`
 
 ``` purescript
-onMouseMoveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseMoveCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseOut`
 
 ``` purescript
-onMouseOut :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOut :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseOutCapture`
 
 ``` purescript
-onMouseOutCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOutCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseOver`
 
 ``` purescript
-onMouseOver :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOver :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseOverCapture`
 
 ``` purescript
-onMouseOverCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseOverCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseUp`
 
 ``` purescript
-onMouseUp :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseUp :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onMouseUpCapture`
 
 ``` purescript
-onMouseUpCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
+onMouseUpCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
 ```
 
 
 #### `onTouchCancel`
 
 ``` purescript
-onTouchCancel :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchCancel :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchCancelCapture`
 
 ``` purescript
-onTouchCancelCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchCancelCapture :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchEnd`
 
 ``` purescript
-onTouchEnd :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchEnd :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchEndCapture`
 
 ``` purescript
-onTouchEndCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchEndCapture :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchMove`
 
 ``` purescript
-onTouchMove :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchMove :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchMoveCapture`
 
 ``` purescript
-onTouchMoveCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchMoveCapture :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchStart`
 
 ``` purescript
-onTouchStart :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchStart :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onTouchStartCapture`
 
 ``` purescript
-onTouchStartCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
+onTouchStartCapture :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
 ```
 
 
 #### `onScroll`
 
 ``` purescript
-onScroll :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
+onScroll :: forall eff. Option Attribute (SyntheticUIEventFn eff)
 ```
 
 
 #### `onScrollCapture`
 
 ``` purescript
-onScrollCapture :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
+onScrollCapture :: forall eff. Option Attribute (SyntheticUIEventFn eff)
 ```
 
 
 #### `onWheel`
 
 ``` purescript
-onWheel :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)
+onWheel :: forall eff. Option Attribute (SyntheticWheelEventFn eff)
 ```
 
 
 #### `onWheelCapture`
 
 ``` purescript
-onWheelCapture :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)
+onWheelCapture :: forall eff. Option Attribute (SyntheticWheelEventFn eff)
 ```
 
 
@@ -4061,8 +4047,8 @@ type React = FreeC ReactF
 ``` purescript
 data ReactF a
   = CreateClass (forall eff props state. Specification eff props state) (forall props state. Class props state -> a)
-  | CreateElementFromClass (forall props state. Class props state) (forall props. Props props) (forall eff. Events eff) Elements (Element -> a)
-  | CreateElementFromTagName TagName Attributes (forall eff. Events eff) Elements (Element -> a)
+  | CreateElementFromClass (forall props state. Class props state) (forall props. Props props) Elements (Element -> a)
+  | CreateElementFromTagName TagName Attributes Elements (Element -> a)
   | RenderSync Element DOMElement (forall props state. Reference props state -> a)
   | RenderAsync Element DOMElement (forall props state. Reference props state -> a)
 ```
@@ -4078,14 +4064,14 @@ createClass :: forall eff props state. Specification eff props state -> React (C
 #### `createElementFromClass`
 
 ``` purescript
-createElementFromClass :: forall eff props state. Class props state -> Props props -> Events eff -> Elements -> React Element
+createElementFromClass :: forall props state. Class props state -> Props props -> Elements -> React Element
 ```
 
 
 #### `createElementFromTagName`
 
 ``` purescript
-createElementFromTagName :: forall eff props state. TagName -> Attributes -> Events eff -> Elements -> React Element
+createElementFromTagName :: forall props state. TagName -> Attributes -> Elements -> React Element
 ```
 
 

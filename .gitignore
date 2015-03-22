@@ -9,3 +9,4 @@ examples/Todomvc/node_modules
 examples/Todomvc/bower_components
 examples/Todomvc/output
 examples/Todomvc/bundle.js
+examples/Todomvc/index.html

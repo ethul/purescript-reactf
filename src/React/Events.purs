@@ -1,7 +1,5 @@
 module React.Events
-  ( Events()
-  , EventName()
-  , SyntheticEventRecord(..)
+  ( SyntheticEventRecord(..)
   , SyntheticEvent(..)
   , SyntheticClipboardEvent(..)
   , SyntheticCompositionEvent(..)
@@ -108,12 +106,9 @@ import Data.Options
 import Data.Function
 import Data.Monoid (Monoid, mempty)
 
+import React.Attributes (Attribute())
 import React.ComponentF (Component())
 import React.Types
-
-type Events eff = Options (EventName eff)
-
-foreign import data EventName :: # ! -> *
 
 type SyntheticEventRecord event
   = { bubbles :: Boolean
@@ -293,232 +288,230 @@ instance effApplyFnsSyntheticUIEvent :: EffApplyFns SyntheticUIEvent where
 instance effApplyFnsSyntheticWheelEvent :: EffApplyFns SyntheticWheelEvent where
   effApplyFn0 = runFn2 effApplyFn0Fn
 
-foreign import mkEvent "function mkEvent(name){ return name; }" :: forall eff eventFn. String -> Option (EventName eff) (eventFn eff)
+onError :: forall eff. Option Attribute (SyntheticEventFn eff)
+onError = opt "onError"
 
-onError :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
-onError  = mkEvent "onError"
+onErrorCapture :: forall eff. Option Attribute (SyntheticEventFn eff)
+onErrorCapture = opt "onErrorCapture"
 
-onErrorCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
-onErrorCapture = mkEvent "onErrorCapture"
+onInput :: forall eff. Option Attribute (SyntheticEventFn eff)
+onInput = opt "onInput"
 
-onInput :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
-onInput = mkEvent "onInput"
+onInputCapture :: forall eff. Option Attribute (SyntheticEventFn eff)
+onInputCapture = opt "onInputCapture"
 
-onInputCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
-onInputCapture = mkEvent "onInputCapture"
+onLoad :: forall eff. Option Attribute (SyntheticEventFn eff)
+onLoad = opt "onLoad"
 
-onLoad :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
-onLoad = mkEvent "onLoad"
+onLoadCapture :: forall eff. Option Attribute (SyntheticEventFn eff)
+onLoadCapture = opt "onLoadCapture"
 
-onLoadCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
-onLoadCapture = mkEvent "onLoadCapture"
+onReset :: forall eff. Option Attribute (SyntheticEventFn eff)
+onReset = opt "onReset"
 
-onReset :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
-onReset = mkEvent "onReset"
+onResetCapture :: forall eff. Option Attribute (SyntheticEventFn eff)
+onResetCapture = opt "onResetCapture"
 
-onResetCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
-onResetCapture = mkEvent "onResetCapture"
+onSubmit :: forall eff. Option Attribute (SyntheticEventFn eff)
+onSubmit = opt "onSubmit"
 
-onSubmit :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
-onSubmit = mkEvent "onSubmit"
+onSubmitCapture :: forall eff. Option Attribute (SyntheticEventFn eff)
+onSubmitCapture = opt "onSubmitCapture"
 
-onSubmitCapture :: forall eff. Option (EventName eff) (SyntheticEventFn eff)
-onSubmitCapture = mkEvent "onSubmitCapture"
+onCopy :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
+onCopy = opt "onCopy"
 
-onCopy :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
-onCopy = mkEvent "onCopy"
+onCopyCapture :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
+onCopyCapture = opt "onCopyCapture"
 
-onCopyCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
-onCopyCapture = mkEvent "onCopyCapture"
+onCut :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
+onCut = opt "onCut"
 
-onCut :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
-onCut = mkEvent "onCut"
+onCutCapture :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
+onCutCapture = opt "onCutCapture"
 
-onCutCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
-onCutCapture = mkEvent "onCutCapture"
+onPaste :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
+onPaste = opt "onPaste"
 
-onPaste :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
-onPaste = mkEvent "onPaste"
+onPasteCapture :: forall eff. Option Attribute (SyntheticClipboardEventFn eff)
+onPasteCapture = opt "onPasteCapture"
 
-onPasteCapture :: forall eff. Option (EventName eff) (SyntheticClipboardEventFn eff)
-onPasteCapture = mkEvent "onPasteCapture"
+onDrag :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDrag = opt "onDrag"
 
-onDrag :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDrag = mkEvent "onDrag"
+onDragCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragCapture = opt "onDragCapture"
 
-onDragCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragCapture = mkEvent "onDragCapture"
+onDragEnd :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragEnd = opt "onDragEnd"
 
-onDragEnd :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragEnd = mkEvent "onDragEnd"
+onDragEndCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragEndCapture = opt "onDragEndCapture"
 
-onDragEndCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragEndCapture = mkEvent "onDragEndCapture"
+onDragEnter :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragEnter = opt "onDragEnter"
 
-onDragEnter :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragEnter = mkEvent "onDragEnter"
+onDragEnterCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragEnterCapture = opt "onDragEnterCapture"
 
-onDragEnterCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragEnterCapture = mkEvent "onDragEnterCapture"
+onDragExit :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragExit = opt "onDragExit"
 
-onDragExit :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragExit = mkEvent "onDragExit"
+onDragExitCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragExitCapture = opt "onDragExitCapture"
 
-onDragExitCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragExitCapture = mkEvent "onDragExitCapture"
+onDragLeave :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragLeave = opt "onDragLeave"
 
-onDragLeave :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragLeave = mkEvent "onDragLeave"
+onDragLeaveCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragLeaveCapture = opt "onDragLeaveCapture"
 
-onDragLeaveCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragLeaveCapture = mkEvent "onDragLeaveCapture"
+onDragOver :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragOver = opt "onDragOver"
 
-onDragOver :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragOver = mkEvent "onDragOver"
+onDragOverCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragOverCapture = opt "onDragOverCapture"
 
-onDragOverCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragOverCapture = mkEvent "onDragOverCapture"
+onDragStart :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragStart = opt "onDragStart"
 
-onDragStart :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragStart = mkEvent "onDragStart"
+onDragStartCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDragStartCapture = opt "onDragStartCapture"
 
-onDragStartCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDragStartCapture = mkEvent "onDragStartCapture"
+onDrop :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDrop = opt "onDrop"
 
-onDrop :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDrop = mkEvent "onDrop"
+onDropCapture :: forall eff. Option Attribute (SyntheticDragEventFn eff)
+onDropCapture = opt "onDropCapture"
 
-onDropCapture :: forall eff. Option (EventName eff) (SyntheticDragEventFn eff)
-onDropCapture = mkEvent "onDropCapture"
+onFocus :: forall eff. Option Attribute (SyntheticFocusEventFn eff)
+onFocus = opt "onFocus"
 
-onFocus :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
-onFocus = mkEvent "onFocus"
+onFocusCapture :: forall eff. Option Attribute (SyntheticFocusEventFn eff)
+onFocusCapture = opt "onFocusCapture"
 
-onFocusCapture :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
-onFocusCapture = mkEvent "onFocusCapture"
+onBlur :: forall eff. Option Attribute (SyntheticFocusEventFn eff)
+onBlur = opt "onBlur"
 
-onBlur :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
-onBlur = mkEvent "onBlur"
+onBlurCapture :: forall eff. Option Attribute (SyntheticFocusEventFn eff)
+onBlurCapture = opt "onBlurCapture"
 
-onBlurCapture :: forall eff. Option (EventName eff) (SyntheticFocusEventFn eff)
-onBlurCapture = mkEvent "onBlurCapture"
+onChange :: forall eff. Option Attribute (SyntheticInputEventFn eff)
+onChange = opt "onChange"
 
-onChange :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
-onChange = mkEvent "onChange"
+onChangeCapture :: forall eff. Option Attribute (SyntheticInputEventFn eff)
+onChangeCapture = opt "onChangeCapture"
 
-onChangeCapture :: forall eff. Option (EventName eff) (SyntheticInputEventFn eff)
-onChangeCapture = mkEvent "onChangeCapture"
+onKeyDown :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
+onKeyDown = opt "onKeyDown"
 
-onKeyDown :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
-onKeyDown = mkEvent "onKeyDown"
+onKeyDownCapture :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
+onKeyDownCapture = opt "onKeyDownCapture"
 
-onKeyDownCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
-onKeyDownCapture = mkEvent "onKeyDownCapture"
+onKeyPress :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
+onKeyPress = opt "onKeyPress"
 
-onKeyPress :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
-onKeyPress = mkEvent "onKeyPress"
+onKeyPressCapture :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
+onKeyPressCapture = opt "onKeyPressCapture"
 
-onKeyPressCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
-onKeyPressCapture = mkEvent "onKeyPressCapture"
+onKeyUp :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
+onKeyUp = opt "onKeyUp"
 
-onKeyUp :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
-onKeyUp = mkEvent "onKeyUp"
+onKeyUpCapture :: forall eff. Option Attribute (SyntheticKeyboardEventFn eff)
+onKeyUpCapture = opt "onKeyUpCapture"
 
-onKeyUpCapture :: forall eff. Option (EventName eff) (SyntheticKeyboardEventFn eff)
-onKeyUpCapture = mkEvent "onKeyUpCapture"
+onClick :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onClick = opt "onClick"
 
-onClick :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onClick = mkEvent "onClick"
+onClickCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onClickCapture = opt "onClickCapture"
 
-onClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onClickCapture = mkEvent "onClickCapture"
+onContextMenu :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onContextMenu = opt "onContextMenu"
 
-onContextMenu :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onContextMenu = mkEvent "onContextMenu"
+onContextMenuCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onContextMenuCapture = opt "onContextMenuCapture"
 
-onContextMenuCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onContextMenuCapture = mkEvent "onContextMenuCapture"
+onDoubleClick :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onDoubleClick = opt "onDoubleClick"
 
-onDoubleClick :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDoubleClick = mkEvent "onDoubleClick"
+onDoubleClickCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onDoubleClickCapture = opt "onDoubleClickCapture"
 
-onDoubleClickCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onDoubleClickCapture = mkEvent "onDoubleClickCapture"
+onMouseDown :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseDown = opt "onMouseDown"
 
-onMouseDown :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseDown = mkEvent "onMouseDown"
+onMouseDownCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseDownCapture = opt "onMouseDownCapture"
 
-onMouseDownCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseDownCapture = mkEvent "onMouseDownCapture"
+onMouseEnter :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseEnter = opt "onMouseEnter"
 
-onMouseEnter :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseEnter = mkEvent "onMouseEnter"
+onMouseEnterCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseEnterCapture = opt "onMouseEnterCapture"
 
-onMouseEnterCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseEnterCapture = mkEvent "onMouseEnterCapture"
+onMouseLeave :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseLeave = opt "onMouseLeave"
 
-onMouseLeave :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseLeave = mkEvent "onMouseLeave"
+onMouseLeaveCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseLeaveCapture = opt "onMouseLeaveCapture"
 
-onMouseLeaveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseLeaveCapture = mkEvent "onMouseLeaveCapture"
+onMouseMove :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseMove = opt "onMouseMove"
 
-onMouseMove :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseMove = mkEvent "onMouseMove"
+onMouseMoveCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseMoveCapture = opt "onMouseMoveCapture"
 
-onMouseMoveCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseMoveCapture = mkEvent "onMouseMoveCapture"
+onMouseOut :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseOut = opt "onMouseOut"
 
-onMouseOut :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseOut = mkEvent "onMouseOut"
+onMouseOutCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseOutCapture = opt "onMouseOutCapture"
 
-onMouseOutCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseOutCapture = mkEvent "onMouseOutCapture"
+onMouseOver :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseOver = opt "onMouseOver"
 
-onMouseOver :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseOver = mkEvent "onMouseOver"
+onMouseOverCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseOverCapture = opt "onMouseOverCapture"
 
-onMouseOverCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseOverCapture = mkEvent "onMouseOverCapture"
+onMouseUp :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseUp = opt "onMouseUp"
 
-onMouseUp :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseUp = mkEvent "onMouseUp"
+onMouseUpCapture :: forall eff. Option Attribute (SyntheticMouseEventFn eff)
+onMouseUpCapture = opt "onMouseUpCapture"
 
-onMouseUpCapture :: forall eff. Option (EventName eff) (SyntheticMouseEventFn eff)
-onMouseUpCapture = mkEvent "onMouseUpCapture"
+onTouchCancel :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
+onTouchCancel = opt "onTouchCancel"
 
-onTouchCancel :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
-onTouchCancel = mkEvent "onTouchCancel"
+onTouchCancelCapture :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
+onTouchCancelCapture = opt "onTouchCancelCapture"
 
-onTouchCancelCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
-onTouchCancelCapture = mkEvent "onTouchCancelCapture"
+onTouchEnd :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
+onTouchEnd = opt "onTouchEnd"
 
-onTouchEnd :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
-onTouchEnd = mkEvent "onTouchEnd"
+onTouchEndCapture :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
+onTouchEndCapture = opt "onTouchEndCapture"
 
-onTouchEndCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
-onTouchEndCapture = mkEvent "onTouchEndCapture"
+onTouchMove :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
+onTouchMove = opt "onTouchMove"
 
-onTouchMove :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
-onTouchMove = mkEvent "onTouchMove"
+onTouchMoveCapture :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
+onTouchMoveCapture = opt "onTouchMoveCapture"
 
-onTouchMoveCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
-onTouchMoveCapture = mkEvent "onTouchMoveCapture"
+onTouchStart :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
+onTouchStart = opt "onTouchStart"
 
-onTouchStart :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
-onTouchStart = mkEvent "onTouchStart"
+onTouchStartCapture :: forall eff. Option Attribute (SyntheticTouchEventFn eff)
+onTouchStartCapture = opt "onTouchStartCapture"
 
-onTouchStartCapture :: forall eff. Option (EventName eff) (SyntheticTouchEventFn eff)
-onTouchStartCapture = mkEvent "onTouchStartCapture"
+onScroll :: forall eff. Option Attribute (SyntheticUIEventFn eff)
+onScroll = opt "onScroll"
 
-onScroll :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
-onScroll = mkEvent "onScroll"
+onScrollCapture :: forall eff. Option Attribute (SyntheticUIEventFn eff)
+onScrollCapture = opt "onScrollCapture"
 
-onScrollCapture :: forall eff. Option (EventName eff) (SyntheticUIEventFn eff)
-onScrollCapture = mkEvent "onScrollCapture"
+onWheel :: forall eff. Option Attribute (SyntheticWheelEventFn eff)
+onWheel = opt "onWheel"
 
-onWheel :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)
-onWheel = mkEvent "onWheel"
-
-onWheelCapture :: forall eff. Option (EventName eff) (SyntheticWheelEventFn eff)
-onWheelCapture = mkEvent "onWheelCapture"
+onWheelCapture :: forall eff. Option Attribute (SyntheticWheelEventFn eff)
+onWheelCapture = opt "onWheelCapture"
